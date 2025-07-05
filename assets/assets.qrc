@@ -5,5 +5,12 @@
         <file>Items/HeadEquipments/CapOfTheHero/BotW_Cap_of_the_Hero_Icon.png</file>
         <file>Items/LegEquipments/WellWornTrousers/BotW_Well-Worn_Trousers_Icon.png</file>
         <file>Items/Maps/Battlefield/g9tOqth.png</file>
+        <file>Items/Weapons/Shabby_Pistol_Icon.png</file>
+        <file>Items/Maps/Scenicpicture/SettingsScene_hebei.png</file>
+        <file>Items/Maps/Scenicpicture/SettingsScene.png</file>
+        <file>Items/Maps/Icefield/Icefield_purple.png</file>
+        <file>Items/Maps/Icefield/Icefield_white.png</file>
+        <file>Items/Characters/xiaoxin_superman/jump_middle.png</file>
+        <file>Items/Characters/xiaoxin_superman/stand_middle.png</file>
     </qresource>
 </RCC>

@@ -9,7 +9,8 @@
 #include "../Item.h"
 #include "../Mountable.h"
 
-class HeadEquipment: public Item, public Mountable {
+class HeadEquipment: public Item, public Mountable
+{
 public:
     explicit HeadEquipment(QGraphicsItem *parent, const QString &pixmapPath);
 

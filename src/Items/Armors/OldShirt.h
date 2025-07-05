@@ -8,7 +8,8 @@
 
 #include "Armor.h"
 
-class OldShirt: public Armor {
+class OldShirt: public Armor
+{
 public:
     explicit OldShirt(QGraphicsItem *parent);
 };

@@ -1,7 +1,3 @@
-//
-// Created by gerw on 8/21/24.
-//
-
 #include "Map.h"
 
 Map::Map(QGraphicsItem *parent, const QString &pixmapPath) : Item(parent, pixmapPath) {}
@@ -26,13 +22,22 @@ void Map::scaleToFitScene(QGraphicsScene *scene) {
 
 }
 
-QPointF Map::getSpawnPos() {
+QPointF Map::getSpawnPos()
+{
     auto boundingRect = sceneBoundingRect();
     auto midX = (boundingRect.left() + boundingRect.right()) * 0.5;
     return {midX, getFloorHeight()};
 }
 
-qreal Map::getFloorHeight() {
+qreal Map::getFloorHeight()
+{
     auto sceneRect = sceneBoundingRect();
     return sceneRect.top() + (sceneRect.top() - sceneRect.bottom()) * 0.5;
+}
+
+void Map::applyEffectToCharacter(Character *character, qint64 deltaTime)
+{
+    // Default implementation does nothing, can be overridden in derived classes
+    Q_UNUSED(character);
+    Q_UNUSED(deltaTime);
 }

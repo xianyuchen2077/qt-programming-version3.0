@@ -8,6 +8,7 @@
 #include <QGraphicsScene>
 #include <QPointF>
 #include "../Item.h"
+#include "../Characters/Character.h"
 
 class Map : public Item {
 public:
@@ -18,6 +19,8 @@ public:
     virtual qreal getFloorHeight(); // Need to rewrite to support multiple platforms
 
     virtual QPointF getSpawnPos();
+
+    virtual void applyEffectToCharacter(Character* character, qint64 deltaTime);
 };
 
 

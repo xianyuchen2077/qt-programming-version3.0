@@ -8,7 +8,8 @@
 
 #include "HeadEquipment.h"
 
-class CapOfTheHero: public HeadEquipment {
+class CapOfTheHero: public HeadEquipment
+{
 public:
     explicit CapOfTheHero(QGraphicsItem *parent);
 };

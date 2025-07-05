@@ -1,10 +1,7 @@
-//
-// Created by gerw on 8/20/24.
-//
-
 #ifndef QT_PROGRAMMING_2024_SCENE_H
 #define QT_PROGRAMMING_2024_SCENE_H
 
+#include "../GameEnums.h"
 #include <QGraphicsScene>
 #include <QTimer>
 
@@ -16,11 +13,17 @@ public:
 
     void startLoop();
 
+    void stopLoop();
+
     virtual void processInput();
 
     virtual void processMovement();
 
     virtual void processPicking();
+
+signals: // 新增信号部分
+    // 请求 MyGame 切换到指定场景的信号
+    void requestSceneChange(SceneID id); // 需要 MyGame::SceneID
 
 protected slots:
 
@@ -31,6 +34,8 @@ protected:
 
 private:
     QTimer *timer;
+
+    // 用于计算帧率deltaTime
     qint64 lastTime{-1};
 };
 

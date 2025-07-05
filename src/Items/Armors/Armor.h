@@ -1,9 +1,6 @@
-//
-// Created by gerw on 8/20/24.
-//
-
 #ifndef QT_PROGRAMMING_2024_ARMOR_H
 #define QT_PROGRAMMING_2024_ARMOR_H
+
 
 #include "../Item.h"
 #include "../Mountable.h"

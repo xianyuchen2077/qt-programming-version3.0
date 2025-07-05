@@ -46,7 +46,21 @@ add_executable(qt_programming_2024 src/main.cpp
         src/Items/Mountable.cpp
         src/Items/Mountable.h
         src/Items/Armors/FlamebreakerArmor.cpp
-        src/Items/Armors/FlamebreakerArmor.h)
+        src/Items/Armors/FlamebreakerArmor.h
+
+        src/Scenes/IceScene.h
+        src/Scenes/IceScene.cpp
+        src/Items/Maps/Icefield.h
+        src/Items/Maps/Icefield.cpp
+        src/Items/Weapons/Shabby_Pistol.cpp
+        src/Items/Weapons/Weapon.h
+        src/Items/Weapons/Weapon.cpp
+        src/Items/Weapons/Shabby_Pistol.h
+        src/Scenes/SettingsScene.h
+        src/Scenes/SettingsScene.cpp
+        src/GameEnums.h
+        src/Items/Maps/Settingsfield.h
+        src/Items/Maps/Settingsfield.cpp)
 target_link_libraries(qt_programming_2024
         Qt::Core
         Qt::Gui
