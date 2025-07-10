@@ -5,7 +5,7 @@
 #include <QKeyEvent>
 #include "Scene.h"
 #include "../Items/Maps/Map.h"
-#include "../Items/Characters/Character.h"
+#include "../Items/Characters/Link.h"
 #include <QList>
 #include <QTimer>
 
@@ -39,8 +39,10 @@ private:
 
     // --- 新属性在此处添加 ---
     Map *map;
-    Character *character;
+    Link *player1;
+    Link *player2;
     Armor *spareArmor;
+    HeadEquipment *spareHeadEquipment;
 
     // QList<Character *> enemies; // 示例：一个用于存放多个敌人的列表
     // QTimer *snowfallTimer;     // 示例：一个用于管理下雪效果的定时器

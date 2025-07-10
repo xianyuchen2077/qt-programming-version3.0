@@ -5,9 +5,9 @@
 class Mountable
 {
 public:
-    virtual void mountToParent();
+    virtual void mountToParent(); // 穿戴
 
-    virtual void unmount();
+    virtual void unmount(); // 脱下
 
     [[nodiscard]] bool isMounted() const;
 

@@ -5,7 +5,8 @@ Scene::Scene(QObject *parent) : QGraphicsScene(parent), timer(new QTimer(this)) 
     connect(timer, &QTimer::timeout, this, &Scene::update);
 }
 
-void Scene::update() {
+void Scene::update()
+{
     auto currentTime = QDateTime::currentDateTime().toMSecsSinceEpoch();
     if (lastTime == -1) { // first frame
         deltaTime = 0;
@@ -50,4 +51,3 @@ void Scene::processPicking()
     // 例如，检测角色是否接近可拾取物体，并执行拾取操作
     // 这里可以使用角色位置和物体位置的距离来判断是否可以拾取物体
 }
-

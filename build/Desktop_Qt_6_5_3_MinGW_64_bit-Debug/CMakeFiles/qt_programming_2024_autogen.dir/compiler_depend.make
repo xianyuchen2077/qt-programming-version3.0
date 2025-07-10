@@ -25,6 +25,8 @@ qt_programming_2024_autogen/timestamp: C:/Users/xiany/Desktop/GodNoCode/Advanced
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/HeadEquipments/CapOfTheHero.h \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/HeadEquipments/HeadEquipment.cpp \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/HeadEquipments/HeadEquipment.h \
+  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/HeadEquipments/Helmet_of_the_Paladin.cpp \
+  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/HeadEquipments/Helmet_of_the_Paladin.h \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Item.cpp \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Item.h \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/LegEquipments/LegEquipment.cpp \
@@ -515,6 +517,8 @@ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qgenericatomic.h:
 
 .qtc/package-manager/maintenance_tool_provider.cmake:
 
+C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/HeadEquipments/Helmet_of_the_Paladin.cpp:
+
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Weapons/Shabby_Pistol.h:
 
 CMakeFiles/4.1.0-rc1/CMakeCXXCompiler.cmake:
@@ -585,6 +589,10 @@ D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6/QtPublicFindPackageHelpers.cmake:
 
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/HeadEquipments/HeadEquipment.h:
 
+C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Maps/Battlefield.cpp:
+
+C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/HeadEquipments/Helmet_of_the_Paladin.h:
+
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Item.cpp:
 
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Maps/Map.h:
@@ -593,13 +601,11 @@ D:/CMake/share/cmake-4.1/Modules/CMakeRCInformation.cmake:
 
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Item.h:
 
-C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/LegEquipments/WellWornTrousers.cpp:
-
 D:/CMake/share/cmake-4.1/Modules/CMakeLanguageInformation.cmake:
 
-C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/LegEquipments/WellWornTrousers.h:
+C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/LegEquipments/WellWornTrousers.cpp:
 
-C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Maps/Battlefield.cpp:
+C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/LegEquipments/WellWornTrousers.h:
 
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Maps/Battlefield.h:
 
@@ -655,10 +661,6 @@ D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qpainter.h:
 
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Scenes/Scene.h:
 
-D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qvector2d.h:
-
-D:/CMake/share/cmake-4.1/Modules/CMakeInitializeConfigs.cmake:
-
 D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qicon.h:
 
 D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qbasicatomic.h:
@@ -674,6 +676,10 @@ D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qtwidgets-config.h:
 D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qbindingstorage.h:
 
 D:/CMake/share/cmake-4.1/Modules/CMakeGenericSystem.cmake:
+
+D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qvector2d.h:
+
+D:/CMake/share/cmake-4.1/Modules/CMakeInitializeConfigs.cmake:
 
 D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsConfigVersion.cmake:
 

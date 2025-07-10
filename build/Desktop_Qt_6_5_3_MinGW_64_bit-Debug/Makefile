@@ -370,6 +370,30 @@ src/Items/HeadEquipments/HeadEquipment.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/HeadEquipments/HeadEquipment.cpp.s
 .PHONY : src/Items/HeadEquipments/HeadEquipment.cpp.s
 
+src/Items/HeadEquipments/Helmet_of_the_Paladin.obj: src/Items/HeadEquipments/Helmet_of_the_Paladin.cpp.obj
+.PHONY : src/Items/HeadEquipments/Helmet_of_the_Paladin.obj
+
+# target to build an object file
+src/Items/HeadEquipments/Helmet_of_the_Paladin.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/HeadEquipments/Helmet_of_the_Paladin.cpp.obj
+.PHONY : src/Items/HeadEquipments/Helmet_of_the_Paladin.cpp.obj
+
+src/Items/HeadEquipments/Helmet_of_the_Paladin.i: src/Items/HeadEquipments/Helmet_of_the_Paladin.cpp.i
+.PHONY : src/Items/HeadEquipments/Helmet_of_the_Paladin.i
+
+# target to preprocess a source file
+src/Items/HeadEquipments/Helmet_of_the_Paladin.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/HeadEquipments/Helmet_of_the_Paladin.cpp.i
+.PHONY : src/Items/HeadEquipments/Helmet_of_the_Paladin.cpp.i
+
+src/Items/HeadEquipments/Helmet_of_the_Paladin.s: src/Items/HeadEquipments/Helmet_of_the_Paladin.cpp.s
+.PHONY : src/Items/HeadEquipments/Helmet_of_the_Paladin.s
+
+# target to generate assembly for a file
+src/Items/HeadEquipments/Helmet_of_the_Paladin.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/HeadEquipments/Helmet_of_the_Paladin.cpp.s
+.PHONY : src/Items/HeadEquipments/Helmet_of_the_Paladin.cpp.s
+
 src/Items/Item.obj: src/Items/Item.cpp.obj
 .PHONY : src/Items/Item.obj
 
@@ -792,6 +816,9 @@ help:
 	@echo ... src/Items/HeadEquipments/HeadEquipment.obj
 	@echo ... src/Items/HeadEquipments/HeadEquipment.i
 	@echo ... src/Items/HeadEquipments/HeadEquipment.s
+	@echo ... src/Items/HeadEquipments/Helmet_of_the_Paladin.obj
+	@echo ... src/Items/HeadEquipments/Helmet_of_the_Paladin.i
+	@echo ... src/Items/HeadEquipments/Helmet_of_the_Paladin.s
 	@echo ... src/Items/Item.obj
 	@echo ... src/Items/Item.i
 	@echo ... src/Items/Item.s

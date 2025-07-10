@@ -88,7 +88,8 @@ void BattleScene::processMovement() {
     }
 }
 
-void BattleScene::processPicking() {
+void BattleScene::processPicking()
+{
     Scene::processPicking();
     if (character->isPicking()) {
         auto mountable = findNearestUnmountedMountable(character->pos(), 100.);

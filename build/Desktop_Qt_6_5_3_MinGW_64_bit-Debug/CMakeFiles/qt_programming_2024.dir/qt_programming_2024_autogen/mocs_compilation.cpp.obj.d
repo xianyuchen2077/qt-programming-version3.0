@@ -426,6 +426,8 @@ CMakeFiles/qt_programming_2024.dir/qt_programming_2024_autogen/mocs_compilation.
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Characters/Character.h \
  C:\Users\xiany\Desktop\GodNoCode\AdvancedProgramming\major_assignment\hw1_FightingGame\qt-programming-2025\build\Desktop_Qt_6_5_3_MinGW_64_bit-Debug\qt_programming_2024_autogen\SNE2VJ5FQV/moc_IceScene.cpp \
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Scenes/IceScene.h \
+ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Characters/Link.h \
+ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Characters/Character.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QList \
  C:\Users\xiany\Desktop\GodNoCode\AdvancedProgramming\major_assignment\hw1_FightingGame\qt-programming-2025\build\Desktop_Qt_6_5_3_MinGW_64_bit-Debug\qt_programming_2024_autogen\SNE2VJ5FQV/moc_Scene.cpp \
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Scenes/Scene.h \

@@ -1,7 +1,3 @@
-//
-// Created by gerw on 8/21/24.
-//
-
 #ifndef QT_PROGRAMMING_2024_MAP_H
 #define QT_PROGRAMMING_2024_MAP_H
 
@@ -19,6 +15,8 @@ public:
     virtual qreal getFloorHeight(); // Need to rewrite to support multiple platforms
 
     virtual QPointF getSpawnPos();
+
+    virtual void setPixmap(const QString &pixmapPath); // 设置图片路径
 
     virtual void applyEffectToCharacter(Character* character, qint64 deltaTime);
 };

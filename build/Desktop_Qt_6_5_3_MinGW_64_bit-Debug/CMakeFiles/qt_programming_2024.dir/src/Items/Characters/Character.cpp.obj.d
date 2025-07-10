@@ -291,13 +291,14 @@ CMakeFiles/qt_programming_2024.dir/src/Items/Characters/Character.cpp.obj: \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qscopedpointer.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qiodevicebase.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qline.h \
- C:\Users\xiany\Desktop\GodNoCode\AdvancedProgramming\major_assignment\hw1_FightingGame\qt-programming-2025\src\Items\Characters\Character.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QGraphicsEllipseItem \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qgraphicsitem.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qtwidgets-config.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qtwidgetsexports.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qobject.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QDebug \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qdebug.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qtextstream.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qstringconverter_base.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qcontiguouscache.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qsharedpointer.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qshareddata.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qsharedpointer_impl.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qmetatype.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qcompare.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qfloat16.h \
@@ -314,6 +315,19 @@ CMakeFiles/qt_programming_2024.dir/src/Items/Characters/Character.cpp.obj: \
  D:/Qt/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_tree.h \
  D:/Qt/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_map.h \
  D:/Qt/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_multimap.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qmap.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qshareddata_impl.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qset.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qhash.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qvarlengtharray.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/q20memory.h \
+ C:\Users\xiany\Desktop\GodNoCode\AdvancedProgramming\major_assignment\hw1_FightingGame\qt-programming-2025\src\Items\Characters\Character.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QGraphicsEllipseItem \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qgraphicsitem.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qtwidgets-config.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qtwidgetsexports.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qobject.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qobject_impl.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qbindingstorage.h \
  D:/Qt/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/chrono \
@@ -321,18 +335,6 @@ CMakeFiles/qt_programming_2024.dir/src/Items/Characters/Character.cpp.obj: \
  D:/Qt/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ctime \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qvariant.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qdebug.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qtextstream.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qstringconverter_base.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qcontiguouscache.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qsharedpointer.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qshareddata.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qsharedpointer_impl.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qmap.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qshareddata_impl.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qset.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qhash.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qvarlengtharray.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/q20memory.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qpainterpath.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qtransform.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qpixmap.h \

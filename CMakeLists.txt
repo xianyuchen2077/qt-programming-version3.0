@@ -60,7 +60,17 @@ add_executable(qt_programming_2024 src/main.cpp
         src/Scenes/SettingsScene.cpp
         src/GameEnums.h
         src/Items/Maps/Settingsfield.h
-        src/Items/Maps/Settingsfield.cpp)
+        src/Items/Maps/Settingsfield.cpp
+        src/Items/HeadEquipments/Helmet_of_the_Paladin.h
+        src/Items/HeadEquipments/Helmet_of_the_Paladin.cpp
+
+
+
+
+
+
+
+)
 target_link_libraries(qt_programming_2024
         Qt::Core
         Qt::Gui

@@ -12,5 +12,8 @@
         <file>Items/Maps/Icefield/Icefield_white.png</file>
         <file>Items/Characters/xiaoxin_superman/jump_middle.png</file>
         <file>Items/Characters/xiaoxin_superman/stand_middle.png</file>
+        <file>Items/Bullets/Shabby_Pistol_bullet.png</file>
+        <file>Items/Characters/xiaoxin_superman/crouch_middle.png</file>
+        <file>Items/HeadEquipments/Helmet/Helmet_of_the_Paladin.png</file>
     </qresource>
 </RCC>

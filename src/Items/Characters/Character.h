@@ -28,6 +28,10 @@ public:
 
     void setDownDown(bool downDown);
 
+    [[nodiscard]] bool isUpDown() const;
+
+    void setUpDown(bool upDown);
+
     [[nodiscard]] const QPointF &getVelocity() const;
 
     void setVelocity(const QPointF &velocity);
@@ -40,7 +44,7 @@ public:
 
     void setMoveSpeed(qreal speed);
 
-    void processInput();
+    virtual void processInput();
 
     // 与血条相关函数
     [[nodiscard]] int getHealth() const; // 获取血量
@@ -48,7 +52,19 @@ public:
     void takeDamage(int damage);         // 受伤函数
     void heal(int amount);               // 治疗函数
 
+    // 与跳跃相关函数
+    void handleJump();        // 执行跳跃动作
+    void handleGravity();     // 处理重力作用
+    bool isOnGround();        // 判断是否在地面上
+
+    // 与装备相关函数
+    void equipHeadEquipment(HeadEquipment* headEquipment);      // 佩戴头部装备的方法
+    void unequipHeadEquipment();                                // 卸下头部装备的方法
+
     Armor* pickupArmor(Armor* newArmor);
+    LegEquipment* pickupLegEquipment(LegEquipment* newLegEquipment);
+    HeadEquipment* pickupHeadEquipment(HeadEquipment* newHeadEquipment);
+    Weapon* pickupWeapon(Weapon* newWeapon);
 
 protected:
     HeadEquipment *headEquipment{};
@@ -57,11 +73,24 @@ protected:
     Weapon *weapon{};
     QPointF velocity{};
 
+    // 切换角色图片
+    void updatePixmap(const QString &pixmapPath);
+
 private:
-    bool leftDown{}, rightDown{}, pickDown{}, downDown{};
+    bool leftDown{}, rightDown{}, pickDown{}, downDown{}, upDown{}; // 按键状态;
     bool lastPickDown{}; // 上一次拾取键是否被按下
     bool picking{}; // 是否正在拾取物品
     qreal moveSpeed; // 移动速度
+
+    // 跳跃相关属性
+    qreal Velocity_y{}; // 竖直方向的速度
+    bool onGround{}; // 是否在地面上
+    qreal jumpStrength{}; // 跳跃的初始力量
+    qreal gravity{}; // 重力加速度
+    qreal groundY{}; // 地面的Y坐标（用于碰撞检测和着地）
+
+
+    // 血条相关属性
     int maxHealth; // 最大血量
     int currentHealth; // 当前血量
     QGraphicsRectItem *healthBarBackground; // 血条背景

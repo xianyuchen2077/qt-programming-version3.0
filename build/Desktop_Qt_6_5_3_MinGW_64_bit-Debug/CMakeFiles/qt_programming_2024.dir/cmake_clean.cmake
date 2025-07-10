@@ -20,6 +20,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/qt_programming_2024.dir/src/Items/HeadEquipments/CapOfTheHero.cpp.obj.d"
   "CMakeFiles/qt_programming_2024.dir/src/Items/HeadEquipments/HeadEquipment.cpp.obj"
   "CMakeFiles/qt_programming_2024.dir/src/Items/HeadEquipments/HeadEquipment.cpp.obj.d"
+  "CMakeFiles/qt_programming_2024.dir/src/Items/HeadEquipments/Helmet_of_the_Paladin.cpp.obj"
+  "CMakeFiles/qt_programming_2024.dir/src/Items/HeadEquipments/Helmet_of_the_Paladin.cpp.obj.d"
   "CMakeFiles/qt_programming_2024.dir/src/Items/Item.cpp.obj"
   "CMakeFiles/qt_programming_2024.dir/src/Items/Item.cpp.obj.d"
   "CMakeFiles/qt_programming_2024.dir/src/Items/LegEquipments/LegEquipment.cpp.obj"

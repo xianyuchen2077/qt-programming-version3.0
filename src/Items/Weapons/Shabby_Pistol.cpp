@@ -12,8 +12,8 @@ Shabby_Pistol::Shabby_Pistol(QGraphicsItem *parent) : Weapon(parent, ":/Items/We
         QPixmap flippedPixmap = originalPixmap.transformed(transform); // 应用翻转
         pixmapItem->setPixmap(flippedPixmap); // 将翻转后的图片设置回 pixmapItem
     }
-    setScale(0.8); // 设置缩放比例
-    setPos(-59, -176); // 相对与父类的位置偏移
+    setScale(0.6); // 设置缩放比例
+    setPos(-92, -110); // 相对与父类的位置偏移
     setZValue(1); // 设置武器在角色之上显示
 
     // 设置武器的初始属性（目前还是纸上谈兵）

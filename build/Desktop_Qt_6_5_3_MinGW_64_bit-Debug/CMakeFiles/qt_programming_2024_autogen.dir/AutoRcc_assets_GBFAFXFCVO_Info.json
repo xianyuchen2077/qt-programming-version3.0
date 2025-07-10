@@ -9,11 +9,14 @@
 	"INCLUDE_DIR" : "C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/qt_programming_2024_autogen/include",
 	"INPUTS" : 
 	[
+		"C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/assets/Items/HeadEquipments/Helmet/Helmet_of_the_Paladin.png",
 		"C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/assets/Items/HeadEquipments/CapOfTheHero/BotW_Cap_of_the_Hero_Icon.png",
 		"C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/assets/Items/Armors/FlamebreakerArmor/BotW_Flamebreaker_Armor_Icon.png",
 		"C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/assets/Items/Armors/OldShirt/BotW_Old_Shirt_Icon.png",
 		"C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/assets/Items/Weapons/Shabby_Pistol_Icon.png",
+		"C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/assets/Items/Bullets/Shabby_Pistol_bullet.png",
 		"C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/assets/Items/Characters/xiaoxin_superman/jump_middle.png",
+		"C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/assets/Items/Characters/xiaoxin_superman/crouch_middle.png",
 		"C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/assets/Items/Characters/xiaoxin_superman/stand_middle.png",
 		"C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/assets/Items/Maps/Scenicpicture/SettingsScene.png",
 		"C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/assets/Items/Maps/Scenicpicture/SettingsScene_hebei.png",
