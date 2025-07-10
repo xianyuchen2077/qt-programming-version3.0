@@ -36,6 +36,10 @@ public:
 
     void setVelocity(const QPointF &velocity);
 
+    [[nodiscard]] const qreal &getVelocity_y() const;
+
+    void setVelocity_y(const qreal new_velocity_y);
+
     [[nodiscard]] bool isPicking() const;
 
     void setPicking(bool picking);
@@ -45,6 +49,8 @@ public:
     void setMoveSpeed(qreal speed);
 
     virtual void processInput();
+
+    void advance(int phase) override; // 重写advance函数
 
     // 与血条相关函数
     [[nodiscard]] int getHealth() const; // 获取血量
@@ -56,6 +62,10 @@ public:
     void handleJump();        // 执行跳跃动作
     void handleGravity();     // 处理重力作用
     bool isOnGround();        // 判断是否在地面上
+    void setOnGround(bool onGround);       // 设置是否在地面上
+    void setGroundY(qreal groundY);        // 设置地面的Y坐标
+    int getGroundY() const;                // 获取地面的Y坐标
+    QRectF boundingRect() const override;  // 重写boundingRect函数
 
     // 与装备相关函数
     void equipHeadEquipment(HeadEquipment* headEquipment);      // 佩戴头部装备的方法

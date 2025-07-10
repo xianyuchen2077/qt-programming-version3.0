@@ -23,11 +23,13 @@ IceScene::IceScene(QObject *parent) : Scene(parent)
     addItem(spareArmor);
     addItem(spareHeadEquipment);
 
-    map->scaleToFitScene(this);
-    player1->setPos(100,630); // 设置第一个角色出生点
-    player2->setPos(1180,630); // 设置第二个角色出生点
+    map->scaleToFitScene(this); // 缩放地图以适应场景
+    player1->setPos(100,map->getFloorHeight()); // 设置第一个角色出生点
+    player2->setPos(1180,map->getFloorHeight()); // 设置第二个角色出生点
     player1->setMoveSpeed(player1->getMoveSpeed()*2); // 设置角色移动速度(速度*2）
     player2->setMoveSpeed(player2->getMoveSpeed()*2);
+    player1->setGroundY(map->getFloorHeight()); // 在角色类中的地面高度
+    player2->setGroundY(map->getFloorHeight());
     spareArmor->unmount(); // 确保备用护甲未安装
     spareArmor->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.75, map->getFloorHeight()); // 设置备用护甲位置
     spareHeadEquipment->unmount(); // 确保备用头盔未安装
@@ -175,19 +177,92 @@ void IceScene::keyReleaseEvent(QKeyEvent *event)
 
 void IceScene::update()
 {
+    // 调用基类的 update，更新其他非移动相关的逻辑
     Scene::update();
 }
 
+// 处理角色的移动
 void IceScene::processMovement()
 {
-    Scene::processMovement();
+    Scene::processMovement(); // 调用基类的 processMovement
+    const qreal gravity = 0.008; // 重力加速度，根据需要调整
+    // const qreal gravity = 0.015 // 备选重力加速度
+
+    // 处理 player1
     if (player1 != nullptr)
     {
-        player1->setPos(player1->pos() + player1->getVelocity() * (double) deltaTime);
+        // 水平移动
+        player1->setX(player1->x() + player1->getVelocity().x() * deltaTime);
+
+        // 跳跃逻辑
+        if (player1->isUpDown() && player1->isOnGround())
+        {
+            // 调用角色的跳跃函数，设置初始垂直速度并标记不在地面上
+            player1->handleJump();
+        }
+
+        // 应用重力（如果不在地面上）
+        if (!player1->isOnGround())
+        {
+            player1->setVelocity_y(player1->getVelocity_y() + gravity * deltaTime);
+            // 可以添加最大下落速度限制，防止速度过快
+            qreal maxFallSpeed = 3.0; // 例如，最大下落速度为每帧 10 像素
+            if (player1->getVelocity_y() > maxFallSpeed)
+            {
+                player1->setVelocity_y(maxFallSpeed);
+            }
+        }
+
+        // 垂直移动
+        player1->setY(player1->y() + player1->getVelocity_y() * deltaTime);
+
+        // 落地判断
+        qreal characterBottomY = player1->y();
+        if (characterBottomY >= player1->getGroundY())
+        {
+            player1->setY(player1->getGroundY());       // 设置角色到底部
+            player1->setVelocity_y(0);                  // 停止垂直运动
+            player1->setOnGround(true);                 // 标记为在地面上
+        }
+        else
+        {
+            player1->setOnGround(false);                // 标记为不在地面上
+        }
     }
+
+    // 处理 player2
     if (player2 != nullptr)
     {
-        player2->setPos(player2->pos() + player2->getVelocity() * (double) deltaTime);
+        // 水平移动
+        player2->setX(player2->x() + player2->getVelocity().x() * deltaTime);
+
+        // 跳跃逻辑
+        if (player2->isUpDown() && player2->isOnGround())
+        {
+            player2->handleJump();
+        }
+
+        // 应用重力（如果不在地面上）
+        if (!player2->isOnGround())
+        {
+            player2->setVelocity_y(player2->getVelocity_y() + gravity * deltaTime);
+        }
+
+        // 垂直移动
+        player2->setY(player2->y() + player2->getVelocity_y() * deltaTime);
+
+        // 落地判断
+        qreal characterBottomY = player2->y();
+        if (characterBottomY >= player2->getGroundY())
+        {
+            player2->setY(player2->getGroundY());
+            player2->setVelocity_y(0);
+            player2->setOnGround(true);
+        }
+        else
+        {
+            player2->setOnGround(false);
+        }
     }
 }
 

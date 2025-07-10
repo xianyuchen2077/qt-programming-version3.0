@@ -37,7 +37,6 @@ private:
 
     static Mountable * pickupMountable(Character *character, Mountable *mountable);
 
-    // --- 新属性在此处添加 ---
     Map *map;
     Link *player1;
     Link *player2;

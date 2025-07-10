@@ -42,7 +42,7 @@ void Icefield::updateGroundGeometry()
     // 计算地面区域
     m_groundRect = QRectF(
         sceneRect.left() + sceneRect.width() * 0.05,     // 左边距
-        sceneRect.bottom() - sceneRect.height() * 0.15,  // 距底部
+        sceneRect.bottom() - sceneRect.height() * 0.13,  // 距底部
         sceneRect.width() * 0.9,                         // 宽度
         sceneRect.height() * 0.15                        // 高度
         );
