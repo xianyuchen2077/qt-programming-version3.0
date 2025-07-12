@@ -15,5 +15,13 @@
         <file>Items/Bullets/Shabby_Pistol_bullet.png</file>
         <file>Items/Characters/xiaoxin_superman/crouch_middle.png</file>
         <file>Items/HeadEquipments/Helmet/Helmet_of_the_Paladin.png</file>
+        <file>Items/Maps/Icefield/icicle_1.png</file>
+        <file>Items/Maps/Icefield/icicle_2.png</file>
+        <file>Items/Maps/Icefield/ice_platform.png</file>
+        <file>Items/Characters/xiaoxin_superman/crouch_middle_2.png</file>
+        <file>Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Walking/0_Reaper_Man_Walking_000.png</file>
+        <file>Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Walking/0_Reaper_Man_Walking_006.png</file>
+        <file>Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Walking/0_Reaper_Man_Walking_022.png</file>
+        <file>Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Crouch/0_Reaper_Man_Dying_000.png</file>
     </qresource>
 </RCC>

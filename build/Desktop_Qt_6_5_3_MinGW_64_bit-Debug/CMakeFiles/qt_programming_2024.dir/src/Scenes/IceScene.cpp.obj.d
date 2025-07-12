@@ -353,6 +353,11 @@ CMakeFiles/qt_programming_2024.dir/src/Scenes/IceScene.cpp.obj: \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qline.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qnativeinterface.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qkeysequence.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QTimer \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qtimer.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qbasictimer.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QElapsedTimer \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qelapsedtimer.h \
  C:\Users\xiany\Desktop\GodNoCode\AdvancedProgramming\major_assignment\hw1_FightingGame\qt-programming-2025\src\Scenes\Scene.h \
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/GameEnums.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QMetaType \
@@ -373,9 +378,6 @@ CMakeFiles/qt_programming_2024.dir/src/Scenes/IceScene.cpp.obj: \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qpixmap.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qfont.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qpen.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QTimer \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qtimer.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qbasictimer.h \
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Maps/Map.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QPointF \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qpoint.h \

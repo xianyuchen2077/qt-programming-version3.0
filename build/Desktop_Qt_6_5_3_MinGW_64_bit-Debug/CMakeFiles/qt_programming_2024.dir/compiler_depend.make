@@ -25,6 +25,7 @@ CMakeFiles/qt_programming_2024.dir/qt_programming_2024_autogen/mocs_compilation.
   qt_programming_2024_autogen/SNE2VJ5FQV/moc_Scene.cpp \
   qt_programming_2024_autogen/SNE2VJ5FQV/moc_SettingsScene.cpp \
   qt_programming_2024_autogen/UVLADIE3JM/moc_MyGame.cpp \
+  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QElapsedTimer \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QList \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QMetaType \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QObject \
@@ -64,6 +65,7 @@ CMakeFiles/qt_programming_2024.dir/qt_programming_2024_autogen/mocs_compilation.
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qdarwinhelpers.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qdatastream.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qdebug.h \
+  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qelapsedtimer.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qexceptionhandling.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qflags.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qfloat16.h \
@@ -1862,6 +1864,7 @@ CMakeFiles/qt_programming_2024.dir/src/Items/Characters/Link.cpp.obj: C:/Users/x
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Characters/Character.h \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Characters/Link.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QDebug \
+  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QElapsedTimer \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/q20memory.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/q20type_traits.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qalgorithms.h \
@@ -1891,6 +1894,7 @@ CMakeFiles/qt_programming_2024.dir/src/Items/Characters/Link.cpp.obj: C:/Users/x
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qdarwinhelpers.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qdatastream.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qdebug.h \
+  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qelapsedtimer.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qexceptionhandling.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qflags.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qfloat16.h \
@@ -1972,6 +1976,7 @@ CMakeFiles/qt_programming_2024.dir/src/Items/Characters/Link.cpp.obj: C:/Users/x
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qxptype_traits.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/QPainter \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/QPixmap \
+  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/QTransform \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qbrush.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qcolor.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qfont.h \
@@ -6507,6 +6512,7 @@ CMakeFiles/qt_programming_2024.dir/src/MyGame.cpp.obj: C:/Users/xiany/Desktop/Go
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Scenes/Scene.h \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Scenes/SettingsScene.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QDebug \
+  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QElapsedTimer \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QList \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QMetaEnum \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QMetaType \
@@ -6549,6 +6555,7 @@ CMakeFiles/qt_programming_2024.dir/src/MyGame.cpp.obj: C:/Users/xiany/Desktop/Go
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qdarwinhelpers.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qdatastream.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qdebug.h \
+  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qelapsedtimer.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qeventloop.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qexceptionhandling.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qflags.h \
@@ -6942,6 +6949,7 @@ CMakeFiles/qt_programming_2024.dir/src/Scenes/BattleScene.cpp.obj: C:/Users/xian
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Scenes/BattleScene.h \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Scenes/Scene.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QDebug \
+  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QElapsedTimer \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QList \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QMetaType \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QObject \
@@ -6981,6 +6989,7 @@ CMakeFiles/qt_programming_2024.dir/src/Scenes/BattleScene.cpp.obj: C:/Users/xian
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qdarwinhelpers.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qdatastream.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qdebug.h \
+  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qelapsedtimer.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qexceptionhandling.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qflags.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qfloat16.h \
@@ -7335,6 +7344,7 @@ CMakeFiles/qt_programming_2024.dir/src/Scenes/IceScene.cpp.obj: C:/Users/xiany/D
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Scenes/IceScene.h \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Scenes/Scene.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QDebug \
+  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QElapsedTimer \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QList \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QMetaType \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QObject \
@@ -7374,6 +7384,7 @@ CMakeFiles/qt_programming_2024.dir/src/Scenes/IceScene.cpp.obj: C:/Users/xiany/D
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qdarwinhelpers.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qdatastream.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qdebug.h \
+  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qelapsedtimer.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qexceptionhandling.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qflags.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qfloat16.h \
@@ -8976,6 +8987,14 @@ D:/Qt/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/crtdefs.h:
 
 qt_programming_2024_autogen/UVLADIE3JM/moc_MyGame.cpp:
 
+D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QTimer:
+
+D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qfontinfo.h:
+
+D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QElapsedTimer:
+
+D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QSize:
+
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Mountable.cpp:
 
 D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qtcoreexports.h:
@@ -8994,19 +9013,7 @@ D:/Qt/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/tr1/ex
 
 D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QPointF:
 
-D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/QBrush:
-
-D:/Qt/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/wchar.h:
-
-D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qexceptionhandling.h:
-
 D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QRect:
-
-D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QTimer:
-
-D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qfontinfo.h:
-
-D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QSize:
 
 D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QSizeF:
 
@@ -9037,8 +9044,6 @@ D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qtgui-config.h:
 D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qassert.h:
 
 D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qarraydata.h:
-
-D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qflags.h:
 
 D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/QPainter:
 
@@ -9079,6 +9084,16 @@ D:/Qt/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/time.h:
 D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qcontiguouscache.h:
 
 D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qdarwinhelpers.h:
+
+D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qelapsedtimer.h:
+
+D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/QBrush:
+
+D:/Qt/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/wchar.h:
+
+D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qexceptionhandling.h:
+
+D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qflags.h:
 
 D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qfloat16.h:
 

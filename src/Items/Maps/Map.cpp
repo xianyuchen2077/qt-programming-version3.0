@@ -1,8 +1,9 @@
 #include "Map.h"
 
-Map::Map(QGraphicsItem *parent, const QString &pixmapPath) : Item(parent, pixmapPath) {}
+Map::Map(QGraphicsItem *parent, const QString &pixmapPath) : Item(parent, pixmapPath){}
 
-void Map::scaleToFitScene(QGraphicsScene *scene) {
+void Map::scaleToFitScene(QGraphicsScene *scene)
+{
     // Calculate scale factors to scale the item to fit the entire scene
     QRectF sceneRect = scene->sceneRect(); // 场地尺寸
     QRectF itemRect = boundingRect(); // 原始地图边界
@@ -20,7 +21,6 @@ void Map::scaleToFitScene(QGraphicsScene *scene) {
     // 计算缩放后的地图尺寸与场景尺寸的差值，取半值作为偏移量实现居中
     setPos((sceneRect.width() - boundingRect().width() * scaleFactor) / 2,
            (sceneRect.height() - boundingRect().height() * scaleFactor) / 2);
-
 }
 
 // 获取地图的出生位置

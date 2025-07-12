@@ -11,6 +11,7 @@ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_Fighti
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Mountable.h \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Weapons/Weapon.h \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Scenes/Scene.h \
+  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QElapsedTimer \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QList \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QMetaType \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QObject \
@@ -50,6 +51,7 @@ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_Fighti
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qdarwinhelpers.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qdatastream.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qdebug.h \
+  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qelapsedtimer.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qexceptionhandling.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qflags.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qfloat16.h \

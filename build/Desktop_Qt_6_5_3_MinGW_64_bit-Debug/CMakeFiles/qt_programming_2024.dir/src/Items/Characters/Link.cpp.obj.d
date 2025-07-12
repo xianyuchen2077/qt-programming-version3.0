@@ -362,10 +362,14 @@ CMakeFiles/qt_programming_2024.dir/src/Items/Characters/Link.cpp.obj: \
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Weapons/Weapon.h \
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Item.h \
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Mountable.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QElapsedTimer \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qelapsedtimer.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/QPixmap \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qpixmap.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QDebug \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qdebug.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/QTransform \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qtransform.h \
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/HeadEquipments/CapOfTheHero.h \
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/HeadEquipments/HeadEquipment.h \
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Armors/OldShirt.h \

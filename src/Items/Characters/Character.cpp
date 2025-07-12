@@ -206,37 +206,6 @@ void Character::processInput()
 {
     auto velocity = QPointF(0, 0);
 
-    // 按下down键（s）的时候不能进行左右移动
-    if (isDownDown())
-    {
-
-    }
-    else
-    {
-        if (isLeftDown())
-        {
-            velocity.setX(velocity.x() - moveSpeed);
-            setTransform(QTransform().scale(1, 1));  // scale（1，1）代表不进行翻转
-        }
-        if (isRightDown())
-        {
-            velocity.setX(velocity.x() + moveSpeed);
-            setTransform(QTransform().scale(-1, 1));  // scale（-1，1）代表进行水平翻转
-        }
-        if (isUpDown())
-        {
-            // velocity.setY(velocity.y() - moveSpeed);
-            // if (onGround) // 只有在地面上才能跳跃
-            // {
-            //     Velocity_y = -(moveSpeed*jumpStrength/2); // 设置跳跃速度
-            //     onGround = false; // 跳跃后不在地面上
-            // }
-        }
-    }
-
-    // 更新角色移动速度
-    setVelocity(velocity);
-
     if (!lastPickDown && pickDown)
     {
         picking = true;
@@ -292,56 +261,6 @@ void Character::setGroundY(qreal groundY)
 int Character::getGroundY() const
 {
     return groundY;
-}
-
-QRectF Character::boundingRect() const
-{
-    if (pixmapItem)
-    {
-        // 返回包含 pixmapItem 的边界矩形。
-        // pixmapItem->boundingRect() 是其自身未缩放的边界
-        // pixmapItem->mapRectToParent(pixmapItem->boundingRect()) 将其映射到 Character 的局部坐标系
-        return pixmapItem->mapRectToParent(pixmapItem->boundingRect());
-    }
-    return Item::boundingRect(); // 如果没有pixmapItem，则返回基类的
-}
-
-void Character::advance(int phase)
-{
-    // 在 advance 的 phase 0 阶段处理输入、重力、跳跃和移动
-    if (phase == 0)
-    {
-        processInput(); // 处理水平移动和拾取输入
-
-        // handleGravity(); // 处理重力影响
-        handleJump();    // 处理跳跃输入
-
-        // 更新角色位置
-        setPos(x() + velocity.x(), y() + Velocity_y);
-
-        // 检查是否落地
-        // 这里需要根据你的地图或场景的实际地面高度进行判断
-        // 一个简单的方法是：如果角色的底部Y坐标 (y() + boundingRect().height()) 大于或等于地面Y坐标
-        // 注意：pixmapItem 是 Character 的子项，其位置是相对于 Character 的局部坐标
-        // 所以我们需要计算 Character 自身的底部Y坐标
-        // 假设 Character 的 boundingRect 包含了整个角色可见区域
-        qreal characterBottomY = y() + boundingRect().height();
-
-        // 假设地面是固定的 groundY
-        if (characterBottomY >= groundY)
-        {
-            setY(groundY - boundingRect().height()); // 强制设置角色到底部，防止穿透地面
-            Velocity_y = 0; // 停止垂直运动
-            onGround = true; // 标记为在地面上
-        }
-
-        // // 更新血条位置，使其跟随角色(貌似是冗余的)
-        // if (healthBarBackground && healthBarFill)
-        // {
-        //     healthBarBackground->setPos(x() + boundingRect().width() / 2 - healthBarBackground->boundingRect().width() / 2, y() - 20);
-        //     healthBarFill->setPos(x() + boundingRect().width() / 2 - healthBarFill->boundingRect().width() / 2, y() - 20);
-        // }
-    }
 }
 
 // 判断是否正在拾取物品
@@ -453,4 +372,20 @@ void Character::unequipHeadEquipment()
         headEquipment->setParentItem(parentItem()); // 设置父项为角色的父项
         headEquipment = nullptr; // 清空头部装备指针
     }
+}
+
+// 重写boundingRect函数
+QRectF Character::boundingRect() const
+{
+    if (pixmapItem) {
+        // 返回pixmapItem在Character局部坐标系中的边界矩形
+        // 考虑pixmapItem的pos和其缩放后的尺寸
+        return QRectF(
+            pixmapItem->pos().x(),
+            pixmapItem->pos().y(),
+            pixmapItem->pixmap().width() * pixmapItem->scale(),
+            pixmapItem->pixmap().height() * pixmapItem->scale()
+            );
+    }
+    return QRectF(); // 或者一个默认的空矩形
 }

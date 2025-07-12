@@ -50,8 +50,6 @@ public:
 
     virtual void processInput();
 
-    void advance(int phase) override; // 重写advance函数
-
     // 与血条相关函数
     [[nodiscard]] int getHealth() const; // 获取血量
     void setHealth(int health);          // 设置血量
@@ -67,9 +65,13 @@ public:
     int getGroundY() const;                // 获取地面的Y坐标
     QRectF boundingRect() const override;  // 重写boundingRect函数
 
+    // 处理碰撞的方法
+    // 接受障碍物列表，并更新角色的位置和状态
+    // void handleCollisions(const QList<Obstacle>& obstacles, qreal mapFloorHeight, qint64 deltaTime);
+
     // 与装备相关函数
     void equipHeadEquipment(HeadEquipment* headEquipment);      // 佩戴头部装备的方法
-    void unequipHeadEquipment();                                // 卸下头部装备的方法
+    void unequipHeadEquipment();
 
     Armor* pickupArmor(Armor* newArmor);
     LegEquipment* pickupLegEquipment(LegEquipment* newLegEquipment);
@@ -105,7 +107,6 @@ private:
     int currentHealth; // 当前血量
     QGraphicsRectItem *healthBarBackground; // 血条背景
     QGraphicsRectItem *healthBarFill; // 血条填充（表示当前血量）
-
     void drawHealthBar(); // 绘制血条
     void updateHealthBar(); // 更新血条显示
 };

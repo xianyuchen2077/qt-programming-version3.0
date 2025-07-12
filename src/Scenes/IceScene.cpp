@@ -34,6 +34,75 @@ IceScene::IceScene(QObject *parent) : Scene(parent)
     spareArmor->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.75, map->getFloorHeight()); // 设置备用护甲位置
     spareHeadEquipment->unmount(); // 确保备用头盔未安装
     spareHeadEquipment->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.25, map->getFloorHeight()); // 设置备用头盔位置
+
+    // 初始化游戏循环
+    gameTimer = new QTimer(this);
+    connect(gameTimer, &QTimer::timeout, this, &IceScene::gameLoop);
+
+    // 启动计时器
+    elapsedTimer.start();
+    lastFrameTime = 0;
+
+    // 启动游戏循环，60FPS
+    gameTimer->start(FRAME_TIME);
+}
+
+// 辅助函数：计算角色在斜坡上的Y坐标
+qreal calculateSlopeY(const QPointF& charBottomCenter, const Obstacle& slopeObstacle)
+{
+    // charBottomCenter 是角色脚底的中心点（场景坐标）
+    // slopeObstacle 包含了斜坡的 startPoint, endPoint 和 direction
+
+    // 如果 startPoint 和 endPoint 的 X 坐标相同，说明是垂直线，不是斜坡
+    if (qFuzzyCompare(slopeObstacle.startPoint.x(), slopeObstacle.endPoint.x()))
+    {
+        return -1; // 表示无法计算或不是有效斜坡
+    }
+
+    qreal slopeYAtCharX;
+
+    if (slopeObstacle.direction == SlopeDirection::UpRight) { // 从左下到右上
+        // 斜坡公式: y = m * (x - x1) + y1
+        // m = (y2 - y1) / (x2 - x1)
+        qreal m = (slopeObstacle.endPoint.y() - slopeObstacle.startPoint.y()) /
+                  (slopeObstacle.endPoint.x() - slopeObstacle.startPoint.x());
+        slopeYAtCharX = m * (charBottomCenter.x() - slopeObstacle.startPoint.x()) + slopeObstacle.startPoint.y();
+
+    }
+    else // 从右下到左上
+    {
+        qreal m = (slopeObstacle.endPoint.y() - slopeObstacle.startPoint.y()) /
+                  (slopeObstacle.endPoint.x() - slopeObstacle.startPoint.x());
+        slopeYAtCharX = m * (charBottomCenter.x() - slopeObstacle.startPoint.x()) + slopeObstacle.startPoint.y();
+    }
+
+    return slopeYAtCharX;
+}
+
+// 新增：游戏主循环
+void IceScene::gameLoop()
+{
+    // 计算帧间隔
+    qint64 currentTime = elapsedTimer.elapsed();
+    qint64 deltaTime = currentTime - lastFrameTime;
+    lastFrameTime = currentTime;
+
+    // 更新游戏状态
+    processInput();      // 处理输入
+    processMovement();   // 处理移动
+    processPicking();    // 处理拾取
+
+    // 更新角色动画（传入实际的时间间隔）
+    if (player1 != nullptr)
+    {
+        player1->updateAnimation(deltaTime);
+    }
+    if (player2 != nullptr)
+    {
+        player2->updateAnimation(deltaTime);
+    }
+
+    update(); // 更新场景
 }
 
 void IceScene::processInput()
@@ -57,6 +126,7 @@ void IceScene::keyPressEvent(QKeyEvent *event)
         if (player1 != nullptr)
         {
             player1->setLeftDown(true);
+            player1->processInput();
         }
         break;
     case Qt::Key_D:
@@ -120,6 +190,7 @@ void IceScene::keyReleaseEvent(QKeyEvent *event)
         if (player1 != nullptr)
         {
             player1->setLeftDown(false);
+            player1->processInput();
         }
         break;
     case Qt::Key_D:
@@ -187,6 +258,10 @@ void IceScene::processMovement()
     Scene::processMovement(); // 调用基类的 processMovement
     const qreal gravity = 0.008; // 重力加速度，根据需要调整
     // const qreal gravity = 0.015 // 备选重力加速度
+    qreal maxFallSpeed = 3.0; // 最大下落速度为每帧 3 像素
+
+    // 获取地图中的所有障碍物
+    const auto& obstacles = static_cast<Icefield*>(map)->getObstacles();
 
     // 处理 player1
     if (player1 != nullptr)
@@ -205,8 +280,7 @@ void IceScene::processMovement()
         if (!player1->isOnGround())
         {
             player1->setVelocity_y(player1->getVelocity_y() + gravity * deltaTime);
-            // 可以添加最大下落速度限制，防止速度过快
-            qreal maxFallSpeed = 3.0; // 例如，最大下落速度为每帧 10 像素
+
             if (player1->getVelocity_y() > maxFallSpeed)
             {
                 player1->setVelocity_y(maxFallSpeed);
