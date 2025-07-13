@@ -34,7 +34,7 @@ Link::Link(QGraphicsItem *parent): Character(parent, ":/Items/Characters/littler
 
         // 碰撞框应该在角色脚部附近
         qreal collisionWidth = scaledWidth * 0.5;
-        qreal collisionHeight = scaledHeight * 0.80;
+        qreal collisionHeight = scaledHeight * 0.9;
 
         // 碰撞框应该在图片底部中央
         qreal collisionX = imagePos.x() + (scaledWidth - collisionWidth) / 2.0-5; // 调整X位置，使碰撞框稍微偏左;
