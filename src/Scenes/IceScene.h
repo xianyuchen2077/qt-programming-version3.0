@@ -57,17 +57,25 @@ private:
     static const int FRAME_TIME = 1000 / TARGET_FPS;  // 每帧时间（毫秒）
 
     QList<Platform> platforms;      // 平台列表
-    bool landedOnPlatform;          // 是否落在平台上
 
     // 碰撞检测函数
     void initializePlatforms();    // 初始化平台数据
     void handleCollisions(Character* character, qint64 deltaTime);  // 处理碰撞
     void handleBoundaryCollision(Character* character);  // 处理边界碰撞
+    bool landedOnPlatform;         // 是否刚落在平台上
 
 // 用于调试
 private:
-    void showDebugVisualization();  // 显示调试可视化
+    // 用于调试可视化
+    void showDebugVisualization();     // 初始化调试可视化
+    void hideDebugVisualization();     // 隐藏调试可视化
+    void updateDebugVisualization();   // 更新调试可视化（新增）
     QList<QGraphicsItem*> debugItems;
+
+    // 分离静态和动态调试项
+    QList<QGraphicsItem*> staticDebugItems;  // 静态调试项（场景边界、平台等）
+    QList<QGraphicsItem*> dynamicDebugItems; // 动态调试项（角色框、信息等）
+    bool debugVisible = true;  // 调试视图是否可见
 };
 
 #endif // ICESCENE_H

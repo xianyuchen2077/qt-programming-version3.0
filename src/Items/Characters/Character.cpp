@@ -256,7 +256,7 @@ void Character::handleJump()
 {
     if (onGround)
     {
-        Velocity_y = -(2 * jumpStrength / 2); // 设置跳跃初速度
+        Velocity_y = -(2.25 * jumpStrength / 2); // 设置跳跃初速度
         // Velocity_y = -(3 * jumpStrength / 2); // 备选跳跃初速度
         onGround = false; // 跳跃后不在地面上
     }

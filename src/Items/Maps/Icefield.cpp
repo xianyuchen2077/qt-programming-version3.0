@@ -132,8 +132,7 @@ void Icefield::applyEffectToCharacter(Character *character, qint64 deltaTime)
 
     if (character->isOnGround())
     {
-        // 改进的摩擦力系统
-        qreal frictionCoefficient = 0.15; // 降低摩擦力，让起步更灵敏
+        qreal frictionCoefficient = 0.15; // 白色冰原的摩擦力
 
         if (getMapType() == 1) // 紫色冰原
         {
@@ -142,20 +141,31 @@ void Icefield::applyEffectToCharacter(Character *character, qint64 deltaTime)
 
         QPointF currentVelocity = character->getVelocity();
 
-        // 只有当角色不在主动移动时才应用摩擦力
         // 检查角色是否在主动移动
         bool isActivelyMoving = character->isLeftDown() || character->isRightDown();
 
         if (!isActivelyMoving)
         {
-            // 只有在不主动移动时才应用摩擦力
-            QPointF newVelocity(
-                currentVelocity.x() * (1.0 - frictionCoefficient),
-                currentVelocity.y()
-                );
-            character->setVelocity(newVelocity);
+            // 改进的摩擦力计算，确保方向正确
+            qreal currentSpeedX = currentVelocity.x();
+
+            if (qAbs(currentSpeedX) > 0.001) // 如果有水平速度
+            {
+                // 计算摩擦力方向（与运动方向相反）
+                qreal frictionForce = -currentSpeedX * frictionCoefficient;
+                qreal newSpeedX = currentSpeedX + frictionForce;
+
+                // 防止摩擦力导致速度反向（过度减速）
+                if ((currentSpeedX > 0 && newSpeedX < 0) ||
+                    (currentSpeedX < 0 && newSpeedX > 0))
+                {
+                    newSpeedX = 0; // 直接停止
+                }
+
+                character->setVelocity(QPointF(newSpeedX, currentVelocity.y()));
+            }
         }
-        // 如果正在主动移动，不应用摩擦力，让角色响应更灵敏
+        // 如果正在主动移动，不应用摩擦力
     }
 }
 
