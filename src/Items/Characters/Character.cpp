@@ -26,6 +26,29 @@ Character::Character(QGraphicsItem *parent, const QString &pixmapPath) : Item(pa
     upDown = false;
     lastPickDown = false;
     picking = false;
+
+    if (pixmapItem)
+    {
+        // 假设碰撞体是图片中心下方的一部分
+        qreal imageWidth = pixmapItem->pixmap().width() * pixmapItem->scale();
+        qreal imageHeight = pixmapItem->pixmap().height() * pixmapItem->scale();
+
+        // 碰撞体宽度通常小于图片宽度，例如 80%
+        qreal collisionWidth = imageWidth * 0.8;
+        // 碰撞体高度通常是图片高度的大部分，例如 90%
+        qreal collisionHeight = imageHeight * 0.9;
+
+        // 计算碰撞体的左上角坐标，使其大致居中于图片底部
+        qreal collisionX = (imageWidth - collisionWidth) / 2.0;
+        qreal collisionY = imageHeight - collisionHeight;
+
+        m_collisionRect = QRectF(collisionX, collisionY, collisionWidth, collisionHeight);
+    }
+    else
+    {
+        // 如果没有 pixmapItem，给一个默认值
+        m_collisionRect = QRectF(0, 0, 50, 80); // 默认尺寸
+    }
 }
 
 bool Character::isLeftDown() const {
@@ -377,15 +400,5 @@ void Character::unequipHeadEquipment()
 // 重写boundingRect函数
 QRectF Character::boundingRect() const
 {
-    if (pixmapItem) {
-        // 返回pixmapItem在Character局部坐标系中的边界矩形
-        // 考虑pixmapItem的pos和其缩放后的尺寸
-        return QRectF(
-            pixmapItem->pos().x(),
-            pixmapItem->pos().y(),
-            pixmapItem->pixmap().width() * pixmapItem->scale(),
-            pixmapItem->pixmap().height() * pixmapItem->scale()
-            );
-    }
-    return QRectF(); // 或者一个默认的空矩形
+    return m_collisionRect;
 }

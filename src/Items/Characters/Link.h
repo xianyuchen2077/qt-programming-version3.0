@@ -12,6 +12,7 @@ public:
     void setCrouchPixmap(); // 下蹲动作
     void setStandPixmap(); // 站立动作
     void setWalkPixmap(); // 行走动作
+    void setJumpPixmap(); // 跳跃动作
 
     bool getFaceRight() const { return faceRight; } // 获取角色是否面向右侧
     void setFaceRight(bool right) { faceRight = right; } // 设置角色是否面向右侧

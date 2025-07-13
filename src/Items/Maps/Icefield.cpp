@@ -27,8 +27,8 @@ Icefield::Icefield(QGraphicsItem *parent): Map(parent,""),maptype(0)
         icicle_1 = new QGraphicsPixmapItem(icicle_1_map, this);
 
         // 设置贴图相对于 Icefield 局部坐标系的位置,相对于 Icefield 的 (0,0) 点
-        icicle_1->setScale(0.9);      // 设置缩放
-        icicle_1->setPos(10, 500);   // 设置位置
+        icicle_1->setScale(0.7);      // 设置缩放
+        icicle_1->setPos(10, 425);   // 设置位置
 
         // 设置 Z 值，确保它在地图背景之上，但在角色之下
         icicle_1->setZValue(0);
@@ -45,23 +45,11 @@ Icefield::Icefield(QGraphicsItem *parent): Map(parent,""),maptype(0)
         icicle_2 = new QGraphicsPixmapItem(icicle_2_map, this);
 
         // 设置贴图相对于 Icefield 局部坐标系的位置,相对于 Icefield 的 (0,0) 点
-        icicle_2->setScale(1.5);      // 设置缩放
-        icicle_2->setPos(1220, 470);   // 设置位置
+        icicle_2->setScale(1);      // 设置缩放
+        icicle_2->setPos(1050, 425);   // 设置位置
 
         // 设置 Z 值，确保它在地图背景之上，但在角色之下
         icicle_2->setZValue(0);
-
-        // 计算斜坡在场景坐标系下的整体边界
-        QRectF icicle_2Bounds = icicle_2->mapToScene(icicle_2->boundingRect()).boundingRect();
-
-        // 为斜坡定义起始点和结束点（场景坐标）
-        // 斜坡是从左下到右上倾斜
-        // 确保 startPoint 是低点，endPoint 是高点，以简化后续计算
-        // 并且 SlopeDirection 应该是 UpLeft
-        QPointF icicle_2Start = icicle_2->mapToScene(icicle_2->boundingRect().bottomLeft()); // 左下角
-        QPointF icicle_2End = icicle_2->mapToScene(icicle_2->boundingRect().topRight());    // 右上角
-
-        m_obstacles.append(Obstacle(ObstacleType::Slope, icicle_2Bounds, icicle_2Start, icicle_2End, SlopeDirection::UpRight));
     }
 
     // 空中大平台：ice_platform
@@ -72,14 +60,18 @@ Icefield::Icefield(QGraphicsItem *parent): Map(parent,""),maptype(0)
         ice_platform = new QGraphicsPixmapItem(ice_platform_map, this);
 
         // 设置贴图相对于 Icefield 局部坐标系的位置,相对于 Icefield 的 (0,0) 点
-        ice_platform->setScale(1.0);      // 设置缩放
-        ice_platform->setPos(280, 370);   // 设置位置
+        ice_platform->setScale(0.7);      // 设置缩放
+        ice_platform->setPos(300, 270);   // 设置位置
 
         // 设置 Z 值，确保它在地图背景之上，但在角色之下
         ice_platform->setZValue(0);
 
+        QRectF platformRectLocal = ice_platform->boundingRect(); // 平台自己的局部边界
+        platformRectLocal.setWidth(platformRectLocal.width() * ice_platform->scale()); // 考虑缩放后的宽度
+        platformRectLocal.setHeight(platformRectLocal.height() * ice_platform->scale()); // 考虑缩放后的高度
+        platformRectLocal.moveTo(ice_platform->pos().x(), ice_platform->pos().y()); // 移动到平台在父项中的位置
         // 添加为矩形障碍物
-        m_obstacles.append(Obstacle(ObstacleType::Rectangle, ice_platform->mapToScene(ice_platform->boundingRect()).boundingRect()));
+        m_obstacles.append(Obstacle(ObstacleType::Rectangle, platformRectLocal));
     }
 
     updateGroundGeometry(); // 初始化地面几何
@@ -113,7 +105,7 @@ void Icefield::updateGroundGeometry()
         sceneRect.left() + sceneRect.width() * 0.05,     // 左边距
         sceneRect.bottom() - sceneRect.height() * 0.13,  // 距底部
         sceneRect.width() * 0.9,                         // 宽度
-        sceneRect.height() * 0.15                        // 高度
+        sceneRect.height() * 0.13                        // 高度
         );
 
     // 设置地图边界（比可视区域小5%的安全边界）
@@ -136,29 +128,34 @@ void Icefield::applyEffectToCharacter(Character *character, qint64 deltaTime)
     if (!character)
         return;
 
-    // 确保几何信息最新
     updateGroundGeometry();
 
-    // 仅当角色在地面上时应用效果
     if (character->isOnGround())
     {
-        // 应用恒定摩擦力系数
-        qreal frictionCoefficient=0.8;
+        // 改进的摩擦力系统
+        qreal frictionCoefficient = 0.15; // 降低摩擦力，让起步更灵敏
 
-        if (getMapType()==1) // 紫色冰原
+        if (getMapType() == 1) // 紫色冰原
         {
-           qreal frictionCoefficient = 0.01;
+            frictionCoefficient = 0.02; // 紫色冰原很滑
         }
 
         QPointF currentVelocity = character->getVelocity();
 
-        // 应用摩擦力效果 (x轴减速，y轴不变)
-        QPointF newVelocity(
-            currentVelocity.x() * (1.0 - frictionCoefficient),
-            currentVelocity.y()
-            );
+        // 只有当角色不在主动移动时才应用摩擦力
+        // 检查角色是否在主动移动
+        bool isActivelyMoving = character->isLeftDown() || character->isRightDown();
 
-        character->setVelocity(newVelocity); // 速度更新
+        if (!isActivelyMoving)
+        {
+            // 只有在不主动移动时才应用摩擦力
+            QPointF newVelocity(
+                currentVelocity.x() * (1.0 - frictionCoefficient),
+                currentVelocity.y()
+                );
+            character->setVelocity(newVelocity);
+        }
+        // 如果正在主动移动，不应用摩擦力，让角色响应更灵敏
     }
 }
 

@@ -14,7 +14,7 @@ public:
 
     virtual qreal getFloorHeight(); // Need to rewrite to support multiple platforms
 
-    virtual QPointF getSpawnPos();
+    virtual QPointF getSpawnPos(); // 获取地图的出生位置
 
     virtual void setPixmap(const QString &pixmapPath); // 设置图片路径
 

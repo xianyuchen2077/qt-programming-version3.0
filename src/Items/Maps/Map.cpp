@@ -50,7 +50,9 @@ void Map::setPixmap(const QString &pixmapPath)
     if (pixmapItem != nullptr)
     {
         pixmapItem->setPixmap(QPixmap(pixmapPath));
-    } else {
+    }
+    else
+    {
         // 如果 pixmapItem 为空，则创建一个新的 QGraphicsPixmapItem
         pixmapItem = new QGraphicsPixmapItem(QPixmap(pixmapPath), this);
     }

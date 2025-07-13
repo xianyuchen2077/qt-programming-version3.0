@@ -424,12 +424,13 @@ CMakeFiles/qt_programming_2024.dir/src/MyGame.cpp.obj: \
  C:\Users\xiany\Desktop\GodNoCode\AdvancedProgramming\major_assignment\hw1_FightingGame\qt-programming-2025\src\Scenes/IceScene.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QElapsedTimer \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qelapsedtimer.h \
+ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Maps/Icefield.h \
+ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Maps/Map.h \
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Characters/Link.h \
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Characters/Character.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QList \
  C:\Users\xiany\Desktop\GodNoCode\AdvancedProgramming\major_assignment\hw1_FightingGame\qt-programming-2025\src\Scenes/SettingsScene.h \
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Maps/Settingsfield.h \
- C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Maps/Map.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QGraphicsTextItem \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QPushButton \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qpushbutton.h \

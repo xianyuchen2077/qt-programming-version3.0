@@ -6,8 +6,18 @@
 #include <QElapsedTimer>
 #include "Scene.h"
 #include "../Items/Maps/Map.h"
+#include "../Items/Maps/Icefield.h"
 #include "../Items/Characters/Link.h"
 #include <QList>
+
+struct Platform
+{
+    QRectF rect;        // 平台的矩形区域
+    bool isOneWay;      // 是否是单向平台（只能从上方站立）
+
+    Platform(qreal x, qreal y, qreal width, qreal height, bool oneWay = true)
+        : rect(x, y, width, height), isOneWay(oneWay) {}
+};
 
 class IceScene : public Scene
 {
@@ -22,7 +32,7 @@ public:
 
 protected slots:
     void update() override;
-    void gameLoop(); // 新增：游戏主循环
+    void gameLoop(); // 游戏主循环
 
 protected:
     void keyPressEvent(QKeyEvent *event) override;
@@ -46,9 +56,18 @@ private:
     static const int TARGET_FPS = 60;  // 目标帧率
     static const int FRAME_TIME = 1000 / TARGET_FPS;  // 每帧时间（毫秒）
 
-    // QList<Character *> enemies; // 示例：一个用于存放多个敌人的列表
-    // QTimer *snowfallTimer;     // 示例：一个用于管理下雪效果的定时器
-    // int score;                 // 示例：一个用于跟踪玩家在该场景中分数的整数
+    QList<Platform> platforms;      // 平台列表
+    bool landedOnPlatform;          // 是否落在平台上
+
+    // 碰撞检测函数
+    void initializePlatforms();    // 初始化平台数据
+    void handleCollisions(Character* character, qint64 deltaTime);  // 处理碰撞
+    void handleBoundaryCollision(Character* character);  // 处理边界碰撞
+
+// 用于调试
+private:
+    void showDebugVisualization();  // 显示调试可视化
+    QList<QGraphicsItem*> debugItems;
 };
 
 #endif // ICESCENE_H

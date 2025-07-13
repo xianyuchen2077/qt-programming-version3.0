@@ -14,8 +14,23 @@ Link::Link(QGraphicsItem *parent): Character(parent, ":/Items/Characters/littler
     if (pixmapItem != nullptr)
     {
         pixmapItem->setScale(0.3);          // 只对人物图片进行缩放
-        pixmapItem->setPos(-130, -225);      // 人物图片相对与父类 Character 局部原点的位置偏移
+        pixmapItem->setPos(0, 0);      // 人物图片相对与父类 Character 局部原点的位置偏移
     }
+
+    qreal scaledImageWidth = 200 * 0.3; // 假设原始宽度是200
+    qreal scaledImageHeight = 200 * 0.3; // 假设原始高度是200
+
+    // 假设碰撞体宽度是缩放后图片宽度的 80%
+    qreal collisionWidth = scaledImageWidth * 0.8;
+    // 假设碰撞体高度是缩放后图片高度的 95% (从脚部开始)
+    qreal collisionHeight = scaledImageHeight * 0.95;
+
+    // 计算碰撞体的左上角坐标，使其在图片底部水平居中
+    qreal collisionX = (scaledImageWidth - collisionWidth) / 2.0;
+    qreal collisionY = scaledImageHeight - collisionHeight;
+
+    // 更新基类的碰撞矩形
+    m_collisionRect = QRectF(collisionX, collisionY, collisionWidth, collisionHeight);
 
     headEquipment = new CapOfTheHero(this);
     legEquipment = new WellWornTrousers(this);
@@ -52,6 +67,16 @@ void Link::setStandPixmap()
     if (pixmapItem != nullptr)
     {
         updatePixmap(":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Walking/0_Reaper_Man_Walking_006.png");
+        pixmapItem->setScale(0.3);
+        pixmapItem->setPos(-130, -225); // 确保图片位置正确
+    }
+}
+
+void Link::setJumpPixmap()
+{
+    if (pixmapItem != nullptr)
+    {
+        updatePixmap(":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Jump Start/0_Reaper_Man_Jump Start_005.png");
         pixmapItem->setScale(0.3);
         pixmapItem->setPos(-130, -225); // 确保图片位置正确
     }
@@ -117,27 +142,60 @@ void Link::processWalkAnimation(qint64 deltaTime)
 void Link::processInput()
 {
     Character::processInput();
-
-    if (isLeftDown())
+    if(isDownDown())
     {
-        setVelocity(QPointF(-getMoveSpeed(), getVelocity().y()));
-        if (isFaceRight())
-            turnFaceLeft(); // 如果当前朝向右，则转向左
-    }
-    else if (isRightDown())
-    {
-        setVelocity(QPointF(getMoveSpeed(), getVelocity().y()));
-        if (!isFaceRight())
-            turnFaceRight(); // 如果当前朝向左，则转向右
+        if(isOnGround())
+        {
+            setVelocity(QPointF(0, 0)); // 如果在地面上且下蹲键按下，停止角色移动
+        }
+        else
+        {
+            setVelocity(QPointF(getVelocity().x(), 0)); // 如果不在地面上，下蹲时只水平速度不变
+        }
+        setCrouchPixmap(); // 如果下蹲键按下，设置下蹲图片
     }
     else
     {
-        // 如果没有左右移动键按下，水平速度设为0
-        setVelocity(QPointF(0, getVelocity().y()));
+        if(isOnGround())
+        {
+            if (isLeftDown())
+            {
+                setVelocity(QPointF(-getMoveSpeed(), getVelocity().y()));
+                if (isFaceRight())
+                    turnFaceLeft(); // 如果当前朝向右，则转向左
+            }
+            else if (isRightDown())
+            {
+                setVelocity(QPointF(getMoveSpeed(), getVelocity().y()));
+                if (!isFaceRight())
+                    turnFaceRight(); // 如果当前朝向左，则转向右
+            }
+            else
+            {
+                // 如果没有左右移动键按下，水平速度设为0
+                setVelocity(QPointF(getMoveSpeed(), getVelocity().y()));
+
+                if (isUpDown())
+                {
+                    // 如果按下跳跃键且在地面上，执行跳跃
+                    handleJump();
+                    setJumpPixmap();
+                }
+                else
+                {
+                    setStandPixmap();
+                }
+            }
+        }
+        else if (!isOnGround())
+        {
+            // 如果不在地面上保持跳跃状态
+            setJumpPixmap();
+        }
     }
 }
 
-// 新增：独立的动画更新方法
+// 独立的动画更新方法
 void Link::updateAnimation(qint64 deltaTime)
 {
     bool isMoving = (isLeftDown() || isRightDown()) && isOnGround();

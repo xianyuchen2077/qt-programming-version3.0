@@ -85,6 +85,9 @@ protected:
     Weapon *weapon{};
     QPointF velocity{};
 
+    // 角色的碰撞矩形 (局部坐标)
+    QRectF m_collisionRect;
+
     // 切换角色图片
     void updatePixmap(const QString &pixmapPath);
 
@@ -100,7 +103,6 @@ private:
     qreal jumpStrength{}; // 跳跃的初始力量
     qreal gravity{}; // 重力加速度
     qreal groundY{}; // 地面的Y坐标（用于碰撞检测和着地）
-
 
     // 血条相关属性
     int maxHealth; // 最大血量
