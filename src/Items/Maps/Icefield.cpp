@@ -27,8 +27,8 @@ Icefield::Icefield(QGraphicsItem *parent): Map(parent,""),maptype(0)
         icicle_1 = new QGraphicsPixmapItem(icicle_1_map, this);
 
         // 设置贴图相对于 Icefield 局部坐标系的位置,相对于 Icefield 的 (0,0) 点
-        icicle_1->setScale(0.7);      // 设置缩放
-        icicle_1->setPos(10, 425);   // 设置位置
+        icicle_1->setScale(0.6);      // 设置缩放
+        icicle_1->setPos(5, 450);   // 设置位置
 
         // 设置 Z 值，确保它在地图背景之上，但在角色之下
         icicle_1->setZValue(0);
@@ -45,11 +45,13 @@ Icefield::Icefield(QGraphicsItem *parent): Map(parent,""),maptype(0)
         icicle_2 = new QGraphicsPixmapItem(icicle_2_map, this);
 
         // 设置贴图相对于 Icefield 局部坐标系的位置,相对于 Icefield 的 (0,0) 点
-        icicle_2->setScale(1);      // 设置缩放
-        icicle_2->setPos(1050, 425);   // 设置位置
+        icicle_2->setScale(0.8);      // 设置缩放
+        icicle_2->setPos(1130, 455);   // 设置位置
 
         // 设置 Z 值，确保它在地图背景之上，但在角色之下
         icicle_2->setZValue(0);
+        // 添加矩形障碍物到障碍物列表
+        m_obstacles.append(Obstacle(ObstacleType::Rectangle, icicle_2->mapToScene(icicle_2->boundingRect()).boundingRect()));
     }
 
     // 空中大平台：ice_platform
@@ -60,16 +62,16 @@ Icefield::Icefield(QGraphicsItem *parent): Map(parent,""),maptype(0)
         ice_platform = new QGraphicsPixmapItem(ice_platform_map, this);
 
         // 设置贴图相对于 Icefield 局部坐标系的位置,相对于 Icefield 的 (0,0) 点
-        ice_platform->setScale(0.7);      // 设置缩放
-        ice_platform->setPos(300, 270);   // 设置位置
+        ice_platform->setScale(0.65);      // 设置缩放
+        ice_platform->setPos(290, 250);   // 设置位置
 
         // 设置 Z 值，确保它在地图背景之上，但在角色之下
         ice_platform->setZValue(0);
 
         QRectF platformRectLocal = ice_platform->boundingRect(); // 平台自己的局部边界
         platformRectLocal.setWidth(platformRectLocal.width() * ice_platform->scale()); // 考虑缩放后的宽度
-        platformRectLocal.setHeight(platformRectLocal.height() * ice_platform->scale()); // 考虑缩放后的高度
-        platformRectLocal.moveTo(ice_platform->pos().x(), ice_platform->pos().y()); // 移动到平台在父项中的位置
+        platformRectLocal.setHeight(platformRectLocal.height() * ice_platform->scale()-50); // 考虑缩放后的高度
+        platformRectLocal.moveTo(ice_platform->pos().x(), ice_platform->pos().y()+25); // 移动到平台在父项中的位置
         // 添加为矩形障碍物
         m_obstacles.append(Obstacle(ObstacleType::Rectangle, platformRectLocal));
     }
