@@ -585,7 +585,17 @@ Mountable *IceScene::findNearestUnmountedMountable(const QPointF &pos, qreal dis
         {
             if (!mountable->isMounted())
             {
-                qreal distance = QLineF(pos, item->pos()).length();
+                // 使用角色的实际中心点而不是pos()来计算距离
+                // 角色的pos()是脚底位置，需要计算实际中心
+                QPointF characterCenter = pos;
+
+                // 物品的中心位置
+                QRectF itemBounds = item->boundingRect();
+                QPointF itemCenter = item->pos() + QPointF(itemBounds.width() / 2, itemBounds.height() / 2);
+
+                // 计算两个中心点之间的距离
+                qreal distance = QLineF(characterCenter, itemCenter).length();
+
                 if (distance < minDistance)
                 {
                     minDistance = distance;
