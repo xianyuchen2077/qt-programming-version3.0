@@ -78,7 +78,9 @@ private:
     // 用于调试可视化
     void showDebugVisualization();     // 初始化调试可视化
     void hideDebugVisualization();     // 隐藏调试可视化
-    void updateDebugVisualization();   // 更新调试可视化（新增）
+    void updateDebugVisualization();   // 更新调试可视化
+    void addCharacterDebugVisualization(Character* character, QColor primaryColor, QColor fillColor, const QString& name, qreal labelOffsetX); // 添加角色调试可视化
+    void addGlobalDebugInfo(); // 添加全局调试项（如FPS计数器）
     QList<QGraphicsItem*> debugItems;
 
     // 分离静态和动态调试项

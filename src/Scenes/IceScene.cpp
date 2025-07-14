@@ -81,7 +81,7 @@ void IceScene::initializePlatforms()
     // 对应ice_platform在Icefield.cpp中的位置: setPos(300, 270), setScale(0.7)
     // 原始ice_platform图片假设为200x100像素
     qreal platformWidth = 200 * 0.7;  // 缩放后的宽度
-    qreal platformHeight = 20;         // 平台的实际可站立高度（不是整个图片高度）
+    qreal platformHeight = 20;         // 平台的实际可站立高度
     platforms.append(Platform(300, 270, platformWidth, platformHeight, true));  // 单向平台
 
     // 添加地面边界（双向，不可穿越）
@@ -188,7 +188,7 @@ void IceScene::handleAllCollisions(Character* character, QPointF& newPos)
     QPointF oldPos = character->pos();
     bool wasOnGround = character->isOnGround();
 
-    // ========== 第一步：处理头部被卡住的情况（加快滑动速度） ==========
+    // 第一步：处理头部被卡住的情况（加快滑动速度）
     bool headStuck = isHeadStuckInObstacle(character, newPos);
     bool wasHeadStuck = isHeadStuckInObstacle(character, oldPos);
 
@@ -199,12 +199,10 @@ void IceScene::handleAllCollisions(Character* character, QPointF& newPos)
         // 计算滑动方向
         QPointF slideDirection = calculateSlideDirection(character, newPos);
 
-        // ========== 修改：加快滑动效果，从0.1改为0.5 ==========
         if (slideDirection.x() != 0)
         {
-            QPointF slidePos = newPos + QPointF(slideDirection.x() * 0.5, 0); // 渐进式滑动，加快速度
+            QPointF slidePos = newPos + QPointF(slideDirection.x() * 0.5, 0);
 
-            // 检查滑动后的位置是否安全
             if (isPositionSafe(character, slidePos))
             {
                 newPos.setX(slidePos.x());
@@ -212,7 +210,6 @@ void IceScene::handleAllCollisions(Character* character, QPointF& newPos)
             }
             else
             {
-                // 如果0.5倍速度不安全，尝试0.3倍速度
                 slidePos = newPos + QPointF(slideDirection.x() * 0.3, 0);
                 if (isPositionSafe(character, slidePos))
                 {
@@ -221,7 +218,6 @@ void IceScene::handleAllCollisions(Character* character, QPointF& newPos)
                 }
                 else
                 {
-                    // 如果0.3倍速度还不安全，使用原来的0.1倍速度
                     slidePos = newPos + QPointF(slideDirection.x() * 0.1, 0);
                     if (isPositionSafe(character, slidePos))
                     {
@@ -232,24 +228,19 @@ void IceScene::handleAllCollisions(Character* character, QPointF& newPos)
             }
         }
 
-        // 在滑动的同时允许下落
-        // 计算合适的下落距离
-        qreal fallDistance = qAbs(headRect.bottom() - bodyRect.top()) * 0.3; // 头部和身体差值的30%
+        qreal fallDistance = qAbs(headRect.bottom() - bodyRect.top()) * 0.3;
         newPos.setY(newPos.y() + fallDistance);
-
         qDebug() << "Applied fall distance:" << fallDistance;
     }
 
-    // ========== 第二步：改进的水平碰撞检测（先头部，后身体） ==========
-    QPointF testPosX = QPointF(newPos.x(), oldPos.y()); // 只改变X坐标
+    // 第二步：改进的水平碰撞检测
+    QPointF testPosX = QPointF(newPos.x(), oldPos.y());
 
-    // ========== 修改：首先检查头部水平碰撞 ==========
     bool headHorizontalCollision = checkHeadHorizontalCollision(character, testPosX);
     bool bodyHorizontalCollision = checkBodyObstacleCollision(character, testPosX);
 
     if (headHorizontalCollision || bodyHorizontalCollision)
     {
-        // 如果头部或身体发生水平碰撞，阻止水平移动
         newPos.setX(oldPos.x());
         character->setVelocity(QPointF(0, character->getVelocity().y()));
 
@@ -267,18 +258,17 @@ void IceScene::handleAllCollisions(Character* character, QPointF& newPos)
         }
     }
 
-    // ========== 第三步：垂直碰撞检测（地面和平台） ==========
+    // 第三步：改进的垂直碰撞检测
     QPointF testPosY = QPointF(newPos.x(), newPos.y());
     bool verticalCollision = false;
     bool isOnAnyPlatform = false;
 
-    // 地面碰撞检测 - 仅使用身体碰撞框
+    // 地面碰撞检测
     qreal floorHeight = map->getFloorHeight();
     qreal bodyBottom = testPosY.y() + bodyRect.bottom();
 
     if (bodyBottom >= floorHeight)
     {
-        // 角色的身体部分落在地面上
         newPos.setY(floorHeight - bodyRect.bottom());
         character->setVelocity_y(0);
         character->setOnGround(true);
@@ -287,22 +277,33 @@ void IceScene::handleAllCollisions(Character* character, QPointF& newPos)
         qDebug() << "Character body landed on ground";
     }
 
-    // 平台碰撞检测 - 仅使用身体碰撞框
-    if (!verticalCollision && checkBodyObstacleCollision(character, testPosY))
+    // 平台碰撞检测
+    if (!verticalCollision)
     {
-        // 检查是否是从上方落在平台上
-        if (character->getVelocity_y() > 0) // 正在下落
+        const QList<Obstacle>& obstacles = static_cast<Icefield*>(map)->getObstacles();
+
+        for (const Obstacle& obstacle : obstacles)
         {
-            const QList<Obstacle>& obstacles = static_cast<Icefield*>(map)->getObstacles();
+            // 计算角色身体在新位置的碰撞框
+            QRectF testBodyRect = bodyRect;
+            testBodyRect.moveTopLeft(testPosY + bodyRect.topLeft());
 
-            for (const Obstacle& obstacle : obstacles)
+            // 计算角色头部在新位置的碰撞框
+            QRectF testHeadRect = headRect;
+            testHeadRect.moveTopLeft(testPosY + headRect.topLeft());
+
+            if (obstacle.bounds.intersects(testBodyRect) || obstacle.bounds.intersects(testHeadRect))
             {
-                QRectF testBodyRect = bodyRect;
-                testBodyRect.moveTopLeft(testPosY + bodyRect.topLeft());
+                // 计算角色在旧位置的碰撞框
+                QRectF oldBodyRect = bodyRect;
+                oldBodyRect.moveTopLeft(oldPos + bodyRect.topLeft());
 
-                if (obstacle.bounds.intersects(testBodyRect))
+                QRectF oldHeadRect = headRect;
+                oldHeadRect.moveTopLeft(oldPos + headRect.topLeft());
+
+                // 情况1：从上方落在平台上
+                if (character->getVelocity_y() > 0) // 正在下落
                 {
-                    // 检查是否是从上方碰撞 - 使用身体碰撞框的底部
                     qreal bodyOldBottom = oldPos.y() + bodyRect.bottom();
                     if (bodyOldBottom <= obstacle.bounds.top() + 5) // 允许5像素误差
                     {
@@ -316,22 +317,44 @@ void IceScene::handleAllCollisions(Character* character, QPointF& newPos)
                         break;
                     }
                 }
-            }
-        }
 
-        if (!verticalCollision)
-        {
-            // 如果不是落在平台上，则是撞到障碍物，恢复Y坐标
-            newPos.setY(oldPos.y());
-            if (character->getVelocity_y() < 0) // 向上撞头
-            {
-                character->setVelocity_y(0);
+                // 情况2：从下方向上撞击平台
+                else if (character->getVelocity_y() < 0) // 正在上升
+                {
+                    // 检查是否是从下方撞击
+                    qreal headOldTop = oldPos.y() + headRect.top();
+                    qreal headNewTop = testPosY.y() + headRect.top();
+
+                    // 如果角色头部从障碍物下方撞到了障碍物底部
+                    if (headOldTop >= obstacle.bounds.bottom() - 5 && // 之前在障碍物下方
+                        headNewTop < obstacle.bounds.bottom()) // 现在撞到了障碍物
+                    {
+                        // 阻止向上穿透，将角色头部位置设置为障碍物底部下方
+                        newPos.setY(obstacle.bounds.bottom() - headRect.top());
+                        character->setVelocity_y(0); // 停止向上移动
+                        verticalCollision = true;
+                        qDebug() << "Character head hit platform from below, stopped at Y:" << newPos.y();
+                        break;
+                    }
+                }
+
+                // 情况3：侧面碰撞或其他情况
+                if (!verticalCollision)
+                {
+                    // 如果不是从上方落下或从下方撞击，则恢复到旧位置
+                    newPos.setY(oldPos.y());
+                    if (character->getVelocity_y() < 0) // 如果是向上移动被阻挡
+                    {
+                        character->setVelocity_y(0);
+                    }
+                    qDebug() << "Side collision with platform detected, position restored";
+                    break;
+                }
             }
-            qDebug() << "Vertical obstacle collision detected";
         }
     }
 
-    // ========== 第四步：检查角色是否仍在平台上 ==========
+    // 第四步：检查角色是否仍在平台上
     if (!isOnAnyPlatform)
     {
         QRectF newBodyRect = bodyRect;
@@ -374,19 +397,18 @@ void IceScene::handleAllCollisions(Character* character, QPointF& newPos)
         }
     }
 
-    // ========== 第五步：边界检测 ==========
+    // 第五步：边界检测
     handleBoundaryCollision(character, newPos);
 
-    // ========== 第六步：最终安全检查（加快调整速度） ==========
-    // 确保最终位置不会导致身体与障碍物重叠
+    // 第六步：最终安全检查
     if (!isPositionSafe(character, newPos))
     {
         qDebug() << "Final position unsafe, adjusting...";
 
-        // ========== 修改：加快微调步长，从2像素改为5像素 ==========
+        // 尝试水平调整
         for (int i = 1; i <= 10; i++)
         {
-            QPointF adjustedPos = newPos + QPointF(i * 5, 0); // 加快调整步长
+            QPointF adjustedPos = newPos + QPointF(i * 5, 0);
             if (isPositionSafe(character, adjustedPos))
             {
                 newPos = adjustedPos;
@@ -394,7 +416,7 @@ void IceScene::handleAllCollisions(Character* character, QPointF& newPos)
                 break;
             }
 
-            adjustedPos = newPos + QPointF(-i * 5, 0); // 加快调整步长
+            adjustedPos = newPos + QPointF(-i * 5, 0);
             if (isPositionSafe(character, adjustedPos))
             {
                 newPos = adjustedPos;
@@ -409,7 +431,7 @@ void IceScene::handleAllCollisions(Character* character, QPointF& newPos)
             qDebug() << "Horizontal adjustment failed, trying vertical adjustment...";
             for (int i = 1; i <= 5; i++)
             {
-                QPointF adjustedPos = newPos + QPointF(0, -i * 3); // 向上调整
+                QPointF adjustedPos = newPos + QPointF(0, -i * 3);
                 if (isPositionSafe(character, adjustedPos))
                 {
                     newPos = adjustedPos;
@@ -787,6 +809,7 @@ void IceScene::keyReleaseEvent(QKeyEvent *event)
     }
 }
 
+// 更新场景逻辑
 void IceScene::update()
 {
     // 调用基类的 update，更新其他非移动相关的逻辑
@@ -806,16 +829,14 @@ void IceScene::processMovement()
         QPointF oldPos = player1->pos();
         QPointF newPos = oldPos;
 
-        // 水平移动
-        newPos.setX(newPos.x() + player1->getVelocity().x() * deltaTime);
-
-        // 跳跃逻辑
+        // 1. 首先处理跳跃逻辑（在移动之前）
         if (player1->isUpDown() && player1->isOnGround())
         {
             player1->handleJump();
+            qDebug() << "Player1 jumped! Velocity_y:" << player1->getVelocity_y();
         }
 
-        // 应用重力（如果不在地面上）
+        // 2. 应用重力（如果不在地面上）
         if (!player1->isOnGround())
         {
             player1->setVelocity_y(player1->getVelocity_y() + gravity * deltaTime);
@@ -825,13 +846,16 @@ void IceScene::processMovement()
             }
         }
 
+        // 3. 计算新位置（水平+垂直）
+        // 水平移动
+        newPos.setX(newPos.x() + player1->getVelocity().x() * deltaTime);
         // 垂直移动
         newPos.setY(newPos.y() + player1->getVelocity_y() * deltaTime);
 
-        // 完整障碍物检测
+        // 4. 完整障碍物检测和位置调整
         handleAllCollisions(player1, newPos);
 
-        // 应用地图效果（摩擦力等）
+        // 5. 应用地图效果（摩擦力等）
         static_cast<Icefield*>(map)->applyEffectToCharacter(player1, deltaTime);
     }
 
@@ -841,16 +865,14 @@ void IceScene::processMovement()
         QPointF oldPos = player2->pos();
         QPointF newPos = oldPos;
 
-        // 水平移动
-        newPos.setX(newPos.x() + player2->getVelocity().x() * deltaTime);
-
-        // 跳跃逻辑
+        // 1. 首先处理跳跃逻辑（在移动之前）
         if (player2->isUpDown() && player2->isOnGround())
         {
             player2->handleJump();
+            qDebug() << "Player2 jumped! Velocity_y:" << player2->getVelocity_y();
         }
 
-        // 应用重力（如果不在地面上）
+        // 2. 应用重力（如果不在地面上）
         if (!player2->isOnGround())
         {
             player2->setVelocity_y(player2->getVelocity_y() + gravity * deltaTime);
@@ -860,13 +882,16 @@ void IceScene::processMovement()
             }
         }
 
+        // 3. 计算新位置（水平+垂直）
+        // 水平移动
+        newPos.setX(newPos.x() + player2->getVelocity().x() * deltaTime);
         // 垂直移动
         newPos.setY(newPos.y() + player2->getVelocity_y() * deltaTime);
 
-        // 完整障碍物检测
+        // 4. 完整障碍物检测和位置调整
         handleAllCollisions(player2, newPos);
 
-        // 应用地图效果（摩擦力等）
+        // 5. 应用地图效果（摩擦力等）
         static_cast<Icefield*>(map)->applyEffectToCharacter(player2, deltaTime);
     }
 }
@@ -1103,6 +1128,8 @@ void IceScene::showDebugVisualization()
     debugItems.append(instructionText);
 }
 
+// 在 IceScene.cpp 中替换 updateDebugVisualization() 函数
+
 void IceScene::updateDebugVisualization()
 {
     // 移除旧的动态调试项（角色框和信息）
@@ -1111,7 +1138,7 @@ void IceScene::updateDebugVisualization()
     {
         auto item = *it;
         // 检查是否是角色相关的调试项（通过Z值判断）
-        if (item && item->zValue() >= 160 && item->zValue() <= 162)
+        if (item && item->zValue() >= 160 && item->zValue() <= 170)
         {
             removeItem(item);
             delete item;
@@ -1123,109 +1150,248 @@ void IceScene::updateDebugVisualization()
 
     // 添加新的动态调试项
     if (player1) {
-        QPointF p1Pos = player1->pos();
-
-        // 头部碰撞框
-        QRectF p1HeadRect = player1->getHeadCollisionRect();
-        p1HeadRect.moveTopLeft(p1Pos + p1HeadRect.topLeft());
-
-        QGraphicsRectItem* p1HeadBox = new QGraphicsRectItem(p1HeadRect);
-        p1HeadBox->setPen(QPen(Qt::cyan, 2));
-        p1HeadBox->setBrush(QBrush(QColor(0, 255, 255, 30))); // 半透明青色
-        p1HeadBox->setZValue(160);
-        addItem(p1HeadBox);
-        debugItems.append(p1HeadBox);
-
-        // 身体碰撞框
-        QRectF p1BodyRect = player1->getBodyCollisionRect();
-        p1BodyRect.moveTopLeft(p1Pos + p1BodyRect.topLeft());
-
-        QGraphicsRectItem* p1BodyBox = new QGraphicsRectItem(p1BodyRect);
-        p1BodyBox->setPen(QPen(Qt::darkCyan, 2));
-        p1BodyBox->setBrush(QBrush(QColor(0, 200, 200, 30))); // 半透明深青色
-        p1BodyBox->setZValue(160);
-        addItem(p1BodyBox);
-        debugItems.append(p1BodyBox);
-
-        // 角色中心点
-        QGraphicsEllipseItem* p1Center = new QGraphicsEllipseItem(p1Pos.x() - 3, p1Pos.y() - 3, 6, 6);
-        p1Center->setBrush(Qt::cyan);
-        p1Center->setZValue(161);
-        addItem(p1Center);
-        debugItems.append(p1Center);
-
-        // 角色信息
-        QString p1Info = QString("Player1\nPos: (%1, %2)\nVel: (%3, %4)\nOnGround: %5\nHead: (%6,%7)\nBody: (%8,%9)")
-                             .arg(p1Pos.x(), 0, 'f', 1)
-                             .arg(p1Pos.y(), 0, 'f', 1)
-                             .arg(player1->getVelocity().x(), 0, 'f', 2)
-                             .arg(player1->getVelocity_y(), 0, 'f', 2)
-                             .arg(player1->isOnGround() ? "Yes" : "No")
-                             .arg(p1HeadRect.x(), 0, 'f', 1).arg(p1HeadRect.y(), 0, 'f', 1)
-                             .arg(p1BodyRect.x(), 0, 'f', 1).arg(p1BodyRect.y(), 0, 'f', 1);
-
-        QGraphicsTextItem* p1Label = new QGraphicsTextItem(p1Info);
-        p1Label->setPos(p1Pos.x() + 50, p1Pos.y() - 120);
-        p1Label->setDefaultTextColor(Qt::cyan);
-        p1Label->setZValue(162);
-        QFont infoFont = p1Label->font();
-        infoFont.setPointSize(8);
-        p1Label->setFont(infoFont);
-        addItem(p1Label);
-        debugItems.append(p1Label);
+        addCharacterDebugVisualization(player1, Qt::cyan, QColor(0, 255, 255, 30), "Player1", 50);
     }
 
-    // 对player2执行相同操作
     if (player2) {
-        QPointF p2Pos = player2->pos();
-
-        // 头部碰撞框
-        QRectF p2HeadRect = player2->getHeadCollisionRect();
-        p2HeadRect.moveTopLeft(p2Pos + p2HeadRect.topLeft());
-
-        QGraphicsRectItem* p2HeadBox = new QGraphicsRectItem(p2HeadRect);
-        p2HeadBox->setPen(QPen(Qt::yellow, 2));
-        p2HeadBox->setBrush(QBrush(QColor(255, 255, 0, 30))); // 半透明黄色
-        p2HeadBox->setZValue(160);
-        addItem(p2HeadBox);
-        debugItems.append(p2HeadBox);
-
-        // 身体碰撞框
-        QRectF p2BodyRect = player2->getBodyCollisionRect();
-        p2BodyRect.moveTopLeft(p2Pos + p2BodyRect.topLeft());
-
-        QGraphicsRectItem* p2BodyBox = new QGraphicsRectItem(p2BodyRect);
-        p2BodyBox->setPen(QPen(QColor(200, 200, 0), 2));
-        p2BodyBox->setBrush(QBrush(QColor(200, 200, 0, 30))); // 半透明深黄色
-        p2BodyBox->setZValue(160);
-        addItem(p2BodyBox);
-        debugItems.append(p2BodyBox);
-
-        QGraphicsEllipseItem* p2Center = new QGraphicsEllipseItem(p2Pos.x() - 3, p2Pos.y() - 3, 6, 6);
-        p2Center->setBrush(Qt::yellow);
-        p2Center->setZValue(161);
-        addItem(p2Center);
-        debugItems.append(p2Center);
-
-        QString p2Info = QString("Player2\nPos: (%1, %2)\nVel: (%3, %4)\nOnGround: %5\nHead: (%6,%7)\nBody: (%8,%9)")
-                             .arg(p2Pos.x(), 0, 'f', 1)
-                             .arg(p2Pos.y(), 0, 'f', 1)
-                             .arg(player2->getVelocity().x(), 0, 'f', 2)
-                             .arg(player2->getVelocity_y(), 0, 'f', 2)
-                             .arg(player2->isOnGround() ? "Yes" : "No")
-                             .arg(p2HeadRect.x(), 0, 'f', 1).arg(p2HeadRect.y(), 0, 'f', 1)
-                             .arg(p2BodyRect.x(), 0, 'f', 1).arg(p2BodyRect.y(), 0, 'f', 1);
-
-        QGraphicsTextItem* p2Label = new QGraphicsTextItem(p2Info);
-        p2Label->setPos(p2Pos.x() - 200, p2Pos.y() - 120);
-        p2Label->setDefaultTextColor(Qt::yellow);
-        p2Label->setZValue(162);
-        QFont infoFont = p2Label->font();
-        infoFont.setPointSize(8);
-        p2Label->setFont(infoFont);
-        addItem(p2Label);
-        debugItems.append(p2Label);
+        addCharacterDebugVisualization(player2, Qt::yellow, QColor(255, 255, 0, 30), "Player2", -200);
     }
+
+    // 添加全局状态信息
+    addGlobalDebugInfo();
+}
+
+void IceScene::addCharacterDebugVisualization(Character* character, QColor primaryColor, QColor fillColor, const QString& name, qreal labelOffsetX)
+{
+    if (!character) return;
+
+    QPointF charPos = character->pos();
+    QPointF velocity = character->getVelocity();
+    qreal velocityY = character->getVelocity_y();
+
+    // 1. 头部碰撞框
+    QRectF headRect = character->getHeadCollisionRect();
+    headRect.moveTopLeft(charPos + headRect.topLeft());
+
+    QGraphicsRectItem* headBox = new QGraphicsRectItem(headRect);
+    headBox->setPen(QPen(primaryColor, 2));
+    headBox->setBrush(QBrush(fillColor));
+    headBox->setZValue(160);
+    addItem(headBox);
+    debugItems.append(headBox);
+
+    // 2. 身体碰撞框
+    QRectF bodyRect = character->getBodyCollisionRect();
+    bodyRect.moveTopLeft(charPos + bodyRect.topLeft());
+
+    QGraphicsRectItem* bodyBox = new QGraphicsRectItem(bodyRect);
+    QColor darkPrimary = primaryColor.darker(120);
+    bodyBox->setPen(QPen(darkPrimary, 2));
+    bodyBox->setBrush(QBrush(QColor(fillColor.red(), fillColor.green(), fillColor.blue(), 40)));
+    bodyBox->setZValue(160);
+    addItem(bodyBox);
+    debugItems.append(bodyBox);
+
+    // 3. 角色中心点
+    QGraphicsEllipseItem* center = new QGraphicsEllipseItem(charPos.x() - 3, charPos.y() - 3, 6, 6);
+    center->setBrush(primaryColor);
+    center->setZValue(161);
+    addItem(center);
+    debugItems.append(center);
+
+    // 4. 速度向量可视化
+    if (qAbs(velocity.x()) > 0.01 || qAbs(velocityY) > 0.01)
+    {
+        // 水平速度向量
+        if (qAbs(velocity.x()) > 0.01)
+        {
+            qreal arrowLength = velocity.x() * 50; // 放大50倍显示
+            QGraphicsLineItem* velocityArrowX = new QGraphicsLineItem(
+                charPos.x(), charPos.y(),
+                charPos.x() + arrowLength, charPos.y()
+                );
+            velocityArrowX->setPen(QPen(Qt::red, 3));
+            velocityArrowX->setZValue(162);
+            addItem(velocityArrowX);
+            debugItems.append(velocityArrowX);
+
+            // 箭头头部
+            QGraphicsPolygonItem* arrowHead = new QGraphicsPolygonItem();
+            QPolygonF arrowPoly;
+            qreal headSize = 8;
+            if (arrowLength > 0) {
+                arrowPoly << QPointF(charPos.x() + arrowLength, charPos.y())
+                << QPointF(charPos.x() + arrowLength - headSize, charPos.y() - headSize/2)
+                << QPointF(charPos.x() + arrowLength - headSize, charPos.y() + headSize/2);
+            } else {
+                arrowPoly << QPointF(charPos.x() + arrowLength, charPos.y())
+                << QPointF(charPos.x() + arrowLength + headSize, charPos.y() - headSize/2)
+                << QPointF(charPos.x() + arrowLength + headSize, charPos.y() + headSize/2);
+            }
+            arrowHead->setPolygon(arrowPoly);
+            arrowHead->setBrush(Qt::red);
+            arrowHead->setZValue(162);
+            addItem(arrowHead);
+            debugItems.append(arrowHead);
+        }
+
+        // 垂直速度向量
+        if (qAbs(velocityY) > 0.01)
+        {
+            qreal arrowLength = velocityY * 50; // 放大50倍显示
+            QGraphicsLineItem* velocityArrowY = new QGraphicsLineItem(
+                charPos.x() + 15, charPos.y(),
+                charPos.x() + 15, charPos.y() + arrowLength
+                );
+            velocityArrowY->setPen(QPen(Qt::blue, 3));
+            velocityArrowY->setZValue(162);
+            addItem(velocityArrowY);
+            debugItems.append(velocityArrowY);
+
+            // 箭头头部
+            QGraphicsPolygonItem* arrowHead = new QGraphicsPolygonItem();
+            QPolygonF arrowPoly;
+            qreal headSize = 8;
+            if (arrowLength > 0) {
+                arrowPoly << QPointF(charPos.x() + 15, charPos.y() + arrowLength)
+                << QPointF(charPos.x() + 15 - headSize/2, charPos.y() + arrowLength - headSize)
+                << QPointF(charPos.x() + 15 + headSize/2, charPos.y() + arrowLength - headSize);
+            } else {
+                arrowPoly << QPointF(charPos.x() + 15, charPos.y() + arrowLength)
+                << QPointF(charPos.x() + 15 - headSize/2, charPos.y() + arrowLength + headSize)
+                << QPointF(charPos.x() + 15 + headSize/2, charPos.y() + arrowLength + headSize);
+            }
+            arrowHead->setPolygon(arrowPoly);
+            arrowHead->setBrush(Qt::blue);
+            arrowHead->setZValue(162);
+            addItem(arrowHead);
+            debugItems.append(arrowHead);
+        }
+    }
+
+    // 5. 状态指示器
+    QString statusIndicator = "";
+    QColor statusColor = Qt::white;
+
+    if (character->isOnGround()) {
+        statusIndicator += "G";  // Ground
+        statusColor = Qt::green;
+    } else {
+        statusIndicator += "A";  // Air
+        statusColor = Qt::red;
+    }
+
+    if (character->isLeftDown()) statusIndicator += "L";
+    if (character->isRightDown()) statusIndicator += "R";
+    if (character->isUpDown()) statusIndicator += "U";
+    if (character->isDownDown()) statusIndicator += "D";
+    if (character->isPicking()) statusIndicator += "P";
+
+    QGraphicsTextItem* statusText = new QGraphicsTextItem(statusIndicator);
+    statusText->setPos(charPos.x() - 10, charPos.y() - 150);
+    statusText->setDefaultTextColor(statusColor);
+    statusText->setZValue(163);
+    QFont statusFont = statusText->font();
+    statusFont.setPointSize(12);
+    statusFont.setBold(true);
+    statusText->setFont(statusFont);
+    addItem(statusText);
+    debugItems.append(statusText);
+
+    // 6. 详细信息面板
+    QString detailInfo = QString("%1\nPos: (%2, %3)\nVel: (%4, %5)\nVel_Y: %6\nOnGround: %7\nHealth: %8\nHead: (%9,%10) %11x%12\nBody: (%13,%14) %15x%16")
+                             .arg(name)
+                             .arg(charPos.x(), 0, 'f', 1)
+                             .arg(charPos.y(), 0, 'f', 1)
+                             .arg(velocity.x(), 0, 'f', 3)
+                             .arg(velocity.y(), 0, 'f', 3)
+                             .arg(velocityY, 0, 'f', 3)
+                             .arg(character->isOnGround() ? "Yes" : "No")
+                             .arg(character->getHealth())
+                             .arg(headRect.x(), 0, 'f', 1).arg(headRect.y(), 0, 'f', 1)
+                             .arg(headRect.width(), 0, 'f', 1).arg(headRect.height(), 0, 'f', 1)
+                             .arg(bodyRect.x(), 0, 'f', 1).arg(bodyRect.y(), 0, 'f', 1)
+                             .arg(bodyRect.width(), 0, 'f', 1).arg(bodyRect.height(), 0, 'f', 1);
+
+    QGraphicsTextItem* infoLabel = new QGraphicsTextItem(detailInfo);
+    infoLabel->setPos(charPos.x() + labelOffsetX, charPos.y() - 120);
+    infoLabel->setDefaultTextColor(primaryColor);
+    infoLabel->setZValue(165);
+    QFont infoFont = infoLabel->font();
+    infoFont.setPointSize(8);
+    infoLabel->setFont(infoFont);
+
+    // 添加信息面板背景
+    QRectF infoRect = infoLabel->boundingRect();
+    QGraphicsRectItem* infoBg = new QGraphicsRectItem(infoRect);
+    infoBg->setPos(infoLabel->pos());
+    infoBg->setBrush(QBrush(QColor(0, 0, 0, 150)));
+    infoBg->setPen(QPen(primaryColor, 1));
+    infoBg->setZValue(164);
+    addItem(infoBg);
+    debugItems.append(infoBg);
+
+    addItem(infoLabel);
+    debugItems.append(infoLabel);
+}
+
+void IceScene::addGlobalDebugInfo()
+{
+    // 当前帧率和时间信息
+    qint64 currentTime = elapsedTimer.elapsed();
+    qreal fps = (lastFrameTime > 0) ? (1000.0 / (currentTime - lastFrameTime + 1)) : 0;
+
+    QString globalInfo = QString("=== Game State ===\nFPS: %1\nFrame Time: %2ms\nMap Type: %3\nObstacles: %4\nFloor Height: %5\n\n=== Controls ===\nPlayer1: WASD + J(shoot)\nPlayer2: Arrows + 0(shoot)\nH: Toggle debug\nS/Down: Pick items")
+                             .arg(fps, 0, 'f', 1)
+                             .arg(currentTime - lastFrameTime)
+                             .arg(static_cast<Icefield*>(map)->getMapType() == 0 ? "White Ice" : "Purple Ice")
+                             .arg(static_cast<Icefield*>(map)->getObstacles().size())
+                             .arg(map->getFloorHeight(), 0, 'f', 1);
+
+    QGraphicsTextItem* globalLabel = new QGraphicsTextItem(globalInfo);
+    globalLabel->setPos(10, 250);
+    globalLabel->setDefaultTextColor(Qt::white);
+    globalLabel->setZValue(170);
+    QFont globalFont = globalLabel->font();
+    globalFont.setPointSize(9);
+    globalFont.setBold(true);
+    globalLabel->setFont(globalFont);
+
+    // 添加全局信息背景
+    QRectF globalRect = globalLabel->boundingRect();
+    QGraphicsRectItem* globalBg = new QGraphicsRectItem(globalRect);
+    globalBg->setPos(globalLabel->pos());
+    globalBg->setBrush(QBrush(QColor(0, 0, 0, 180)));
+    globalBg->setPen(QPen(Qt::white, 2));
+    globalBg->setZValue(169);
+    addItem(globalBg);
+    debugItems.append(globalBg);
+
+    addItem(globalLabel);
+    debugItems.append(globalLabel);
+
+    // 添加速度向量说明
+    QString velocityLegend = "Velocity Vectors:\nRed Arrow = Horizontal\nBlue Arrow = Vertical\nStatus: G=Ground A=Air\nL/R/U/D=Keys P=Picking";
+
+    QGraphicsTextItem* legendLabel = new QGraphicsTextItem(velocityLegend);
+    legendLabel->setPos(sceneRect().width() - 250, 250);
+    legendLabel->setDefaultTextColor(Qt::lightGray);
+    legendLabel->setZValue(170);
+    QFont legendFont = legendLabel->font();
+    legendFont.setPointSize(8);
+    legendLabel->setFont(legendFont);
+
+    QRectF legendRect = legendLabel->boundingRect();
+    QGraphicsRectItem* legendBg = new QGraphicsRectItem(legendRect);
+    legendBg->setPos(legendLabel->pos());
+    legendBg->setBrush(QBrush(QColor(0, 0, 0, 150)));
+    legendBg->setPen(QPen(Qt::lightGray, 1));
+    legendBg->setZValue(169);
+    addItem(legendBg);
+    debugItems.append(legendBg);
+
+    addItem(legendLabel);
+    debugItems.append(legendLabel);
 }
 
 void IceScene::hideDebugVisualization()
