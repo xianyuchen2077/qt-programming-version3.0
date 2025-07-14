@@ -78,8 +78,9 @@ public:
 
     // 与装备相关函数
     void equipHeadEquipment(HeadEquipment* headEquipment);      // 佩戴头部装备的方法
-    void unequipHeadEquipment();
-
+    void unequipHeadEquipment(); // 卸下头部装备的方法
+    void equipWeapon(Weapon* weapon); // 装备武器
+    void unequipWeapon(); // 卸下武器
     Armor* pickupArmor(Armor* newArmor);
     LegEquipment* pickupLegEquipment(LegEquipment* newLegEquipment);
     HeadEquipment* pickupHeadEquipment(HeadEquipment* newHeadEquipment);

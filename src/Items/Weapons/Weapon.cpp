@@ -9,6 +9,8 @@ Weapon::Weapon(QGraphicsItem *parent, const QString &pixmapPath) : Item(parent, 
 
 void Weapon::mountToParent()
 {
+    setScale(0.4);
+    setPos(-30, -210);
     Mountable::mountToParent();
     if (pixmapItem != nullptr)
     {

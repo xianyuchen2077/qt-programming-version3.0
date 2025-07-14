@@ -306,6 +306,19 @@ bool Character::canShoot() const
     return weapon && weapon->canShoot();
 }
 
+// 更换角色图片
+void Character::updatePixmap(const QString &pixmapPath)
+{
+    if (pixmapItem != nullptr)
+    {
+        pixmapItem->setPixmap(QPixmap(pixmapPath));
+    }
+    else
+    {
+        qDebug() << "Character is nullptr!";
+    }
+}
+
 // 判断是否正在拾取物品
 bool Character::isPicking() const
 {
@@ -376,19 +389,6 @@ Weapon *Character::pickupWeapon(Weapon *newWeapon)
     return oldWeapon;
 }
 
-// 更换角色图片
-void Character::updatePixmap(const QString &pixmapPath)
-{
-    if (pixmapItem != nullptr)
-    {
-        pixmapItem->setPixmap(QPixmap(pixmapPath));
-    }
-    else
-    {
-        qDebug() << "Character is nullptr!";
-    }
-}
-
 // 佩戴头部装备
 void Character::equipHeadEquipment(HeadEquipment *newHeadEquipment)
 {
@@ -414,6 +414,31 @@ void Character::unequipHeadEquipment()
         headEquipment->unmount(); // 卸下头部装备
         headEquipment->setParentItem(parentItem()); // 设置父项为角色的父项
         headEquipment = nullptr; // 清空头部装备指针
+    }
+}
+
+// 装备武器
+void Character::equipWeapon(Weapon *newWeapon)
+{
+    if (weapon != nullptr)
+    {
+        weapon->unmount(); // 卸下当前武器
+        weapon->setPos(newWeapon->pos()); // 设置位置为新武器的位置
+        weapon->setParentItem(parentItem()); // 设置父项为角色的父项
+    }
+    newWeapon->setParentItem(this); // 设置新武器的父项为角色
+    newWeapon->mountToParent(); // 挂载到角色上
+    weapon = newWeapon; // 更新角色的武器
+}
+
+// 卸下武器
+void Character::unequipWeapon()
+{
+    if (weapon != nullptr)
+    {
+        weapon->unmount(); // 卸下武器
+        weapon->setParentItem(parentItem()); // 设置父项为角色的父项
+        weapon = nullptr; // 清空武器指针
     }
 }
 

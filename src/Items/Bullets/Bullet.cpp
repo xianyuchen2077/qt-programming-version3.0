@@ -16,9 +16,12 @@ Bullet::Bullet(QGraphicsItem *parent, const QString &pixmapPath, const QPointF& 
 
     // 标准化方向向量
     qreal length = qSqrt(direction.x() * direction.x() + direction.y() * direction.y());
-    if (length > 0) {
+    if (length > 0)
+    {
         directionVector = QPointF(direction.x() / length, direction.y() / length);
-    } else {
+    }
+    else
+    {
         directionVector = QPointF(1, 0); // 默认向右
     }
 
@@ -28,7 +31,7 @@ Bullet::Bullet(QGraphicsItem *parent, const QString &pixmapPath, const QPointF& 
         setTransform(QTransform().scale(-1, 1));
     }
 
-    setScale(0.05);
+    setScale(0.5); // 设置子弹缩放比例
     setZValue(5); // 确保子弹显示在最上层
 
     qDebug() << "Bullet created at:" << startPos << "direction:" << directionVector << "damage:" << damage;
@@ -41,7 +44,8 @@ void Bullet::destroyBullet()
     isDestroyed = true;
     qDebug() << "Bullet destroyed at position:" << pos();
 
-    if (scene()) {
+    if (scene())
+    {
         scene()->removeItem(this);
     }
     delete this; // 使用deleteLater确保安全销毁

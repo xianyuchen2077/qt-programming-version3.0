@@ -5,7 +5,7 @@
 #include "../Items/Armors/FlamebreakerArmor.h"
 #include "../Items/HeadEquipments/Helmet_of_the_Paladin.h"
 #include "../Items/LegEquipments/LegEquipment.h"
-#include "../Items/Weapons/Weapon.h"
+#include "../Items/Weapons/Shabby_Pistol.h"
 
 // IceScene 构造函数
 IceScene::IceScene(QObject *parent) : Scene(parent)
@@ -15,12 +15,16 @@ IceScene::IceScene(QObject *parent) : Scene(parent)
     map = new Icefield();
     player1 = new Link();
     player2 = new Link();
+    spareWeapon1 = new Shabby_Pistol();
+    spareWeapon2 = new Shabby_Pistol();
     spareArmor = new FlamebreakerArmor();
     spareHeadEquipment = new HelmetOfThePaladin();
 
     addItem(map);
     addItem(player1);
     addItem(player2);
+    addItem(spareWeapon1);
+    addItem(spareWeapon2);
     addItem(spareArmor);
     addItem(spareHeadEquipment);
 
@@ -45,8 +49,15 @@ IceScene::IceScene(QObject *parent) : Scene(parent)
     player2->setVelocity_y(0);
 
     // 设置备用装备的位置和状态
+    spareWeapon1->unmount();
+    spareWeapon1->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.45, floorHeight);
+    spareWeapon1->setZValue(5);
+    spareWeapon2->unmount();
+    spareWeapon2->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.65, floorHeight);
+    spareWeapon2->setZValue(5);
     spareArmor->unmount();
     spareArmor->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.75, floorHeight);
+    spareArmor->setZValue(5);
     spareHeadEquipment->unmount();
     spareHeadEquipment->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.25, floorHeight);
     spareHeadEquipment->setZValue(5);
@@ -1137,8 +1148,6 @@ void IceScene::showDebugVisualization()
     addItem(instructionText);
     debugItems.append(instructionText);
 }
-
-// 在 IceScene.cpp 中替换 updateDebugVisualization() 函数
 
 void IceScene::updateDebugVisualization()
 {

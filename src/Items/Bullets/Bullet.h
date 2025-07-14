@@ -23,12 +23,12 @@ public:
     void destroyBullet();
 
 protected:
-    qreal bulletSpeed; // 子弹速度
-    int bulletDamage; // 子弹伤害
-    QPointF directionVector; // 子弹的移动方向向量 (已归一化)
-    int lifetimeFrames; // 子弹的生命周期（帧数）
-    int currentFrameCount; // 当前已存在的帧数
-    bool isDestroyed = false;
+    qreal bulletSpeed;          // 子弹速度
+    int bulletDamage;           // 子弹伤害
+    QPointF directionVector;    // 子弹的移动方向向量 (已归一化)
+    int lifetimeFrames;         // 子弹的生命周期（帧数）
+    int currentFrameCount;      // 当前已存在的帧数
+    bool isDestroyed = false;   // 标记子弹是否已被销毁
 
     // 纯虚函数：子类必须实现具体的碰撞处理逻辑
     virtual void handleCollisions() = 0;

@@ -47,6 +47,8 @@ private:
     Link *player2;
     Armor *spareArmor;
     HeadEquipment *spareHeadEquipment;
+    Weapon *spareWeapon1;
+    Weapon *spareWeapon2;
 
     // 游戏循环相关
     QTimer *gameTimer;              // 游戏主循环定时器
@@ -70,7 +72,6 @@ private:
     bool isHeadStuckInObstacle(Character* character, const QPointF& testPos);      // 检测头部是否被卡住
     QPointF calculateSlideDirection(Character* character, const QPointF& currentPos); // 计算滑动方向
     bool isPositionSafe(Character* character, const QPointF& testPos);             // 检查位置是否安全
-
     bool landedOnPlatform;         // 是否刚落在平台上
 
 // 用于调试

@@ -7,7 +7,10 @@
 class Shabby_Pistol: public Weapon
 {
 public:
-    explicit Shabby_Pistol(QGraphicsItem *parent);
+    explicit Shabby_Pistol(QGraphicsItem *parent=nullptr);
+
+
+    void mountToParent() override;
 
     // 重写射击相关方法
     Bullet* createBullet(const QPointF& startPos, const QPointF& direction) override;

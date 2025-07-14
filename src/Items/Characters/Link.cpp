@@ -1,4 +1,3 @@
-#include <memory>
 #include "Link.h"
 #include <QPixmap>
 #include <QDebug>
@@ -32,17 +31,6 @@ Link::Link(QGraphicsItem *parent): Character(parent, ":/Items/Characters/littler
         // 图片在角色坐标系中的位置（考虑setPos的偏移）
         QPointF imagePos = pixmapItem->pos(); // (-130, -225)
 
-        // // 碰撞框应该在角色脚部附近
-        // qreal collisionWidth = scaledWidth * 0.5;
-        // qreal collisionHeight = scaledHeight * 0.7;
-
-        // // 碰撞框应该在图片底部中央
-        // qreal collisionX = imagePos.x() + (scaledWidth - collisionWidth) / 2.0 - 10; // 调整X位置，使碰撞框稍微偏左;
-        // qreal collisionY = imagePos.y() + scaledHeight - collisionHeight - 45; // 调整Y位置，使碰撞框在图片底部附近
-
-        // // 更新基类的碰撞矩形
-        // m_collisionRect = QRectF(collisionX, collisionY, collisionWidth, collisionHeight);
-
         // 头部碰撞框
         qreal headWidth = scaledWidth * 0.50;   // 头部较宽
         qreal headHeight = scaledHeight * 0.45; // 头部高度
@@ -71,11 +59,11 @@ Link::Link(QGraphicsItem *parent): Character(parent, ":/Items/Characters/littler
     headEquipment = new CapOfTheHero(this);
     legEquipment = new WellWornTrousers(this);
     armor = new OldShirt(this);
-    weapon = new Shabby_Pistol(this);
+    // weapon = new Shabby_Pistol(this);
     headEquipment->mountToParent();
     legEquipment->mountToParent();
     armor->mountToParent();
-    weapon->mountToParent();
+    // weapon->mountToParent();
 
     // 初始化面向方向
     faceRight = true; // 默认面向右侧
