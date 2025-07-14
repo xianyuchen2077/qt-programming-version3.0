@@ -14,7 +14,7 @@ Shabby_Pistol::Shabby_Pistol(QGraphicsItem *parent) : Weapon(parent, ":/Items/We
     attackSpeed=3; // 攻击速度
     criticalChance=10; // 暴击几率
     criticalDamage=15; // 暴击伤害
-    ammoCount=6; // 弹药数量
+    ammoCount=20; // 弹药数量
     maxAmmoCount=20; // 最大弹药数量
     weight = 2; // 假设重量为2
     shotCooldown = 300; // 手枪射击间隔300ms
