@@ -198,6 +198,7 @@ void IceScene::handleAllCollisions(Character* character, QPointF& newPos)
     // 然后检查垂直方向的碰撞
     QPointF testPosY = QPointF(newPos.x(), newPos.y()); // 使用调整后的X和新的Y
     bool verticalCollision = false;
+    bool isOnAnyPlatform = false;
 
     // 检查地面碰撞
     qreal floorHeight = map->getFloorHeight();
@@ -210,6 +211,7 @@ void IceScene::handleAllCollisions(Character* character, QPointF& newPos)
         character->setVelocity_y(0);
         character->setOnGround(true);
         verticalCollision = true;
+        isOnAnyPlatform = true;
         qDebug() << "Character landed on ground";
     }
 
@@ -239,6 +241,7 @@ void IceScene::handleAllCollisions(Character* character, QPointF& newPos)
                         character->setVelocity_y(0);
                         character->setOnGround(true);
                         verticalCollision = true;
+                        isOnAnyPlatform = true;
                         qDebug() << "Character landed on platform at Y:" << newPos.y();
                         break;
                     }
@@ -258,9 +261,44 @@ void IceScene::handleAllCollisions(Character* character, QPointF& newPos)
         }
     }
 
-    if (!verticalCollision && !wasOnGround)
+    if (!isOnAnyPlatform)
     {
-        character->setOnGround(false);
+        // 检查角色在新位置是否仍在任何平台上
+        QRectF newCharacterRect = characterRect;
+        newCharacterRect.moveTopLeft(newPos + characterRect.topLeft());
+
+        bool stillOnPlatform = false;
+
+        // 检查是否在地面上
+        qreal newCharacterBottom = newPos.y() + characterRect.bottom();
+        if (newCharacterBottom >= floorHeight - 2) // 允许2像素误差
+        {
+            stillOnPlatform = true;
+        }
+
+        // 检查是否在任何障碍物平台上
+        if (!stillOnPlatform)
+        {
+            const QList<Obstacle>& obstacles = static_cast<Icefield*>(map)->getObstacles();
+            for (const Obstacle& obstacle : obstacles)
+            {
+                // 检查角色底部是否在平台上
+                if (qAbs(newCharacterBottom - obstacle.bounds.top()) < 5 && // 高度匹配
+                    newPos.x() + characterRect.width() > obstacle.bounds.left() &&
+                    newPos.x() < obstacle.bounds.right()) // 水平重叠
+                {
+                    stillOnPlatform = true;
+                    break;
+                }
+            }
+        }
+
+        // 如果不在任何平台上，设置为空中状态
+        if (!stillOnPlatform)
+        {
+            character->setOnGround(false);
+            qDebug() << "Character left platform, now falling";
+        }
     }
 
     // 边界检测
