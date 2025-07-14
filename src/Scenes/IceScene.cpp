@@ -99,40 +99,41 @@ void IceScene::handleBoundaryCollision(Character* character, QPointF& newPos)
 {
     if (!character) return;
 
-    QRectF characterRect = character->boundingRect();
+    // 获取身体碰撞框（用于边界检测）
+    QRectF bodyRect = character->getBodyCollisionRect();
 
-    // 计算角色实际占用的区域
-    QRectF actualRect = characterRect;
-    actualRect.moveTopLeft(newPos + characterRect.topLeft());
+    // 计算角色身体实际占用的区域
+    QRectF actualBodyRect = bodyRect;
+    actualBodyRect.moveTopLeft(newPos + bodyRect.topLeft());
 
     // 左边界
-    if (actualRect.left() < 0)
+    if (actualBodyRect.left() < 0)
     {
-        newPos.setX(-characterRect.left());
+        newPos.setX(-bodyRect.left());
         character->setVelocity(QPointF(0, character->getVelocity().y()));
         qDebug() << "Hit left boundary";
     }
 
     // 右边界
-    if (actualRect.right() > sceneRect().width())
+    if (actualBodyRect.right() > sceneRect().width())
     {
-        newPos.setX(sceneRect().width() - characterRect.width() - characterRect.left());
+        newPos.setX(sceneRect().width() - bodyRect.width() - bodyRect.left());
         character->setVelocity(QPointF(0, character->getVelocity().y()));
         qDebug() << "Hit right boundary";
     }
 
     // 顶部边界
-    if (actualRect.top() < 0)
+    if (actualBodyRect.top() < 0)
     {
-        newPos.setY(-characterRect.top());
+        newPos.setY(-bodyRect.top());
         character->setVelocity_y(0);
         qDebug() << "Hit top boundary";
     }
 
     // 底部边界（防止角色掉出地图）
-    if (actualRect.bottom() > sceneRect().height())
+    if (actualBodyRect.bottom() > sceneRect().height())
     {
-        newPos.setY(sceneRect().height() - characterRect.height() - characterRect.top());
+        newPos.setY(sceneRect().height() - bodyRect.height() - bodyRect.top());
         character->setVelocity_y(0);
         character->setOnGround(true);
         qDebug() << "Hit bottom boundary";
@@ -180,7 +181,9 @@ void IceScene::handleAllCollisions(Character* character, QPointF& newPos)
 {
     if (!character) return;
 
-    QRectF characterRect = character->boundingRect();
+    // ========== 新增：使用分离的碰撞框 ==========
+    QRectF headRect = character->getHeadCollisionRect();
+    QRectF bodyRect = character->getBodyCollisionRect();
     QPointF oldPos = character->pos();
     bool wasOnGround = character->isOnGround();
 
@@ -199,49 +202,50 @@ void IceScene::handleAllCollisions(Character* character, QPointF& newPos)
     bool verticalCollision = false;
     bool isOnAnyPlatform = false;
 
-    // 检查地面碰撞
+    // ========== 修改：地面碰撞检测 - 仅使用身体碰撞框 ==========
     qreal floorHeight = map->getFloorHeight();
-    qreal characterBottom = testPosY.y() + characterRect.bottom();
+    // 计算身体碰撞框在新位置的底部Y坐标
+    qreal bodyBottom = testPosY.y() + bodyRect.bottom();
 
-    if (characterBottom >= floorHeight)
+    if (bodyBottom >= floorHeight)
     {
-        // 角色落在地面上
-        newPos.setY(floorHeight - characterRect.bottom());
+        // 角色的身体部分落在地面上
+        newPos.setY(floorHeight - bodyRect.bottom());
         character->setVelocity_y(0);
         character->setOnGround(true);
         verticalCollision = true;
         isOnAnyPlatform = true;
-        qDebug() << "Character landed on ground";
+        qDebug() << "Character body landed on ground";
     }
 
-    // 检查垂直方向的障碍物碰撞（平台等）
+    // ========== 修改：垂直方向的障碍物碰撞检测 ==========
     if (!verticalCollision && checkObstacleCollision(character, testPosY))
     {
         // 检查是否是从上方落在平台上
         if (character->getVelocity_y() > 0) // 正在下落
         {
-            // 尝试找到角色下方最近的平台
-            QRectF testCharacterRect = characterRect;
-            testCharacterRect.moveTopLeft(testPosY + characterRect.topLeft());
-
             // 获取障碍物列表
             const QList<Obstacle>& obstacles = static_cast<Icefield*>(map)->getObstacles();
 
             for (const Obstacle& obstacle : obstacles)
             {
-                if (obstacle.bounds.intersects(testCharacterRect))
+                // ========== 修改：仅使用身体碰撞框检测平台碰撞 ==========
+                QRectF testBodyRect = bodyRect;
+                testBodyRect.moveTopLeft(testPosY + bodyRect.topLeft());
+
+                if (obstacle.bounds.intersects(testBodyRect))
                 {
-                    // 检查是否是从上方碰撞
-                    qreal characterOldBottom = oldPos.y() + characterRect.bottom();
-                    if (characterOldBottom <= obstacle.bounds.top() + 5) // 允许5像素误差
+                    // 检查是否是从上方碰撞 - 使用身体碰撞框的底部
+                    qreal bodyOldBottom = oldPos.y() + bodyRect.bottom();
+                    if (bodyOldBottom <= obstacle.bounds.top() + 5) // 允许5像素误差
                     {
-                        // 角色站在障碍物上
-                        newPos.setY(obstacle.bounds.top() - characterRect.bottom());
+                        // 角色的身体站在障碍物上
+                        newPos.setY(obstacle.bounds.top() - bodyRect.bottom());
                         character->setVelocity_y(0);
                         character->setOnGround(true);
                         verticalCollision = true;
                         isOnAnyPlatform = true;
-                        qDebug() << "Character landed on platform at Y:" << newPos.y();
+                        qDebug() << "Character body landed on platform at Y:" << newPos.y();
                         break;
                     }
                 }
@@ -260,17 +264,18 @@ void IceScene::handleAllCollisions(Character* character, QPointF& newPos)
         }
     }
 
+    // ========== 修改：检查角色是否仍在平台上 - 仅使用身体碰撞框 ==========
     if (!isOnAnyPlatform)
     {
-        // 检查角色在新位置是否仍在任何平台上
-        QRectF newCharacterRect = characterRect;
-        newCharacterRect.moveTopLeft(newPos + characterRect.topLeft());
+        // 计算新位置的身体碰撞框
+        QRectF newBodyRect = bodyRect;
+        newBodyRect.moveTopLeft(newPos + bodyRect.topLeft());
 
         bool stillOnPlatform = false;
+        qreal newBodyBottom = newPos.y() + bodyRect.bottom();
 
         // 检查是否在地面上
-        qreal newCharacterBottom = newPos.y() + characterRect.bottom();
-        if (newCharacterBottom >= floorHeight - 2) // 允许2像素误差
+        if (newBodyBottom >= floorHeight - 2) // 允许2像素误差
         {
             stillOnPlatform = true;
         }
@@ -281,13 +286,20 @@ void IceScene::handleAllCollisions(Character* character, QPointF& newPos)
             const QList<Obstacle>& obstacles = static_cast<Icefield*>(map)->getObstacles();
             for (const Obstacle& obstacle : obstacles)
             {
-                // 检查角色底部是否在平台上
-                if (qAbs(newCharacterBottom - obstacle.bounds.top()) < 5 && // 高度匹配
-                    newPos.x() + characterRect.width() > obstacle.bounds.left() &&
-                    newPos.x() < obstacle.bounds.right()) // 水平重叠
+                // ========== 修改：更精确的平台判定 ==========
+                // 检查身体底部是否在平台上，并且水平有重叠
+                if (qAbs(newBodyBottom - obstacle.bounds.top()) < 5) // 高度匹配
                 {
-                    stillOnPlatform = true;
-                    break;
+                    // 检查水平重叠 - 使用身体碰撞框的水平范围
+                    qreal bodyLeft = newPos.x() + bodyRect.left();
+                    qreal bodyRight = newPos.x() + bodyRect.right();
+
+                    if (bodyRight > obstacle.bounds.left() && bodyLeft < obstacle.bounds.right())
+                    {
+                        stillOnPlatform = true;
+                        qDebug() << "Character body still on platform" << obstacle.bounds;
+                        break;
+                    }
                 }
             }
         }
@@ -296,7 +308,7 @@ void IceScene::handleAllCollisions(Character* character, QPointF& newPos)
         if (!stillOnPlatform)
         {
             character->setOnGround(false);
-            qDebug() << "Character left platform, now falling";
+            qDebug() << "Character body left all platforms, now falling";
         }
     }
 
