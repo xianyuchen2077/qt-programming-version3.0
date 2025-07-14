@@ -44,6 +44,7 @@ public:
     // 射击相关方法
     virtual bool canShoot() const;
     virtual Bullet* createBullet(const QPointF& startPos, const QPointF& direction);
+    virtual Bullet* createBullet(const QPointF& startPos, const QPointF& direction, Character* shooter);
     virtual void shoot(Character* shooter, const QPointF& direction);
 
 signals:

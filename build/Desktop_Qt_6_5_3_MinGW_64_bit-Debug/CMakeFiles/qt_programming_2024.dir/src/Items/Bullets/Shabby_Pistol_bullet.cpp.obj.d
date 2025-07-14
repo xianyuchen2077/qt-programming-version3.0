@@ -343,8 +343,11 @@ CMakeFiles/qt_programming_2024.dir/src/Items/Bullets/Shabby_Pistol_bullet.cpp.ob
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/q20memory.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QList \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qlist.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QTimer \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qtimer.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qbasictimer.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QGraphicsEffect \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qgraphicseffect.h \
  C:\Users\xiany\Desktop\GodNoCode\AdvancedProgramming\major_assignment\hw1_FightingGame\qt-programming-2025\src\Items\Bullets\Shabby_Pistol_bullet.h \
  C:\Users\xiany\Desktop\GodNoCode\AdvancedProgramming\major_assignment\hw1_FightingGame\qt-programming-2025\src\Items\Bullets\Bullet.h \
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Item.h \

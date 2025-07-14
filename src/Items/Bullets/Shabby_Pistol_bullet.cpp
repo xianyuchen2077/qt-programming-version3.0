@@ -1,17 +1,21 @@
 #include <QGraphicsScene>
 #include <QDebug>
 #include <QList>
-#include <qtimer.h>
+#include <QTimer>
+#include <QGraphicsEffect>
 #include "Shabby_Pistol_bullet.h"
 #include "../Characters/Character.h"
 #include "../Maps/Icefield.h"
 
-BulletBasic::BulletBasic(QGraphicsItem *parent, const QPointF& startPos, const QPointF& direction, int damage)
-    : Bullet(parent, BULLET_BASIC_PIXMAP_PATH, startPos, direction, damage)
+BulletBasic::BulletBasic(QGraphicsItem *parent, const QPointF& startPos, const QPointF& direction, int damage, Character* shooter)
+    : Bullet(parent, BULLET_BASIC_PIXMAP_PATH, startPos, direction, damage),
+    hasExploded(false),
+    shooterCharacter(shooter)
 {
-    // 可以调整子弹属性
     bulletSpeed = 20.0; // 提高子弹速度
     lifetimeFrames = 300; // 延长生命周期
+
+    qDebug() << "BulletBasic created with shooter:" << shooter << "damage:" << damage;
 }
 
 void BulletBasic::explode()
@@ -19,66 +23,85 @@ void BulletBasic::explode()
     if (hasExploded) return;
 
     hasExploded = true;
+    qDebug() << "BulletBasic exploded at position:" << pos();
 
-    // 更换为爆炸图片（如果有的话）
-    // 这里可以替换成爆炸效果的图片路径
-    // updatePixmap(":/Items/Bullets/explosion.png");
-
-    // 暂时改变颜色表示爆炸
+    // 创建爆炸视觉效果
     if (pixmapItem) {
-        pixmapItem->setOpacity(0.5);
-        setScale(scale() * 2); // 放大表示爆炸
+        // 改变颜色和大小表示爆炸
+        pixmapItem->setOpacity(0.8);
+        setScale(scale() * 3); // 放大表示爆炸
+
+        // 添加简单的颜色效果（如果需要）
+        // QGraphicsColorizeEffect* effect = new QGraphicsColorizeEffect();
+        // effect->setColor(Qt::red);
+        // pixmapItem->setGraphicsEffect(effect);
     }
 
-    qDebug() << "Bullet exploded!";
-
-    // // 短暂延迟后销毁
+    // // 延迟销毁以显示爆炸效果
     // QTimer::singleShot(100, this, [this](){
-    //     if (scene()) {
-    //         scene()->removeItem(this);
-    //     }
-    //     delete this;
+    //     destroyBullet();
     // });
 }
 
-void BulletBasic::handleCollisions() {
-    if (hasExploded) return;
+void BulletBasic::handleCollisions()
+{
+    if (hasExploded || isDestroyed) return;
 
     QList<QGraphicsItem*> collidingItems = this->collidingItems();
 
-    for (QGraphicsItem* item : collidingItems) {
-        // 检查角色碰撞
+    // 检查角色碰撞
+    for (QGraphicsItem* item : collidingItems)
+    {
         Character* hitCharacter = dynamic_cast<Character*>(item);
-        if (hitCharacter) {
+        if (hitCharacter && hitCharacter != shooterCharacter) // 不能击中发射者
+        {
+            // 对角色造成伤害
             hitCharacter->takeDamage(bulletDamage);
             qDebug() << "BulletBasic hit character! Character health:" << hitCharacter->getHealth();
+
             explode();
             return;
         }
     }
 
-    // 检查障碍物碰撞
-    if (scene()) {
-        // 获取场景中的Icefield
+    // 检查障碍物碰撞（改进的检测方法）
+    if (scene())
+    {
+        // 获取当前子弹位置的矩形
+        QRectF bulletRect = this->sceneBoundingRect();
+
+        // 查找Icefield地图
         QList<QGraphicsItem*> allItems = scene()->items();
         Icefield* icefield = nullptr;
 
-        for (QGraphicsItem* item : allItems) {
+        for (QGraphicsItem* item : allItems)
+        {
             icefield = dynamic_cast<Icefield*>(item);
             if (icefield) break;
         }
 
-        if (icefield) {
+        if (icefield)
+        {
             // 获取障碍物列表
             const QList<Obstacle>& obstacles = icefield->getObstacles();
-            QRectF bulletRect = this->sceneBoundingRect();
 
-            for (const Obstacle& obstacle : obstacles) {
-                if (obstacle.bounds.intersects(bulletRect)) {
-                    qDebug() << "Bullet hit obstacle!";
+            for (const Obstacle& obstacle : obstacles)
+            {
+                if (obstacle.bounds.intersects(bulletRect))
+                {
+                    qDebug() << "Bullet hit obstacle at:" << obstacle.bounds;
                     explode();
                     return;
                 }
+            }
+
+            // 检查是否撞到地面
+            qreal floorHeight = icefield->getFloorHeight();
+            if (bulletRect.bottom() >= floorHeight)
+            {
+                qDebug() << "Bullet hit ground at height:" << floorHeight;
+                explode();
+                return;
             }
         }
     }

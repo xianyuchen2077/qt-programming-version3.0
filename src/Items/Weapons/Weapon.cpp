@@ -159,9 +159,18 @@ Bullet* Weapon::createBullet(const QPointF& startPos, const QPointF& direction)
     return nullptr;
 }
 
+// 添加重载的 createBullet 方法
+Bullet* Weapon::createBullet(const QPointF& startPos, const QPointF& direction, Character* shooter)
+{
+    // 默认实现调用原来的方法（为了兼容性）
+    return createBullet(startPos, direction);
+}
+
+
 void Weapon::shoot(Character* shooter, const QPointF& direction)
 {
     if (!canShoot() || !shooter) {
+        qDebug() << "Cannot shoot: canShoot=" << canShoot() << "shooter=" << shooter;
         return;
     }
 
@@ -173,24 +182,28 @@ void Weapon::shoot(Character* shooter, const QPointF& direction)
     QPointF bodyCenter = shooterPos + bodyRect.center();
 
     // 子弹从角色身体中心稍微往前的位置发射
-    QPointF bulletStartPos = bodyCenter + QPointF(direction.x() * 20, 0);
+    QPointF bulletStartPos = bodyCenter + QPointF(direction.x() * 30, 0);
 
-    // 创建子弹
-    Bullet* bullet = createBullet(bulletStartPos, direction);
+    // 创建子弹（传递shooter参数）
+    Bullet* bullet = createBullet(bulletStartPos, direction, shooter);
     if (bullet) {
         // 将子弹添加到场景
         if (shooter->scene()) {
             shooter->scene()->addItem(bullet);
+            qDebug() << "Bullet added to scene at:" << bulletStartPos;
+        } else {
+            qDebug() << "Warning: Shooter has no scene!";
+            delete bullet;
+            return;
         }
 
         // 消耗弹药
         ammoCount--;
         lastShotTime = QDateTime::currentMSecsSinceEpoch();
 
-        // 发出信号
-        emit bulletFired(bullet);
-
         qDebug() << "Weapon fired! Ammo remaining:" << ammoCount << "Bullet pos:" << bulletStartPos;
+    } else {
+        qDebug() << "Failed to create bullet!";
     }
 }
 

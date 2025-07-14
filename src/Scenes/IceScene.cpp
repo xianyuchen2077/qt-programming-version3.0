@@ -642,6 +642,16 @@ void IceScene::gameLoop()
         player2->updateAnimation(deltaTime);
     }
 
+    // 调用场景中所有项目的 advance 方法来更新子弹位置和碰撞
+    QList<QGraphicsItem*> sceneItems = items();
+    for (QGraphicsItem* item : sceneItems)
+    {
+        if (Bullet* bullet = dynamic_cast<Bullet*>(item))
+        {
+            bullet->advance(0); // 更新子弹
+        }
+    }
+
     // 每帧更新动态调试信息
     if (debugVisible)
     {

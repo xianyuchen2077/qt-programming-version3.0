@@ -1866,6 +1866,7 @@ CMakeFiles/qt_programming_2024.dir/src/Items/Bullets/Shabby_Pistol_bullet.cpp.ob
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QDebug \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QList \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QPointF \
+  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QTimer \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/q20memory.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/q20type_traits.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qalgorithms.h \
@@ -2000,9 +2001,11 @@ CMakeFiles/qt_programming_2024.dir/src/Items/Bullets/Shabby_Pistol_bullet.cpp.ob
   D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qtransform.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qwindowdefs.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qwindowdefs_win.h \
+  D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QGraphicsEffect \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QGraphicsEllipseItem \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QGraphicsItem \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QGraphicsScene \
+  D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qgraphicseffect.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qgraphicsitem.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qgraphicsscene.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qtwidgets-config.h \
@@ -10570,6 +10573,10 @@ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_Fighti
 D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QMetaEnum:
 
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Bullets/Shabby_Pistol_bullet.h:
+
+D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QGraphicsEffect:
+
+D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qgraphicseffect.h:
 
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Characters/Character.cpp:
 
