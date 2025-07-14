@@ -4,11 +4,11 @@
 #include <QKeyEvent>
 #include <QTimer>
 #include <QElapsedTimer>
+#include <QList>
 #include "Scene.h"
 #include "../Items/Maps/Map.h"
 #include "../Items/Maps/Icefield.h"
 #include "../Items/Characters/Link.h"
-#include <QList>
 
 struct Platform
 {
@@ -48,7 +48,7 @@ private:
     Armor *spareArmor;
     HeadEquipment *spareHeadEquipment;
 
-    // 新增：游戏循环相关
+    // 游戏循环相关
     QTimer *gameTimer;              // 游戏主循环定时器
     QElapsedTimer elapsedTimer;     // 用于计算帧间隔
     qint64 lastFrameTime;           // 上一帧的时间
@@ -64,6 +64,13 @@ private:
     void handleGroundCollision(Character* character, QPointF& newPos); // 处理地面碰撞
     void handleAllCollisions(Character* character, QPointF& newPos);       // 处理所有碰撞
     bool checkObstacleCollision(Character* character, const QPointF& testPos); // 检查障碍物碰撞
+
+    bool checkBodyObstacleCollision(Character* character, const QPointF& testPos); // 仅检查身体碰撞
+    bool checkHeadHorizontalCollision(Character* character, const QPointF& testPos); // 检查头部水平碰撞
+    bool isHeadStuckInObstacle(Character* character, const QPointF& testPos);      // 检测头部是否被卡住
+    QPointF calculateSlideDirection(Character* character, const QPointF& currentPos); // 计算滑动方向
+    bool isPositionSafe(Character* character, const QPointF& testPos);             // 检查位置是否安全
+
     bool landedOnPlatform;         // 是否刚落在平台上
 
 // 用于调试

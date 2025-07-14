@@ -27,8 +27,8 @@ Icefield::Icefield(QGraphicsItem *parent): Map(parent,""),maptype(0)
         icicle_1 = new QGraphicsPixmapItem(icicle_1_map, this);
 
         // 设置贴图相对于 Icefield 局部坐标系的位置,相对于 Icefield 的 (0,0) 点
-        icicle_1->setScale(0.6);      // 设置缩放
-        icicle_1->setPos(0, 451);   // 设置位置
+        icicle_1->setScale(0.55);      // 设置缩放
+        icicle_1->setPos(0, 465);   // 设置位置
 
         // 设置 Z 值，确保它在地图背景之上，但在角色之下
         icicle_1->setZValue(0);

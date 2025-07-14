@@ -4,6 +4,8 @@
 #include "../Items/Maps/Icefield.h"
 #include "../Items/Armors/FlamebreakerArmor.h"
 #include "../Items/HeadEquipments/Helmet_of_the_Paladin.h"
+#include "../Items/LegEquipments/LegEquipment.h"
+#include "../Items/Weapons/Weapon.h"
 
 // IceScene 构造函数
 IceScene::IceScene(QObject *parent) : Scene(parent)
@@ -181,30 +183,97 @@ void IceScene::handleAllCollisions(Character* character, QPointF& newPos)
 {
     if (!character) return;
 
-    // ========== 新增：使用分离的碰撞框 ==========
     QRectF headRect = character->getHeadCollisionRect();
     QRectF bodyRect = character->getBodyCollisionRect();
     QPointF oldPos = character->pos();
     bool wasOnGround = character->isOnGround();
 
-    // 首先检查水平方向的障碍物碰撞
-    QPointF testPosX = QPointF(newPos.x(), oldPos.y()); // 只改变X坐标
-    if (checkObstacleCollision(character, testPosX))
+    // ========== 第一步：处理头部被卡住的情况（加快滑动速度） ==========
+    bool headStuck = isHeadStuckInObstacle(character, newPos);
+    bool wasHeadStuck = isHeadStuckInObstacle(character, oldPos);
+
+    if (headStuck || wasHeadStuck)
     {
-        // 水平碰撞，恢复X坐标
-        newPos.setX(oldPos.x());
-        character->setVelocity(QPointF(0, character->getVelocity().y()));
-        qDebug() << "Horizontal obstacle collision detected";
+        qDebug() << "Head stuck detected, applying slide logic";
+
+        // 计算滑动方向
+        QPointF slideDirection = calculateSlideDirection(character, newPos);
+
+        // ========== 修改：加快滑动效果，从0.1改为0.5 ==========
+        if (slideDirection.x() != 0)
+        {
+            QPointF slidePos = newPos + QPointF(slideDirection.x() * 0.5, 0); // 渐进式滑动，加快速度
+
+            // 检查滑动后的位置是否安全
+            if (isPositionSafe(character, slidePos))
+            {
+                newPos.setX(slidePos.x());
+                qDebug() << "Applied fast slide to X:" << slidePos.x();
+            }
+            else
+            {
+                // 如果0.5倍速度不安全，尝试0.3倍速度
+                slidePos = newPos + QPointF(slideDirection.x() * 0.3, 0);
+                if (isPositionSafe(character, slidePos))
+                {
+                    newPos.setX(slidePos.x());
+                    qDebug() << "Applied medium slide to X:" << slidePos.x();
+                }
+                else
+                {
+                    // 如果0.3倍速度还不安全，使用原来的0.1倍速度
+                    slidePos = newPos + QPointF(slideDirection.x() * 0.1, 0);
+                    if (isPositionSafe(character, slidePos))
+                    {
+                        newPos.setX(slidePos.x());
+                        qDebug() << "Applied slow slide to X:" << slidePos.x();
+                    }
+                }
+            }
+        }
+
+        // 在滑动的同时允许下落
+        // 计算合适的下落距离
+        qreal fallDistance = qAbs(headRect.bottom() - bodyRect.top()) * 0.3; // 头部和身体差值的30%
+        newPos.setY(newPos.y() + fallDistance);
+
+        qDebug() << "Applied fall distance:" << fallDistance;
     }
 
-    // 然后检查垂直方向的碰撞
-    QPointF testPosY = QPointF(newPos.x(), newPos.y()); // 使用调整后的X和新的Y
+    // ========== 第二步：改进的水平碰撞检测（先头部，后身体） ==========
+    QPointF testPosX = QPointF(newPos.x(), oldPos.y()); // 只改变X坐标
+
+    // ========== 修改：首先检查头部水平碰撞 ==========
+    bool headHorizontalCollision = checkHeadHorizontalCollision(character, testPosX);
+    bool bodyHorizontalCollision = checkBodyObstacleCollision(character, testPosX);
+
+    if (headHorizontalCollision || bodyHorizontalCollision)
+    {
+        // 如果头部或身体发生水平碰撞，阻止水平移动
+        newPos.setX(oldPos.x());
+        character->setVelocity(QPointF(0, character->getVelocity().y()));
+
+        if (headHorizontalCollision && !bodyHorizontalCollision)
+        {
+            qDebug() << "Head-only horizontal collision detected";
+        }
+        else if (!headHorizontalCollision && bodyHorizontalCollision)
+        {
+            qDebug() << "Body-only horizontal collision detected";
+        }
+        else
+        {
+            qDebug() << "Both head and body horizontal collision detected";
+        }
+    }
+
+    // ========== 第三步：垂直碰撞检测（地面和平台） ==========
+    QPointF testPosY = QPointF(newPos.x(), newPos.y());
     bool verticalCollision = false;
     bool isOnAnyPlatform = false;
 
-    // ========== 修改：地面碰撞检测 - 仅使用身体碰撞框 ==========
+    // 地面碰撞检测 - 仅使用身体碰撞框
     qreal floorHeight = map->getFloorHeight();
-    // 计算身体碰撞框在新位置的底部Y坐标
     qreal bodyBottom = testPosY.y() + bodyRect.bottom();
 
     if (bodyBottom >= floorHeight)
@@ -218,18 +287,16 @@ void IceScene::handleAllCollisions(Character* character, QPointF& newPos)
         qDebug() << "Character body landed on ground";
     }
 
-    // ========== 修改：垂直方向的障碍物碰撞检测 ==========
-    if (!verticalCollision && checkObstacleCollision(character, testPosY))
+    // 平台碰撞检测 - 仅使用身体碰撞框
+    if (!verticalCollision && checkBodyObstacleCollision(character, testPosY))
     {
         // 检查是否是从上方落在平台上
         if (character->getVelocity_y() > 0) // 正在下落
         {
-            // 获取障碍物列表
             const QList<Obstacle>& obstacles = static_cast<Icefield*>(map)->getObstacles();
 
             for (const Obstacle& obstacle : obstacles)
             {
-                // ========== 修改：仅使用身体碰撞框检测平台碰撞 ==========
                 QRectF testBodyRect = bodyRect;
                 testBodyRect.moveTopLeft(testPosY + bodyRect.topLeft());
 
@@ -264,10 +331,9 @@ void IceScene::handleAllCollisions(Character* character, QPointF& newPos)
         }
     }
 
-    // ========== 修改：检查角色是否仍在平台上 - 仅使用身体碰撞框 ==========
+    // ========== 第四步：检查角色是否仍在平台上 ==========
     if (!isOnAnyPlatform)
     {
-        // 计算新位置的身体碰撞框
         QRectF newBodyRect = bodyRect;
         newBodyRect.moveTopLeft(newPos + bodyRect.topLeft());
 
@@ -275,7 +341,7 @@ void IceScene::handleAllCollisions(Character* character, QPointF& newPos)
         qreal newBodyBottom = newPos.y() + bodyRect.bottom();
 
         // 检查是否在地面上
-        if (newBodyBottom >= floorHeight - 2) // 允许2像素误差
+        if (newBodyBottom >= floorHeight - 2)
         {
             stillOnPlatform = true;
         }
@@ -286,11 +352,8 @@ void IceScene::handleAllCollisions(Character* character, QPointF& newPos)
             const QList<Obstacle>& obstacles = static_cast<Icefield*>(map)->getObstacles();
             for (const Obstacle& obstacle : obstacles)
             {
-                // ========== 修改：更精确的平台判定 ==========
-                // 检查身体底部是否在平台上，并且水平有重叠
-                if (qAbs(newBodyBottom - obstacle.bounds.top()) < 5) // 高度匹配
+                if (qAbs(newBodyBottom - obstacle.bounds.top()) < 5)
                 {
-                    // 检查水平重叠 - 使用身体碰撞框的水平范围
                     qreal bodyLeft = newPos.x() + bodyRect.left();
                     qreal bodyRight = newPos.x() + bodyRect.right();
 
@@ -304,7 +367,6 @@ void IceScene::handleAllCollisions(Character* character, QPointF& newPos)
             }
         }
 
-        // 如果不在任何平台上，设置为空中状态
         if (!stillOnPlatform)
         {
             character->setOnGround(false);
@@ -312,8 +374,51 @@ void IceScene::handleAllCollisions(Character* character, QPointF& newPos)
         }
     }
 
-    // 边界检测
+    // ========== 第五步：边界检测 ==========
     handleBoundaryCollision(character, newPos);
+
+    // ========== 第六步：最终安全检查（加快调整速度） ==========
+    // 确保最终位置不会导致身体与障碍物重叠
+    if (!isPositionSafe(character, newPos))
+    {
+        qDebug() << "Final position unsafe, adjusting...";
+
+        // ========== 修改：加快微调步长，从2像素改为5像素 ==========
+        for (int i = 1; i <= 10; i++)
+        {
+            QPointF adjustedPos = newPos + QPointF(i * 5, 0); // 加快调整步长
+            if (isPositionSafe(character, adjustedPos))
+            {
+                newPos = adjustedPos;
+                qDebug() << "Adjusted position to:" << newPos;
+                break;
+            }
+
+            adjustedPos = newPos + QPointF(-i * 5, 0); // 加快调整步长
+            if (isPositionSafe(character, adjustedPos))
+            {
+                newPos = adjustedPos;
+                qDebug() << "Adjusted position to:" << newPos;
+                break;
+            }
+        }
+
+        // ========== 新增：如果水平调整不成功，尝试垂直调整 ==========
+        if (!isPositionSafe(character, newPos))
+        {
+            qDebug() << "Horizontal adjustment failed, trying vertical adjustment...";
+            for (int i = 1; i <= 5; i++)
+            {
+                QPointF adjustedPos = newPos + QPointF(0, -i * 3); // 向上调整
+                if (isPositionSafe(character, adjustedPos))
+                {
+                    newPos = adjustedPos;
+                    qDebug() << "Vertically adjusted position to:" << newPos;
+                    break;
+                }
+            }
+        }
+    }
 
     // 应用新位置
     character->setPos(newPos);
@@ -350,6 +455,142 @@ bool IceScene::checkObstacleCollision(Character* character, const QPointF& testP
                          << "Character rect:" << testRect;
                 return true;
             }
+        }
+    }
+
+    return false;
+}
+
+// 检测头部是否被障碍物卡住
+bool IceScene::isHeadStuckInObstacle(Character* character, const QPointF& testPos)
+{
+    if (!character) return false;
+
+    QRectF headRect = character->getHeadCollisionRect();
+    QRectF testHeadRect = headRect;
+    testHeadRect.moveTopLeft(testPos + headRect.topLeft());
+
+    const QList<Obstacle>& obstacles = static_cast<Icefield*>(map)->getObstacles();
+
+    for (const Obstacle& obstacle : obstacles)
+    {
+        if (obstacle.bounds.intersects(testHeadRect))
+        {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+// 计算滑动方向和距离
+QPointF IceScene::calculateSlideDirection(Character* character, const QPointF& currentPos)
+{
+    if (!character) return QPointF(0, 0);
+
+    QRectF headRect = character->getHeadCollisionRect();
+    QRectF testHeadRect = headRect;
+    testHeadRect.moveTopLeft(currentPos + headRect.topLeft());
+
+    const QList<Obstacle>& obstacles = static_cast<Icefield*>(map)->getObstacles();
+
+    QPointF slideDirection(0, 0);
+
+    for (const Obstacle& obstacle : obstacles)
+    {
+        if (obstacle.bounds.intersects(testHeadRect))
+        {
+            // 计算头部中心点
+            QPointF headCenter = testHeadRect.center();
+            QPointF obstacleCenter = obstacle.bounds.center();
+
+            // 计算从障碍物中心到头部中心的向量
+            QPointF awayFromObstacle = headCenter - obstacleCenter;
+
+            // 只考虑水平方向的滑动，垂直方向交给重力处理
+            if (awayFromObstacle.x() != 0)
+            {
+                slideDirection.setX(awayFromObstacle.x() > 0 ? 1 : -1);
+            }
+
+            // 计算滑动距离 - 头部和身体差值的一半左右
+            QRectF bodyRect = character->getBodyCollisionRect();
+            qreal slideDistance = qAbs(headRect.center().x() - bodyRect.center().x()) * 0.5;
+
+            slideDirection.setX(slideDirection.x() * slideDistance);
+
+            qDebug() << "Head stuck in obstacle, slide direction:" << slideDirection;
+            break;
+        }
+    }
+
+    return slideDirection;
+}
+
+// 检查位置是否安全（不会导致身体与障碍物重叠）
+bool IceScene::isPositionSafe(Character* character, const QPointF& testPos)
+{
+    if (!character) return false;
+
+    QRectF bodyRect = character->getBodyCollisionRect();
+    QRectF testBodyRect = bodyRect;
+    testBodyRect.moveTopLeft(testPos + bodyRect.topLeft());
+
+    const QList<Obstacle>& obstacles = static_cast<Icefield*>(map)->getObstacles();
+
+    for (const Obstacle& obstacle : obstacles)
+    {
+        if (obstacle.bounds.intersects(testBodyRect))
+        {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+// 仅检查身体碰撞的函数
+bool IceScene::checkBodyObstacleCollision(Character* character, const QPointF& testPos)
+{
+    if (!character) return false;
+
+    QRectF bodyRect = character->getBodyCollisionRect();
+    QRectF testBodyRect = bodyRect;
+    testBodyRect.moveTopLeft(testPos + bodyRect.topLeft());
+
+    const QList<Obstacle>& obstacles = static_cast<Icefield*>(map)->getObstacles();
+
+    for (const Obstacle& obstacle : obstacles)
+    {
+        if (obstacle.bounds.intersects(testBodyRect))
+        {
+            qDebug() << "Body collision detected with obstacle at:" << obstacle.bounds
+                     << "Body rect:" << testBodyRect;
+            return true;
+        }
+    }
+
+    return false;
+}
+
+// 检查头部水平碰撞的函数
+bool IceScene::checkHeadHorizontalCollision(Character* character, const QPointF& testPos)
+{
+    if (!character) return false;
+
+    QRectF headRect = character->getHeadCollisionRect();
+    QRectF testHeadRect = headRect;
+    testHeadRect.moveTopLeft(testPos + headRect.topLeft());
+
+    const QList<Obstacle>& obstacles = static_cast<Icefield*>(map)->getObstacles();
+
+    for (const Obstacle& obstacle : obstacles)
+    {
+        if (obstacle.bounds.intersects(testHeadRect))
+        {
+            qDebug() << "Head horizontal collision detected with obstacle at:" << obstacle.bounds
+                     << "Head rect:" << testHeadRect;
+            return true;
         }
     }
 
