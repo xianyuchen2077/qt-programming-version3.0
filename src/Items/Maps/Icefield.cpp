@@ -63,7 +63,7 @@ Icefield::Icefield(QGraphicsItem *parent): Map(parent,""),maptype(0)
 
         // 设置贴图相对于 Icefield 局部坐标系的位置,相对于 Icefield 的 (0,0) 点
         ice_platform->setScale(0.65);      // 设置缩放
-        ice_platform->setPos(305, 270);   // 设置位置
+        ice_platform->setPos(315, 270);   // 设置位置
 
         // 设置 Z 值，确保它在地图背景之上，但在角色之下
         ice_platform->setZValue(0);

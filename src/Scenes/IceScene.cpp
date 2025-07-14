@@ -403,7 +403,7 @@ void IceScene::handleAllCollisions(Character* character, QPointF& newPos)
             }
         }
 
-        // ========== 新增：如果水平调整不成功，尝试垂直调整 ==========
+        // 如果水平调整不成功，尝试垂直调整
         if (!isPositionSafe(character, newPos))
         {
             qDebug() << "Horizontal adjustment failed, trying vertical adjustment...";
@@ -828,9 +828,6 @@ void IceScene::processMovement()
         // 垂直移动
         newPos.setY(newPos.y() + player1->getVelocity_y() * deltaTime);
 
-        // // 基础地面碰撞检测
-        // handleGroundCollision(player1, newPos);
-
         // 完整障碍物检测
         handleAllCollisions(player1, newPos);
 
@@ -865,9 +862,6 @@ void IceScene::processMovement()
 
         // 垂直移动
         newPos.setY(newPos.y() + player2->getVelocity_y() * deltaTime);
-
-        // // 基础地面碰撞检测
-        // handleGroundCollision(player2, newPos);
 
         // 完整障碍物检测
         handleAllCollisions(player2, newPos);
