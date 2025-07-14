@@ -350,4 +350,12 @@ CMakeFiles/qt_programming_2024.dir/src/Items/Weapons/Shabby_Pistol.cpp.obj: \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qfontinfo.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qfont.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qfontmetrics.h \
- C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Mountable.h
+ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Mountable.h \
+ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Bullets/Bullet.h \
+ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Item.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QPointF \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qpoint.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QGraphicsScene \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qgraphicsscene.h \
+ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Bullets/Shabby_Pistol_bullet.h \
+ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Bullets/Bullet.h

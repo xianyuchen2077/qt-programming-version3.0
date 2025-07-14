@@ -330,6 +330,18 @@
 			null
 		],
 		[
+			"C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Bullets/Bullet.h",
+			"MU",
+			"VFTUHTWUAV/moc_Bullet.cpp",
+			null
+		],
+		[
+			"C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Bullets/Shabby_Pistol_bullet.h",
+			"MU",
+			"VFTUHTWUAV/moc_Shabby_Pistol_bullet.cpp",
+			null
+		],
+		[
 			"C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Characters/Character.h",
 			"MU",
 			"KRBJEFP6ZJ/moc_Character.cpp",
@@ -524,6 +536,16 @@
 		],
 		[
 			"C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Armors/OldShirt.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Bullets/Bullet.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Bullets/Shabby_Pistol_bullet.cpp",
 			"MU",
 			null
 		],

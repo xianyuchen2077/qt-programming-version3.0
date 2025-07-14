@@ -292,6 +292,20 @@ int Character::getGroundY() const
     return groundY;
 }
 
+// 角色射击函数
+void Character::shoot(const QPointF& direction)
+{
+    if (weapon && weapon->canShoot()) {
+        weapon->shoot(this, direction);
+    }
+}
+
+// 判断是否可以射击
+bool Character::canShoot() const
+{
+    return weapon && weapon->canShoot();
+}
+
 // 判断是否正在拾取物品
 bool Character::isPicking() const
 {

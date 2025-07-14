@@ -274,6 +274,54 @@ src/Items/Armors/OldShirt.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Armors/OldShirt.cpp.s
 .PHONY : src/Items/Armors/OldShirt.cpp.s
 
+src/Items/Bullets/Bullet.obj: src/Items/Bullets/Bullet.cpp.obj
+.PHONY : src/Items/Bullets/Bullet.obj
+
+# target to build an object file
+src/Items/Bullets/Bullet.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Bullets/Bullet.cpp.obj
+.PHONY : src/Items/Bullets/Bullet.cpp.obj
+
+src/Items/Bullets/Bullet.i: src/Items/Bullets/Bullet.cpp.i
+.PHONY : src/Items/Bullets/Bullet.i
+
+# target to preprocess a source file
+src/Items/Bullets/Bullet.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Bullets/Bullet.cpp.i
+.PHONY : src/Items/Bullets/Bullet.cpp.i
+
+src/Items/Bullets/Bullet.s: src/Items/Bullets/Bullet.cpp.s
+.PHONY : src/Items/Bullets/Bullet.s
+
+# target to generate assembly for a file
+src/Items/Bullets/Bullet.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Bullets/Bullet.cpp.s
+.PHONY : src/Items/Bullets/Bullet.cpp.s
+
+src/Items/Bullets/Shabby_Pistol_bullet.obj: src/Items/Bullets/Shabby_Pistol_bullet.cpp.obj
+.PHONY : src/Items/Bullets/Shabby_Pistol_bullet.obj
+
+# target to build an object file
+src/Items/Bullets/Shabby_Pistol_bullet.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Bullets/Shabby_Pistol_bullet.cpp.obj
+.PHONY : src/Items/Bullets/Shabby_Pistol_bullet.cpp.obj
+
+src/Items/Bullets/Shabby_Pistol_bullet.i: src/Items/Bullets/Shabby_Pistol_bullet.cpp.i
+.PHONY : src/Items/Bullets/Shabby_Pistol_bullet.i
+
+# target to preprocess a source file
+src/Items/Bullets/Shabby_Pistol_bullet.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Bullets/Shabby_Pistol_bullet.cpp.i
+.PHONY : src/Items/Bullets/Shabby_Pistol_bullet.cpp.i
+
+src/Items/Bullets/Shabby_Pistol_bullet.s: src/Items/Bullets/Shabby_Pistol_bullet.cpp.s
+.PHONY : src/Items/Bullets/Shabby_Pistol_bullet.s
+
+# target to generate assembly for a file
+src/Items/Bullets/Shabby_Pistol_bullet.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Bullets/Shabby_Pistol_bullet.cpp.s
+.PHONY : src/Items/Bullets/Shabby_Pistol_bullet.cpp.s
+
 src/Items/Characters/Character.obj: src/Items/Characters/Character.cpp.obj
 .PHONY : src/Items/Characters/Character.obj
 
@@ -804,6 +852,12 @@ help:
 	@echo ... src/Items/Armors/OldShirt.obj
 	@echo ... src/Items/Armors/OldShirt.i
 	@echo ... src/Items/Armors/OldShirt.s
+	@echo ... src/Items/Bullets/Bullet.obj
+	@echo ... src/Items/Bullets/Bullet.i
+	@echo ... src/Items/Bullets/Bullet.s
+	@echo ... src/Items/Bullets/Shabby_Pistol_bullet.obj
+	@echo ... src/Items/Bullets/Shabby_Pistol_bullet.i
+	@echo ... src/Items/Bullets/Shabby_Pistol_bullet.s
 	@echo ... src/Items/Characters/Character.obj
 	@echo ... src/Items/Characters/Character.i
 	@echo ... src/Items/Characters/Character.s

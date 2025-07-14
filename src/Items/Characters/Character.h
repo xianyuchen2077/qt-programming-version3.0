@@ -66,6 +66,11 @@ public:
     int getGroundY() const;                // 获取地面的Y坐标
     QRectF boundingRect() const override;  // 重写boundingRect函数
 
+    // 射击相关方法
+    virtual void shoot(const QPointF& direction);
+    virtual bool canShoot() const;
+
+
     // 获取复合碰撞矩形
     QRectF getHeadCollisionRect() const;
     QRectF getBodyCollisionRect() const;

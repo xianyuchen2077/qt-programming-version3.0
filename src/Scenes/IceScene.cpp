@@ -8,7 +8,6 @@
 // IceScene 构造函数
 IceScene::IceScene(QObject *parent) : Scene(parent)
 {
-    // 现有代码...
     setSceneRect(0, 0, 1280, 720);
 
     map = new Icefield();
@@ -308,6 +307,7 @@ void IceScene::handleAllCollisions(Character* character, QPointF& newPos)
     character->setPos(newPos);
 }
 
+// 检查角色与障碍物的碰撞
 bool IceScene::checkObstacleCollision(Character* character, const QPointF& testPos)
 {
     if (!character) return false;
@@ -421,6 +421,14 @@ void IceScene::keyPressEvent(QKeyEvent *event)
             player1->setUpDown(true);
         }
         break;
+    case Qt::Key_J:
+        if (player1 != nullptr && player1->canShoot())
+        {
+            QPointF shootDirection = player1->isFaceRight() ? QPointF(1, 0) : QPointF(-1, 0);
+            player1->shoot(shootDirection);
+            qDebug() << "Player1 shoots!";
+        }
+        break;
     case Qt::Key_Left:
         if (player2 != nullptr)
         {
@@ -444,6 +452,14 @@ void IceScene::keyPressEvent(QKeyEvent *event)
         if (player2 != nullptr)
         {
             player2->setUpDown(true);
+        }
+        break;
+    case Qt::Key_0:
+        if (player2 != nullptr && player2->canShoot())
+        {
+            QPointF shootDirection = player2->isFaceRight() ? QPointF(1, 0) : QPointF(-1, 0);
+            player2->shoot(shootDirection);
+            qDebug() << "Player2 shoots!";
         }
         break;
     case Qt::Key_H:
@@ -607,7 +623,6 @@ void IceScene::processMovement()
         static_cast<Icefield*>(map)->applyEffectToCharacter(player2, deltaTime);
     }
 }
-
 
 void IceScene::processPicking()
 {
@@ -813,8 +828,9 @@ void IceScene::showDebugVisualization()
     QString instructions = "Debug Visualization:\n"
                            "- Magenta dashed: Scene boundary\n"
                            "- Green dotted: Floor line\n"
-                           "- Cyan box: Player1\n"
-                           "- Yellow box: Player2\n"
+                           "- Red rectangles: Obstacles\n"
+                           "- Cyan box: Player1 (WASD move, J shoot)\n"
+                           "- Yellow box: Player2 (Arrow keys move, 0 shoot)\n"
                            "Press 'H' to hide debug view";
 
     QGraphicsTextItem* instructionText = new QGraphicsTextItem(instructions);

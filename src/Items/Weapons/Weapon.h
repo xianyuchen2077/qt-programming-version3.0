@@ -4,6 +4,9 @@
 
 #include "../Item.h"
 #include "../Mountable.h"
+#include "../Bullets/Bullet.h"
+
+class Character;
 
 class Weapon : public Item, public Mountable
 {
@@ -11,7 +14,6 @@ public:
     explicit Weapon(QGraphicsItem *parent, const QString &pixmapPath);
 
     void mountToParent() override;
-
     void unmount() override;
 
     virtual QString getWeaponName() const;
@@ -39,6 +41,14 @@ public:
     virtual int getWeight() const;
     void setWeight(int weight);
 
+    // 射击相关方法
+    virtual bool canShoot() const;
+    virtual Bullet* createBullet(const QPointF& startPos, const QPointF& direction);
+    virtual void shoot(Character* shooter, const QPointF& direction);
+
+signals:
+    void bulletFired(Bullet* bullet);
+
 protected:
     // 武器基本信息
     QString weaponName; // 武器名称
@@ -55,6 +65,10 @@ protected:
     int ammoCount = 0; // 弹药数量
     int maxAmmoCount = 0; // 最大弹药数量
     int weight = 0; // 武器重量
+
+    // 射击相关属性
+    qint64 lastShotTime = 0;  // 上次射击时间
+    int shotCooldown = 500;   // 射击冷却时间（毫秒）
 };
 
 

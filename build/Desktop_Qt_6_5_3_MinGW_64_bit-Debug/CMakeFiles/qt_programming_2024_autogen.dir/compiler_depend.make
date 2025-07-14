@@ -17,6 +17,10 @@ qt_programming_2024_autogen/timestamp: C:/Users/xiany/Desktop/GodNoCode/Advanced
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Armors/FlamebreakerArmor.h \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Armors/OldShirt.cpp \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Armors/OldShirt.h \
+  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Bullets/Bullet.cpp \
+  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Bullets/Bullet.h \
+  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Bullets/Shabby_Pistol_bullet.cpp \
+  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Bullets/Shabby_Pistol_bullet.h \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Characters/Character.cpp \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Characters/Character.h \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Characters/Link.cpp \
@@ -481,6 +485,8 @@ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_Fighti
 
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/CMakeLists.txt:
 
+C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Bullets/Shabby_Pistol_bullet.cpp:
+
 D:/CMake/bin/cmake.exe:
 
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/main.cpp:
@@ -549,6 +555,10 @@ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_Fighti
 
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Scenes/SettingsScene.h:
 
+D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6Gui/Qt6QInsightTrackerPluginConfig.cmake:
+
+C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Bullets/Shabby_Pistol_bullet.h:
+
 D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6Gui/Qt6QInsightTrackerPluginAdditionalTargetInfo.cmake:
 
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Armors/FlamebreakerArmor.cpp:
@@ -574,6 +584,14 @@ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_Fighti
 D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6Gui/Qt6QVirtualKeyboardPluginConfig.cmake:
 
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Armors/OldShirt.h:
+
+C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Maps/Settingsfield.h:
+
+C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Bullets/Bullet.cpp:
+
+D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6Gui/Qt6QICNSPluginTargets-relwithdebinfo.cmake:
+
+C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Bullets/Bullet.h:
 
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/HeadEquipments/CapOfTheHero.cpp:
 
@@ -625,11 +643,7 @@ D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6Gui/Qt6GuiTargets.cmake:
 
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Maps/Map.cpp:
 
-D:/CMake/share/cmake-4.1/Modules/CMakeFindDependencyMacro.cmake:
-
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Maps/Settingsfield.cpp:
-
-C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Maps/Settingsfield.h:
 
 D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointMinGW32Target.cmake:
 
@@ -663,15 +677,17 @@ D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qpainter.h:
 
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Scenes/Scene.h:
 
+D:/CMake/share/cmake-4.1/Modules/Platform/Windows-windres.cmake:
+
+D:/CMake/share/cmake-4.1/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake:
+
 D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qicon.h:
 
 D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qbasicatomic.h:
 
 D:/CMake/share/cmake-4.1/Modules/CMakeCommonLanguageInclude.cmake:
 
-D:/CMake/share/cmake-4.1/Modules/Platform/Windows-windres.cmake:
-
-D:/CMake/share/cmake-4.1/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake:
+D:/CMake/share/cmake-4.1/Modules/CMakeFindDependencyMacro.cmake:
 
 D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qtwidgets-config.h:
 
@@ -1277,8 +1293,6 @@ D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6Gui/Qt6QGifPluginAdditionalTargetInfo.cmake
 
 D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6Gui/Qt6QGifPluginConfig.cmake:
 
-D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6Gui/Qt6QICNSPluginTargets-relwithdebinfo.cmake:
-
 D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6Gui/Qt6QSvgIconPluginTargets.cmake:
 
 D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6Gui/Qt6QOffscreenIntegrationPluginAdditionalTargetInfo.cmake:
@@ -1298,8 +1312,6 @@ D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6Gui/Qt6QWbmpPluginTargets-relwithdebinfo.cm
 D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6Gui/Qt6QOffscreenIntegrationPluginTargets.cmake:
 
 D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6Gui/Qt6QICOPluginTargets.cmake:
-
-D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6Gui/Qt6QInsightTrackerPluginConfig.cmake:
 
 D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsConfig.cmake:
 

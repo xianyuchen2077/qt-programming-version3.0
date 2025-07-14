@@ -8,7 +8,7 @@ Bullet::Bullet(QGraphicsItem *parent, const QString &pixmapPath, const QPointF& 
     : Item(parent, pixmapPath), // 将 pixmapPath 传递给 Item 构造函数
     bulletSpeed(15.0), // 默认子弹速度，子类可以覆盖
     bulletDamage(damage), // 子弹伤害
-    directionVector(direction.normalized()), // 确保方向向量已归一化
+    // directionVector(direction.normalized()), // 确保方向向量已归一化
     lifetimeFrames(180), // 子弹存在约 3 秒 (60FPS * 3秒)
     currentFrameCount(0)
 {
@@ -24,9 +24,20 @@ Bullet::Bullet(QGraphicsItem *parent, const QString &pixmapPath, const QPointF& 
     setZValue(2); // 确保子弹显示在角色和背景之上
 }
 
+void Bullet::destroyBullet()
+{
+    if (isDestroyed) return;
+
+    isDestroyed = true;
+    if (scene()) {
+        scene()->removeItem(this);
+    }
+    delete this; // 使用deleteLater确保安全销毁
+}
+
 void Bullet::advance(int phase)
 {
-    if (phase == 0)
+    if (phase == 0 && !isDestroyed)
     {
         // 移动子弹
         setPos(pos() + directionVector * bulletSpeed);
@@ -35,25 +46,17 @@ void Bullet::advance(int phase)
         currentFrameCount++;
         if (currentFrameCount >= lifetimeFrames)
         {
-            if (scene())
-            {
-                scene()->removeItem(this); // 从场景中移除自己
-            }
-            delete this; // 销毁子弹对象
-            return; // 提前返回，避免在已销毁的对象上继续操作
+            destroyBullet();
+            return;
         }
 
-        // 调用虚函数处理碰撞，由子类实现具体逻辑
+        // 调用虚函数处理碰撞
         handleCollisions();
 
-        // 检查是否超出场景边界，如果超出则销毁子弹
+        // 检查是否超出场景边界
         if (scene() && !scene()->sceneRect().intersects(this->sceneBoundingRect()))
         {
-            if (scene())
-            {
-                scene()->removeItem(this);
-            }
-            delete this;
+            destroyBullet();
             return;
         }
     }

@@ -136,7 +136,9 @@ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_Fighti
   D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qwindowdefs.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qwindowdefs_win.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QGraphicsItem \
+  D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QGraphicsScene \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qgraphicsitem.h \
+  D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qgraphicsscene.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qtwidgets-config.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qtwidgetsexports.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qtwidgetsglobal.h

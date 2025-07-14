@@ -63,6 +63,12 @@ add_executable(qt_programming_2024 src/main.cpp
         src/Items/Maps/Settingsfield.cpp
         src/Items/HeadEquipments/Helmet_of_the_Paladin.h
         src/Items/HeadEquipments/Helmet_of_the_Paladin.cpp
+        src/Items/Bullets/Bullet.h
+        src/Items/Bullets/Bullet.cpp
+        src/Items/Bullets/Shabby_Pistol_bullet.h
+        src/Items/Bullets/Shabby_Pistol_bullet.cpp
+
+
 
 
 

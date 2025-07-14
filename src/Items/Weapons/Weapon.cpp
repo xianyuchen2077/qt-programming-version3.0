@@ -1,4 +1,6 @@
 #include "Weapon.h"
+#include "../Characters/Character.h"
+#include <QDateTime>
 
 Weapon::Weapon(QGraphicsItem *parent, const QString &pixmapPath) : Item(parent, pixmapPath)
 {
@@ -142,4 +144,54 @@ void Weapon::setMaxAmmoCount(int maxCount)
 void Weapon::setWeight(int weight)
 {
     this->weight = weight; // 武器重量
+}
+
+// 射击相关方法实现
+bool Weapon::canShoot() const
+{
+    qint64 currentTime = QDateTime::currentMSecsSinceEpoch();
+    return (ammoCount > 0) && (currentTime - lastShotTime >= shotCooldown);
+}
+
+Bullet* Weapon::createBullet(const QPointF& startPos, const QPointF& direction)
+{
+    // 基类默认实现，子类应该重写
+    return nullptr;
+}
+
+void Weapon::shoot(Character* shooter, const QPointF& direction)
+{
+    if (!canShoot() || !shooter) {
+        return;
+    }
+
+    // 计算子弹起始位置（角色位置偏移）
+    QPointF shooterPos = shooter->pos();
+    QPointF bulletStartPos = shooterPos + QPointF(direction.x() > 0 ? 30 : -30, -20);
+
+    // 创建子弹
+    Bullet* bullet = createBullet(bulletStartPos, direction);
+    if (bullet) {
+        // 将子弹添加到场景
+        if (shooter->scene()) {
+            shooter->scene()->addItem(bullet);
+        }
+
+        // 消耗弹药
+        ammoCount--;
+        lastShotTime = QDateTime::currentMSecsSinceEpoch();
+
+        // 发出信号
+        emit bulletFired(bullet);
+
+        qDebug() << "Weapon fired! Ammo remaining:" << ammoCount;
+    }
+}
+
+void Weapon::bulletFired(Bullet* bullet)
+{
+    if (bullet) {
+        qDebug() << "Bullet fired from weapon!";
+        // 这里可以添加更多逻辑，比如播放音效、特效等
+    }
 }

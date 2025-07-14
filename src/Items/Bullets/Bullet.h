@@ -8,8 +8,6 @@
 
 class Bullet : public Item
 {
-    Q_OBJECT // 如果你需要信号和槽
-
 public:
     // 构造函数：parent通常是场景, pixmapPath 是指定的图片, startPos是子弹的起始位置, direction是子弹的移动方向（已归一化向量）, damage是伤害
     explicit Bullet(QGraphicsItem *parent, const QString &pixmapPath, const QPointF& startPos, const QPointF& direction, int damage);
@@ -21,12 +19,16 @@ public:
     // 获取子弹造成的伤害
     [[nodiscard]] int getDamage() const { return bulletDamage; }
 
+    // 安全销毁自动的方法
+    void destroyBullet();
+
 protected:
     qreal bulletSpeed; // 子弹速度
     int bulletDamage; // 子弹伤害
     QPointF directionVector; // 子弹的移动方向向量 (已归一化)
     int lifetimeFrames; // 子弹的生命周期（帧数）
     int currentFrameCount; // 当前已存在的帧数
+    bool isDestroyed = false;
 
     // 纯虚函数：子类必须实现具体的碰撞处理逻辑
     virtual void handleCollisions() = 0;
