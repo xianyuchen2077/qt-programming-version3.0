@@ -165,9 +165,15 @@ void Weapon::shoot(Character* shooter, const QPointF& direction)
         return;
     }
 
-    // 计算子弹起始位置（角色位置偏移）
+    // 计算子弹起始位置（角色中心位置）
     QPointF shooterPos = shooter->pos();
-    QPointF bulletStartPos = shooterPos + QPointF(direction.x() > 0 ? 30 : -30, -20);
+
+    // 获取角色的身体碰撞框，用于计算中心位置
+    QRectF bodyRect = shooter->getBodyCollisionRect();
+    QPointF bodyCenter = shooterPos + bodyRect.center();
+
+    // 子弹从角色身体中心稍微往前的位置发射
+    QPointF bulletStartPos = bodyCenter + QPointF(direction.x() * 20, 0);
 
     // 创建子弹
     Bullet* bullet = createBullet(bulletStartPos, direction);
@@ -184,7 +190,7 @@ void Weapon::shoot(Character* shooter, const QPointF& direction)
         // 发出信号
         emit bulletFired(bullet);
 
-        qDebug() << "Weapon fired! Ammo remaining:" << ammoCount;
+        qDebug() << "Weapon fired! Ammo remaining:" << ammoCount << "Bullet pos:" << bulletStartPos;
     }
 }
 

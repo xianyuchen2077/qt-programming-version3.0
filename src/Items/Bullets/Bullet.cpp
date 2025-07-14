@@ -8,7 +8,6 @@ Bullet::Bullet(QGraphicsItem *parent, const QString &pixmapPath, const QPointF& 
     : Item(parent, pixmapPath), // 将 pixmapPath 传递给 Item 构造函数
     bulletSpeed(15.0), // 默认子弹速度，子类可以覆盖
     bulletDamage(damage), // 子弹伤害
-    // directionVector(direction.normalized()), // 确保方向向量已归一化
     lifetimeFrames(180), // 子弹存在约 3 秒 (60FPS * 3秒)
     currentFrameCount(0)
 {
