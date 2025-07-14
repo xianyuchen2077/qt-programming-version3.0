@@ -33,21 +33,27 @@ Character::Character(QGraphicsItem *parent, const QString &pixmapPath) : Item(pa
         qreal imageWidth = pixmapItem->pixmap().width() * pixmapItem->scale();
         qreal imageHeight = pixmapItem->pixmap().height() * pixmapItem->scale();
 
-        // 碰撞体宽度通常小于图片宽度，例如 80%
-        qreal collisionWidth = imageWidth * 0.8;
-        // 碰撞体高度通常是图片高度的大部分，例如 90%
-        qreal collisionHeight = imageHeight * 0.9;
+        // 头部碰撞框（较宽，在上半部分）
+        qreal headWidth = imageWidth * 0.8;
+        qreal headHeight = imageHeight * 0.6;
+        qreal headX = (imageWidth - headWidth) / 2.0;
+        qreal headY = imageHeight * 0.1;
 
-        // 计算碰撞体的左上角坐标，使其大致居中于图片底部
-        qreal collisionX = (imageWidth - collisionWidth) / 2.0;
-        qreal collisionY = imageHeight - collisionHeight;
+        m_headCollisionRect = QRectF(headX, headY, headWidth, headHeight);
 
-        m_collisionRect = QRectF(collisionX, collisionY, collisionWidth, collisionHeight);
+        // 身体碰撞框（较窄，在下半部分）
+        qreal bodyWidth = imageWidth * 0.6;  // 身体宽度占60%
+        qreal bodyHeight = imageHeight * 0.5; // 身体高度占50%
+        qreal bodyX = (imageWidth - bodyWidth) / 2.0;
+        qreal bodyY = imageHeight * 0.7; // 从图片50%位置开始
+
+        m_bodyCollisionRect = QRectF(bodyX, bodyY, bodyWidth, bodyHeight-45);
     }
     else
     {
         // 如果没有 pixmapItem，给一个默认值
-        m_collisionRect = QRectF(0, 0, 50, 80); // 默认尺寸
+        m_headCollisionRect = QRectF(0, 0, 50, 80); // 默认尺寸
+        m_bodyCollisionRect = QRectF(0, 0, 30, 50); // 默认站立碰撞体尺寸
     }
 }
 
@@ -400,5 +406,20 @@ void Character::unequipHeadEquipment()
 // 重写boundingRect函数
 QRectF Character::boundingRect() const
 {
-    return m_collisionRect;
+    return m_headCollisionRect.united(m_bodyCollisionRect);
+}
+
+QRectF Character::getHeadCollisionRect() const
+{
+    return m_headCollisionRect;
+}
+
+QRectF Character::getBodyCollisionRect() const
+{
+    return m_bodyCollisionRect;
+}
+
+QList<QRectF> Character::getAllCollisionRects() const
+{
+    return {m_headCollisionRect, m_bodyCollisionRect};
 }

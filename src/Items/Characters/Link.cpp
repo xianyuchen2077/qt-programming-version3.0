@@ -32,21 +32,40 @@ Link::Link(QGraphicsItem *parent): Character(parent, ":/Items/Characters/littler
         // 图片在角色坐标系中的位置（考虑setPos的偏移）
         QPointF imagePos = pixmapItem->pos(); // (-130, -225)
 
-        // 碰撞框应该在角色脚部附近
-        qreal collisionWidth = scaledWidth * 0.5;
-        qreal collisionHeight = scaledHeight * 0.7;
+        // // 碰撞框应该在角色脚部附近
+        // qreal collisionWidth = scaledWidth * 0.5;
+        // qreal collisionHeight = scaledHeight * 0.7;
 
-        // 碰撞框应该在图片底部中央
-        qreal collisionX = imagePos.x() + (scaledWidth - collisionWidth) / 2.0 - 10; // 调整X位置，使碰撞框稍微偏左;
-        qreal collisionY = imagePos.y() + scaledHeight - collisionHeight - 45; // 调整Y位置，使碰撞框在图片底部附近
+        // // 碰撞框应该在图片底部中央
+        // qreal collisionX = imagePos.x() + (scaledWidth - collisionWidth) / 2.0 - 10; // 调整X位置，使碰撞框稍微偏左;
+        // qreal collisionY = imagePos.y() + scaledHeight - collisionHeight - 45; // 调整Y位置，使碰撞框在图片底部附近
 
-        // 更新基类的碰撞矩形
-        m_collisionRect = QRectF(collisionX, collisionY, collisionWidth, collisionHeight);
+        // // 更新基类的碰撞矩形
+        // m_collisionRect = QRectF(collisionX, collisionY, collisionWidth, collisionHeight);
+
+        // 头部碰撞框
+        qreal headWidth = scaledWidth * 0.50;   // 头部较宽
+        qreal headHeight = scaledHeight * 0.45; // 头部高度
+        qreal headX = imagePos.x() + (scaledWidth - headWidth) / 2.0 - 7;
+        qreal headY = imagePos.y() + scaledHeight * 0.2; // 头部位置
+
+        m_headCollisionRect = QRectF(headX, headY, headWidth, headHeight);
+
+        // 身体碰撞框
+        qreal bodyWidth = scaledWidth * 0.25;   // 身体较窄
+        qreal bodyHeight = scaledHeight * 0.35; // 身体高度
+        qreal bodyX = imagePos.x() + (scaledWidth - bodyWidth) / 2.0-5;
+        qreal bodyY = imagePos.y() + scaledHeight * 0.55; // 身体位置
+
+        m_bodyCollisionRect = QRectF(bodyX, bodyY, bodyWidth, bodyHeight-20);
+
+        qDebug() << "Link head collision rect:" << m_headCollisionRect;
+        qDebug() << "Link body collision rect:" << m_bodyCollisionRect;
     }
     else
     {
-        // 如果没有图片，给一个默认的碰撞框
-        m_collisionRect = QRectF(-25, -80, 50, 80); // 默认尺寸，在角色原点附近
+        m_headCollisionRect = QRectF(-30, -80, 60, 35);
+        m_bodyCollisionRect = QRectF(-20, -45, 40, 45);
     }
 
     headEquipment = new CapOfTheHero(this);

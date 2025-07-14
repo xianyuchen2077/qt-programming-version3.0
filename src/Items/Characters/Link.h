@@ -26,8 +26,8 @@ public:
     void updateAnimation(qint64 deltaTime); // 更新动画（独立于输入处理）
 
 private:
-    qint64 m_walkAnimationElapsedTime = 0; // 记录行走动画已经过去的时间
-    int m_currentWalkFrame = 0;           // 当前行走的帧索引（0 或 1）
+    qint64 m_walkAnimationElapsedTime = 0;      // 记录行走动画已经过去的时间
+    int m_currentWalkFrame = 0;                 // 当前行走的帧索引（0 或 1）
     const qint64 m_walkAnimationInterval = 100; // 每张图片切换的时间间隔（毫秒）- 调整为更合理的值
 
     bool faceRight = false; // 角色是否面向右侧

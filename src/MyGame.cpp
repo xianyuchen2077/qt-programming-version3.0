@@ -13,8 +13,8 @@
 MyGame::MyGame(QWidget *parent) : QMainWindow(parent)
 {
     // 初始化时先加载一个默认场景 BattleScene
-    currentScene = new BattleScene(this);  // 默认启动 BattleScene
-    currentSceneId = SceneID::BattleScene_ID; // 初始场景ID为 BattleScene
+    currentScene = new IceScene(this);  // 默认启动 BattleScene
+    currentSceneId = SceneID::IceScene_ID; // 初始场景ID为 BattleScene
     previousActiveScene = nullptr; // 初始化上一个活动场景为空
     previousSceneId = SceneID::BattleScene_ID; // 初始时，上一个场景就是战斗场景（如果这是入口）
     view = new QGraphicsView(this);

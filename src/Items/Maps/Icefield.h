@@ -8,7 +8,6 @@
 enum class ObstacleType
 {
     Rectangle,
-    Slope
 };
 
 // 障碍物结构体

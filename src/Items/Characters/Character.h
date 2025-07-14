@@ -48,6 +48,7 @@ public:
 
     void setMoveSpeed(qreal speed);
 
+
     virtual void processInput();
 
     // 与血条相关函数
@@ -65,9 +66,10 @@ public:
     int getGroundY() const;                // 获取地面的Y坐标
     QRectF boundingRect() const override;  // 重写boundingRect函数
 
-    // 处理碰撞的方法
-    // 接受障碍物列表，并更新角色的位置和状态
-    // void handleCollisions(const QList<Obstacle>& obstacles, qreal mapFloorHeight, qint64 deltaTime);
+    // 获取复合碰撞矩形
+    QRectF getHeadCollisionRect() const;
+    QRectF getBodyCollisionRect() const;
+    QList<QRectF> getAllCollisionRects() const;
 
     // 与装备相关函数
     void equipHeadEquipment(HeadEquipment* headEquipment);      // 佩戴头部装备的方法
@@ -87,7 +89,9 @@ protected:
 
     // 角色的碰撞矩形 (局部坐标)
     QRectF m_collisionRect;
-
+    // 角色的碰撞矩形
+    QRectF m_headCollisionRect;  // 头部碰撞框
+    QRectF m_bodyCollisionRect;  // 身体碰撞框
     // 切换角色图片
     void updatePixmap(const QString &pixmapPath);
 

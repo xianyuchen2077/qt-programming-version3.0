@@ -274,21 +274,32 @@ bool IceScene::checkObstacleCollision(Character* character, const QPointF& testP
 {
     if (!character) return false;
 
-    QRectF characterRect = character->boundingRect();
+    // 获取角色的所有碰撞矩形
+    QList<QRectF> collisionRects = character->getAllCollisionRects();
 
-    // 计算角色在测试位置的实际碰撞框
-    QRectF testCharacterRect = characterRect;
-    testCharacterRect.moveTopLeft(testPos + characterRect.topLeft());
+    // 计算每个碰撞矩形在测试位置的实际位置
+    QList<QRectF> testRects;
+    for (const QRectF& rect : collisionRects)
+    {
+        QRectF testRect = rect;
+        testRect.moveTopLeft(testPos + rect.topLeft());
+        testRects.append(testRect);
+    }
 
     // 获取障碍物列表
     const QList<Obstacle>& obstacles = static_cast<Icefield*>(map)->getObstacles();
 
     for (const Obstacle& obstacle : obstacles)
     {
-        if (obstacle.bounds.intersects(testCharacterRect))
+        // 检查任何一个碰撞矩形是否与障碍物相交
+        for (const QRectF& testRect : testRects)
         {
-            qDebug() << "Collision detected with obstacle at:" << obstacle.bounds;
-            return true;
+            if (obstacle.bounds.intersects(testRect))
+            {
+                qDebug() << "Collision detected with obstacle at:" << obstacle.bounds
+                         << "Character rect:" << testRect;
+                return true;
+            }
         }
     }
 
@@ -811,47 +822,53 @@ void IceScene::updateDebugVisualization()
 
     // 添加新的动态调试项
     if (player1) {
-        QRectF p1CollisionRect = player1->boundingRect(); // 获取碰撞框
-        QPointF p1Pos = player1->pos(); // 获取角色在场景中的位置
+        QPointF p1Pos = player1->pos();
 
-        // 碰撞框在场景坐标系中的实际位置
-        QRectF p1SceneRect = p1CollisionRect;
-        p1SceneRect.moveTopLeft(p1Pos + p1CollisionRect.topLeft());
+        // 头部碰撞框
+        QRectF p1HeadRect = player1->getHeadCollisionRect();
+        p1HeadRect.moveTopLeft(p1Pos + p1HeadRect.topLeft());
 
-        // 绘制碰撞框
-        QPen p1Pen(Qt::cyan, 2);
-        QGraphicsRectItem* p1Box = new QGraphicsRectItem(p1SceneRect);
-        p1Box->setPen(p1Pen);
-        p1Box->setBrush(Qt::NoBrush);
-        p1Box->setZValue(160);
-        addItem(p1Box);
-        debugItems.append(p1Box);
+        QGraphicsRectItem* p1HeadBox = new QGraphicsRectItem(p1HeadRect);
+        p1HeadBox->setPen(QPen(Qt::cyan, 2));
+        p1HeadBox->setBrush(QBrush(QColor(0, 255, 255, 30))); // 半透明青色
+        p1HeadBox->setZValue(160);
+        addItem(p1HeadBox);
+        debugItems.append(p1HeadBox);
 
-        // 绘制角色中心点
+        // 身体碰撞框
+        QRectF p1BodyRect = player1->getBodyCollisionRect();
+        p1BodyRect.moveTopLeft(p1Pos + p1BodyRect.topLeft());
+
+        QGraphicsRectItem* p1BodyBox = new QGraphicsRectItem(p1BodyRect);
+        p1BodyBox->setPen(QPen(Qt::darkCyan, 2));
+        p1BodyBox->setBrush(QBrush(QColor(0, 200, 200, 30))); // 半透明深青色
+        p1BodyBox->setZValue(160);
+        addItem(p1BodyBox);
+        debugItems.append(p1BodyBox);
+
+        // 角色中心点
         QGraphicsEllipseItem* p1Center = new QGraphicsEllipseItem(p1Pos.x() - 3, p1Pos.y() - 3, 6, 6);
         p1Center->setBrush(Qt::cyan);
         p1Center->setZValue(161);
         addItem(p1Center);
         debugItems.append(p1Center);
 
-        // 角色信息文本
-        QString p1Info = QString("Player1\nPos: (%1, %2)\nVel: (%3, %4)\nOnGround: %5\nCollision: (%6,%7) %8x%9")
+        // 角色信息
+        QString p1Info = QString("Player1\nPos: (%1, %2)\nVel: (%3, %4)\nOnGround: %5\nHead: (%6,%7)\nBody: (%8,%9)")
                              .arg(p1Pos.x(), 0, 'f', 1)
                              .arg(p1Pos.y(), 0, 'f', 1)
                              .arg(player1->getVelocity().x(), 0, 'f', 2)
                              .arg(player1->getVelocity_y(), 0, 'f', 2)
                              .arg(player1->isOnGround() ? "Yes" : "No")
-                             .arg(p1SceneRect.x(), 0, 'f', 1)
-                             .arg(p1SceneRect.y(), 0, 'f', 1)
-                             .arg(p1SceneRect.width(), 0, 'f', 1)
-                             .arg(p1SceneRect.height(), 0, 'f', 1);
+                             .arg(p1HeadRect.x(), 0, 'f', 1).arg(p1HeadRect.y(), 0, 'f', 1)
+                             .arg(p1BodyRect.x(), 0, 'f', 1).arg(p1BodyRect.y(), 0, 'f', 1);
 
         QGraphicsTextItem* p1Label = new QGraphicsTextItem(p1Info);
         p1Label->setPos(p1Pos.x() + 50, p1Pos.y() - 120);
         p1Label->setDefaultTextColor(Qt::cyan);
         p1Label->setZValue(162);
         QFont infoFont = p1Label->font();
-        infoFont.setPointSize(8); // 稍小的字体以显示更多信息
+        infoFont.setPointSize(8);
         p1Label->setFont(infoFont);
         addItem(p1Label);
         debugItems.append(p1Label);
@@ -859,19 +876,29 @@ void IceScene::updateDebugVisualization()
 
     // 对player2执行相同操作
     if (player2) {
-        QRectF p2CollisionRect = player2->boundingRect();
         QPointF p2Pos = player2->pos();
 
-        QRectF p2SceneRect = p2CollisionRect;
-        p2SceneRect.moveTopLeft(p2Pos + p2CollisionRect.topLeft());
+        // 头部碰撞框
+        QRectF p2HeadRect = player2->getHeadCollisionRect();
+        p2HeadRect.moveTopLeft(p2Pos + p2HeadRect.topLeft());
 
-        QPen p2Pen(Qt::yellow, 2);
-        QGraphicsRectItem* p2Box = new QGraphicsRectItem(p2SceneRect);
-        p2Box->setPen(p2Pen);
-        p2Box->setBrush(Qt::NoBrush);
-        p2Box->setZValue(160);
-        addItem(p2Box);
-        debugItems.append(p2Box);
+        QGraphicsRectItem* p2HeadBox = new QGraphicsRectItem(p2HeadRect);
+        p2HeadBox->setPen(QPen(Qt::yellow, 2));
+        p2HeadBox->setBrush(QBrush(QColor(255, 255, 0, 30))); // 半透明黄色
+        p2HeadBox->setZValue(160);
+        addItem(p2HeadBox);
+        debugItems.append(p2HeadBox);
+
+        // 身体碰撞框
+        QRectF p2BodyRect = player2->getBodyCollisionRect();
+        p2BodyRect.moveTopLeft(p2Pos + p2BodyRect.topLeft());
+
+        QGraphicsRectItem* p2BodyBox = new QGraphicsRectItem(p2BodyRect);
+        p2BodyBox->setPen(QPen(QColor(200, 200, 0), 2));
+        p2BodyBox->setBrush(QBrush(QColor(200, 200, 0, 30))); // 半透明深黄色
+        p2BodyBox->setZValue(160);
+        addItem(p2BodyBox);
+        debugItems.append(p2BodyBox);
 
         QGraphicsEllipseItem* p2Center = new QGraphicsEllipseItem(p2Pos.x() - 3, p2Pos.y() - 3, 6, 6);
         p2Center->setBrush(Qt::yellow);
@@ -879,16 +906,14 @@ void IceScene::updateDebugVisualization()
         addItem(p2Center);
         debugItems.append(p2Center);
 
-        QString p2Info = QString("Player2\nPos: (%1, %2)\nVel: (%3, %4)\nOnGround: %5\nCollision: (%6,%7) %8x%9")
+        QString p2Info = QString("Player2\nPos: (%1, %2)\nVel: (%3, %4)\nOnGround: %5\nHead: (%6,%7)\nBody: (%8,%9)")
                              .arg(p2Pos.x(), 0, 'f', 1)
                              .arg(p2Pos.y(), 0, 'f', 1)
                              .arg(player2->getVelocity().x(), 0, 'f', 2)
                              .arg(player2->getVelocity_y(), 0, 'f', 2)
                              .arg(player2->isOnGround() ? "Yes" : "No")
-                             .arg(p2SceneRect.x(), 0, 'f', 1)
-                             .arg(p2SceneRect.y(), 0, 'f', 1)
-                             .arg(p2SceneRect.width(), 0, 'f', 1)
-                             .arg(p2SceneRect.height(), 0, 'f', 1);
+                             .arg(p2HeadRect.x(), 0, 'f', 1).arg(p2HeadRect.y(), 0, 'f', 1)
+                             .arg(p2BodyRect.x(), 0, 'f', 1).arg(p2BodyRect.y(), 0, 'f', 1);
 
         QGraphicsTextItem* p2Label = new QGraphicsTextItem(p2Info);
         p2Label->setPos(p2Pos.x() - 200, p2Pos.y() - 120);
