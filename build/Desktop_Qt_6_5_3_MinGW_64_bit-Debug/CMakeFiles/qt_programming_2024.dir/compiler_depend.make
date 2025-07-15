@@ -2602,6 +2602,7 @@ CMakeFiles/qt_programming_2024.dir/src/Items/Characters/Link.cpp.obj: C:/Users/x
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QDebug \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QElapsedTimer \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QPointF \
+  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QTimer \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/q20memory.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/q20type_traits.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qalgorithms.h \
@@ -2613,6 +2614,7 @@ CMakeFiles/qt_programming_2024.dir/src/Items/Characters/Link.cpp.obj: C:/Users/x
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qatomic.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qatomic_cxx11.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qbasicatomic.h \
+  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qbasictimer.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qbindingstorage.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qbytearray.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qbytearrayalgorithms.h \
@@ -2696,6 +2698,7 @@ CMakeFiles/qt_programming_2024.dir/src/Items/Characters/Link.cpp.obj: C:/Users/x
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qtdeprecationmarkers.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qtenvironmentvariables.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qtextstream.h \
+  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qtimer.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qtmetamacros.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qtnoop.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qtpreprocessorsupport.h \

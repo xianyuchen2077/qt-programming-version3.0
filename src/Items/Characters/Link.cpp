@@ -168,69 +168,51 @@ void Link::processWalkAnimation(qint64 deltaTime)
     }
 }
 
-// // 设置人物死亡动画
-// void Link::processDyingAnimation(qint64 deltaTime)
-// {
-//     m_dyingAnimationElapsedTime += deltaTime;
+// 设置人物死亡动画
+void Link::processDyingAnimation(qint64 deltaTime)
+{
+    m_dyingAnimationElapsedTime += deltaTime;
 
-//     if (m_dyingAnimationElapsedTime >= m_dyingAnimationInterval)
-//     {
-//         m_dyingAnimationElapsedTime = 0; // 重置计时器
+    if (m_dyingAnimationElapsedTime >= m_dyingAnimationInterval)
+    {
+        m_dyingAnimationElapsedTime = 0; // 重置计时器
 
-//         // 切换到下一帧
-//         m_currentDyingFrame = (m_currentDyingFrame + 1) % 2; // 在 0 和 1 之间切换
+        // 切换到下一帧
+        m_currentDyingFrame = (m_currentDyingFrame + 1) % 2; // 在 0 和 1 之间切换
 
-//         if (pixmapItem != nullptr)
-//         {
-//             if (m_currentDyingFrame == 0)
-//             {
-//                 // 第一张行走图片
-//                 updatePixmap(":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Dying/0_Reaper_Man_Dying_006.png");
-//             }
-//             else if (m_currentDyingFrame == 1)
-//             {
-//                 // 第二张行走图片
-//                 updatePixmap(":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Dying/0_Reaper_Man_Dying_008.png");
+        if (pixmapItem != nullptr)
+        {
+            if (m_currentDyingFrame == 0)
+            {
+                // 第一张行走图片
+                updatePixmap(":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Dying/0_Reaper_Man_Dying_006.png");
+            }
+            else if (m_currentDyingFrame == 1)
+            {
+                // 第二张行走图片
+                updatePixmap(":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Dying/0_Reaper_Man_Dying_008.png");
 
-//             }
-//             else if (m_currentDyingFrame == 2)
-//             {
-//                 // 第三张行走图片
-//                 updatePixmap(":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Dying/0_Reaper_Man_Dying_010.png");
-//             }
-//             else if (m_currentDyingFrame == 3)
-//             {
-//                 // 第四张行走图片
-//                 updatePixmap(":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Dying/0_Reaper_Man_Dying_012.png");
-//             }
-//             pixmapItem->setScale(0.3);
-//             pixmapItem->setPos(-130, -225);
-//         }
-//     }
-// }
+            }
+            else if (m_currentDyingFrame == 2)
+            {
+                // 第三张行走图片
+                updatePixmap(":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Dying/0_Reaper_Man_Dying_010.png");
+            }
+            else if (m_currentDyingFrame == 3)
+            {
+                // 第四张行走图片
+                updatePixmap(":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Dying/0_Reaper_Man_Dying_012.png");
+            }
+            pixmapItem->setScale(0.3);
+            pixmapItem->setPos(-130, -225);
+        }
+    }
+}
 
 void Link::processDeathAnimation()
 {
     // 设置死亡动画图片
-    setDeathPixmap();
-
-    // 可以在这里添加更多的死亡动画效果
-    // 比如透明度变化、旋转等
-    if (pixmapItem)
-    {
-        // 让角色逐渐变透明
-        pixmapItem->setOpacity(0.7);
-    }
-}
-
-void Link::setDeathPixmap()
-{
-    if (pixmapItem != nullptr)
-    {
-        updatePixmap(":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Dying/0_Reaper_Man_Dying_000.png");
-        pixmapItem->setScale(0.3);
-        pixmapItem->setPos(-130, -225);
-    }
+    processDyingAnimation(m_lastFrameTime.elapsed());
 }
 
 void Link::checkDeathStatus()
@@ -281,8 +263,8 @@ void Link::startDeathSequence()
     //     });
     // }
 
-    // 启动3秒计时器
-    deathTimer->start(3000);
+    // // 启动3秒计时器（倒计时结束自动退出）
+    // deathTimer->start(3000);
 }
 
 void Link::processInput()
@@ -364,12 +346,15 @@ void Link::processInput()
 void Link::updateAnimation(qint64 deltaTime)
 {
     bool isWalking = (isLeftDown() || isRightDown()) && isOnGround();
-    bool isDying = (getHealth() <= 0);
+    bool isDying = isDead();
 
     if (isDying)
     {
-        // processDyingAnimation(deltaTime);
-        return;
+        if (!isDeathAnimationPlaying())
+        {
+            checkDeathStatus();
+        }
+        return; // 死亡后不再处理其他动画
     }
 
     if (isWalking)
