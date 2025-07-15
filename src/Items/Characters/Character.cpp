@@ -100,10 +100,12 @@ void Character::setUpDown(bool upDown)
 }
 
 // 与速度相关的函数
+// 获取速度
 const QPointF &Character::getVelocity() const {
     return velocity;
 }
 
+// 设置速度
 void Character::setVelocity(const QPointF &velocity) {
     Character::velocity = velocity;
 }
@@ -144,7 +146,9 @@ void Character::setHealth(int health)
     currentHealth = qBound(0, health, maxHealth); // 确保血量在 0 和 maxHealth 之间
     if (currentHealth <= 0)
     {
-        // 触发角色死亡事件，例如从场景中移除角色
+        // 触发角色死亡事件
+
+        qDebug() << "Character has died!";
         // scene()->removeItem(this); // 如果 Item 继承自 QGraphicsItem 且有场景
     }
     updateHealthBar(); // 更新血条显示
@@ -175,10 +179,12 @@ void Character::takeDamage(int damage)
     if (currentHealth <= 0)
     {
         currentHealth = 0;
-        // 可以在这里添加角色死亡的逻辑
+        setDead(true); // 设置角色为死亡状态
+        qDebug() << "Character died from damage!";
+        return;
     }
 
-    setHealth(currentHealth - damage); // 减少血量
+    setHealth(currentHealth - damage); // 减少血量并更新血条显示
 }
 
 // 治疗函数
@@ -440,6 +446,44 @@ void Character::unequipWeapon()
         weapon->setParentItem(parentItem()); // 设置父项为角色的父项
         weapon = nullptr; // 清空武器指针
     }
+}
+
+// 卸下所有装备的函数
+void Character::removeAllEquipment()
+{
+    // 卸下头部装备
+    if (headEquipment != nullptr)
+    {
+        headEquipment->unmount();
+        headEquipment->setParentItem(parentItem());
+        headEquipment = nullptr;
+    }
+
+    // 卸下护甲
+    if (armor != nullptr)
+    {
+        armor->unmount();
+        armor->setParentItem(parentItem());
+        armor = nullptr;
+    }
+
+    // 卸下腿部装备
+    if (legEquipment != nullptr)
+    {
+        legEquipment->unmount();
+        legEquipment->setParentItem(parentItem());
+        legEquipment = nullptr;
+    }
+
+    // 卸下武器
+    if (weapon != nullptr)
+    {
+        weapon->unmount();
+        weapon->setParentItem(parentItem());
+        weapon = nullptr;
+    }
+
+    qDebug() << "All equipment removed from character";
 }
 
 // 重写boundingRect函数

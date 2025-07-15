@@ -57,6 +57,12 @@ public:
     void takeDamage(int damage);         // 受伤函数
     void heal(int amount);               // 治疗函数
 
+    // 与死亡相关函数
+    bool isDead() const { return isDead_; }
+    void setDead(bool dead) { isDead_ = dead; }
+    bool isDeathAnimationPlaying() const { return isDeathAnimationPlaying_; }
+    void setDeathAnimationPlaying(bool playing) { isDeathAnimationPlaying_ = playing; }
+
     // 与跳跃相关函数
     void handleJump();        // 执行跳跃动作
     void handleGravity();     // 处理重力作用
@@ -81,6 +87,8 @@ public:
     void unequipHeadEquipment(); // 卸下头部装备的方法
     void equipWeapon(Weapon* weapon); // 装备武器
     void unequipWeapon(); // 卸下武器
+    void removeAllEquipment(); // 卸下所有装备的函数
+
     Armor* pickupArmor(Armor* newArmor);
     LegEquipment* pickupLegEquipment(LegEquipment* newLegEquipment);
     HeadEquipment* pickupHeadEquipment(HeadEquipment* newHeadEquipment);
@@ -121,6 +129,10 @@ private:
     QGraphicsRectItem *healthBarFill; // 血条填充（表示当前血量）
     void drawHealthBar(); // 绘制血条
     void updateHealthBar(); // 更新血条显示
+
+    // 死亡相关属性
+    bool isDead_ = false;                    // 是否死亡
+    bool isDeathAnimationPlaying_ = false;   // 死亡动画是否正在播放
 };
 
 

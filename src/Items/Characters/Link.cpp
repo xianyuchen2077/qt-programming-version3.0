@@ -1,6 +1,7 @@
 #include "Link.h"
 #include <QPixmap>
 #include <QDebug>
+#include <QTimer>
 #include <QTransform>
 #include <QElapsedTimer>
 #include "../HeadEquipments/CapOfTheHero.h"
@@ -76,16 +77,18 @@ Link::Link(QGraphicsItem *parent): Character(parent, ":/Items/Characters/littler
     m_lastFrameTime.start();
 }
 
+// 设置角色下蹲图片
 void Link::setCrouchPixmap()
 {
     if (pixmapItem != nullptr)
     {
-        updatePixmap(":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Crouch/0_Reaper_Man_Dying_000.png");
+        updatePixmap(":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Crouch/0_Reaper_Man_Crouch_000.png");
         pixmapItem->setScale(0.3);
         pixmapItem->setPos(-130, -225); // 确保图片位置正确
     }
 }
 
+// 设置角色站立图片
 void Link::setStandPixmap()
 {
     if (pixmapItem != nullptr)
@@ -96,6 +99,7 @@ void Link::setStandPixmap()
     }
 }
 
+// 设置角色跳跃图片
 void Link::setJumpPixmap()
 {
     if (pixmapItem != nullptr)
@@ -134,6 +138,7 @@ void Link::turnFaceRight()
     }
 }
 
+// 设置角色行走动画
 void Link::processWalkAnimation(qint64 deltaTime)
 {
     m_walkAnimationElapsedTime += deltaTime;
@@ -163,8 +168,131 @@ void Link::processWalkAnimation(qint64 deltaTime)
     }
 }
 
+// // 设置人物死亡动画
+// void Link::processDyingAnimation(qint64 deltaTime)
+// {
+//     m_dyingAnimationElapsedTime += deltaTime;
+
+//     if (m_dyingAnimationElapsedTime >= m_dyingAnimationInterval)
+//     {
+//         m_dyingAnimationElapsedTime = 0; // 重置计时器
+
+//         // 切换到下一帧
+//         m_currentDyingFrame = (m_currentDyingFrame + 1) % 2; // 在 0 和 1 之间切换
+
+//         if (pixmapItem != nullptr)
+//         {
+//             if (m_currentDyingFrame == 0)
+//             {
+//                 // 第一张行走图片
+//                 updatePixmap(":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Dying/0_Reaper_Man_Dying_006.png");
+//             }
+//             else if (m_currentDyingFrame == 1)
+//             {
+//                 // 第二张行走图片
+//                 updatePixmap(":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Dying/0_Reaper_Man_Dying_008.png");
+
+//             }
+//             else if (m_currentDyingFrame == 2)
+//             {
+//                 // 第三张行走图片
+//                 updatePixmap(":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Dying/0_Reaper_Man_Dying_010.png");
+//             }
+//             else if (m_currentDyingFrame == 3)
+//             {
+//                 // 第四张行走图片
+//                 updatePixmap(":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Dying/0_Reaper_Man_Dying_012.png");
+//             }
+//             pixmapItem->setScale(0.3);
+//             pixmapItem->setPos(-130, -225);
+//         }
+//     }
+// }
+
+void Link::processDeathAnimation()
+{
+    // 设置死亡动画图片
+    setDeathPixmap();
+
+    // 可以在这里添加更多的死亡动画效果
+    // 比如透明度变化、旋转等
+    if (pixmapItem)
+    {
+        // 让角色逐渐变透明
+        pixmapItem->setOpacity(0.7);
+    }
+}
+
+void Link::setDeathPixmap()
+{
+    if (pixmapItem != nullptr)
+    {
+        updatePixmap(":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Dying/0_Reaper_Man_Dying_000.png");
+        pixmapItem->setScale(0.3);
+        pixmapItem->setPos(-130, -225);
+    }
+}
+
+void Link::checkDeathStatus()
+{
+    // 如果角色死亡且死亡动画尚未开始
+    if (isDead() && !isDeathAnimationPlaying())
+    {
+        startDeathSequence();
+    }
+}
+
+void Link::startDeathSequence()
+{
+    if (isDeathAnimationPlaying()) return;
+
+    setDeathAnimationPlaying(true);
+    qDebug() << "Starting death sequence";
+
+    // 停止所有移动
+    setVelocity(QPointF(0, 0));
+    setVelocity_y(0);
+
+    // 立即播放死亡动画
+    processDeathAnimation();
+
+    // 卸下所有装备
+    removeAllEquipment();
+
+    // // 创建死亡计时器，3秒后删除角色
+    // if (!deathTimer)
+    // {
+    //     deathTimer = new QTimer(this);
+    //     connect(deathTimer, &QTimer::timeout, this, [this](){
+    //         qDebug() << "Death timer expired, removing character";
+
+    //         // 从场景中移除角色
+    //         if (scene())
+    //         {
+    //             scene()->removeItem(this);
+    //         }
+
+    //         // 停止计时器
+    //         deathTimer->stop();
+    //         deathTimer = nullptr;
+
+    //         // 删除角色对象
+    //         delete this;
+    //     });
+    // }
+
+    // 启动3秒计时器
+    deathTimer->start(3000);
+}
+
 void Link::processInput()
 {
+    // 如果角色死亡，不处理输入
+    if (isDead())
+    {
+        return;
+    }
+
     Character::processInput();
 
     if(isDownDown())
@@ -235,9 +363,16 @@ void Link::processInput()
 // 独立的动画更新方法
 void Link::updateAnimation(qint64 deltaTime)
 {
-    bool isMoving = (isLeftDown() || isRightDown()) && isOnGround();
+    bool isWalking = (isLeftDown() || isRightDown()) && isOnGround();
+    bool isDying = (getHealth() <= 0);
 
-    if (isMoving)
+    if (isDying)
+    {
+        // processDyingAnimation(deltaTime);
+        return;
+    }
+
+    if (isWalking)
     {
         processWalkAnimation(deltaTime);
     }

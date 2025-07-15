@@ -12,11 +12,11 @@ BulletBasic::BulletBasic(QGraphicsItem *parent, const QPointF& startPos, const Q
     hasExploded(false),
     shooterCharacter(shooter)
 {
-    bulletSpeed = 20.0;     // 设置子弹速度
-    lifetimeFrames = 300;   // 设置生命周期
-    setScale(0.1); // 设置子弹缩放比例
-    setPos(startPos + QPointF(0,-50)); // 初始位置偏移，避免与角色重叠
-    setZValue(5); // 确保子弹显示在最上层
+    bulletSpeed = 20.0;                 // 设置子弹速度
+    lifetimeFrames = 300;               // 设置生命周期
+    setScale(0.1);                      // 设置子弹缩放比例
+    setPos(startPos + QPointF(0,-50));  // 初始位置偏移，避免与角色重叠
+    setZValue(5);                       // 确保子弹显示在最上层
     qDebug() << "BulletBasic created with shooter:" << shooter << "damage:" << damage;
 }
 
@@ -28,10 +28,11 @@ void BulletBasic::explode()
     qDebug() << "BulletBasic exploded at position:" << pos();
 
     // 创建爆炸视觉效果
-    if (pixmapItem) {
+    if (pixmapItem)
+    {
         // 改变颜色和大小表示爆炸
-        pixmapItem->setOpacity(0.8);
-        setScale(scale() * 3); // 放大表示爆炸
+        pixmapItem->setOpacity(0.8);    // 设置透明度
+        setScale(scale() * 3);          // 放大表示爆炸
 
         // 添加简单的颜色效果（如果需要）
         // QGraphicsColorizeEffect* effect = new QGraphicsColorizeEffect();
@@ -59,9 +60,8 @@ void BulletBasic::handleCollisions()
         {
             // 对角色造成伤害
             hitCharacter->takeDamage(bulletDamage);
-            qDebug() << "BulletBasic hit character! Character health:" << hitCharacter->getHealth();
-
             explode();
+            qDebug() << "BulletBasic hit character! Character health:" << hitCharacter->getHealth();
             return;
         }
     }
@@ -76,7 +76,7 @@ void BulletBasic::handleCollisions()
         QList<QGraphicsItem*> allItems = scene()->items();
         Icefield* icefield = nullptr;
 
-        for (QGraphicsItem* item : allItems)
+        for (QGraphicsItem* item : std::as_const(allItems))
         {
             icefield = dynamic_cast<Icefield*>(item);
             if (icefield) break;

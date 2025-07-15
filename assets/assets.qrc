@@ -10,19 +10,22 @@
         <file>Items/Maps/Scenicpicture/SettingsScene.png</file>
         <file>Items/Maps/Icefield/Icefield_purple.png</file>
         <file>Items/Maps/Icefield/Icefield_white.png</file>
-        <file>Items/Characters/xiaoxin_superman/jump_middle.png</file>
-        <file>Items/Characters/xiaoxin_superman/stand_middle.png</file>
         <file>Items/Bullets/Shabby_Pistol_bullet.png</file>
-        <file>Items/Characters/xiaoxin_superman/crouch_middle.png</file>
         <file>Items/HeadEquipments/Helmet/Helmet_of_the_Paladin.png</file>
         <file>Items/Maps/Icefield/icicle_1.png</file>
         <file>Items/Maps/Icefield/icicle_2.png</file>
         <file>Items/Maps/Icefield/ice_platform.png</file>
-        <file>Items/Characters/xiaoxin_superman/crouch_middle_2.png</file>
         <file>Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Walking/0_Reaper_Man_Walking_000.png</file>
         <file>Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Walking/0_Reaper_Man_Walking_006.png</file>
         <file>Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Walking/0_Reaper_Man_Walking_022.png</file>
-        <file>Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Crouch/0_Reaper_Man_Dying_000.png</file>
         <file>Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Jump Start/0_Reaper_Man_Jump Start_005.png</file>
+        <file>Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Crouch/0_Reaper_Man_Crouch_000.png</file>
+        <file>Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Dying/0_Reaper_Man_Dying_006.png</file>
+        <file>Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Dying/0_Reaper_Man_Dying_007.png</file>
+        <file>Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Dying/0_Reaper_Man_Dying_008.png</file>
+        <file>Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Dying/0_Reaper_Man_Dying_009.png</file>
+        <file>Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Dying/0_Reaper_Man_Dying_010.png</file>
+        <file>Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Dying/0_Reaper_Man_Dying_011.png</file>
+        <file>Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Dying/0_Reaper_Man_Dying_012.png</file>
     </qresource>
 </RCC>

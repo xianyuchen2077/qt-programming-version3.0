@@ -48,7 +48,7 @@ void Bullet::destroyBullet()
     {
         scene()->removeItem(this);
     }
-    delete this; // 使用deleteLater确保安全销毁
+    delete this;
 }
 
 void Bullet::advance(int phase)
