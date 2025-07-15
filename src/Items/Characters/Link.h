@@ -33,11 +33,12 @@ private:
     qint64 m_walkAnimationElapsedTime = 0;      // 记录行走动画已经过去的时间
     int m_currentWalkFrame = 0;                 // 当前行走的帧索引（0 或 1）
     const qint64 m_walkAnimationInterval = 100; // 每张图片切换的时间间隔（毫秒）
-    QTimer* deathTimer = nullptr; // 死亡计时器
+
+    int m_currentDyingFrame = 0;             // 当前死亡帧索引
+    QStringList m_dyingFrames;              // 死亡帧图片路径
+    QTimer* m_dyingAnimationTimer = nullptr; // 死亡动画用的定时器
+    void handleDyingFrameUpdate(); // 处理死亡动画帧更新
     void processDeathAnimation(); // 处理死亡动画
-    qint64 m_dyingAnimationElapsedTime = 0;     // 记录死亡动画已经过去的时间
-    int m_currentDyingFrame = 0;                // 当前死亡的帧索引（0 到 3）
-    const qint64 m_dyingAnimationInterval = 300; // 每张死亡图片切换的时间间隔（毫秒）
 
     bool faceRight = false; // 角色是否面向右侧
 

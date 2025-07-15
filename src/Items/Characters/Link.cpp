@@ -171,48 +171,62 @@ void Link::processWalkAnimation(qint64 deltaTime)
 // 设置人物死亡动画
 void Link::processDyingAnimation(qint64 deltaTime)
 {
-    m_dyingAnimationElapsedTime += deltaTime;
-
-    if (m_dyingAnimationElapsedTime >= m_dyingAnimationInterval)
+    if (m_dyingAnimationTimer)
     {
-        m_dyingAnimationElapsedTime = 0; // 重置计时器
-
-        // 切换到下一帧
-        m_currentDyingFrame = (m_currentDyingFrame + 1) % 2; // 在 0 和 1 之间切换
-
-        if (pixmapItem != nullptr)
-        {
-            if (m_currentDyingFrame == 0)
-            {
-                // 第一张行走图片
-                updatePixmap(":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Dying/0_Reaper_Man_Dying_006.png");
-            }
-            else if (m_currentDyingFrame == 1)
-            {
-                // 第二张行走图片
-                updatePixmap(":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Dying/0_Reaper_Man_Dying_008.png");
-
-            }
-            else if (m_currentDyingFrame == 2)
-            {
-                // 第三张行走图片
-                updatePixmap(":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Dying/0_Reaper_Man_Dying_010.png");
-            }
-            else if (m_currentDyingFrame == 3)
-            {
-                // 第四张行走图片
-                updatePixmap(":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Dying/0_Reaper_Man_Dying_012.png");
-            }
-            pixmapItem->setScale(0.3);
-            pixmapItem->setPos(-130, -225);
-        }
+        m_dyingAnimationTimer->stop();
+        delete m_dyingAnimationTimer;
+        m_dyingAnimationTimer = nullptr;
     }
+    m_currentDyingFrame = 0;
+    m_dyingFrames = {
+        ":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Dying/0_Reaper_Man_Dying_000.png",
+        ":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Dying/0_Reaper_Man_Dying_001.png",
+        ":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Dying/0_Reaper_Man_Dying_002.png",
+        ":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Dying/0_Reaper_Man_Dying_003.png",
+        ":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Dying/0_Reaper_Man_Dying_004.png"
+        ":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Dying/0_Reaper_Man_Dying_005.png",
+        ":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Dying/0_Reaper_Man_Dying_006.png",
+        ":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Dying/0_Reaper_Man_Dying_007.png",
+        ":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Dying/0_Reaper_Man_Dying_008.png"
+        ":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Dying/0_Reaper_Man_Dying_009.png",
+        ":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Dying/0_Reaper_Man_Dying_010.png",
+        ":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Dying/0_Reaper_Man_Dying_011.png",
+        ":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Dying/0_Reaper_Man_Dying_012.png",
+        ":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Dying/0_Reaper_Man_Dying_013.png",
+        ":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Dying/0_Reaper_Man_Dying_014.png"
+    };
+
+    m_dyingAnimationTimer = new QTimer();
+    QObject* context = new QObject();  // 用于接收信号
+    QObject::connect(m_dyingAnimationTimer, &QTimer::timeout, context, [this, context]() {
+        if (m_currentDyingFrame >= m_dyingFrames.size())
+        {
+            m_dyingAnimationTimer->stop();
+            delete m_dyingAnimationTimer;
+            m_dyingAnimationTimer = nullptr;
+            return;
+        }
+        if (pixmapItem)
+        {
+          updatePixmap(m_dyingFrames[m_currentDyingFrame]);
+          pixmapItem->setScale(0.3);
+          pixmapItem->setPos(-130, -225);
+          qDebug() << "Dying picture" << (m_currentDyingFrame + 1) << "successfully set!";
+        }
+
+        ++m_currentDyingFrame;
+    });
+
+    int totalDuration = 1500; // 总共3秒
+    int frameCount = m_dyingFrames.size();
+    int frameInterval = totalDuration / frameCount;
+    m_dyingAnimationTimer->start(frameInterval);
 }
 
 void Link::processDeathAnimation()
 {
     // 设置死亡动画图片
-    processDyingAnimation(m_lastFrameTime.elapsed());
+    processDyingAnimation(500);
 }
 
 void Link::checkDeathStatus()
