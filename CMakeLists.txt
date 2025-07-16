@@ -67,6 +67,7 @@ add_executable(qt_programming_2024 src/main.cpp
         src/Items/Bullets/Bullet.cpp
         src/Items/Bullets/Shabby_Pistol_bullet.h
         src/Items/Bullets/Shabby_Pistol_bullet.cpp
+        src/Items/Weapons/Bomb.h
 
 
 

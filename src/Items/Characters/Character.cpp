@@ -239,6 +239,12 @@ void Character::updateHealthBar()
 
 void Character::processInput()
 {
+    // 如果角色死亡，不处理任何输入
+    if (isDead())
+    {
+        return;
+    }
+
     auto velocity = QPointF(0, 0);
 
     if (!lastPickDown && pickDown)
@@ -256,6 +262,12 @@ void Character::processInput()
 // 处理重力
 void Character::handleGravity()
 {
+    // 如果角色死亡，不处理重力
+    if (isDead())
+    {
+        return;
+    }
+
     if (!onGround) // 如果不在地面上
     {
         Velocity_y += gravity * 0.1; // 增加垂直速度
@@ -266,6 +278,12 @@ void Character::handleGravity()
 // 处理跳跃
 void Character::handleJump()
 {
+    // 如果角色死亡，不处理重力
+    if (isDead())
+    {
+        return;
+    }
+
     if (onGround)
     {
         Velocity_y = -(2.25 * jumpStrength / 2); // 设置跳跃初速度
@@ -301,7 +319,14 @@ int Character::getGroundY() const
 // 角色射击函数
 void Character::shoot(const QPointF& direction)
 {
-    if (weapon && weapon->canShoot()) {
+    // 如果角色死亡，不处理重力
+    if (isDead())
+    {
+        return;
+    }
+
+    if (weapon && weapon->canShoot())
+    {
         weapon->shoot(this, direction);
     }
 }
@@ -309,6 +334,12 @@ void Character::shoot(const QPointF& direction)
 // 判断是否可以射击
 bool Character::canShoot() const
 {
+    // 如果角色死亡，不处理重力
+    if (isDead())
+    {
+        return false;
+    }
+
     return weapon && weapon->canShoot();
 }
 
