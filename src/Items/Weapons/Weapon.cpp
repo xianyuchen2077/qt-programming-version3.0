@@ -88,6 +88,11 @@ int Weapon::getWeight() const
     return weight;
 }
 
+int Weapon::getShotCooldown() const
+{
+    return shotCooldown;
+}
+
 void Weapon::setWeaponName(const QString &name)
 {
     weaponName = name; // 设置武器名称
@@ -146,6 +151,11 @@ void Weapon::setMaxAmmoCount(int maxCount)
 void Weapon::setWeight(int weight)
 {
     this->weight = weight; // 武器重量
+}
+
+void Weapon::setShotCooldown(int cooldown)
+{
+    shotCooldown = cooldown; // 设置射击冷却时间
 }
 
 // 射击相关方法实现
@@ -211,8 +221,23 @@ void Weapon::shoot(Character* shooter, const QPointF& direction)
 
 void Weapon::bulletFired(Bullet* bullet)
 {
-    if (bullet) {
+    if (bullet)
+    {
         qDebug() << "Bullet fired from weapon!";
         // 这里可以添加更多逻辑，比如播放音效、特效等
+    }
+}
+
+void Weapon::Check_and_Destroy()
+{
+    // 检查是否需要销毁武器
+    if (ammoCount <= 0)
+    {
+        qDebug() << "Weapon out of ammo, destroying weapon:" << weaponName;
+        if (scene())
+        {
+            scene()->removeItem(this);
+        }
+        delete this; // 销毁武器对象
     }
 }

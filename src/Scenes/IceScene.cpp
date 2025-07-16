@@ -6,6 +6,7 @@
 #include "../Items/HeadEquipments/Helmet_of_the_Paladin.h"
 #include "../Items/LegEquipments/LegEquipment.h"
 #include "../Items/Weapons/Shabby_Pistol.h"
+#include "../Items/Weapons/SolidBall.h"
 
 // IceScene 构造函数
 IceScene::IceScene(QObject *parent) : Scene(parent)
@@ -16,7 +17,7 @@ IceScene::IceScene(QObject *parent) : Scene(parent)
     player1 = new Link();
     player2 = new Link();
     spareWeapon1 = new Shabby_Pistol();
-    spareWeapon2 = new Shabby_Pistol();
+    spareWeapon2 = new SolidBall();
     spareArmor = new FlamebreakerArmor();
     spareHeadEquipment = new HelmetOfThePaladin();
 
@@ -72,10 +73,6 @@ IceScene::IceScene(QObject *parent) : Scene(parent)
 
     // 启动游戏循环，60FPS
     gameTimer->start(FRAME_TIME);
-
-    // // 初始化平台数据
-    // initializePlatforms();
-    // landedOnPlatform = false;
 
     // 在构造函数末尾添加（在 gameTimer->start(FRAME_TIME); 之后）：
     // 显示调试可视化

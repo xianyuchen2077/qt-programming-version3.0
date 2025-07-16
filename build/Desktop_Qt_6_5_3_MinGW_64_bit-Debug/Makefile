@@ -322,6 +322,30 @@ src/Items/Bullets/Shabby_Pistol_bullet.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Bullets/Shabby_Pistol_bullet.cpp.s
 .PHONY : src/Items/Bullets/Shabby_Pistol_bullet.cpp.s
 
+src/Items/Bullets/SolidBall_bullet.obj: src/Items/Bullets/SolidBall_bullet.cpp.obj
+.PHONY : src/Items/Bullets/SolidBall_bullet.obj
+
+# target to build an object file
+src/Items/Bullets/SolidBall_bullet.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Bullets/SolidBall_bullet.cpp.obj
+.PHONY : src/Items/Bullets/SolidBall_bullet.cpp.obj
+
+src/Items/Bullets/SolidBall_bullet.i: src/Items/Bullets/SolidBall_bullet.cpp.i
+.PHONY : src/Items/Bullets/SolidBall_bullet.i
+
+# target to preprocess a source file
+src/Items/Bullets/SolidBall_bullet.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Bullets/SolidBall_bullet.cpp.i
+.PHONY : src/Items/Bullets/SolidBall_bullet.cpp.i
+
+src/Items/Bullets/SolidBall_bullet.s: src/Items/Bullets/SolidBall_bullet.cpp.s
+.PHONY : src/Items/Bullets/SolidBall_bullet.s
+
+# target to generate assembly for a file
+src/Items/Bullets/SolidBall_bullet.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Bullets/SolidBall_bullet.cpp.s
+.PHONY : src/Items/Bullets/SolidBall_bullet.cpp.s
+
 src/Items/Characters/Character.obj: src/Items/Characters/Character.cpp.obj
 .PHONY : src/Items/Characters/Character.obj
 
@@ -658,6 +682,30 @@ src/Items/Weapons/Shabby_Pistol.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Weapons/Shabby_Pistol.cpp.s
 .PHONY : src/Items/Weapons/Shabby_Pistol.cpp.s
 
+src/Items/Weapons/SolidBall.obj: src/Items/Weapons/SolidBall.cpp.obj
+.PHONY : src/Items/Weapons/SolidBall.obj
+
+# target to build an object file
+src/Items/Weapons/SolidBall.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Weapons/SolidBall.cpp.obj
+.PHONY : src/Items/Weapons/SolidBall.cpp.obj
+
+src/Items/Weapons/SolidBall.i: src/Items/Weapons/SolidBall.cpp.i
+.PHONY : src/Items/Weapons/SolidBall.i
+
+# target to preprocess a source file
+src/Items/Weapons/SolidBall.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Weapons/SolidBall.cpp.i
+.PHONY : src/Items/Weapons/SolidBall.cpp.i
+
+src/Items/Weapons/SolidBall.s: src/Items/Weapons/SolidBall.cpp.s
+.PHONY : src/Items/Weapons/SolidBall.s
+
+# target to generate assembly for a file
+src/Items/Weapons/SolidBall.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Weapons/SolidBall.cpp.s
+.PHONY : src/Items/Weapons/SolidBall.cpp.s
+
 src/Items/Weapons/Weapon.obj: src/Items/Weapons/Weapon.cpp.obj
 .PHONY : src/Items/Weapons/Weapon.obj
 
@@ -858,6 +906,9 @@ help:
 	@echo ... src/Items/Bullets/Shabby_Pistol_bullet.obj
 	@echo ... src/Items/Bullets/Shabby_Pistol_bullet.i
 	@echo ... src/Items/Bullets/Shabby_Pistol_bullet.s
+	@echo ... src/Items/Bullets/SolidBall_bullet.obj
+	@echo ... src/Items/Bullets/SolidBall_bullet.i
+	@echo ... src/Items/Bullets/SolidBall_bullet.s
 	@echo ... src/Items/Characters/Character.obj
 	@echo ... src/Items/Characters/Character.i
 	@echo ... src/Items/Characters/Character.s
@@ -900,6 +951,9 @@ help:
 	@echo ... src/Items/Weapons/Shabby_Pistol.obj
 	@echo ... src/Items/Weapons/Shabby_Pistol.i
 	@echo ... src/Items/Weapons/Shabby_Pistol.s
+	@echo ... src/Items/Weapons/SolidBall.obj
+	@echo ... src/Items/Weapons/SolidBall.i
+	@echo ... src/Items/Weapons/SolidBall.s
 	@echo ... src/Items/Weapons/Weapon.obj
 	@echo ... src/Items/Weapons/Weapon.i
 	@echo ... src/Items/Weapons/Weapon.s

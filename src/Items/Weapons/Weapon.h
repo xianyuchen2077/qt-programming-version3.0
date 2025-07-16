@@ -40,6 +40,8 @@ public:
     void setMaxAmmoCount(int maxCount);
     virtual int getWeight() const;
     void setWeight(int weight);
+    virtual int getShotCooldown() const;
+    void setShotCooldown(int cooldown);
 
     // 射击相关方法
     virtual bool canShoot() const;
@@ -66,10 +68,12 @@ protected:
     int ammoCount = 0; // 弹药数量
     int maxAmmoCount = 0; // 最大弹药数量
     int weight = 0; // 武器重量
+    int shotCooldown = 500;   // 武器冷却时间
 
     // 射击相关属性
     qint64 lastShotTime = 0;  // 上次射击时间
-    int shotCooldown = 500;   // 射击冷却时间（毫秒）
+
+    virtual void Check_and_Destroy(); // 检查是否需要销毁武器
 };
 
 
