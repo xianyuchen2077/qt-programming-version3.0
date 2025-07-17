@@ -76,16 +76,3 @@ void SettingsScene::onBackButtonClicked()
 {
     emit backToGame(); // 发出信号通知 MyGame 返回游戏场景
 }
-
-
-
-// 示例槽函数，如果你添加了更多按钮，需要实现它们
-// void SettingsScene::onVolumeButtonClicked() {
-//     qDebug() << "音量设置按钮被点击！";
-//     // 在这里实现音量设置逻辑，例如打开一个音量滑块窗口
-// }
-
-// void SettingsScene::onControlsButtonClicked() {
-//     qDebug() << "控制设置按钮被点击！";
-//     // 在这里实现控制设置逻辑
-// }

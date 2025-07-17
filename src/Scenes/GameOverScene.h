@@ -16,9 +16,7 @@ public:
     explicit GameOverScene(QObject *parent = nullptr, const QString& result = "Winner is Player1 ！");
 
 protected:
-    void processInput() override;
-    void processMovement() override;
-    void processPicking() override;
+
     void update() override; // 可能不需要复杂的更新逻辑，但保留
 
     // 重写按键

@@ -38,21 +38,6 @@ GameOverScene::GameOverScene(QObject *parent, const QString& result)
     qDebug() << "GameOverScene created.";
 }
 
-void GameOverScene::processInput()
-{
-    // 游戏结束界面通常不需要复杂的输入处理，可以监听按键返回主菜单
-}
-
-void GameOverScene::processMovement()
-{
-    // 游戏结束界面没有移动对象
-}
-
-void GameOverScene::processPicking()
-{
-    // 游戏结束界面没有拾取逻辑
-}
-
 void GameOverScene::update()
 {
     // 游戏结束界面通常不需要持续更新，除非有动画效果等

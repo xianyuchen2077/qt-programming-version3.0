@@ -76,6 +76,9 @@ add_executable(qt_programming_2024 src/main.cpp
         src/Scenes/GameOverScene.cpp
         src/Items/Maps/GameOverfield.h
         src/Items/Maps/GameOverfield.cpp
+        src/Items/Weapons/Sniper_Rifle.h
+        src/Items/Weapons/Sniper_Rifle.cpp
+        src/Items/Bullets/Sniper_Rifle_bullet.h
 
 
 

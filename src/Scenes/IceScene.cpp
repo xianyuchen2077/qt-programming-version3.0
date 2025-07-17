@@ -7,6 +7,7 @@
 #include "../Items/LegEquipments/LegEquipment.h"
 #include "../Items/Weapons/Shabby_Pistol.h"
 #include "../Items/Weapons/SolidBall.h"
+#include "../Items/Weapons/Sniper_Rifle.h".h"
 
 // IceScene 构造函数
 IceScene::IceScene(QObject *parent) : Scene(parent)
@@ -19,6 +20,7 @@ IceScene::IceScene(QObject *parent) : Scene(parent)
     player2 = new Link();
     spareWeapon1 = new Shabby_Pistol();
     spareWeapon2 = new SolidBall();
+    spareWeapon3 = new Sniper_Rifle();
     spareArmor = new FlamebreakerArmor();
     spareHeadEquipment = new HelmetOfThePaladin();
 
@@ -27,6 +29,7 @@ IceScene::IceScene(QObject *parent) : Scene(parent)
     addItem(player2);
     addItem(spareWeapon1);
     addItem(spareWeapon2);
+    addItem(spareWeapon3);
     addItem(spareArmor);
     addItem(spareHeadEquipment);
 
@@ -57,6 +60,9 @@ IceScene::IceScene(QObject *parent) : Scene(parent)
     spareWeapon2->unmount();
     spareWeapon2->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.65, floorHeight);
     spareWeapon2->setZValue(5);
+    spareWeapon3->unmount();
+    spareWeapon3->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.55, floorHeight);
+    spareWeapon3->setZValue(5);
     spareArmor->unmount();
     spareArmor->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.75, floorHeight);
     spareArmor->setZValue(5);
@@ -1052,7 +1058,7 @@ void IceScene::handleGameEnd()
 
     qDebug() << "Game Over! Result:" << gameResultText;
 
-    // 发送信号请求 MyGame 切换场景到 GameOverScene
+    // // 发送信号请求 MyGame 切换场景到 GameOverScene
     // emit requestSceneChange(SceneID::GameOverScene_ID);
 }
 

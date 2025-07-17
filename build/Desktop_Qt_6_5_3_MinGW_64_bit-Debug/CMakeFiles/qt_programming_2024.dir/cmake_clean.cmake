@@ -48,6 +48,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/qt_programming_2024.dir/src/Items/Mountable.cpp.obj.d"
   "CMakeFiles/qt_programming_2024.dir/src/Items/Weapons/Shabby_Pistol.cpp.obj"
   "CMakeFiles/qt_programming_2024.dir/src/Items/Weapons/Shabby_Pistol.cpp.obj.d"
+  "CMakeFiles/qt_programming_2024.dir/src/Items/Weapons/Sniper_Rifle.cpp.obj"
+  "CMakeFiles/qt_programming_2024.dir/src/Items/Weapons/Sniper_Rifle.cpp.obj.d"
   "CMakeFiles/qt_programming_2024.dir/src/Items/Weapons/SolidBall.cpp.obj"
   "CMakeFiles/qt_programming_2024.dir/src/Items/Weapons/SolidBall.cpp.obj.d"
   "CMakeFiles/qt_programming_2024.dir/src/Items/Weapons/Weapon.cpp.obj"

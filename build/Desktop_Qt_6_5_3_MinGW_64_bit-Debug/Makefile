@@ -706,6 +706,30 @@ src/Items/Weapons/Shabby_Pistol.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Weapons/Shabby_Pistol.cpp.s
 .PHONY : src/Items/Weapons/Shabby_Pistol.cpp.s
 
+src/Items/Weapons/Sniper_Rifle.obj: src/Items/Weapons/Sniper_Rifle.cpp.obj
+.PHONY : src/Items/Weapons/Sniper_Rifle.obj
+
+# target to build an object file
+src/Items/Weapons/Sniper_Rifle.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Weapons/Sniper_Rifle.cpp.obj
+.PHONY : src/Items/Weapons/Sniper_Rifle.cpp.obj
+
+src/Items/Weapons/Sniper_Rifle.i: src/Items/Weapons/Sniper_Rifle.cpp.i
+.PHONY : src/Items/Weapons/Sniper_Rifle.i
+
+# target to preprocess a source file
+src/Items/Weapons/Sniper_Rifle.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Weapons/Sniper_Rifle.cpp.i
+.PHONY : src/Items/Weapons/Sniper_Rifle.cpp.i
+
+src/Items/Weapons/Sniper_Rifle.s: src/Items/Weapons/Sniper_Rifle.cpp.s
+.PHONY : src/Items/Weapons/Sniper_Rifle.s
+
+# target to generate assembly for a file
+src/Items/Weapons/Sniper_Rifle.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Weapons/Sniper_Rifle.cpp.s
+.PHONY : src/Items/Weapons/Sniper_Rifle.cpp.s
+
 src/Items/Weapons/SolidBall.obj: src/Items/Weapons/SolidBall.cpp.obj
 .PHONY : src/Items/Weapons/SolidBall.obj
 
@@ -1002,6 +1026,9 @@ help:
 	@echo ... src/Items/Weapons/Shabby_Pistol.obj
 	@echo ... src/Items/Weapons/Shabby_Pistol.i
 	@echo ... src/Items/Weapons/Shabby_Pistol.s
+	@echo ... src/Items/Weapons/Sniper_Rifle.obj
+	@echo ... src/Items/Weapons/Sniper_Rifle.i
+	@echo ... src/Items/Weapons/Sniper_Rifle.s
 	@echo ... src/Items/Weapons/SolidBall.obj
 	@echo ... src/Items/Weapons/SolidBall.i
 	@echo ... src/Items/Weapons/SolidBall.s
