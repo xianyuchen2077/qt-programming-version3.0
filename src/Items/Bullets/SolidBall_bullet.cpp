@@ -137,20 +137,26 @@ void SolidBall_Bullet::handleWallCollision()
             {
                 velocity.setX(-velocity.x()); // 反转X轴速度，实现水平反弹
                 // 调整位置以避免粘连/重叠
-                if (ballRect.center().x() < obstacle.bounds.center().x()) { // 球撞到障碍物左侧
+                if (ballRect.center().x() < obstacle.bounds.center().x()) // 球撞到障碍物左侧
+                {
                     setX(obstacle.bounds.left() - ballRect.width() / 2);
-                } else { // 球撞到障碍物右侧
+                }
+                else // 球撞到障碍物右侧
+                {
                     setX(obstacle.bounds.right() + ballRect.width() / 2);
                 }
             }
             // 垂直碰撞（障碍物顶部或底部）
             else
             {
-                velocity.setY(-velocity.y()); // 反转Y轴速度，实现垂直反弹
                 // 调整位置以避免粘连/重叠
-                if (ballRect.center().y() < obstacle.bounds.center().y()) { // 球撞到障碍物顶部
+                if (ballRect.center().y() < obstacle.bounds.center().y()) // 球撞到障碍物顶部
+                {
                     setY(obstacle.bounds.top() - ballRect.height() / 2);
-                } else { // 球撞到障碍物底部
+                }
+                else // 球撞到障碍物底部
+                {
+                    velocity.setY(-velocity.y()); // 反转Y轴速度，实现垂直反弹
                     setY(obstacle.bounds.bottom() + ballRect.height() / 2);
                 }
             }
@@ -200,11 +206,17 @@ void SolidBall_Bullet::handleGroundCollision()
     const QList<Obstacle>& obstacles = icefield->getObstacles();
     for (const Obstacle& obstacle : obstacles)
     {
-        if (velocity.y() > 0 && // 向下移动
+        // 计算重叠区域以确定碰撞方向
+        QRectF intersection = obstacle.bounds.intersected(ballRect);
+
+        // 检查球是否在障碍物顶部
+        if (velocity.y() > 0 &&
             ballRect.bottom() >= obstacle.bounds.top() &&
             ballRect.bottom() <= obstacle.bounds.top() + 15 &&
             ballRect.left() < obstacle.bounds.right() &&
-            ballRect.right() > obstacle.bounds.left())
+            ballRect.right() > obstacle.bounds.left() &&
+            intersection.width() >= intersection.height() &&
+            ballRect.center().y() < obstacle.bounds.center().y()) // 球向下移动且撞到障碍物顶部
         {
             // 落在障碍物上
             isFlying = false;
