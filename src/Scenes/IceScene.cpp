@@ -13,6 +13,7 @@ IceScene::IceScene(QObject *parent) : Scene(parent)
 {
     setSceneRect(0, 0, 1280, 720);
 
+    isGameOver=false;
     map = new Icefield();
     player1 = new Link();
     player2 = new Link();
@@ -830,8 +831,17 @@ void IceScene::keyReleaseEvent(QKeyEvent *event)
 // 更新场景逻辑
 void IceScene::update()
 {
+    // 如果游戏已结束，不再执行更新逻辑
+    if (isGameOver)
+        return;
+
     // 调用基类的 update，更新其他非移动相关的逻辑
     Scene::update();
+
+    if (checkGameEndCondition())
+    {
+        handleGameEnd();
+    }
 }
 
 // 处理角色的移动
@@ -1013,6 +1023,37 @@ Mountable *IceScene::pickupMountable(Character *character, Mountable *mountable)
         return character->pickupWeapon(weapon);
     }
     return nullptr;
+}
+
+// 判断游戏是否结束
+bool IceScene::checkGameEndCondition()
+{
+    // 任何一个玩家的生命值 <= 0 则游戏结束
+    if (player1->getHealth() <= 0)
+    {
+        gameResultText = "Player 2 Wins!"; //+ 设置游戏结果文本
+        return true;
+    }
+    if (player2->getHealth() <= 0)
+    {
+        gameResultText = "Player 1 Wins!"; //+ 设置游戏结果文本
+        return true;
+    }
+
+    return false;
+}
+
+// 处理游戏结束逻辑
+void IceScene::handleGameEnd()
+{
+    if (isGameOver)
+        return; // 避免重复处理
+    isGameOver = true; // 标记游戏已结束
+
+    qDebug() << "Game Over! Result:" << gameResultText;
+
+    // 发送信号请求 MyGame 切换场景到 GameOverScene
+    // emit requestSceneChange(SceneID::GameOverScene_ID);
 }
 
 void IceScene::showDebugVisualization()

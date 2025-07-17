@@ -72,6 +72,10 @@ add_executable(qt_programming_2024 src/main.cpp
         src/Items/Weapons/SolidBall.cpp
         src/Items/Bullets/SolidBall_bullet.h
         src/Items/Bullets/SolidBall_bullet.cpp
+        src/Scenes/GameOverScene.h
+        src/Scenes/GameOverScene.cpp
+        src/Items/Maps/GameOverfield.h
+        src/Items/Maps/GameOverfield.cpp
 
 
 

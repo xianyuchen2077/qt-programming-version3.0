@@ -29,6 +29,8 @@ public:
     void processMovement() override;
     void processPicking() override;
 
+    bool getIsGameOver();
+
 protected slots:
     void update() override;
     void gameLoop(); // 游戏主循环
@@ -48,6 +50,12 @@ private:
     HeadEquipment *spareHeadEquipment;
     Weapon *spareWeapon1;
     Weapon *spareWeapon2;
+
+    // 游戏结束相关变量
+    bool isGameOver; // 标记游戏是否已结束
+    QString gameResultText; // 存储游戏结果文本，用于传递给GameOverScene
+    bool checkGameEndCondition(); // 判断游戏是否结束的函数
+    void handleGameEnd(); // 处理游戏结束逻辑的函数
 
     // 游戏循环相关
     QTimer *gameTimer;              // 游戏主循环定时器
@@ -73,8 +81,6 @@ private:
     bool isPositionSafe(Character* character, const QPointF& testPos);             // 检查位置是否安全
     bool landedOnPlatform;         // 是否刚落在平台上
 
-// 用于调试
-private:
     // 用于调试可视化
     void showDebugVisualization();     // 初始化调试可视化
     void hideDebugVisualization();     // 隐藏调试可视化
