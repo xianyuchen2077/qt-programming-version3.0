@@ -7,7 +7,6 @@
 #include <QList>
 #include "Scene.h"
 #include "../Items/Maps/Map.h"
-#include "../Items/Maps/Icefield.h"
 #include "../Items/Characters/Link.h"
 
 struct Platform
