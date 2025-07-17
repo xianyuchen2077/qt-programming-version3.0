@@ -12,8 +12,9 @@ public:
     void mountToParent() override;
     void unmount() override;
 
-    bool canShoot() const override;
     void shoot(Character* shooter, const QPointF& direction) override;
+    Bullet* createBullet(const QPointF& startPos, const QPointF& direction) override;
+    Bullet* createBullet(const QPointF& startPos, const QPointF& direction, Character* shooter) override;
 
 private:
     void Check_and_Destroy() override;

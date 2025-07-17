@@ -15,9 +15,6 @@ public:
     void setWalkPixmap(); // 行走动作
     void setJumpPixmap(); // 跳跃动作
 
-    bool getFaceRight() const { return faceRight; } // 获取角色是否面向右侧
-    void setFaceRight(bool right) { faceRight = right; } // 设置角色是否面向右侧
-    bool isFaceRight() const { return faceRight; } // 判断角色是否面向右侧
     void turnFaceLeft(); // 转向左侧
     void turnFaceRight(); // 转向右侧
 
@@ -39,8 +36,6 @@ private:
     QTimer* m_dyingAnimationTimer = nullptr; // 死亡动画用的定时器
     void handleDyingFrameUpdate(); // 处理死亡动画帧更新
     void processDeathAnimation(); // 处理死亡动画
-
-    bool faceRight = false; // 角色是否面向右侧
 
     // 时间追踪相关
     QElapsedTimer m_lastFrameTime; // 用于计算实际时间间隔

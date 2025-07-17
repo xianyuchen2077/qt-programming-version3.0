@@ -147,9 +147,8 @@ void Character::setHealth(int health)
     if (currentHealth <= 0)
     {
         // 触发角色死亡事件
-
+        setDead(true);
         qDebug() << "Character has died!";
-        // scene()->removeItem(this); // 如果 Item 继承自 QGraphicsItem 且有场景
     }
     updateHealthBar(); // 更新血条显示
 }
@@ -167,10 +166,13 @@ void Character::takeDamage(int damage)
         headEquipment->takeDamage(damageToEquipment); // 调用防具的takeDamage
         remainingDamage -= damageToEquipment; // 减去防具承受的伤害
 
+        qDebug() << "Armor absorbed " << damageToEquipment << " damage, remaining damage: " << remainingDamage;
+
         // 如果防具耐久度耗尽，自动脱下
         if (headEquipment->getDurability() <= 0)
         {
             unequipHeadEquipment(); // 调用新的卸下函数
+            qDebug() << "Head equipment destroyed and removed";
         }
     }
 
@@ -180,11 +182,12 @@ void Character::takeDamage(int damage)
     {
         currentHealth = 0;
         setDead(true); // 设置角色为死亡状态
+        updateHealthBar(); // 更新血条显示
         qDebug() << "Character died from damage!";
         return;
     }
 
-    setHealth(currentHealth - damage); // 减少血量并更新血条显示
+    setHealth(currentHealth); // 减少血量并更新血条显示
 }
 
 // 治疗函数
@@ -214,6 +217,13 @@ void Character::drawHealthBar()
 // 更新血条显示
 void Character::updateHealthBar()
 {
+    if (currentHealth <= 0)
+    {
+        healthBarFill->setRect(healthBarBackground->rect().x(), healthBarBackground->rect().y(), 0, healthBarBackground->rect().height());
+        healthBarFill->setBrush(QBrush(Qt::black)); // 死亡时血条填充为黑色
+        return;
+    }
+
     qreal healthRatio = (qreal)currentHealth / maxHealth;
     qreal fillWidth = healthRatio * healthBarBackground->rect().width();
     healthBarFill->setRect(healthBarBackground->rect().x(), healthBarBackground->rect().y(), fillWidth, healthBarBackground->rect().height());
@@ -230,6 +240,10 @@ void Character::updateHealthBar()
     else if (healthRatio > 0.1)
     {
         healthBarFill->setBrush(QBrush(Qt::red));
+    }
+    else if (healthRatio <= 0.1 && currentHealth > 0)
+    {
+        healthBarFill->setBrush(QBrush(Qt::darkRed));
     }
     else
     {

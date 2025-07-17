@@ -76,6 +76,9 @@ public:
     virtual void shoot(const QPointF& direction);
     virtual bool canShoot() const;
 
+    bool getFaceRight() const { return faceRight; } // 获取角色是否面向右侧
+    void setFaceRight(bool right) { faceRight = right; } // 设置角色是否面向右侧
+    bool isFaceRight() const { return faceRight; } // 判断角色是否面向右侧
 
     // 获取复合碰撞矩形
     QRectF getHeadCollisionRect() const;
@@ -95,6 +98,8 @@ public:
     Weapon* pickupWeapon(Weapon* newWeapon);
 
 protected:
+    bool faceRight = false; // 角色是否面向右侧
+
     HeadEquipment *headEquipment{};
     LegEquipment *legEquipment{};
     Armor *armor{};

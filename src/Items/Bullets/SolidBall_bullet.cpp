@@ -19,17 +19,17 @@ SolidBall_Bullet::SolidBall_Bullet(QGraphicsItem *parent, const QPointF& startPo
     frameCount(0),
     landedFrameCount(0)
 {
-    setScale(0.2);      // 设置子弹缩放比例
+    setScale(1.0);      // 设置子弹缩放比例
     setPos(startPos);   // 设置初始位置
-    setZValue(5);       // 确保子弹显示在最上层);
+    setZValue(5);       // 确保子弹显示在最上层
     qDebug() << "SolidBall_Bullet created with shooter:" << shooter << "damage:" << damage;
 
     // 计算45度角的初始速度
-    qreal speed = 4.0; // 初始速度大小
+    qreal speed = 8.0; // 初始速度大小
     qreal angle = M_PI / 4; // 45度角
 
     // 根据角色面向方向调整水平方向
-    qreal horizontalDirection = direction.x() > 0 ? 1 : -1;
+    qreal horizontalDirection = shooterCharacter->isFaceRight() ? 1 : -1; // 根据角色朝向确定水平方向
 
     velocity = QPointF(horizontalDirection * speed * qCos(angle),
                        -speed * qSin(angle)); // 向上为负
@@ -88,6 +88,12 @@ void SolidBall_Bullet::handleCollisions()
         Character* character = dynamic_cast<Character*>(item);
         if (character)
         {
+            // 在安全时间内，不能击中发射者
+            if (character == shooterCharacter && frameCount < SAFETY_FRAMES)
+            {
+                continue; // 跳过发射者
+            }
+
             handleCharacterCollision(character);
             return;
         }
@@ -123,38 +129,29 @@ void SolidBall_Bullet::handleWallCollision()
     {
         if (obstacle.bounds.intersects(ballRect))
         {
-            // 判断碰撞方向并反弹
-            QPointF obstacleCenter = obstacle.bounds.center();
-            QPointF ballCenter = ballRect.center();
-            QPointF diff = ballCenter - obstacleCenter;
+            // 计算重叠区域以确定碰撞方向
+            QRectF intersection = obstacle.bounds.intersected(ballRect);
 
-            // 简单的反弹逻辑
-            if (qAbs(diff.x()) > qAbs(diff.y()))
+            // 水平碰撞（障碍物左侧或右侧）
+            if (intersection.width() < intersection.height())
             {
-                // 水平碰撞
-                velocity.setX(-velocity.x() * BOUNCE_FACTOR);
-                // 调整位置避免重叠
-                if (diff.x() > 0)
-                {
-                    setPos(obstacle.bounds.right() + 5, pos().y());
-                }
-                else
-                {
-                    setPos(obstacle.bounds.left() - boundingRect().width() - 5, pos().y());
+                velocity.setX(-velocity.x()); // 反转X轴速度，实现水平反弹
+                // 调整位置以避免粘连/重叠
+                if (ballRect.center().x() < obstacle.bounds.center().x()) { // 球撞到障碍物左侧
+                    setX(obstacle.bounds.left() - ballRect.width() / 2);
+                } else { // 球撞到障碍物右侧
+                    setX(obstacle.bounds.right() + ballRect.width() / 2);
                 }
             }
+            // 垂直碰撞（障碍物顶部或底部）
             else
             {
-                // 垂直碰撞
-                velocity.setY(-velocity.y() * BOUNCE_FACTOR);
-                // 调整位置避免重叠
-                if (diff.y() > 0)
-                {
-                    setPos(pos().x(), obstacle.bounds.bottom() + 5);
-                }
-                else
-                {
-                    setPos(pos().x(), obstacle.bounds.top() - boundingRect().height() - 5);
+                velocity.setY(-velocity.y()); // 反转Y轴速度，实现垂直反弹
+                // 调整位置以避免粘连/重叠
+                if (ballRect.center().y() < obstacle.bounds.center().y()) { // 球撞到障碍物顶部
+                    setY(obstacle.bounds.top() - ballRect.height() / 2);
+                } else { // 球撞到障碍物底部
+                    setY(obstacle.bounds.bottom() + ballRect.height() / 2);
                 }
             }
 
@@ -242,7 +239,9 @@ void SolidBall_Bullet::onLanded()
     landedFrameCount = 0;
 
     // 更改外观表示已落地
-    setScale(0.15);
+    setScale(1.5);
+
+    // 消失前可以做一个频闪效果
     if (pixmapItem)
     {
         pixmapItem->setOpacity(0.7);

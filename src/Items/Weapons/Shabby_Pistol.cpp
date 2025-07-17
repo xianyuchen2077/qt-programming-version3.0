@@ -8,17 +8,17 @@ Shabby_Pistol::Shabby_Pistol(QGraphicsItem *parent) : Weapon(parent, ":/Items/We
     // 设置武器的初始属性
     setWeaponName("破旧的手枪"); // 设置武器名称
     setDescription("一把看起来破旧的手枪，虽然外观不佳，但仍然可以发射子弹。"); // 设置武器描述
-    setAttackType(2); // 远程攻击
-    setAttackElement(0); // 无元素攻击
-    setAttackPower(10); // 攻击力
-    setAttackRange(50); // 攻击范围
-    setAttackSpeed(3); // 攻击速度
-    setCriticalChance(1); // 暴击几率
-    setCriticalDamage(15); // 暴击伤害
-    setAmmoCount(20); // 弹药数量
-    setMaxAmmoCount(20); // 最大弹药数量
-    setWeight(2); // 假设重量为2
-    setShotCooldown (300); // 手枪射击间隔300ms
+    setAttackType(2);           // 远程攻击
+    setAttackElement(0);        // 无元素攻击
+    setAttackPower(10);         // 攻击力
+    setAttackRange(50);         // 攻击范围
+    setAttackSpeed(3);          // 攻击速度
+    setCriticalChance(1);       // 暴击几率
+    setCriticalDamage(15);      // 暴击伤害
+    setAmmoCount(20);           // 弹药数量
+    setMaxAmmoCount(20);        // 最大弹药数量
+    setWeight(2);               // 假设重量为2
+    setShotCooldown (300);      // 手枪射击间隔300ms
 }
 
 void Shabby_Pistol::mountToParent()

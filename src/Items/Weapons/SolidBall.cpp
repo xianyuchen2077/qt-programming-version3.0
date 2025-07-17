@@ -9,17 +9,17 @@ SolidBall::SolidBall(QGraphicsItem *parent): Weapon(parent, ":/Items/Weapons/Sol
     // 设置武器的初始属性
     setWeaponName("吃撑了的实心泰菲");
     setDescription("贪吃的泰菲把自己变成了一个实心球，向前抛出去，砸到就是赚到。");
-    setAttackType(2); // 远程攻击
-    setAttackElement(0); // 无元素攻击
-    setAttackPower(20); // 攻击力
-    setAttackRange(50); // 攻击范围
-    setAttackSpeed(3); // 攻击速度
-    setCriticalChance(5); // 暴击几率
-    setCriticalDamage(40); // 暴击伤害
-    setAmmoCount(5); // 弹药数量
-    setMaxAmmoCount(5); // 最大弹药数量
-    setWeight(5); // 假设重量为2
-    setShotCooldown (1000); // 实心球射击间隔1000ms
+    setAttackType(2);           // 远程攻击
+    setAttackElement(0);        // 无元素攻击
+    setAttackPower(20);         // 攻击力
+    setAttackRange(50);         // 攻击范围
+    setAttackSpeed(3);          // 攻击速度
+    setCriticalChance(5);       // 暴击几率
+    setCriticalDamage(40);      // 暴击伤害
+    setAmmoCount(5);            // 弹药数量
+    setMaxAmmoCount(5);         // 最大弹药数量
+    setWeight(5);               // 假设重量为5
+    setShotCooldown (1000);     // 实心球射击间隔1000ms
 }
 
 void SolidBall::mountToParent()
@@ -37,11 +37,6 @@ void SolidBall::unmount()
     {
         pixmapItem->setPos(0, -80);
     }
-}
-
-bool SolidBall::canShoot() const
-{
-    return Weapon::canShoot() && ammoCount > 0;
 }
 
 void SolidBall::shoot(Character* shooter, const QPointF& direction)
@@ -120,4 +115,14 @@ void SolidBall::Check_and_Destroy()
         // 安全删除
         delete this;
     }
+}
+
+Bullet* SolidBall::createBullet(const QPointF& startPos, const QPointF& direction)
+{
+    return new SolidBall_Bullet(nullptr, startPos, direction, attackPower);
+}
+
+Bullet* SolidBall::createBullet(const QPointF& startPos, const QPointF& direction, Character* shooter)
+{
+    return new SolidBall_Bullet(nullptr, startPos, direction, attackPower, shooter);
 }

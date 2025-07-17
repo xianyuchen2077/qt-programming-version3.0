@@ -25,7 +25,7 @@ public:
     // Bullet* createBullet(const QPointF& startPos, const QPointF& direction, Character* shooter) override;
 
 protected:
-    virtual void handleCollisions();
+    virtual void handleCollisions() override;
     virtual void handleWallCollision();
     virtual void handleGroundCollision();
     virtual void handleCharacterCollision(Character* character);
@@ -33,7 +33,7 @@ protected:
     virtual void onDestroy(); // 销毁时调用
 
 private:
-    const inline static QString BULLET_BASIC_PIXMAP_PATH = ":/Items/Weapons/SolidBall_Icon.png";
+    const inline static QString BULLET_BASIC_PIXMAP_PATH = ":/Items/Bullets/SolidBall_bullet_Icon.png";
 
     QPointF velocity;           // 当前速度向量
     int ballDamage;             // 伤害值
@@ -48,6 +48,7 @@ private:
 
     static const qreal GRAVITY; // 重力加速度
     static const qreal BOUNCE_FACTOR; // 反弹系数
-    static const int DESTROY_DELAY_FRAMES = 120; // 落地后销毁延迟（帧数，60FPS * 2秒）
+    static const int DESTROY_DELAY_FRAMES = 180; // 落地后销毁延迟（帧数，60FPS * 2秒）
+    static const int SAFETY_FRAMES = 30; // 安全时间（0.5秒内不会击中发射者）
 };
 #endif // SOLIDBALL_BULLET_H
