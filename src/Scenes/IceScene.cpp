@@ -157,7 +157,7 @@ void IceScene::handleBoundaryCollision(Character* character, QPointF& newPos)
     }
 }
 
-// 地面碰撞检测
+// 地面碰撞检测(过渡函数，现在可以删了）
 void IceScene::handleGroundCollision(Character* character, QPointF& newPos)
 {
     if (!character) return;

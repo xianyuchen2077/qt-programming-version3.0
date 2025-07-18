@@ -54,10 +54,13 @@ void SolidBall::shoot(Character* shooter, const QPointF& direction)
     QPointF bodyCenter = shooterPos + bodyRect.center();
 
     // 实心球从角色身体中心稍微向前的位置投掷
-    QPointF throwStartPos = bodyCenter + QPointF(direction.x() * 25, -20);
+    // 根据角色朝向决定偏移方向
+    qreal offsetX = shooter->isFaceRight() ? 25 : -25;
+    QPointF throwStartPos = bodyCenter + QPointF(offsetX, -20);
 
     // 创建实心球
-    SolidBall_Bullet* solidball = new SolidBall_Bullet(nullptr, throwStartPos, direction, getAttackPower(), shooter);
+    QPointF throwDirection = shooter->isFaceRight() ? QPointF(1, 0) : QPointF(-1, 0);
+    SolidBall_Bullet* solidball = new SolidBall_Bullet(nullptr, throwStartPos, throwDirection, getAttackPower(), shooter);
 
     if (solidball)
     {
@@ -65,7 +68,7 @@ void SolidBall::shoot(Character* shooter, const QPointF& direction)
         if (shooter->scene())
         {
             shooter->scene()->addItem(solidball);
-            qDebug() << "Solid ball thrown from:" << throwStartPos << "direction:" << direction;
+            qDebug() << "Solid ball thrown from:" << throwStartPos << "direction:" << throwDirection;
         }
         else
         {
