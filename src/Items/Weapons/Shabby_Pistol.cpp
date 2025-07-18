@@ -25,7 +25,7 @@ void Shabby_Pistol::mountToParent()
 {
     Mountable::mountToParent();
     setScale(0.6);      // 设置缩放比例
-    setPos(-42, -13);     // 设置位置偏移
+    setPos(-40, -25);     // 设置位置偏移
 }
 
 void Shabby_Pistol::unmount()

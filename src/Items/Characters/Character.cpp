@@ -349,13 +349,19 @@ void Character::shoot(const QPointF& direction)
 // 判断是否可以射击
 bool Character::canShoot() const
 {
-    // 如果角色死亡，不处理重力
-    if (isDead()||weapon->getAmmoCount() <= 0 || weapon->getMaxAmmoCount() <= 0)
+    // 首先检查weapon是否存在，避免空指针访问
+    if (isDead() || !weapon)
     {
         return false;
     }
 
-    return weapon && weapon->canShoot();
+    // 然后检查武器状态
+    if (weapon->getAmmoCount() <= 0 || weapon->getMaxAmmoCount() <= 0)
+    {
+        return false;
+    }
+
+    return weapon->canShoot();
 }
 
 // 更换角色图片
