@@ -7,7 +7,7 @@
 #include "../Items/LegEquipments/LegEquipment.h"
 #include "../Items/Weapons/Shabby_Pistol.h"
 #include "../Items/Weapons/SolidBall.h"
-#include "../Items/Weapons/Sniper_Rifle.h".h"
+#include "../Items/Weapons/Sniper_Rifle.h"
 
 // IceScene 构造函数
 IceScene::IceScene(QObject *parent) : Scene(parent)

@@ -38,36 +38,6 @@ void Shabby_Pistol::unmount()
     }
 }
 
-bool Shabby_Pistol::Check_and_Destroy()
-{
-    if (ammoCount <= 0)
-    {
-        qDebug() << "Solid ball weapon exhausted, scheduling removal";
-
-        // 如果武器已装备，需要从角色身上移除
-        if (isMounted() && parentItem())
-        {
-            Character* character = dynamic_cast<Character*>(parentItem());
-            if (character)
-            {
-                character->unequipWeapon();
-                qDebug() << "Weapon removed from character";
-            }
-        }
-
-        // 从场景中移除
-        if (scene())
-        {
-            scene()->removeItem(this);
-        }
-
-        // 安全删除
-        delete this;
-        return true;
-    }
-    return false;
-}
-
 Bullet* Shabby_Pistol::createBullet(const QPointF& startPos, const QPointF& direction)
 {
     return new BulletBasic(nullptr, startPos, direction, attackPower);

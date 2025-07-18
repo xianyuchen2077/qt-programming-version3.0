@@ -15,9 +15,6 @@ public:
     void shoot(Character* shooter, const QPointF& direction) override;
     Bullet* createBullet(const QPointF& startPos, const QPointF& direction) override;
     Bullet* createBullet(const QPointF& startPos, const QPointF& direction, Character* shooter) override;
-
-private:
-    bool Check_and_Destroy() override;
 };
 
 

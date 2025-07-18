@@ -38,35 +38,6 @@ void Sniper_Rifle::unmount()
     }
 }
 
-bool Sniper_Rifle::Check_and_Destroy()
-{
-    if (ammoCount <= 0)
-    {
-        qDebug() << "Sniper Rifle weapon exhausted, scheduling removal";
-
-        // 如果武器已装备，需要从角色身上移除
-        if (isMounted() && parentItem())
-        {
-            Character* character = dynamic_cast<Character*>(parentItem());
-            if (character)
-            {
-                character->unequipWeapon();
-                qDebug() << "Weapon removed from character";
-            }
-        }
-
-        // 从场景中移除
-        if (scene())
-        {
-            scene()->removeItem(this);
-        }
-
-        delete this; // 删除武器对象
-        return true;
-    }
-    return false;
-}
-
 Bullet* Sniper_Rifle::createBullet(const QPointF& startPos, const QPointF& direction)
 {
     return new SniperRifleBullet(nullptr,startPos, direction, nullptr);

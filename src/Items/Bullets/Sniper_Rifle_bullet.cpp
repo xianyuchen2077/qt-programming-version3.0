@@ -127,4 +127,7 @@ void SniperRifleBullet::destroyBullet()
     {
         scene()->removeItem(this);
     }
+
+    // 使用安全删除
+    this->deleteLater();
 }

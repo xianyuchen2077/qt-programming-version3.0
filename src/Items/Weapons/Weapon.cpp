@@ -1,6 +1,7 @@
 #include "Weapon.h"
 #include "../Characters/Character.h"
 #include <QDateTime>
+#include <qtimer.h>
 
 Weapon::Weapon(QGraphicsItem *parent, const QString &pixmapPath) : Item(parent, pixmapPath)
 {
@@ -214,13 +215,10 @@ void Weapon::shoot(Character* shooter, const QPointF& direction)
         lastShotTime = QDateTime::currentMSecsSinceEpoch();
 
         // 检查是否需要销毁武器
-        if (Check_and_Destroy())
-        {
-            qDebug() << "Weapon was destroyed after firing last bullet.";
-            return;
-        }
+        qDebug() << "Weapon fired! Ammo remaining:" << ammoCount;
 
-        qDebug() << "Weapon fired! Ammo remaining:" << ammoCount << "Bullet pos:" << bulletStartPos;
+        // 使用安全的延迟检查方法
+        QTimer::singleShot(0, this, &Weapon::checkAndScheduleDestruction);
     }
     else
     {
@@ -228,29 +226,41 @@ void Weapon::shoot(Character* shooter, const QPointF& direction)
     }
 }
 
-bool Weapon::Check_and_Destroy()
+void Weapon::checkAndScheduleDestruction()
 {
-    // 检查是否需要销毁武器
-    if (ammoCount <= 0)
+    if (ammoCount <= 0 && !isScheduledForDestruction)
     {
-        qDebug() << "Weapon out of ammo, destroying weapon:" << weaponName;
-        // 如果武器已装备，需要从角色身上移除
-        if (isMounted() && parentItem())
-        {
-            Character* character = dynamic_cast<Character*>(parentItem());
-            if (character)
-            {
-                character->unequipWeapon();
-                qDebug() << "Weapon removed from character";
-            }
-        }
-
-        // 从场景中移除
-        if (scene())
-        {
-            scene()->removeItem(this);
-        }
-        return true;
+        scheduleDestruction();
     }
-    return false;
+}
+
+void Weapon::scheduleDestruction()
+{
+    if (isScheduledForDestruction)
+    {
+        return;  // 防止重复调用
+    }
+
+    isScheduledForDestruction = true;
+    qDebug() << "Weapon exhausted, scheduling safe removal:" << weaponName;
+
+    // 如果武器已装备，需要从角色身上移除
+    if (isMounted() && parentItem())
+    {
+        Character* character = dynamic_cast<Character*>(parentItem());
+        if (character)
+        {
+            character->unequipWeapon();
+            qDebug() << "Weapon removed from character";
+        }
+    }
+
+    // 从场景中移除
+    if (scene())
+    {
+        scene()->removeItem(this);
+    }
+
+    // 使用Qt的安全删除方法
+    this->deleteLater();
 }

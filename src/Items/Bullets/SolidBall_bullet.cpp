@@ -285,5 +285,7 @@ void SolidBall_Bullet::destroyBall()
     {
         scene()->removeItem(this);
     }
-    delete this;
+
+    // 使用安全删除
+    this->deleteLater();
 }

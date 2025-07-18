@@ -3,6 +3,7 @@
 #include "../Characters/Character.h"
 #include <QDebug>
 #include <QDateTime>
+#include <qtimer.h>
 
 SolidBall::SolidBall(QGraphicsItem *parent): Weapon(parent, ":/Items/Weapons/SolidBall_Icon.png")
 {
@@ -84,42 +85,13 @@ void SolidBall::shoot(Character* shooter, const QPointF& direction)
         qDebug() << "Solid ball thrown! Remaining throws:" << ammoCount;
 
         // 检查是否需要销毁武器
-        Check_and_Destroy();
+        // 使用安全的延迟检查方法
+        QTimer::singleShot(0, this, &SolidBall::checkAndScheduleDestruction);
     }
     else
     {
         qDebug() << "Failed to create solid ball!";
     }
-}
-
-bool SolidBall::Check_and_Destroy()
-{
-    if (ammoCount <= 0)
-    {
-        qDebug() << "Solid ball weapon exhausted, scheduling removal";
-
-        // 如果武器已装备，需要从角色身上移除
-        if (isMounted() && parentItem())
-        {
-            Character* character = dynamic_cast<Character*>(parentItem());
-            if (character)
-            {
-                character->unequipWeapon();
-                qDebug() << "Weapon removed from character";
-            }
-        }
-
-        // 从场景中移除
-        if (scene())
-        {
-            scene()->removeItem(this);
-        }
-
-        // 安全删除
-        delete this;
-        return true;
-    }
-    return false;
 }
 
 Bullet* SolidBall::createBullet(const QPointF& startPos, const QPointF& direction)

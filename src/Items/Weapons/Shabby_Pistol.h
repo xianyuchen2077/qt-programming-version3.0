@@ -16,9 +16,6 @@ public:
     // 重写射击相关方法
     Bullet* createBullet(const QPointF& startPos, const QPointF& direction) override;
     Bullet* createBullet(const QPointF& startPos, const QPointF& direction, Character* shooter) override;
-
-protected:
-    bool Check_and_Destroy() override;
 };
 
 

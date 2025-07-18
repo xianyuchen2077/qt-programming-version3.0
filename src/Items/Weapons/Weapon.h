@@ -51,6 +51,9 @@ public:
     virtual Bullet* createBullet(const QPointF& startPos, const QPointF& direction, Character* shooter);
     virtual void shoot(Character* shooter, const QPointF& direction);
 
+    // 添加安全的销毁方法
+    void scheduleDestruction();
+
 signals:
     void bulletFired(Bullet* bullet);
 
@@ -75,7 +78,11 @@ protected:
     // 射击相关属性
     qint64 lastShotTime = 0;  // 上次射击时间
 
-    virtual bool Check_and_Destroy(); // 检查是否需要销毁武器
+    // 修改为安全的检查和销毁方法
+    virtual void checkAndScheduleDestruction();
+
+private:
+    bool isScheduledForDestruction = false;  // 防止重复销毁
 };
 
 

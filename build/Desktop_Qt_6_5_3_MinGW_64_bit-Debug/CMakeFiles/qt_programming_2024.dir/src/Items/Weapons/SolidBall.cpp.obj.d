@@ -377,4 +377,6 @@ CMakeFiles/qt_programming_2024.dir/src/Items/Weapons/SolidBall.cpp.obj: \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QDateTime \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qdatetime.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qcalendar.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qlocale.h
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qlocale.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qtimer.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qbasictimer.h
