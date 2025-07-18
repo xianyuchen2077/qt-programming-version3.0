@@ -342,6 +342,7 @@ void Character::shoot(const QPointF& direction)
     if (weapon && weapon->canShoot())
     {
         weapon->shoot(this, direction);
+        qDebug() << "Character shooting with weapon:" << weapon->getWeaponName();
     }
 }
 
@@ -349,7 +350,7 @@ void Character::shoot(const QPointF& direction)
 bool Character::canShoot() const
 {
     // 如果角色死亡，不处理重力
-    if (isDead())
+    if (isDead()||weapon->getAmmoCount() <= 0 || weapon->getMaxAmmoCount() <= 0)
     {
         return false;
     }

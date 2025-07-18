@@ -43,7 +43,7 @@ void SolidBall::shoot(Character* shooter, const QPointF& direction)
 {
     if (!canShoot() || !shooter)
     {
-        qDebug() << "Cannot throw solid ball: canShoot=" << canShoot() << "shooter=" << shooter
+        qDebug() << "Cannot throw solid ball: canShoot=" << canShoot() << "shooter=" << (const void*)shooter
                  << "remaining=" << ammoCount;
         return;
     }
@@ -92,7 +92,7 @@ void SolidBall::shoot(Character* shooter, const QPointF& direction)
     }
 }
 
-void SolidBall::Check_and_Destroy()
+bool SolidBall::Check_and_Destroy()
 {
     if (ammoCount <= 0)
     {
@@ -117,7 +117,9 @@ void SolidBall::Check_and_Destroy()
 
         // 安全删除
         delete this;
+        return true;
     }
+    return false;
 }
 
 Bullet* SolidBall::createBullet(const QPointF& startPos, const QPointF& direction)

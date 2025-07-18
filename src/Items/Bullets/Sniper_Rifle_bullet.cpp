@@ -18,7 +18,7 @@ SniperRifleBullet::SniperRifleBullet(QGraphicsItem *parent, const QPointF& start
     setScale(0.4);                      // 设置子弹缩放比例
     setPos(startPos + QPointF(0,-10));  // 初始位置偏移，避免与角色重叠
     setZValue(5);                       // 确保子弹显示在最上层
-    qDebug() << "SniperRifleBullet created with shooter:" << shooter << "damage:" << bulletDamage;
+    qDebug() << "SniperRifleBullet created with shooter:" << (const void*)shooter << "damage:" << bulletDamage;
 }
 
 void SniperRifleBullet::explode()

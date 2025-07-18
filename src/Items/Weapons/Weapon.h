@@ -10,6 +10,8 @@ class Character;
 
 class Weapon : public Item, public Mountable
 {
+    Q_OBJECT
+
 public:
     explicit Weapon(QGraphicsItem *parent, const QString &pixmapPath);
 
@@ -73,7 +75,7 @@ protected:
     // 射击相关属性
     qint64 lastShotTime = 0;  // 上次射击时间
 
-    virtual void Check_and_Destroy(); // 检查是否需要销毁武器
+    virtual bool Check_and_Destroy(); // 检查是否需要销毁武器
 };
 
 

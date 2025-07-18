@@ -4,7 +4,7 @@
 #include <QGraphicsItem>
 #include <QPainter>
 
-class Item : public QGraphicsItem
+class Item : public QObject, public QGraphicsItem
 {
 public:
     explicit Item(QGraphicsItem *parent, const QString &pixmapPath);

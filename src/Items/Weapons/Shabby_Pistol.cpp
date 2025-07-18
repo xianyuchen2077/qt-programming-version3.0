@@ -38,7 +38,7 @@ void Shabby_Pistol::unmount()
     }
 }
 
-void Shabby_Pistol::Check_and_Destroy()
+bool Shabby_Pistol::Check_and_Destroy()
 {
     if (ammoCount <= 0)
     {
@@ -63,7 +63,9 @@ void Shabby_Pistol::Check_and_Destroy()
 
         // 安全删除
         delete this;
+        return true;
     }
+    return false;
 }
 
 Bullet* Shabby_Pistol::createBullet(const QPointF& startPos, const QPointF& direction)

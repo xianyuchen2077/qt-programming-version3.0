@@ -29,6 +29,7 @@ CMakeFiles/qt_programming_2024.dir/qt_programming_2024_autogen/mocs_compilation.
   qt_programming_2024_autogen/SNE2VJ5FQV/moc_Scene.cpp \
   qt_programming_2024_autogen/SNE2VJ5FQV/moc_SettingsScene.cpp \
   qt_programming_2024_autogen/UVLADIE3JM/moc_MyGame.cpp \
+  qt_programming_2024_autogen/Z3UREFIW6B/moc_Weapon.cpp \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QElapsedTimer \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QList \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QMetaType \
@@ -11956,7 +11957,7 @@ D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qfont.h:
 
 D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qglobal.h:
 
-D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qcoreevent.h:
+qt_programming_2024_autogen/Z3UREFIW6B/moc_Weapon.cpp:
 
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Item.h:
 
@@ -12131,6 +12132,8 @@ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qcontiguouscache.h:
 D:/Qt/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/time.h:
 
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Weapons/Sniper_Rifle.h:
+
+D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qcoreevent.h:
 
 D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qdarwinhelpers.h:
 
@@ -12394,9 +12397,9 @@ D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qeventpoint.h:
 
 D:/Qt/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/ostream_insert.h:
 
-D:/Qt/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cerrno:
-
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Scenes/IceScene.cpp:
+
+D:/Qt/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cerrno:
 
 D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qimage.h:
 

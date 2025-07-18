@@ -17,7 +17,8 @@ BulletBasic::BulletBasic(QGraphicsItem *parent, const QPointF& startPos, const Q
     setScale(0.1);                      // 设置子弹缩放比例
     setPos(startPos + QPointF(0,-50));  // 初始位置偏移，避免与角色重叠
     setZValue(5);                       // 确保子弹显示在最上层
-    qDebug() << "BulletBasic created with shooter:" << shooter << "damage:" << damage;
+    qDebug() << "BulletBasic created with shooter:" << (const void*)shooter << "damage:" << damage;
+
 }
 
 void BulletBasic::explode()

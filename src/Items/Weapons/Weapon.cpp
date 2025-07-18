@@ -181,8 +181,8 @@ Bullet* Weapon::createBullet(const QPointF& startPos, const QPointF& direction, 
 
 void Weapon::shoot(Character* shooter, const QPointF& direction)
 {
-    if (!canShoot() || !shooter) {
-        qDebug() << "Cannot shoot: canShoot=" << canShoot() << "shooter=" << shooter;
+    if (!canShoot() || !shooter)
+    {
         return;
     }
 
@@ -213,31 +213,44 @@ void Weapon::shoot(Character* shooter, const QPointF& direction)
         ammoCount--;
         lastShotTime = QDateTime::currentMSecsSinceEpoch();
 
+        // 检查是否需要销毁武器
+        if (Check_and_Destroy())
+        {
+            qDebug() << "Weapon was destroyed after firing last bullet.";
+            return;
+        }
+
         qDebug() << "Weapon fired! Ammo remaining:" << ammoCount << "Bullet pos:" << bulletStartPos;
-    } else {
+    }
+    else
+    {
         qDebug() << "Failed to create bullet!";
     }
 }
 
-void Weapon::bulletFired(Bullet* bullet)
-{
-    if (bullet)
-    {
-        qDebug() << "Bullet fired from weapon!";
-        // 这里可以添加更多逻辑，比如播放音效、特效等
-    }
-}
-
-void Weapon::Check_and_Destroy()
+bool Weapon::Check_and_Destroy()
 {
     // 检查是否需要销毁武器
     if (ammoCount <= 0)
     {
         qDebug() << "Weapon out of ammo, destroying weapon:" << weaponName;
+        // 如果武器已装备，需要从角色身上移除
+        if (isMounted() && parentItem())
+        {
+            Character* character = dynamic_cast<Character*>(parentItem());
+            if (character)
+            {
+                character->unequipWeapon();
+                qDebug() << "Weapon removed from character";
+            }
+        }
+
+        // 从场景中移除
         if (scene())
         {
             scene()->removeItem(this);
         }
-        delete this; // 销毁武器对象
+        return true;
     }
+    return false;
 }

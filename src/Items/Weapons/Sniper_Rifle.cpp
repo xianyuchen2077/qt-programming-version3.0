@@ -38,7 +38,7 @@ void Sniper_Rifle::unmount()
     }
 }
 
-void Sniper_Rifle::Check_and_Destroy()
+bool Sniper_Rifle::Check_and_Destroy()
 {
     if (ammoCount <= 0)
     {
@@ -60,8 +60,11 @@ void Sniper_Rifle::Check_and_Destroy()
         {
             scene()->removeItem(this);
         }
+
         delete this; // 删除武器对象
+        return true;
     }
+    return false;
 }
 
 Bullet* Sniper_Rifle::createBullet(const QPointF& startPos, const QPointF& direction)
