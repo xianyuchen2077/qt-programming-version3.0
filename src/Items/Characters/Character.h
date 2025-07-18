@@ -86,11 +86,16 @@ public:
     QList<QRectF> getAllCollisionRects() const;
 
     // 与装备相关函数
-    void equipHeadEquipment(HeadEquipment* headEquipment);      // 佩戴头部装备的方法
-    void unequipHeadEquipment(); // 卸下头部装备的方法
-    void equipWeapon(Weapon* weapon); // 装备武器
-    void unequipWeapon(); // 卸下武器
-    void removeAllEquipment(); // 卸下所有装备的函数
+    void equipHeadEquipment(HeadEquipment* headEquipment);  // 佩戴头部装备的方法
+    void unequipHeadEquipment();                            // 卸下头部装备的方法
+    void equipWeapon(Weapon* weapon);                       // 装备武器
+    void unequipWeapon();                                   // 卸下武器
+    void removeAllEquipment();                              // 卸下所有装备的函数
+
+    Weapon* getWeapon() const { return weapon; }                        // 获取当前装备的武器
+    HeadEquipment* getHeadEquipment() const { return headEquipment; }   // 获取当前装备的头部装备
+    LegEquipment* getLegEquipment() const { return legEquipment; }      // 获取当前装备的腿部装备
+    Armor* getArmor() const { return armor; }                           // 获取当前装备的护甲
 
     Armor* pickupArmor(Armor* newArmor);
     LegEquipment* pickupLegEquipment(LegEquipment* newLegEquipment);

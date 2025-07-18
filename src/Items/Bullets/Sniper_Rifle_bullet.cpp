@@ -64,6 +64,26 @@ void SniperRifleBullet::handleCollisions()
         Character* hitCharacter = dynamic_cast<Character*>(item);
         if (hitCharacter && hitCharacter != shooterCharacter) // 不能击中发射者
         {
+            // 计算伤害（包括暴击检测）
+            int damage = bulletDamage;
+            bool isHeadshot = false;
+
+            // 检查是否击中头部
+            QRectF bulletRect = this->sceneBoundingRect();
+            QRectF headRect = hitCharacter->getHeadCollisionRect();
+            headRect.moveTopLeft(hitCharacter->pos() + headRect.topLeft());
+
+            if (bulletRect.intersects(headRect))
+            {
+                isHeadshot = true;
+                damage = bulletDamage * 2; // 头部伤害翻倍
+                qDebug() << "HEADSHOT! Double damage applied:" << damage;
+            }
+            else
+            {
+                qDebug() << "Body shot, normal damage:" << damage;
+            }
+
             // 对角色造成伤害
             hitCharacter->takeDamage(bulletDamage);
             explode();

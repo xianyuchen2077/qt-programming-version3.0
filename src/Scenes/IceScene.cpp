@@ -681,6 +681,10 @@ void IceScene::processInput()
     // 调用基类的 processInput，处理其他输入逻辑
     Scene::processInput();
 
+
+    // 更新激光瞄准线
+    updateLaserSights();
+
     // 确保角色处理输入
     if (player1 != nullptr)
     {
@@ -1068,6 +1072,42 @@ void IceScene::handleGameEnd()
 
     // // 发送信号请求 MyGame 切换场景到 GameOverScene
     // emit requestSceneChange(SceneID::GameOverScene_ID);
+}
+
+// 更新（狙击枪）激光瞄准线
+void IceScene::updateLaserSights()
+{
+    // 更新 player1 的激光瞄准线
+    if (player1 && player1->getWeapon())
+    {
+        Sniper_Rifle* sniperRifle = dynamic_cast<Sniper_Rifle*>(player1->getWeapon());
+        if (sniperRifle)
+        {
+            QPointF shooterPos = player1->pos();
+            QRectF bodyRect = player1->getBodyCollisionRect();
+            QPointF bodyCenter = shooterPos + bodyRect.center();
+            QPointF gunPos = bodyCenter + QPointF(player1->isFaceRight() ? 30 : -30, -10);
+            QPointF direction = player1->isFaceRight() ? QPointF(1, 0) : QPointF(-1, 0);
+
+            sniperRifle->updateLaserSight(gunPos, direction);
+        }
+    }
+
+    // 更新 player2 的激光瞄准线
+    if (player2 && player2->getWeapon())
+    {
+        Sniper_Rifle* sniperRifle = dynamic_cast<Sniper_Rifle*>(player2->getWeapon());
+        if (sniperRifle)
+        {
+            QPointF shooterPos = player2->pos();
+            QRectF bodyRect = player2->getBodyCollisionRect();
+            QPointF bodyCenter = shooterPos + bodyRect.center();
+            QPointF gunPos = bodyCenter + QPointF(player2->isFaceRight() ? 30 : -30, -10);
+            QPointF direction = player2->isFaceRight() ? QPointF(1, 0) : QPointF(-1, 0);
+
+            sniperRifle->updateLaserSight(gunPos, direction);
+        }
+    }
 }
 
 void IceScene::showDebugVisualization()

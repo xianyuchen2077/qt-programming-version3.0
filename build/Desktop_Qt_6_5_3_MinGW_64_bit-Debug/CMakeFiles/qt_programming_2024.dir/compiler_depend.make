@@ -8013,6 +8013,8 @@ CMakeFiles/qt_programming_2024.dir/src/Items/Weapons/Sniper_Rifle.cpp.obj: C:/Us
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/HeadEquipments/HeadEquipment.h \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Item.h \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/LegEquipments/LegEquipment.h \
+  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Maps/Icefield.h \
+  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Maps/Map.h \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Mountable.h \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Weapons/Weapon.h \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Weapons/Sniper_Rifle.h \
@@ -8128,6 +8130,7 @@ CMakeFiles/qt_programming_2024.dir/src/Items/Weapons/Sniper_Rifle.cpp.obj: C:/Us
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qversiontagging.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qxptype_traits.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/QPainter \
+  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/QPen \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qbrush.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qcolor.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qfont.h \
@@ -8153,6 +8156,7 @@ CMakeFiles/qt_programming_2024.dir/src/Items/Weapons/Sniper_Rifle.cpp.obj: C:/Us
   D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qwindowdefs_win.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QGraphicsEllipseItem \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QGraphicsItem \
+  D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QGraphicsLineItem \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QGraphicsScene \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qgraphicsitem.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qgraphicsscene.h \
@@ -10544,6 +10548,7 @@ CMakeFiles/qt_programming_2024.dir/src/Scenes/IceScene.cpp.obj: C:/Users/xiany/D
   D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qwindowdefs_win.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QGraphicsEllipseItem \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QGraphicsItem \
+  D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QGraphicsLineItem \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QGraphicsScene \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qgraphicsitem.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qgraphicsscene.h \
@@ -12623,6 +12628,8 @@ D:/Qt/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/n
 
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Maps/Icefield.cpp:
 
+D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QGraphicsLineItem:
+
 D:/Qt/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/node_handle.h:
 
 D:/Qt/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/parse_numbers.h:
@@ -12775,8 +12782,6 @@ D:/Qt/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/typein
 
 D:/Qt/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/utility:
 
-D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QGraphicsPixmapItem:
-
 D:/Qt/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/variant:
 
 D:/Qt/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/version:
@@ -12800,6 +12805,8 @@ D:/Qt/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64
 D:/Qt/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/os_defines.h:
 
 D:/Qt/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/stdbool.h:
+
+D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/QPen:
 
 D:/Qt/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/stdint.h:
 
@@ -12827,9 +12834,9 @@ D:/Qt/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/pthread_unistd.h:
 
 D:/Qt/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/sdks/_mingw_ddk.h:
 
-D:/Qt/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/sec_api/sys/timeb_s.h:
-
 D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/QFont:
+
+D:/Qt/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/sec_api/sys/timeb_s.h:
 
 D:/Qt/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/signal.h:
 
@@ -12938,6 +12945,8 @@ D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qmenubar.h:
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Scenes/GameOverScene.cpp:
 
 D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/QColor:
+
+D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QGraphicsPixmapItem:
 
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Scenes/Scene.cpp:
 

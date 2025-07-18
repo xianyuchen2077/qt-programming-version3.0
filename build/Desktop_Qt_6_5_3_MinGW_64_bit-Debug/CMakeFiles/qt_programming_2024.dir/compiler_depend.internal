@@ -8038,6 +8038,8 @@ CMakeFiles/qt_programming_2024.dir/src/Items/Weapons/Sniper_Rifle.cpp.obj
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/HeadEquipments/HeadEquipment.h
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Item.h
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/LegEquipments/LegEquipment.h
+ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Maps/Icefield.h
+ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Maps/Map.h
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Mountable.h
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Weapons/Weapon.h
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Weapons/Sniper_Rifle.h
@@ -8153,6 +8155,7 @@ CMakeFiles/qt_programming_2024.dir/src/Items/Weapons/Sniper_Rifle.cpp.obj
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qversiontagging.h
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qxptype_traits.h
  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/QPainter
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/QPen
  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qbrush.h
  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qcolor.h
  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qfont.h
@@ -8178,6 +8181,7 @@ CMakeFiles/qt_programming_2024.dir/src/Items/Weapons/Sniper_Rifle.cpp.obj
  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qwindowdefs_win.h
  D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QGraphicsEllipseItem
  D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QGraphicsItem
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QGraphicsLineItem
  D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QGraphicsScene
  D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qgraphicsitem.h
  D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qgraphicsscene.h
@@ -10575,6 +10579,7 @@ CMakeFiles/qt_programming_2024.dir/src/Scenes/IceScene.cpp.obj
  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qwindowdefs_win.h
  D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QGraphicsEllipseItem
  D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QGraphicsItem
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QGraphicsLineItem
  D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QGraphicsScene
  D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qgraphicsitem.h
  D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qgraphicsscene.h

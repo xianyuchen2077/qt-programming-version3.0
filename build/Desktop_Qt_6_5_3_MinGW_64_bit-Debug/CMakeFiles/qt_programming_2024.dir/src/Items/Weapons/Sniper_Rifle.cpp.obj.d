@@ -358,6 +358,7 @@ CMakeFiles/qt_programming_2024.dir/src/Items/Weapons/Sniper_Rifle.cpp.obj: \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QGraphicsScene \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qgraphicsscene.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qtclasshelpermacros.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QGraphicsLineItem \
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Bullets/Sniper_Rifle_bullet.h \
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Bullets/Bullet.h \
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Characters/Character.h \
@@ -372,5 +373,11 @@ CMakeFiles/qt_programming_2024.dir/src/Items/Weapons/Sniper_Rifle.cpp.obj: \
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Item.h \
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Mountable.h \
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Weapons/Weapon.h \
+ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Maps/Icefield.h \
+ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Maps/Map.h \
+ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Item.h \
+ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Characters/Character.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QDebug \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qdebug.h
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qdebug.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/QPen \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qpen.h
