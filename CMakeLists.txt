@@ -79,6 +79,7 @@ add_executable(qt_programming_2024 src/main.cpp
         src/Items/Weapons/Sniper_Rifle.h
         src/Items/Weapons/Sniper_Rifle.cpp
         src/Items/Bullets/Sniper_Rifle_bullet.h
+        src/Items/Bullets/Sniper_Rifle_bullet.cpp
 
 
 

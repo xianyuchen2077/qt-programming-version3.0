@@ -31,10 +31,10 @@ void Shabby_Pistol::mountToParent()
 void Shabby_Pistol::unmount()
 {
     Mountable::unmount();
-    setScale(0.7);
+    setScale(0.6);
     if (pixmapItem != nullptr)
     {
-        pixmapItem->setPos(0, -110);
+        pixmapItem->setPos(0, -90);
     }
 }
 

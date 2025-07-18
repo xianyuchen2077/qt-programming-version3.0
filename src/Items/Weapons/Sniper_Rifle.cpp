@@ -1,5 +1,5 @@
 #include "Sniper_Rifle.h"
-#include "../Bullets/Shabby_Pistol_bullet.h"
+#include "../Bullets/Sniper_Rifle_bullet.h"
 #include "../Characters/Character.h"
 #include <QDebug>
 
@@ -24,17 +24,17 @@ Sniper_Rifle::Sniper_Rifle(QGraphicsItem *parent) : Weapon(parent, ":/Items/Weap
 void Sniper_Rifle::mountToParent()
 {
     Mountable::mountToParent();
-    setScale(0.3);      // 设置缩放比例
+    setScale(0.8);      // 设置缩放比例
     setPos(-42, -17);   // 设置位置偏移
 }
 
 void Sniper_Rifle::unmount()
 {
     Mountable::unmount();
-    setScale(0.4);
+    setScale(0.8);
     if (pixmapItem != nullptr)
     {
-        pixmapItem->setPos(0, -150);
+        pixmapItem->setPos(0, -60);
     }
 }
 
@@ -64,12 +64,12 @@ void Sniper_Rifle::Check_and_Destroy()
     }
 }
 
-// Bullet* Sniper_Rifle::createBullet(const QPointF& startPos, const QPointF& direction)
-// {
-//     return new Shabby_Pistol_bullet(startPos, direction, this);
-// }
+Bullet* Sniper_Rifle::createBullet(const QPointF& startPos, const QPointF& direction)
+{
+    return new SniperRifleBullet(nullptr,startPos, direction, nullptr);
+}
 
-// Bullet* Sniper_Rifle::createBullet(const QPointF& startPos, const QPointF& direction, Character* shooter)
-// {
-//     return new Shabby_Pistol_bullet(startPos, direction, this, shooter);
-// }
+Bullet* Sniper_Rifle::createBullet(const QPointF& startPos, const QPointF& direction, Character* shooter)
+{
+    return new SniperRifleBullet(nullptr,startPos, direction, shooter);
+}

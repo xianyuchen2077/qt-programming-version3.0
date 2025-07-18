@@ -930,6 +930,7 @@ void IceScene::processMovement()
     }
 }
 
+// 处理角色的拾取
 void IceScene::processPicking()
 {
     Scene::processPicking();
@@ -985,6 +986,7 @@ Mountable *IceScene::findNearestUnmountedMountable(const QPointF &pos, qreal dis
                 // 物品的中心位置
                 QRectF itemBounds = item->boundingRect();
                 QPointF itemCenter = item->pos() + QPointF(itemBounds.width() / 2, itemBounds.height() / 2);
+                // QPointF itemCenter = itemBounds.center();
 
                 // 计算两个中心点之间的距离
                 qreal distance = QLineF(characterCenter, itemCenter).length();
@@ -993,6 +995,12 @@ Mountable *IceScene::findNearestUnmountedMountable(const QPointF &pos, qreal dis
                 {
                     minDistance = distance;
                     nearest = mountable;
+                }
+
+                // 调试输出
+                if (auto weapon = dynamic_cast<Weapon*>(item))
+                {
+                    qDebug() << "Checking weapon:" << weapon->getWeaponName();
                 }
             }
         }

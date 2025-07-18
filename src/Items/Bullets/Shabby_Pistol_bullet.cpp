@@ -12,7 +12,7 @@ BulletBasic::BulletBasic(QGraphicsItem *parent, const QPointF& startPos, const Q
     hasExploded(false),
     shooterCharacter(shooter)
 {
-    bulletSpeed = 20.0;                 // 设置子弹速度
+    bulletSpeed = 12.0;                 // 设置子弹速度
     lifetimeFrames = 300;               // 设置生命周期
     setScale(0.1);                      // 设置子弹缩放比例
     setPos(startPos + QPointF(0,-50));  // 初始位置偏移，避免与角色重叠
@@ -126,6 +126,4 @@ void BulletBasic::destroyBullet()
     {
         scene()->removeItem(this);
     }
-
-    // delete this; // 删除子弹对象
 }

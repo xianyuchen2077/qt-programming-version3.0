@@ -16,6 +16,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/qt_programming_2024.dir/src/Items/Bullets/Bullet.cpp.obj.d"
   "CMakeFiles/qt_programming_2024.dir/src/Items/Bullets/Shabby_Pistol_bullet.cpp.obj"
   "CMakeFiles/qt_programming_2024.dir/src/Items/Bullets/Shabby_Pistol_bullet.cpp.obj.d"
+  "CMakeFiles/qt_programming_2024.dir/src/Items/Bullets/Sniper_Rifle_bullet.cpp.obj"
+  "CMakeFiles/qt_programming_2024.dir/src/Items/Bullets/Sniper_Rifle_bullet.cpp.obj.d"
   "CMakeFiles/qt_programming_2024.dir/src/Items/Bullets/SolidBall_bullet.cpp.obj"
   "CMakeFiles/qt_programming_2024.dir/src/Items/Bullets/SolidBall_bullet.cpp.obj.d"
   "CMakeFiles/qt_programming_2024.dir/src/Items/Characters/Character.cpp.obj"

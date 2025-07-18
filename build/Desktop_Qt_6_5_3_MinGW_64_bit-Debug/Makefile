@@ -322,6 +322,30 @@ src/Items/Bullets/Shabby_Pistol_bullet.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Bullets/Shabby_Pistol_bullet.cpp.s
 .PHONY : src/Items/Bullets/Shabby_Pistol_bullet.cpp.s
 
+src/Items/Bullets/Sniper_Rifle_bullet.obj: src/Items/Bullets/Sniper_Rifle_bullet.cpp.obj
+.PHONY : src/Items/Bullets/Sniper_Rifle_bullet.obj
+
+# target to build an object file
+src/Items/Bullets/Sniper_Rifle_bullet.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Bullets/Sniper_Rifle_bullet.cpp.obj
+.PHONY : src/Items/Bullets/Sniper_Rifle_bullet.cpp.obj
+
+src/Items/Bullets/Sniper_Rifle_bullet.i: src/Items/Bullets/Sniper_Rifle_bullet.cpp.i
+.PHONY : src/Items/Bullets/Sniper_Rifle_bullet.i
+
+# target to preprocess a source file
+src/Items/Bullets/Sniper_Rifle_bullet.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Bullets/Sniper_Rifle_bullet.cpp.i
+.PHONY : src/Items/Bullets/Sniper_Rifle_bullet.cpp.i
+
+src/Items/Bullets/Sniper_Rifle_bullet.s: src/Items/Bullets/Sniper_Rifle_bullet.cpp.s
+.PHONY : src/Items/Bullets/Sniper_Rifle_bullet.s
+
+# target to generate assembly for a file
+src/Items/Bullets/Sniper_Rifle_bullet.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Bullets/Sniper_Rifle_bullet.cpp.s
+.PHONY : src/Items/Bullets/Sniper_Rifle_bullet.cpp.s
+
 src/Items/Bullets/SolidBall_bullet.obj: src/Items/Bullets/SolidBall_bullet.cpp.obj
 .PHONY : src/Items/Bullets/SolidBall_bullet.obj
 
@@ -978,6 +1002,9 @@ help:
 	@echo ... src/Items/Bullets/Shabby_Pistol_bullet.obj
 	@echo ... src/Items/Bullets/Shabby_Pistol_bullet.i
 	@echo ... src/Items/Bullets/Shabby_Pistol_bullet.s
+	@echo ... src/Items/Bullets/Sniper_Rifle_bullet.obj
+	@echo ... src/Items/Bullets/Sniper_Rifle_bullet.i
+	@echo ... src/Items/Bullets/Sniper_Rifle_bullet.s
 	@echo ... src/Items/Bullets/SolidBall_bullet.obj
 	@echo ... src/Items/Bullets/SolidBall_bullet.i
 	@echo ... src/Items/Bullets/SolidBall_bullet.s
