@@ -27,23 +27,28 @@ void BulletBasic::explode()
     hasExploded = true;
     qDebug() << "BulletBasic exploded at position:" << pos();
 
+    // 停止子弹移动
+    bulletSpeed = 0;
+    directionVector = QPointF(0, 0);
+
     // 创建爆炸视觉效果
     if (pixmapItem)
     {
         // 改变颜色和大小表示爆炸
-        pixmapItem->setOpacity(0.8);    // 设置透明度
+        pixmapItem->setPixmap(QPixmap(":/Items/Bullets/bullet_fire_Icon.png")); // 替换为爆炸图片
         setScale(scale() * 3);          // 放大表示爆炸
-
-        // 添加简单的颜色效果（如果需要）
-        // QGraphicsColorizeEffect* effect = new QGraphicsColorizeEffect();
-        // effect->setColor(Qt::red);
-        // pixmapItem->setGraphicsEffect(effect);
     }
 
-    // // 延迟销毁以显示爆炸效果
-    // QTimer::singleShot(100, this, [this](){
-    //     destroyBullet();
-    // });
+    // 创建一个动态 QTimer 实例，避免使用 SLOT 宏
+    QTimer* timer = new QTimer();
+    timer->setSingleShot(true);
+    QObject::connect(timer, &QTimer::timeout, [this, timer]() {
+        timer->stop();
+        destroyBullet();
+        timer->deleteLater(); // 清理 timer 避免内存泄漏
+        qDebug() << "BulletBasic explosion timer finished, bullet destroyed.";
+    });
+    timer->start(200);
 }
 
 void BulletBasic::handleCollisions()
@@ -107,4 +112,20 @@ void BulletBasic::handleCollisions()
             }
         }
     }
+}
+
+void BulletBasic::destroyBullet()
+{
+    if (isDestroyed) return;
+
+    isDestroyed = true;
+    qDebug() << "BulletBasic destroyed at position:" << pos();
+
+    // 从场景中移除子弹
+    if (scene())
+    {
+        scene()->removeItem(this);
+    }
+
+    // delete this; // 删除子弹对象
 }

@@ -368,6 +368,7 @@ CMakeFiles/qt_programming_2024.dir/src/Items/Characters/Link.cpp.obj: \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qpoint.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QGraphicsScene \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qgraphicsscene.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qtclasshelpermacros.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QElapsedTimer \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qelapsedtimer.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QTimer \

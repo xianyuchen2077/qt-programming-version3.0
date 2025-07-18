@@ -15,6 +15,12 @@ public:
                          Character* shooter = nullptr);
     ~BulletBasic() override = default;
 
+    void destroyBullet() override;
+
+public slots:
+    void delayedDestroy() { destroyBullet(); }
+
+
 protected:
     void handleCollisions() override;
 

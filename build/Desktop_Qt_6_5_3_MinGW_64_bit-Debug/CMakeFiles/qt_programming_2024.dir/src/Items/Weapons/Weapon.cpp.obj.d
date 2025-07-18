@@ -356,6 +356,7 @@ CMakeFiles/qt_programming_2024.dir/src/Items/Weapons/Weapon.cpp.obj: \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qpoint.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QGraphicsScene \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qgraphicsscene.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qtclasshelpermacros.h \
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Characters/Character.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QGraphicsEllipseItem \
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/HeadEquipments/HeadEquipment.h \

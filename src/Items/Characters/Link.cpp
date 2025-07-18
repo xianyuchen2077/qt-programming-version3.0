@@ -202,7 +202,7 @@ void Link::processDyingAnimation(qint64 deltaTime)
         if (m_currentDyingFrame >= m_dyingFrames.size())
         {
             m_dyingAnimationTimer->stop();
-            delete m_dyingAnimationTimer;
+            delete m_dyingAnimationTimer; // 清理 timer 避免内存泄漏
             m_dyingAnimationTimer = nullptr;
             return;
         }

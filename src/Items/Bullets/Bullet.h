@@ -5,6 +5,7 @@
 #include "../Item.h"
 #include <QPointF>
 #include <QGraphicsScene>
+#include <qtclasshelpermacros.h>
 
 class Bullet : public Item
 {
@@ -20,7 +21,7 @@ public:
     [[nodiscard]] int getDamage() const { return bulletDamage; }
 
     // 安全销毁自动的方法
-    void destroyBullet();
+    virtual void destroyBullet();
 
 protected:
     qreal bulletSpeed;          // 子弹速度
