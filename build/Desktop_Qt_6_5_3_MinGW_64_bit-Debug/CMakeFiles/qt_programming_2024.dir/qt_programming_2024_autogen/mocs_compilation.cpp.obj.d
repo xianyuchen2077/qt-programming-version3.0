@@ -1,7 +1,8 @@
 CMakeFiles/qt_programming_2024.dir/qt_programming_2024_autogen/mocs_compilation.cpp.obj: \
  C:\Users\xiany\Desktop\GodNoCode\AdvancedProgramming\major_assignment\hw1_FightingGame\qt-programming-2025\build\Desktop_Qt_6_5_3_MinGW_64_bit-Debug\qt_programming_2024_autogen\mocs_compilation.cpp \
- C:\Users\xiany\Desktop\GodNoCode\AdvancedProgramming\major_assignment\hw1_FightingGame\qt-programming-2025\build\Desktop_Qt_6_5_3_MinGW_64_bit-Debug\qt_programming_2024_autogen\Z3UREFIW6B/moc_Weapon.cpp \
- C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Weapons/Weapon.h \
+ C:\Users\xiany\Desktop\GodNoCode\AdvancedProgramming\major_assignment\hw1_FightingGame\qt-programming-2025\build\Desktop_Qt_6_5_3_MinGW_64_bit-Debug\qt_programming_2024_autogen\MWF5AHYEVO/moc_Bandage.cpp \
+ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Supplies/Bandage.h \
+ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Supplies/MedicalSupply.h \
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Item.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QGraphicsItem \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qgraphicsitem.h \
@@ -350,6 +351,15 @@ CMakeFiles/qt_programming_2024.dir/qt_programming_2024_autogen/mocs_compilation.
  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qfontinfo.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qfont.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qfontmetrics.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QTimer \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qtimer.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qbasictimer.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qtmochelpers.h \
+ C:\Users\xiany\Desktop\GodNoCode\AdvancedProgramming\major_assignment\hw1_FightingGame\qt-programming-2025\build\Desktop_Qt_6_5_3_MinGW_64_bit-Debug\qt_programming_2024_autogen\MWF5AHYEVO/moc_MedicalSupply.cpp \
+ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Supplies/MedicalSupply.h \
+ C:\Users\xiany\Desktop\GodNoCode\AdvancedProgramming\major_assignment\hw1_FightingGame\qt-programming-2025\build\Desktop_Qt_6_5_3_MinGW_64_bit-Debug\qt_programming_2024_autogen\Z3UREFIW6B/moc_Weapon.cpp \
+ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Weapons/Weapon.h \
+ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Item.h \
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Mountable.h \
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Bullets/Bullet.h \
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Item.h \
@@ -358,7 +368,6 @@ CMakeFiles/qt_programming_2024.dir/qt_programming_2024_autogen/mocs_compilation.
  D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QGraphicsScene \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qgraphicsscene.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qtclasshelpermacros.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qtmochelpers.h \
  C:\Users\xiany\Desktop\GodNoCode\AdvancedProgramming\major_assignment\hw1_FightingGame\qt-programming-2025\build\Desktop_Qt_6_5_3_MinGW_64_bit-Debug\qt_programming_2024_autogen\UVLADIE3JM/moc_MyGame.cpp \
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/MyGame.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QGraphicsView \
@@ -384,9 +393,6 @@ CMakeFiles/qt_programming_2024.dir/qt_programming_2024_autogen/mocs_compilation.
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qmetatype.h \
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Scenes/Scene.h \
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/GameEnums.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QTimer \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qtimer.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qbasictimer.h \
  C:\Users\xiany\Desktop\GodNoCode\AdvancedProgramming\major_assignment\hw1_FightingGame\qt-programming-2025\build\Desktop_Qt_6_5_3_MinGW_64_bit-Debug\qt_programming_2024_autogen\SNE2VJ5FQV/moc_BattleScene.cpp \
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Scenes/BattleScene.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/QKeyEvent \

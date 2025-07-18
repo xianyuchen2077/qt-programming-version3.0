@@ -706,6 +706,54 @@ src/Items/Mountable.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Mountable.cpp.s
 .PHONY : src/Items/Mountable.cpp.s
 
+src/Items/Supplies/Bandage.obj: src/Items/Supplies/Bandage.cpp.obj
+.PHONY : src/Items/Supplies/Bandage.obj
+
+# target to build an object file
+src/Items/Supplies/Bandage.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Supplies/Bandage.cpp.obj
+.PHONY : src/Items/Supplies/Bandage.cpp.obj
+
+src/Items/Supplies/Bandage.i: src/Items/Supplies/Bandage.cpp.i
+.PHONY : src/Items/Supplies/Bandage.i
+
+# target to preprocess a source file
+src/Items/Supplies/Bandage.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Supplies/Bandage.cpp.i
+.PHONY : src/Items/Supplies/Bandage.cpp.i
+
+src/Items/Supplies/Bandage.s: src/Items/Supplies/Bandage.cpp.s
+.PHONY : src/Items/Supplies/Bandage.s
+
+# target to generate assembly for a file
+src/Items/Supplies/Bandage.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Supplies/Bandage.cpp.s
+.PHONY : src/Items/Supplies/Bandage.cpp.s
+
+src/Items/Supplies/MedicalSupply.obj: src/Items/Supplies/MedicalSupply.cpp.obj
+.PHONY : src/Items/Supplies/MedicalSupply.obj
+
+# target to build an object file
+src/Items/Supplies/MedicalSupply.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Supplies/MedicalSupply.cpp.obj
+.PHONY : src/Items/Supplies/MedicalSupply.cpp.obj
+
+src/Items/Supplies/MedicalSupply.i: src/Items/Supplies/MedicalSupply.cpp.i
+.PHONY : src/Items/Supplies/MedicalSupply.i
+
+# target to preprocess a source file
+src/Items/Supplies/MedicalSupply.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Supplies/MedicalSupply.cpp.i
+.PHONY : src/Items/Supplies/MedicalSupply.cpp.i
+
+src/Items/Supplies/MedicalSupply.s: src/Items/Supplies/MedicalSupply.cpp.s
+.PHONY : src/Items/Supplies/MedicalSupply.s
+
+# target to generate assembly for a file
+src/Items/Supplies/MedicalSupply.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Supplies/MedicalSupply.cpp.s
+.PHONY : src/Items/Supplies/MedicalSupply.cpp.s
+
 src/Items/Weapons/Shabby_Pistol.obj: src/Items/Weapons/Shabby_Pistol.cpp.obj
 .PHONY : src/Items/Weapons/Shabby_Pistol.obj
 
@@ -1050,6 +1098,12 @@ help:
 	@echo ... src/Items/Mountable.obj
 	@echo ... src/Items/Mountable.i
 	@echo ... src/Items/Mountable.s
+	@echo ... src/Items/Supplies/Bandage.obj
+	@echo ... src/Items/Supplies/Bandage.i
+	@echo ... src/Items/Supplies/Bandage.s
+	@echo ... src/Items/Supplies/MedicalSupply.obj
+	@echo ... src/Items/Supplies/MedicalSupply.i
+	@echo ... src/Items/Supplies/MedicalSupply.s
 	@echo ... src/Items/Weapons/Shabby_Pistol.obj
 	@echo ... src/Items/Weapons/Shabby_Pistol.i
 	@echo ... src/Items/Weapons/Shabby_Pistol.s

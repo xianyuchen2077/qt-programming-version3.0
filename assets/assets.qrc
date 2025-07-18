@@ -41,5 +41,6 @@
         <file>Items/Bullets/bullet_fire_Icon.png</file>
         <file>Items/Bullets/bullet_fire_Icon2.png</file>
         <file>Items/Bullets/Sniper_Rifle_bullet_Icon.png</file>
+        <file>Items/Supplies/Bandage_Icon.png</file>
     </qresource>
 </RCC>

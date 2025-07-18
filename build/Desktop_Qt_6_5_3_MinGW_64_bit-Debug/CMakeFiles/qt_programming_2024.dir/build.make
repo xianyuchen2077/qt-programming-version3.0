@@ -72,6 +72,7 @@ qt_programming_2024_autogen/GBFAFXFCVO/qrc_assets.cpp: C:/Users/xiany/Desktop/Go
 qt_programming_2024_autogen/GBFAFXFCVO/qrc_assets.cpp: CMakeFiles/qt_programming_2024_autogen.dir/AutoRcc_assets_GBFAFXFCVO_Info.json
 qt_programming_2024_autogen/GBFAFXFCVO/qrc_assets.cpp: C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/assets/Items/HeadEquipments/Helmet/Helmet_of_the_Paladin.png
 qt_programming_2024_autogen/GBFAFXFCVO/qrc_assets.cpp: C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/assets/Items/HeadEquipments/CapOfTheHero/BotW_Cap_of_the_Hero_Icon.png
+qt_programming_2024_autogen/GBFAFXFCVO/qrc_assets.cpp: C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/assets/Items/Supplies/Bandage_Icon.png
 qt_programming_2024_autogen/GBFAFXFCVO/qrc_assets.cpp: C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/assets/Items/Armors/FlamebreakerArmor/BotW_Flamebreaker_Armor_Icon.png
 qt_programming_2024_autogen/GBFAFXFCVO/qrc_assets.cpp: C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/assets/Items/Armors/OldShirt/BotW_Old_Shirt_Icon.png
 qt_programming_2024_autogen/GBFAFXFCVO/qrc_assets.cpp: C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/assets/Items/Weapons/Sniper_Rifle_Icon.png
@@ -614,11 +615,41 @@ CMakeFiles/qt_programming_2024.dir/src/Items/Bullets/Sniper_Rifle_bullet.cpp.s: 
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/qt_programming_2024.dir/src/Items/Bullets/Sniper_Rifle_bullet.cpp.s"
 	D:\Qt\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\xiany\Desktop\GodNoCode\AdvancedProgramming\major_assignment\hw1_FightingGame\qt-programming-2025\src\Items\Bullets\Sniper_Rifle_bullet.cpp -o CMakeFiles\qt_programming_2024.dir\src\Items\Bullets\Sniper_Rifle_bullet.cpp.s
 
+CMakeFiles/qt_programming_2024.dir/src/Items/Supplies/MedicalSupply.cpp.obj: CMakeFiles/qt_programming_2024.dir/flags.make
+CMakeFiles/qt_programming_2024.dir/src/Items/Supplies/MedicalSupply.cpp.obj: CMakeFiles/qt_programming_2024.dir/includes_CXX.rsp
+CMakeFiles/qt_programming_2024.dir/src/Items/Supplies/MedicalSupply.cpp.obj: C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Supplies/MedicalSupply.cpp
+CMakeFiles/qt_programming_2024.dir/src/Items/Supplies/MedicalSupply.cpp.obj: CMakeFiles/qt_programming_2024.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\xiany\Desktop\GodNoCode\AdvancedProgramming\major_assignment\hw1_FightingGame\qt-programming-2025\build\Desktop_Qt_6_5_3_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building CXX object CMakeFiles/qt_programming_2024.dir/src/Items/Supplies/MedicalSupply.cpp.obj"
+	D:\Qt\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/qt_programming_2024.dir/src/Items/Supplies/MedicalSupply.cpp.obj -MF CMakeFiles\qt_programming_2024.dir\src\Items\Supplies\MedicalSupply.cpp.obj.d -o CMakeFiles\qt_programming_2024.dir\src\Items\Supplies\MedicalSupply.cpp.obj -c C:\Users\xiany\Desktop\GodNoCode\AdvancedProgramming\major_assignment\hw1_FightingGame\qt-programming-2025\src\Items\Supplies\MedicalSupply.cpp
+
+CMakeFiles/qt_programming_2024.dir/src/Items/Supplies/MedicalSupply.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/qt_programming_2024.dir/src/Items/Supplies/MedicalSupply.cpp.i"
+	D:\Qt\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\xiany\Desktop\GodNoCode\AdvancedProgramming\major_assignment\hw1_FightingGame\qt-programming-2025\src\Items\Supplies\MedicalSupply.cpp > CMakeFiles\qt_programming_2024.dir\src\Items\Supplies\MedicalSupply.cpp.i
+
+CMakeFiles/qt_programming_2024.dir/src/Items/Supplies/MedicalSupply.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/qt_programming_2024.dir/src/Items/Supplies/MedicalSupply.cpp.s"
+	D:\Qt\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\xiany\Desktop\GodNoCode\AdvancedProgramming\major_assignment\hw1_FightingGame\qt-programming-2025\src\Items\Supplies\MedicalSupply.cpp -o CMakeFiles\qt_programming_2024.dir\src\Items\Supplies\MedicalSupply.cpp.s
+
+CMakeFiles/qt_programming_2024.dir/src/Items/Supplies/Bandage.cpp.obj: CMakeFiles/qt_programming_2024.dir/flags.make
+CMakeFiles/qt_programming_2024.dir/src/Items/Supplies/Bandage.cpp.obj: CMakeFiles/qt_programming_2024.dir/includes_CXX.rsp
+CMakeFiles/qt_programming_2024.dir/src/Items/Supplies/Bandage.cpp.obj: C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Supplies/Bandage.cpp
+CMakeFiles/qt_programming_2024.dir/src/Items/Supplies/Bandage.cpp.obj: CMakeFiles/qt_programming_2024.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\xiany\Desktop\GodNoCode\AdvancedProgramming\major_assignment\hw1_FightingGame\qt-programming-2025\build\Desktop_Qt_6_5_3_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building CXX object CMakeFiles/qt_programming_2024.dir/src/Items/Supplies/Bandage.cpp.obj"
+	D:\Qt\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/qt_programming_2024.dir/src/Items/Supplies/Bandage.cpp.obj -MF CMakeFiles\qt_programming_2024.dir\src\Items\Supplies\Bandage.cpp.obj.d -o CMakeFiles\qt_programming_2024.dir\src\Items\Supplies\Bandage.cpp.obj -c C:\Users\xiany\Desktop\GodNoCode\AdvancedProgramming\major_assignment\hw1_FightingGame\qt-programming-2025\src\Items\Supplies\Bandage.cpp
+
+CMakeFiles/qt_programming_2024.dir/src/Items/Supplies/Bandage.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/qt_programming_2024.dir/src/Items/Supplies/Bandage.cpp.i"
+	D:\Qt\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\xiany\Desktop\GodNoCode\AdvancedProgramming\major_assignment\hw1_FightingGame\qt-programming-2025\src\Items\Supplies\Bandage.cpp > CMakeFiles\qt_programming_2024.dir\src\Items\Supplies\Bandage.cpp.i
+
+CMakeFiles/qt_programming_2024.dir/src/Items/Supplies/Bandage.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/qt_programming_2024.dir/src/Items/Supplies/Bandage.cpp.s"
+	D:\Qt\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\xiany\Desktop\GodNoCode\AdvancedProgramming\major_assignment\hw1_FightingGame\qt-programming-2025\src\Items\Supplies\Bandage.cpp -o CMakeFiles\qt_programming_2024.dir\src\Items\Supplies\Bandage.cpp.s
+
 CMakeFiles/qt_programming_2024.dir/qt_programming_2024_autogen/GBFAFXFCVO/qrc_assets.cpp.obj: CMakeFiles/qt_programming_2024.dir/flags.make
 CMakeFiles/qt_programming_2024.dir/qt_programming_2024_autogen/GBFAFXFCVO/qrc_assets.cpp.obj: CMakeFiles/qt_programming_2024.dir/includes_CXX.rsp
 CMakeFiles/qt_programming_2024.dir/qt_programming_2024_autogen/GBFAFXFCVO/qrc_assets.cpp.obj: qt_programming_2024_autogen/GBFAFXFCVO/qrc_assets.cpp
 CMakeFiles/qt_programming_2024.dir/qt_programming_2024_autogen/GBFAFXFCVO/qrc_assets.cpp.obj: CMakeFiles/qt_programming_2024.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\xiany\Desktop\GodNoCode\AdvancedProgramming\major_assignment\hw1_FightingGame\qt-programming-2025\build\Desktop_Qt_6_5_3_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building CXX object CMakeFiles/qt_programming_2024.dir/qt_programming_2024_autogen/GBFAFXFCVO/qrc_assets.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\xiany\Desktop\GodNoCode\AdvancedProgramming\major_assignment\hw1_FightingGame\qt-programming-2025\build\Desktop_Qt_6_5_3_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building CXX object CMakeFiles/qt_programming_2024.dir/qt_programming_2024_autogen/GBFAFXFCVO/qrc_assets.cpp.obj"
 	D:\Qt\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/qt_programming_2024.dir/qt_programming_2024_autogen/GBFAFXFCVO/qrc_assets.cpp.obj -MF CMakeFiles\qt_programming_2024.dir\qt_programming_2024_autogen\GBFAFXFCVO\qrc_assets.cpp.obj.d -o CMakeFiles\qt_programming_2024.dir\qt_programming_2024_autogen\GBFAFXFCVO\qrc_assets.cpp.obj -c C:\Users\xiany\Desktop\GodNoCode\AdvancedProgramming\major_assignment\hw1_FightingGame\qt-programming-2025\build\Desktop_Qt_6_5_3_MinGW_64_bit-Debug\qt_programming_2024_autogen\GBFAFXFCVO\qrc_assets.cpp
 
 CMakeFiles/qt_programming_2024.dir/qt_programming_2024_autogen/GBFAFXFCVO/qrc_assets.cpp.i: cmake_force
@@ -664,6 +695,8 @@ qt_programming_2024_OBJECTS = \
 "CMakeFiles/qt_programming_2024.dir/src/Items/Maps/GameOverfield.cpp.obj" \
 "CMakeFiles/qt_programming_2024.dir/src/Items/Weapons/Sniper_Rifle.cpp.obj" \
 "CMakeFiles/qt_programming_2024.dir/src/Items/Bullets/Sniper_Rifle_bullet.cpp.obj" \
+"CMakeFiles/qt_programming_2024.dir/src/Items/Supplies/MedicalSupply.cpp.obj" \
+"CMakeFiles/qt_programming_2024.dir/src/Items/Supplies/Bandage.cpp.obj" \
 "CMakeFiles/qt_programming_2024.dir/qt_programming_2024_autogen/GBFAFXFCVO/qrc_assets.cpp.obj"
 
 # External object files for target qt_programming_2024
@@ -702,6 +735,8 @@ qt_programming_2024.exe: CMakeFiles/qt_programming_2024.dir/src/Scenes/GameOverS
 qt_programming_2024.exe: CMakeFiles/qt_programming_2024.dir/src/Items/Maps/GameOverfield.cpp.obj
 qt_programming_2024.exe: CMakeFiles/qt_programming_2024.dir/src/Items/Weapons/Sniper_Rifle.cpp.obj
 qt_programming_2024.exe: CMakeFiles/qt_programming_2024.dir/src/Items/Bullets/Sniper_Rifle_bullet.cpp.obj
+qt_programming_2024.exe: CMakeFiles/qt_programming_2024.dir/src/Items/Supplies/MedicalSupply.cpp.obj
+qt_programming_2024.exe: CMakeFiles/qt_programming_2024.dir/src/Items/Supplies/Bandage.cpp.obj
 qt_programming_2024.exe: CMakeFiles/qt_programming_2024.dir/qt_programming_2024_autogen/GBFAFXFCVO/qrc_assets.cpp.obj
 qt_programming_2024.exe: CMakeFiles/qt_programming_2024.dir/build.make
 qt_programming_2024.exe: D:/Qt/Qt/6.5.3/mingw_64/lib/libQt6Widgets.a
@@ -710,7 +745,7 @@ qt_programming_2024.exe: D:/Qt/Qt/6.5.3/mingw_64/lib/libQt6Core.a
 qt_programming_2024.exe: CMakeFiles/qt_programming_2024.dir/linkLibs.rsp
 qt_programming_2024.exe: CMakeFiles/qt_programming_2024.dir/objects1.rsp
 qt_programming_2024.exe: CMakeFiles/qt_programming_2024.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\xiany\Desktop\GodNoCode\AdvancedProgramming\major_assignment\hw1_FightingGame\qt-programming-2025\build\Desktop_Qt_6_5_3_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Linking CXX executable qt_programming_2024.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\xiany\Desktop\GodNoCode\AdvancedProgramming\major_assignment\hw1_FightingGame\qt-programming-2025\build\Desktop_Qt_6_5_3_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Linking CXX executable qt_programming_2024.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\qt_programming_2024.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

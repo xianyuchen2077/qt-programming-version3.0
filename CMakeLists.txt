@@ -80,6 +80,11 @@ add_executable(qt_programming_2024 src/main.cpp
         src/Items/Weapons/Sniper_Rifle.cpp
         src/Items/Bullets/Sniper_Rifle_bullet.h
         src/Items/Bullets/Sniper_Rifle_bullet.cpp
+        src/Items/Supplies/MedicalSupply.h
+        src/Items/Supplies/MedicalSupply.cpp
+        src/Items/Supplies/Bandage.h
+        src/Items/Supplies/Bandage.cpp
+
 
 
 
