@@ -74,8 +74,10 @@ IceScene::IceScene(QObject *parent) : Scene(parent)
     spareHeadEquipment->unmount();
     spareHeadEquipment->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.25, floorHeight);
     spareHeadEquipment->setZValue(5);
-    spareMedicalItem1->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.35, floorHeight);
+    spareMedicalItem1->unmount();
+    spareMedicalItem1->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.15, floorHeight - 190);
     spareMedicalItem1->setZValue(5);
+    spareMedicalItem1->setDrawDebugCenter(true); // 启用调试绘制
 
     // 初始化游戏循环
     gameTimer = new QTimer(this);
@@ -1019,11 +1021,11 @@ Mountable *IceScene::findNearestUnmountedMountable(const QPointF &pos, qreal dis
                 // 调试输出
                 if (auto weapon = dynamic_cast<Weapon*>(item))
                 {
-                    qDebug() << "Checking weapon:" << weapon->getWeaponName();
+                    qDebug() << "Checking weapon:" << weapon->getWeaponName() << "at distance:" << distance;
                 }
                 else if(auto medicalItem = dynamic_cast<MedicalItem*>(item))
                 {
-                    qDebug() << "Checking medical item:" << medicalItem->getName();
+                    qDebug() << "Checking medical item:" << medicalItem->getName() << "at distance:" << distance;
                 }
             }
         }

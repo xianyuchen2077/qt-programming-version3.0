@@ -8,15 +8,6 @@ const QString Bandage::PIXMAP_PATH = ":/Items/Supplies/Bandage_Icon.png";
 Bandage::Bandage(QGraphicsItem *parent)
     : MedicalItem(parent, PIXMAP_PATH)
 {
-    // 设置绷带的显示属性
-    setScale(0.3);
-
-    // 如果图片存在，调整位置使其居中
-    if (pixmapItem)
-    {
-        pixmapItem->setPos(0, -210);
-    }
-
     qDebug() << "Bandage created";
 }
 
@@ -33,10 +24,30 @@ void Bandage::mountToParent()
 void Bandage::unmount()
 {
     Mountable::unmount();
-    setScale(0.5);
+    setScale(0.3);
     if (pixmapItem != nullptr)
     {
-        pixmapItem->setPos(0, -90);
+        // 获取缩放后的图片尺寸
+        qreal scaledWidth = pixmapItem->boundingRect().width();
+        qreal scaledHeight = pixmapItem->boundingRect().height();
+
+        // 计算偏移量，使图片中心与父项的(0,0)对齐
+        pixmapItem->setPos(200, scaledHeight + 150);
+    }
+}
+
+void Bandage::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+{
+    if (m_drawDebugCenter)
+    {
+        painter->save();
+        painter->setRenderHint(QPainter::Antialiasing);
+        painter->setPen(Qt::red);
+        painter->setBrush(Qt::red);
+        qreal radius = 15.0;
+        QRectF itemBounds = this->boundingRect();
+        painter->drawEllipse(pos() + QPointF(itemBounds.width() / 2, itemBounds.height() / 2), radius, radius);
+        painter->restore();
     }
 }
 

@@ -48,6 +48,13 @@ public:
     // 设置药物使用状态
     void setUsed(bool usedStatus) { used = usedStatus; }
 
+    // 测试函数
+    // override paint 方法以进行自定义绘制
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr) override;
+
+    // 设置是否绘制调试中心点
+    void setDrawDebugCenter(bool draw);
+
 protected:
     // 应用立即治疗效果
     void applyInstantHeal(Character* character, int healAmount);
@@ -60,6 +67,9 @@ protected:
 
     // 标记物品已使用并安排删除
     void markUsedAndDestroy();
+
+    // 控制是否绘制调试点的标志
+    bool m_drawDebugCenter;
 
 private slots:
     // 持续治疗定时器槽函数

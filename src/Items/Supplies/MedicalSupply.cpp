@@ -166,3 +166,44 @@ void MedicalItem::onCleanupTimer()
     // 使用安全删除
     this->deleteLater();
 }
+
+// 实现 paint 方法
+void MedicalItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+{
+    // 首先调用父类的 paint 方法，以确保 MedicalItem 自身的 pixmapItem 被绘制
+    Item::paint(painter, option, widget);
+
+    // 如果调试绘制标志为真，则绘制中心点
+    if (m_drawDebugCenter)
+    {
+        painter->save();
+        // 保存当前绘图器状态
+
+        // 启用抗锯齿，使绘制的圆更平滑
+        painter->setRenderHint(QPainter::Antialiasing);
+
+        // 设置画笔颜色为红色，粗细为2
+        QPen pen(Qt::red);
+        pen.setWidth(4);
+        painter->setPen(pen);
+
+        // 设置填充颜色为红色
+        painter->setBrush(Qt::red);
+
+        // 绘制一个小的红色圆圈在 (0,0) 位置
+        // 圆圈的半径设为3个像素，你可以根据需要调整
+        qreal radius = 5.0;
+        painter->drawEllipse(QPointF(0, 0), radius, radius);
+
+        painter->restore();
+        // 恢复之前保存的绘图器状态
+    }
+}
+
+// 实现设置调试绘制标志的方法
+void MedicalItem::setDrawDebugCenter(bool draw)
+{
+    m_drawDebugCenter = draw;
+    update();
+    // 请求重新绘制，使更改立即生效
+}
