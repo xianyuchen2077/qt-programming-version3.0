@@ -88,6 +88,8 @@ add_executable(qt_programming_2024 src/main.cpp
         src/Items/Supplies/MedicalKit.cpp
         src/Items/Supplies/Adrenaline.h
         src/Items/Supplies/Adrenaline.cpp
+        src/Items/DebugDotItem.h
+        src/Items/DebugDotItem.cpp
 
 
 

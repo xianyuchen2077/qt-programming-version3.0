@@ -24,6 +24,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/qt_programming_2024.dir/src/Items/Characters/Character.cpp.obj.d"
   "CMakeFiles/qt_programming_2024.dir/src/Items/Characters/Link.cpp.obj"
   "CMakeFiles/qt_programming_2024.dir/src/Items/Characters/Link.cpp.obj.d"
+  "CMakeFiles/qt_programming_2024.dir/src/Items/DebugDotItem.cpp.obj"
+  "CMakeFiles/qt_programming_2024.dir/src/Items/DebugDotItem.cpp.obj.d"
   "CMakeFiles/qt_programming_2024.dir/src/Items/HeadEquipments/CapOfTheHero.cpp.obj"
   "CMakeFiles/qt_programming_2024.dir/src/Items/HeadEquipments/CapOfTheHero.cpp.obj.d"
   "CMakeFiles/qt_programming_2024.dir/src/Items/HeadEquipments/HeadEquipment.cpp.obj"

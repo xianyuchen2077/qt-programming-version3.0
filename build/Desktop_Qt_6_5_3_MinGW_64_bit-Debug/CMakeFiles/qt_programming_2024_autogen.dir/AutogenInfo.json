@@ -366,6 +366,12 @@
 			null
 		],
 		[
+			"C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/DebugDotItem.h",
+			"MU",
+			"7O23G427QC/moc_DebugDotItem.cpp",
+			null
+		],
+		[
 			"C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/HeadEquipments/CapOfTheHero.h",
 			"MU",
 			"6DSFGWXEQO/moc_CapOfTheHero.cpp",
@@ -632,6 +638,11 @@
 		],
 		[
 			"C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Characters/Link.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/DebugDotItem.cpp",
 			"MU",
 			null
 		],

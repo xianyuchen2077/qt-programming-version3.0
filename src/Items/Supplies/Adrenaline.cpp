@@ -20,6 +20,27 @@ Adrenaline::Adrenaline(QGraphicsItem *parent)
     qDebug() << "Adrenaline created";
 }
 
+void Adrenaline::mountToParent()
+{
+    Mountable::mountToParent();
+    setScale(0); // 缩放到0使图片消失
+}
+
+void Adrenaline::unmount()
+{
+    Mountable::unmount();
+    setScale(0.6);
+    if (pixmapItem != nullptr)
+    {
+        // 获取缩放后的图片尺寸
+        qreal scaledWidth = pixmapItem->boundingRect().width();
+        qreal scaledHeight = pixmapItem->boundingRect().height();
+
+        // 计算偏移量，使图片中心与父项的(0,0)对齐
+        pixmapItem->setPos(40, scaledHeight - 225); // 已校准！
+    }
+}
+
 bool Adrenaline::ApplytoCharacter(Character* character)
 {
     if (!character || isUsed())

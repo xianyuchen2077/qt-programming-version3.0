@@ -17,6 +17,8 @@ public:
     int getContinuousHealDuration() const override { return HEAL_DURATION; }
     qreal getSpeedBoost() const override { return SPEED_BOOST; }
     int getSpeedBoostDuration() const override { return SPEED_DURATION; }
+    void mountToParent() override;
+    void unmount() override;
 
 private:
     static const int INSTANT_HEAL = 10;        // 立即治疗量：10血量

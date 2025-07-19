@@ -14,11 +14,7 @@ Bandage::Bandage(QGraphicsItem *parent)
 void Bandage::mountToParent()
 {
     Mountable::mountToParent();
-    setScale(0.3);
-    if (pixmapItem)
-    {
-        pixmapItem->setPos(0, -60);  // 设置位置偏移
-    }
+    setScale(0); // 缩放到0使图片消失
 }
 
 void Bandage::unmount()
@@ -32,22 +28,7 @@ void Bandage::unmount()
         qreal scaledHeight = pixmapItem->boundingRect().height();
 
         // 计算偏移量，使图片中心与父项的(0,0)对齐
-        pixmapItem->setPos(200, scaledHeight + 150);
-    }
-}
-
-void Bandage::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
-{
-    if (m_drawDebugCenter)
-    {
-        painter->save();
-        painter->setRenderHint(QPainter::Antialiasing);
-        painter->setPen(Qt::red);
-        painter->setBrush(Qt::red);
-        qreal radius = 15.0;
-        QRectF itemBounds = this->boundingRect();
-        painter->drawEllipse(pos() + QPointF(itemBounds.width() / 2, itemBounds.height() / 2), radius, radius);
-        painter->restore();
+        pixmapItem->setPos(380, scaledHeight + 50); // 已校准！
     }
 }
 

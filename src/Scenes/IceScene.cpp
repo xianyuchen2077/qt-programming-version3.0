@@ -9,6 +9,9 @@
 #include "../Items/Weapons/SolidBall.h"
 #include "../Items/Weapons/Sniper_Rifle.h"
 #include "../Items/Supplies/Bandage.h"
+#include "../Items/Supplies/MedicalKit.h"
+#include "../Items/Supplies/Adrenaline.h"
+#include "../Items/DebugDotItem.h"
 
 // IceScene 构造函数
 IceScene::IceScene(QObject *parent) : Scene(parent)
@@ -47,6 +50,8 @@ IceScene::IceScene(QObject *parent) : Scene(parent)
     spareArmor = new FlamebreakerArmor();
     spareHeadEquipment = new HelmetOfThePaladin();
     spareMedicalItem1 = new Bandage();
+    spareMedicalItem2 = new MedicalKit();
+    spareMedicalItem3 = new Adrenaline();
 
     addItem(map);
     addItem(player1);
@@ -57,6 +62,8 @@ IceScene::IceScene(QObject *parent) : Scene(parent)
     addItem(spareArmor);
     addItem(spareHeadEquipment);
     addItem(spareMedicalItem1);
+    addItem(spareMedicalItem2);
+    addItem(spareMedicalItem3);
 
     // 设置备用武器装备补给的位置和状态
     spareWeapon1->unmount();
@@ -74,10 +81,15 @@ IceScene::IceScene(QObject *parent) : Scene(parent)
     spareHeadEquipment->unmount();
     spareHeadEquipment->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.25, floorHeight);
     spareHeadEquipment->setZValue(5);
-    spareMedicalItem1->unmount();
-    spareMedicalItem1->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.15, floorHeight - 190);
+    spareMedicalItem1->unmount(); // 已校准
+    spareMedicalItem1->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.1, floorHeight - 170);
     spareMedicalItem1->setZValue(5);
-    spareMedicalItem1->setDrawDebugCenter(true); // 启用调试绘制
+    spareMedicalItem2->unmount(); // 已校准
+    spareMedicalItem2->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.2, floorHeight - 490);
+    spareMedicalItem2->setZValue(5);
+    spareMedicalItem3->unmount();
+    spareMedicalItem3->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.3, floorHeight - 490);
+    spareMedicalItem3->setZValue(5);
 
     // 初始化游戏循环
     gameTimer = new QTimer(this);
@@ -90,10 +102,14 @@ IceScene::IceScene(QObject *parent) : Scene(parent)
     // 启动游戏循环，60FPS
     gameTimer->start(FRAME_TIME);
 
-    // 在构造函数末尾添加（在 gameTimer->start(FRAME_TIME); 之后）：
     // 显示调试可视化
     showDebugVisualization();
     qDebug() << "Debug visualization enabled. Press 'H' to toggle.";
+
+    // 可视化调控图片与实体位置重合
+    DebugDotItem* myDebugDot = new DebugDotItem();
+    this->addItem(myDebugDot); // 将其添加到场景中
+    myDebugDot->setDot(spareMedicalItem3->pos() + spareMedicalItem3->boundingRect().center(), 5, Qt::red);
 }
 
 // 初始化平台数据

@@ -418,6 +418,30 @@ src/Items/Characters/Link.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Characters/Link.cpp.s
 .PHONY : src/Items/Characters/Link.cpp.s
 
+src/Items/DebugDotItem.obj: src/Items/DebugDotItem.cpp.obj
+.PHONY : src/Items/DebugDotItem.obj
+
+# target to build an object file
+src/Items/DebugDotItem.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/DebugDotItem.cpp.obj
+.PHONY : src/Items/DebugDotItem.cpp.obj
+
+src/Items/DebugDotItem.i: src/Items/DebugDotItem.cpp.i
+.PHONY : src/Items/DebugDotItem.i
+
+# target to preprocess a source file
+src/Items/DebugDotItem.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/DebugDotItem.cpp.i
+.PHONY : src/Items/DebugDotItem.cpp.i
+
+src/Items/DebugDotItem.s: src/Items/DebugDotItem.cpp.s
+.PHONY : src/Items/DebugDotItem.s
+
+# target to generate assembly for a file
+src/Items/DebugDotItem.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/DebugDotItem.cpp.s
+.PHONY : src/Items/DebugDotItem.cpp.s
+
 src/Items/HeadEquipments/CapOfTheHero.obj: src/Items/HeadEquipments/CapOfTheHero.cpp.obj
 .PHONY : src/Items/HeadEquipments/CapOfTheHero.obj
 
@@ -1110,6 +1134,9 @@ help:
 	@echo ... src/Items/Characters/Link.obj
 	@echo ... src/Items/Characters/Link.i
 	@echo ... src/Items/Characters/Link.s
+	@echo ... src/Items/DebugDotItem.obj
+	@echo ... src/Items/DebugDotItem.i
+	@echo ... src/Items/DebugDotItem.s
 	@echo ... src/Items/HeadEquipments/CapOfTheHero.obj
 	@echo ... src/Items/HeadEquipments/CapOfTheHero.i
 	@echo ... src/Items/HeadEquipments/CapOfTheHero.s

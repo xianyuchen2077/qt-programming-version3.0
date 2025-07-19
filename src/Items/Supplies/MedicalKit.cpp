@@ -8,16 +8,28 @@ const QString MedicalKit::PIXMAP_PATH = ":/Items/Supplies/MedicalKit_Icon.png";
 MedicalKit::MedicalKit(QGraphicsItem *parent)
     : MedicalItem(parent, PIXMAP_PATH)
 {
-    // 设置医疗箱的显示属性
-    setScale(0.7);
-
-    // 如果图片存在，调整位置使其居中
-    if (pixmapItem)
-    {
-        pixmapItem->setPos(0, -pixmapItem->boundingRect().height() / 2);
-    }
-
     qDebug() << "MedicalKit created";
+}
+
+void MedicalKit::mountToParent()
+{
+    Mountable::mountToParent();
+    setScale(0); // 缩放到0使图片消失
+}
+
+void MedicalKit::unmount()
+{
+    Mountable::unmount();
+    setScale(0.35);
+    if (pixmapItem != nullptr)
+    {
+        // 获取缩放后的图片尺寸
+        qreal scaledWidth = pixmapItem->boundingRect().width();
+        qreal scaledHeight = pixmapItem->boundingRect().height();
+
+        // 计算偏移量，使图片中心与父项的(0,0)对齐
+        pixmapItem->setPos(270, scaledHeight -30); // 已校准！
+    }
 }
 
 bool MedicalKit::ApplytoCharacter(Character* character)

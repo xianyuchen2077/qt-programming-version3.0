@@ -17,9 +17,6 @@ public:
     void mountToParent() override;
     void unmount() override;
 
-    // 绘制定位点
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr) override;
-
 private:
     static const int HEAL_AMOUNT = 20;  // 治疗量：20血量
     static const QString PIXMAP_PATH;   // 图片路径
