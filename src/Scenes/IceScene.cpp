@@ -959,6 +959,10 @@ void IceScene::processPicking()
             {
                 spareHeadEquipment = headEquip;
             }
+            else if (auto medicalItem = dynamic_cast<MedicalItem*>(pickedUp))
+            {
+                spareMedicalItem1 = medicalItem;
+            }
         }
     }
     if (player2 != nullptr && player2->isPicking())
@@ -974,6 +978,10 @@ void IceScene::processPicking()
             else if (auto headEquip = dynamic_cast<HeadEquipment*>(pickedUp))
             {
                 spareHeadEquipment = headEquip;
+            }
+            else if (auto medicalItem = dynamic_cast<MedicalItem*>(pickedUp))
+            {
+                spareMedicalItem1 = medicalItem;
             }
         }
     }
@@ -1012,6 +1020,10 @@ Mountable *IceScene::findNearestUnmountedMountable(const QPointF &pos, qreal dis
                 if (auto weapon = dynamic_cast<Weapon*>(item))
                 {
                     qDebug() << "Checking weapon:" << weapon->getWeaponName();
+                }
+                else if(auto medicalItem = dynamic_cast<MedicalItem*>(item))
+                {
+                    qDebug() << "Checking medical item:" << medicalItem->getName();
                 }
             }
         }

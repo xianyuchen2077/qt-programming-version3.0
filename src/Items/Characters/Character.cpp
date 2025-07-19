@@ -449,9 +449,17 @@ Weapon *Character::pickupWeapon(Weapon *newWeapon)
 
 MedicalItem *Character::pickupMedicalItem(MedicalItem *newMedicalItem)
 {
+    auto oldMedicalItem = weapon;
+    if (oldMedicalItem != nullptr)
+    {
+        oldMedicalItem->unmount();
+        oldMedicalItem->setPos(newMedicalItem->pos());
+        oldMedicalItem->setParentItem(parentItem());
+    }
     if (newMedicalItem)
     {
     newMedicalItem->setParentItem(this);
+    newMedicalItem->mountToParent();
     newMedicalItem->ApplytoCharacter(this);
     newMedicalItem->setUsed(true);
     medicalItem = newMedicalItem;

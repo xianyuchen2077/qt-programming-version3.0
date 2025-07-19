@@ -14,11 +14,7 @@ MedicalItem::MedicalItem(QGraphicsItem *parent, const QString &pixmapPath)
     , healTickInterval(1000)
     , speedTarget(nullptr)
     , originalSpeed(0.0)
-    , boostMultiplier(1.0)
-{
-    setZValue(5); // 确保显示在地面之上
-    setScale(0.6); // 默认缩放
-}
+    , boostMultiplier(1.0){}
 
 MedicalItem::~MedicalItem()
 {

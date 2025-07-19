@@ -10,15 +10,34 @@ Bandage::Bandage(QGraphicsItem *parent)
 {
     // 设置绷带的显示属性
     setScale(0.3);
-    setPos(0, -50);
 
     // 如果图片存在，调整位置使其居中
     if (pixmapItem)
     {
-        pixmapItem->setPos(0, -pixmapItem->boundingRect().height() / 2 -60);
+        pixmapItem->setPos(0, -210);
     }
 
     qDebug() << "Bandage created";
+}
+
+void Bandage::mountToParent()
+{
+    Mountable::mountToParent();
+    setScale(0.3);
+    if (pixmapItem)
+    {
+        pixmapItem->setPos(0, -60);  // 设置位置偏移
+    }
+}
+
+void Bandage::unmount()
+{
+    Mountable::unmount();
+    setScale(0.5);
+    if (pixmapItem != nullptr)
+    {
+        pixmapItem->setPos(0, -90);
+    }
 }
 
 bool Bandage::ApplytoCharacter(Character* character)
