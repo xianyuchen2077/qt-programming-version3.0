@@ -79,3 +79,10 @@ bool Adrenaline::ApplytoCharacter(Character* character)
 
     return true;
 }
+
+void Adrenaline::setCleanuptime(qreal time)
+{
+    time = 10000; // 设置清理时间为10秒
+    MedicalItem::setCleanuptime(time);
+    qDebug() << "Adrenaline cleanup time set to:" << time;
+}

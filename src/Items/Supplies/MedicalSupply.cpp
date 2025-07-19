@@ -95,7 +95,8 @@ void MedicalItem::applySpeedBoost(Character* character, qreal speedBoost, int du
     qDebug() << "Original speed:" << originalSpeed << "New speed:" << character->getMoveSpeed();
 
     // 创建速度加成定时器
-    if (!speedBoostTimer) {
+    if (!speedBoostTimer)
+    {
         speedBoostTimer = new QTimer(this);
         connect(speedBoostTimer, &QTimer::timeout, this, &MedicalItem::onSpeedBoostEnd);
     }
@@ -112,13 +113,14 @@ void MedicalItem::markUsedAndDestroy()
     qDebug() << "Medical item used, scheduling destruction";
 
     // 设置清理定时器，延迟删除以确保所有效果都能正常应用
-    if (!cleanupTimer) {
+    if (!cleanupTimer)
+    {
         cleanupTimer = new QTimer(this);
         connect(cleanupTimer, &QTimer::timeout, this, &MedicalItem::onCleanupTimer);
     }
 
     cleanupTimer->setSingleShot(true);
-    cleanupTimer->start(100); // 100ms后删除
+    cleanupTimer->start(cleanuptime);
 }
 
 void MedicalItem::onContinuousHealTick()
@@ -165,4 +167,14 @@ void MedicalItem::onCleanupTimer()
 
     // 使用安全删除
     this->deleteLater();
+}
+
+void MedicalItem::setCleanuptime(qreal time)
+{
+    cleanuptime = time;
+    if (cleanupTimer)
+    {
+        cleanupTimer->setInterval(static_cast<int>(cleanuptime));
+    }
+    qDebug() << "Cleanup time set to:" << cleanuptime;
 }

@@ -61,6 +61,9 @@ protected:
     // 标记物品已使用并安排删除
     void markUsedAndDestroy();
 
+    // 设置清理时间长度（毫秒）
+    virtual void setCleanuptime(qreal time);
+
 private slots:
     // 持续治疗定时器槽函数
     void onContinuousHealTick();
@@ -76,6 +79,7 @@ private:
     QTimer* continuousHealTimer;        // 持续治疗定时器
     QTimer* speedBoostTimer;            // 速度加成定时器
     QTimer* cleanupTimer;               // 清理定时器
+    qreal cleanuptime;                  // 清理间隔（毫秒)
 
     // 持续治疗相关
     Character* healTarget;              // 治疗目标
