@@ -706,6 +706,30 @@ src/Items/Mountable.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Mountable.cpp.s
 .PHONY : src/Items/Mountable.cpp.s
 
+src/Items/Supplies/Adrenaline.obj: src/Items/Supplies/Adrenaline.cpp.obj
+.PHONY : src/Items/Supplies/Adrenaline.obj
+
+# target to build an object file
+src/Items/Supplies/Adrenaline.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Supplies/Adrenaline.cpp.obj
+.PHONY : src/Items/Supplies/Adrenaline.cpp.obj
+
+src/Items/Supplies/Adrenaline.i: src/Items/Supplies/Adrenaline.cpp.i
+.PHONY : src/Items/Supplies/Adrenaline.i
+
+# target to preprocess a source file
+src/Items/Supplies/Adrenaline.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Supplies/Adrenaline.cpp.i
+.PHONY : src/Items/Supplies/Adrenaline.cpp.i
+
+src/Items/Supplies/Adrenaline.s: src/Items/Supplies/Adrenaline.cpp.s
+.PHONY : src/Items/Supplies/Adrenaline.s
+
+# target to generate assembly for a file
+src/Items/Supplies/Adrenaline.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Supplies/Adrenaline.cpp.s
+.PHONY : src/Items/Supplies/Adrenaline.cpp.s
+
 src/Items/Supplies/Bandage.obj: src/Items/Supplies/Bandage.cpp.obj
 .PHONY : src/Items/Supplies/Bandage.obj
 
@@ -729,6 +753,30 @@ src/Items/Supplies/Bandage.s: src/Items/Supplies/Bandage.cpp.s
 src/Items/Supplies/Bandage.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Supplies/Bandage.cpp.s
 .PHONY : src/Items/Supplies/Bandage.cpp.s
+
+src/Items/Supplies/MedicalKit.obj: src/Items/Supplies/MedicalKit.cpp.obj
+.PHONY : src/Items/Supplies/MedicalKit.obj
+
+# target to build an object file
+src/Items/Supplies/MedicalKit.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Supplies/MedicalKit.cpp.obj
+.PHONY : src/Items/Supplies/MedicalKit.cpp.obj
+
+src/Items/Supplies/MedicalKit.i: src/Items/Supplies/MedicalKit.cpp.i
+.PHONY : src/Items/Supplies/MedicalKit.i
+
+# target to preprocess a source file
+src/Items/Supplies/MedicalKit.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Supplies/MedicalKit.cpp.i
+.PHONY : src/Items/Supplies/MedicalKit.cpp.i
+
+src/Items/Supplies/MedicalKit.s: src/Items/Supplies/MedicalKit.cpp.s
+.PHONY : src/Items/Supplies/MedicalKit.s
+
+# target to generate assembly for a file
+src/Items/Supplies/MedicalKit.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Supplies/MedicalKit.cpp.s
+.PHONY : src/Items/Supplies/MedicalKit.cpp.s
 
 src/Items/Supplies/MedicalSupply.obj: src/Items/Supplies/MedicalSupply.cpp.obj
 .PHONY : src/Items/Supplies/MedicalSupply.obj
@@ -1098,9 +1146,15 @@ help:
 	@echo ... src/Items/Mountable.obj
 	@echo ... src/Items/Mountable.i
 	@echo ... src/Items/Mountable.s
+	@echo ... src/Items/Supplies/Adrenaline.obj
+	@echo ... src/Items/Supplies/Adrenaline.i
+	@echo ... src/Items/Supplies/Adrenaline.s
 	@echo ... src/Items/Supplies/Bandage.obj
 	@echo ... src/Items/Supplies/Bandage.i
 	@echo ... src/Items/Supplies/Bandage.s
+	@echo ... src/Items/Supplies/MedicalKit.obj
+	@echo ... src/Items/Supplies/MedicalKit.i
+	@echo ... src/Items/Supplies/MedicalKit.s
 	@echo ... src/Items/Supplies/MedicalSupply.obj
 	@echo ... src/Items/Supplies/MedicalSupply.i
 	@echo ... src/Items/Supplies/MedicalSupply.s

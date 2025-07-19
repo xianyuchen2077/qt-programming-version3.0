@@ -84,6 +84,10 @@ add_executable(qt_programming_2024 src/main.cpp
         src/Items/Supplies/MedicalSupply.cpp
         src/Items/Supplies/Bandage.h
         src/Items/Supplies/Bandage.cpp
+        src/Items/Supplies/MedicalKit.h
+        src/Items/Supplies/MedicalKit.cpp
+        src/Items/Supplies/Adrenaline.h
+        src/Items/Supplies/Adrenaline.cpp
 
 
 
