@@ -349,6 +349,7 @@ CMakeFiles/qt_programming_2024.dir/src/Items/Supplies/MedicalSupply.cpp.obj: \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qfontinfo.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qfont.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qfontmetrics.h \
+ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Mountable.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QTimer \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qtimer.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qbasictimer.h \
@@ -373,5 +374,6 @@ CMakeFiles/qt_programming_2024.dir/src/Items/Supplies/MedicalSupply.cpp.obj: \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QGraphicsScene \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qgraphicsscene.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qtclasshelpermacros.h \
+ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Supplies/MedicalSupply.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QDebug \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qdebug.h

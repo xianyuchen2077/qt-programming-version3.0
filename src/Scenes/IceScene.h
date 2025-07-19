@@ -51,6 +51,7 @@ private:
     Weapon *spareWeapon1;
     Weapon *spareWeapon2;
     Weapon *spareWeapon3;
+    MedicalItem *spareMedicalItem1;
 
     // 游戏结束相关变量
     bool isGameOver; // 标记游戏是否已结束

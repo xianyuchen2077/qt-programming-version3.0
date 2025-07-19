@@ -143,6 +143,8 @@ void *MedicalItem::qt_metacast(const char *_clname)
     if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_CLASSMedicalItemENDCLASS.stringdata0))
         return static_cast<void*>(this);
+    if (!strcmp(_clname, "Mountable"))
+        return static_cast< Mountable*>(this);
     return Item::qt_metacast(_clname);
 }
 

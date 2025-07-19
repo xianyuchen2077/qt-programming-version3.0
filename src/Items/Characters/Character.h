@@ -6,6 +6,7 @@
 #include "../Armors/Armor.h"
 #include "../LegEquipments/LegEquipment.h"
 #include "../Weapons/Weapon.h"
+#include "../Supplies/MedicalSupply.h"
 
 class Character : public Item
 {
@@ -101,6 +102,7 @@ public:
     LegEquipment* pickupLegEquipment(LegEquipment* newLegEquipment);
     HeadEquipment* pickupHeadEquipment(HeadEquipment* newHeadEquipment);
     Weapon* pickupWeapon(Weapon* newWeapon);
+    MedicalItem* pickupMedicalItem(MedicalItem* newMedicalItem);
 
 protected:
     bool faceRight = false; // 角色是否面向右侧
@@ -109,6 +111,8 @@ protected:
     LegEquipment *legEquipment{};
     Armor *armor{};
     Weapon *weapon{};
+    MedicalItem *medicalItem{};
+
     QPointF velocity{};
 
     // 角色的碰撞矩形 (局部坐标)

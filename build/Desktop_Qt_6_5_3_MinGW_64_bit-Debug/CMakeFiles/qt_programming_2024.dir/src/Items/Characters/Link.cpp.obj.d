@@ -369,11 +369,14 @@ CMakeFiles/qt_programming_2024.dir/src/Items/Characters/Link.cpp.obj: \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QGraphicsScene \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qgraphicsscene.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qtclasshelpermacros.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QElapsedTimer \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qelapsedtimer.h \
+ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Supplies/MedicalSupply.h \
+ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Item.h \
+ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Mountable.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QTimer \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qtimer.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qbasictimer.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QElapsedTimer \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qelapsedtimer.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/QPixmap \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qpixmap.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QDebug \
@@ -385,6 +388,4 @@ CMakeFiles/qt_programming_2024.dir/src/Items/Characters/Link.cpp.obj: \
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Armors/OldShirt.h \
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Armors/Armor.h \
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/LegEquipments/WellWornTrousers.h \
- C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/LegEquipments/LegEquipment.h \
- C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Weapons/Shabby_Pistol.h \
- C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Weapons/Weapon.h
+ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/LegEquipments/LegEquipment.h

@@ -9,12 +9,13 @@ Bandage::Bandage(QGraphicsItem *parent)
     : MedicalItem(parent, PIXMAP_PATH)
 {
     // 设置绷带的显示属性
-    setScale(0.5); // 相对较小的缩放
+    setScale(0.3);
+    setPos(0, -50);
 
     // 如果图片存在，调整位置使其居中
     if (pixmapItem)
     {
-        pixmapItem->setPos(0, -pixmapItem->boundingRect().height() / 2);
+        pixmapItem->setPos(0, -pixmapItem->boundingRect().height() / 2 -60);
     }
 
     qDebug() << "Bandage created";

@@ -3,13 +3,14 @@
 
 
 #include "../Item.h"
+#include "../Mountable.h"
 #include <QTimer>
 
 class Character;
 
 
 // 疗物品基类
-class MedicalItem : public Item
+class MedicalItem : public Item, public Mountable
 {
     Q_OBJECT
 
@@ -43,6 +44,9 @@ public:
 
     // 是否已被使用
     bool isUsed() const { return used; }
+
+    // 设置药物使用状态
+    void setUsed(bool usedStatus) { used = usedStatus; }
 
 protected:
     // 应用立即治疗效果

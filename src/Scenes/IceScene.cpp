@@ -8,6 +8,7 @@
 #include "../Items/Weapons/Shabby_Pistol.h"
 #include "../Items/Weapons/SolidBall.h"
 #include "../Items/Weapons/Sniper_Rifle.h"
+#include "../Items/Supplies/Bandage.h"
 
 // IceScene 构造函数
 IceScene::IceScene(QObject *parent) : Scene(parent)
@@ -15,26 +16,12 @@ IceScene::IceScene(QObject *parent) : Scene(parent)
     setSceneRect(0, 0, 1280, 720);
 
     isGameOver=false;
+
     map = new Icefield();
-    player1 = new Link();
-    player2 = new Link();
-    spareWeapon1 = new Shabby_Pistol();
-    spareWeapon2 = new SolidBall();
-    spareWeapon3 = new Sniper_Rifle();
-    spareArmor = new FlamebreakerArmor();
-    spareHeadEquipment = new HelmetOfThePaladin();
-
-    addItem(map);
-    addItem(player1);
-    addItem(player2);
-    addItem(spareWeapon1);
-    addItem(spareWeapon2);
-    addItem(spareWeapon3);
-    addItem(spareArmor);
-    addItem(spareHeadEquipment);
-
     map->scaleToFitScene(this);
 
+    player1 = new Link();
+    player2 = new Link();
     // 正确设置角色初始位置
     qreal floorHeight = map->getFloorHeight();
     player1->setPos(250, floorHeight);  // 设置在地面上
@@ -53,7 +40,25 @@ IceScene::IceScene(QObject *parent) : Scene(parent)
     player1->setVelocity_y(0);
     player2->setVelocity_y(0);
 
-    // 设置备用装备的位置和状态
+    // 初始化武器装备补给
+    spareWeapon1 = new Shabby_Pistol();
+    spareWeapon2 = new SolidBall();
+    spareWeapon3 = new Sniper_Rifle();
+    spareArmor = new FlamebreakerArmor();
+    spareHeadEquipment = new HelmetOfThePaladin();
+    spareMedicalItem1 = new Bandage();
+
+    addItem(map);
+    addItem(player1);
+    addItem(player2);
+    addItem(spareWeapon1);
+    addItem(spareWeapon2);
+    addItem(spareWeapon3);
+    addItem(spareArmor);
+    addItem(spareHeadEquipment);
+    addItem(spareMedicalItem1);
+
+    // 设置备用武器装备补给的位置和状态
     spareWeapon1->unmount();
     spareWeapon1->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.45, floorHeight);
     spareWeapon1->setZValue(5);
@@ -69,6 +74,8 @@ IceScene::IceScene(QObject *parent) : Scene(parent)
     spareHeadEquipment->unmount();
     spareHeadEquipment->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.25, floorHeight);
     spareHeadEquipment->setZValue(5);
+    spareMedicalItem1->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.35, floorHeight);
+    spareMedicalItem1->setZValue(5);
 
     // 初始化游戏循环
     gameTimer = new QTimer(this);
@@ -1039,6 +1046,10 @@ Mountable *IceScene::pickupMountable(Character *character, Mountable *mountable)
     else if (auto weapon = dynamic_cast<Weapon *>(mountable))
     {
         return character->pickupWeapon(weapon);
+    }
+    else if (auto medicalItem = dynamic_cast<MedicalItem *>(mountable))
+    {
+        return character->pickupMedicalItem(medicalItem);
     }
     return nullptr;
 }

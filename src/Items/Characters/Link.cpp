@@ -7,7 +7,6 @@
 #include "../HeadEquipments/CapOfTheHero.h"
 #include "../Armors/OldShirt.h"
 #include "../LegEquipments/WellWornTrousers.h"
-#include "../Weapons/Shabby_Pistol.h"
 
 Link::Link(QGraphicsItem *parent): Character(parent, ":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Walking/0_Reaper_Man_Walking_006.png")
 {

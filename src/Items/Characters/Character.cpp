@@ -447,6 +447,19 @@ Weapon *Character::pickupWeapon(Weapon *newWeapon)
     return oldWeapon;
 }
 
+MedicalItem *Character::pickupMedicalItem(MedicalItem *newMedicalItem)
+{
+    if (newMedicalItem)
+    {
+    newMedicalItem->setParentItem(this);
+    newMedicalItem->ApplytoCharacter(this);
+    newMedicalItem->setUsed(true);
+    medicalItem = newMedicalItem;
+    }
+
+    return newMedicalItem;
+}
+
 // 佩戴头部装备
 void Character::equipHeadEquipment(HeadEquipment *newHeadEquipment)
 {
