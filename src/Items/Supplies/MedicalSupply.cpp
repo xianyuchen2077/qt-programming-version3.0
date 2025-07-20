@@ -7,7 +7,6 @@ MedicalItem::MedicalItem(QGraphicsItem *parent, const QString &pixmapPath)
     , used(false)
     , continuousHealTimer(nullptr)
     , speedBoostTimer(nullptr)
-    , cleanupTimer(nullptr)
     , healTarget(nullptr)
     , remainingHeal(0)
     , healPerTick(0)
@@ -32,10 +31,13 @@ MedicalItem::~MedicalItem()
         speedBoostTimer->stop();
         delete speedBoostTimer;
     }
-    if (cleanupTimer)
+
+    // 如果角色仍然存在且速度被修改过，恢复原始速度
+    if (speedTarget && originalSpeed > 0)
     {
-        cleanupTimer->stop();
-        delete cleanupTimer;
+        qDebug() << "Restoring speed in destructor";
+        speedTarget->setMoveSpeed(originalSpeed);
+        speedTarget = nullptr;
     }
 }
 
@@ -85,11 +87,21 @@ void MedicalItem::applyContinuousHeal(Character* character, int healAmount, int 
 
 void MedicalItem::applySpeedBoost(Character* character, qreal speedMultiplier, int duration)
 {
-    if (!character) return;
+    if (!character)
+    {
+        qDebug() << "speedTarget is null, aborting";
+        return;
+    }
+
+    qDebug() << "Starting speed boost application";
+    qDebug() << "Duration:" << duration << "ms";
+    qDebug() << "Multiplier:" << speedMultiplier;
 
     // 保存原始速度
     originalSpeed = character->getMoveSpeed();
+    qreal localOriginalSpeed = character->getMoveSpeed();
     speedTarget = character;
+    qDebug() << "Original speed:" << originalSpeed;
 
     // 应用速度加成
     qreal newSpeed = originalSpeed * speedMultiplier;
@@ -100,31 +112,42 @@ void MedicalItem::applySpeedBoost(Character* character, qreal speedMultiplier, i
     if (speedBoostTimer)
     {
         speedBoostTimer->stop();
-        delete speedBoostTimer;
+        speedBoostTimer->deleteLater();
+        speedBoostTimer = nullptr;
+        qDebug() << "Cleaning up old timer";
     }
 
     // 创建定时器来恢复原始速度
     speedBoostTimer = new QTimer(this);
-    speedBoostTimer->setSingleShot(true);  // 只触发一次
 
-    QObject::connect(speedBoostTimer, &QTimer::timeout, this, [this](){
-        if (speedTarget)
+    QObject::connect(speedBoostTimer, &QTimer::timeout, [this, character, localOriginalSpeed](){
+        qDebug() << "[SpeedBoost] Timer timeout triggered!";
+
+        // 使用lambda捕获的参数，更可靠
+        if (character && speedTarget == character)
         {
-            speedTarget->setMoveSpeed(originalSpeed);
-            qDebug() << "Speed restored to original:" << originalSpeed;
+            character->setMoveSpeed(localOriginalSpeed);
+            qDebug() << "Speed restored to original:" << localOriginalSpeed;
+            qDebug() << "Current character speed:" << character->getMoveSpeed();
         }
         else
         {
-            qDebug() << "[SpeedBoost] Target missing on timeout.";
+            qDebug() << "Character reference lost on timeout";
         }
 
-        speedBoostTimer->stop();
-        speedBoostTimer->deleteLater();
-        speedBoostTimer = nullptr;
+        // 清理定时器
+        if (speedBoostTimer)
+        {
+            speedBoostTimer->stop();
+            speedBoostTimer->deleteLater();
+            speedBoostTimer = nullptr;
+        }
         speedTarget = nullptr;
+
+        qDebug() << "[SpeedBoost] Timer cleanup completed";
     });
 
-
+    speedBoostTimer->setSingleShot(true);  // 只触发一次
     speedBoostTimer->start(duration);
     qDebug() << "Speed boost timer started for" << duration << "ms";
 }
@@ -136,15 +159,28 @@ void MedicalItem::markUsedAndDestroy()
     used = true;
     qDebug() << "Medical item used, scheduling destruction";
 
-    // 设置清理定时器，延迟删除以确保所有效果都能正常应用
-    if (!cleanupTimer)
+    if (speedBoostTimer && speedBoostTimer->isActive())
     {
-        cleanupTimer = new QTimer(this);
-        connect(cleanupTimer, &QTimer::timeout, this, &MedicalItem::onCleanupTimer);
-    }
+        qDebug() << "Delaying destruction due to active speed boost";
 
-    cleanupTimer->setSingleShot(true);
-    cleanupTimer->start(cleanuptime);
+        // 创建延迟删除定时器
+        QTimer* delayTimer = new QTimer();
+        delayTimer->setSingleShot(true);
+        QObject::connect(delayTimer, &QTimer::timeout, [this, delayTimer](){
+            qDebug() << "Delayed destruction triggered";
+            delayTimer->deleteLater();
+            // 在这里执行实际的清理工作
+            setScale(0); // 隐藏物品
+        });
+
+        // 等待速度效果结束后再删除
+        delayTimer->start(getSpeedBoostDuration() + 1000); // 多等1秒确保安全
+    }
+    else
+    {
+        // 没有活跃效果，可以立即标记为删除
+        setScale(0);
+    }
 }
 
 void MedicalItem::onContinuousHealTick()
@@ -171,39 +207,4 @@ void MedicalItem::onContinuousHealTick()
         continuousHealTimer->stop();
         qDebug() << "Continuous heal completed";
     }
-}
-
-void MedicalItem::onSpeedBoostEnd()
-{
-    if (speedTarget)
-    {
-        // 恢复原始速度
-        speedTarget->setMoveSpeed(originalSpeed);
-        qDebug() << "Speed boost ended, restored speed to:" << originalSpeed;
-        speedTarget = nullptr;
-    }
-}
-
-void MedicalItem::onCleanupTimer()
-{
-    qDebug() << "Cleaning up medical item";
-
-    // 从场景中移除
-    if (scene())
-    {
-        scene()->removeItem(this);
-    }
-
-    // 使用安全删除
-    this->deleteLater();
-}
-
-void MedicalItem::setCleanuptime(qreal time)
-{
-    cleanuptime = time;
-    if (cleanupTimer)
-    {
-        cleanupTimer->setInterval(static_cast<int>(cleanuptime));
-    }
-    qDebug() << "Cleanup time set to:" << cleanuptime;
 }

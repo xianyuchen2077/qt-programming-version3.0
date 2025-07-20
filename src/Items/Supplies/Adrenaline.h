@@ -21,8 +21,6 @@ public:
     void mountToParent() override;
     void unmount() override;
 
-    void setCleanuptime(qreal time) override;
-
 private:
     static const int INSTANT_HEAL = 10;        // 立即治疗量：10血量
     static const int CONTINUOUS_HEAL = 40;     // 持续治疗总量：40血量
