@@ -18,7 +18,7 @@ Shabby_Pistol::Shabby_Pistol(QGraphicsItem *parent) : Weapon(parent, ":/Items/We
     setAmmoCount(20);           // 弹药数量
     setMaxAmmoCount(20);        // 最大弹药数量
     setWeight(2);               // 假设重量为2
-    setShotCooldown (300);      // 手枪射击间隔300ms
+    setShotCooldown (800);      // 手枪射击间隔800ms
 }
 
 void Shabby_Pistol::mountToParent()

@@ -3,6 +3,8 @@
 #include "MWF5AHYEVO/moc_Bandage.cpp"
 #include "MWF5AHYEVO/moc_MedicalKit.cpp"
 #include "MWF5AHYEVO/moc_MedicalSupply.cpp"
+#include "Z3UREFIW6B/moc_Fist.cpp"
+#include "Z3UREFIW6B/moc_Knife.cpp"
 #include "Z3UREFIW6B/moc_Weapon.cpp"
 #include "UVLADIE3JM/moc_MyGame.cpp"
 #include "SNE2VJ5FQV/moc_BattleScene.cpp"

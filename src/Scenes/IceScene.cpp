@@ -8,6 +8,7 @@
 #include "../Items/Weapons/Shabby_Pistol.h"
 #include "../Items/Weapons/SolidBall.h"
 #include "../Items/Weapons/Sniper_Rifle.h"
+#include "../Items/Weapons/Knife.h"
 #include "../Items/Supplies/Bandage.h"
 #include "../Items/Supplies/MedicalKit.h"
 #include "../Items/Supplies/Adrenaline.h"
@@ -47,6 +48,7 @@ IceScene::IceScene(QObject *parent) : Scene(parent)
     spareWeapon1 = new Shabby_Pistol();
     spareWeapon2 = new SolidBall();
     spareWeapon3 = new Sniper_Rifle();
+    spareWeapon4 = new Knife();
     spareArmor = new FlamebreakerArmor();
     spareHeadEquipment = new HelmetOfThePaladin();
     spareMedicalItem1 = new Bandage();
@@ -59,6 +61,7 @@ IceScene::IceScene(QObject *parent) : Scene(parent)
     addItem(spareWeapon1);
     addItem(spareWeapon2);
     addItem(spareWeapon3);
+    addItem(spareWeapon4);
     addItem(spareArmor);
     addItem(spareHeadEquipment);
     addItem(spareMedicalItem1);
@@ -67,14 +70,17 @@ IceScene::IceScene(QObject *parent) : Scene(parent)
 
     // 设置备用武器装备补给的位置和状态
     spareWeapon1->unmount();
-    spareWeapon1->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.45, floorHeight);
+    spareWeapon1->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.35, floorHeight);
     spareWeapon1->setZValue(5);
     spareWeapon2->unmount();
-    spareWeapon2->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.65, floorHeight);
+    spareWeapon2->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.45, floorHeight);
     spareWeapon2->setZValue(5);
     spareWeapon3->unmount();
     spareWeapon3->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.55, floorHeight);
     spareWeapon3->setZValue(5);
+    spareWeapon4->unmount(); // 已校准
+    spareWeapon4->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.65 - 200, floorHeight - 75);
+    spareWeapon4->setZValue(5);
     spareArmor->unmount();
     spareArmor->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.75, floorHeight);
     spareArmor->setZValue(5);
@@ -87,7 +93,7 @@ IceScene::IceScene(QObject *parent) : Scene(parent)
     spareMedicalItem2->unmount(); // 已校准
     spareMedicalItem2->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.2, floorHeight - 490);
     spareMedicalItem2->setZValue(5);
-    spareMedicalItem3->unmount();
+    spareMedicalItem3->unmount(); // 已校准
     spareMedicalItem3->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.3, floorHeight - 490);
     spareMedicalItem3->setZValue(5);
 
@@ -109,7 +115,7 @@ IceScene::IceScene(QObject *parent) : Scene(parent)
     // 可视化调控图片与实体位置重合
     DebugDotItem* myDebugDot = new DebugDotItem();
     this->addItem(myDebugDot); // 将其添加到场景中
-    myDebugDot->setDot(spareMedicalItem3->pos() + spareMedicalItem3->boundingRect().center(), 5, Qt::red);
+    myDebugDot->setDot(spareWeapon4->pos() + spareWeapon4->boundingRect().center(), 5, Qt::red);
 }
 
 // 初始化平台数据

@@ -90,6 +90,10 @@ add_executable(qt_programming_2024 src/main.cpp
         src/Items/Supplies/Adrenaline.cpp
         src/Items/DebugDotItem.h
         src/Items/DebugDotItem.cpp
+        src/Items/Weapons/Fist.h
+        src/Items/Weapons/Knife.h
+        src/Items/Weapons/Fist.cpp
+        src/Items/Weapons/Knife.cpp
 
 
 

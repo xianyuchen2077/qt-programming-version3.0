@@ -51,6 +51,7 @@ private:
     Weapon *spareWeapon1;
     Weapon *spareWeapon2;
     Weapon *spareWeapon3;
+    Weapon *spareWeapon4;
     MedicalItem *spareMedicalItem1;
     MedicalItem *spareMedicalItem2;
     MedicalItem *spareMedicalItem3;

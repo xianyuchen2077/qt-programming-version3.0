@@ -64,6 +64,10 @@ qt_programming_2024_autogen/timestamp: C:/Users/xiany/Desktop/GodNoCode/Advanced
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Supplies/MedicalSupply.cpp \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Supplies/MedicalSupply.h \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Weapons/Bomb.h \
+  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Weapons/Fist.cpp \
+  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Weapons/Fist.h \
+  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Weapons/Knife.cpp \
+  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Weapons/Knife.h \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Weapons/Shabby_Pistol.cpp \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Weapons/Shabby_Pistol.h \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Weapons/Sniper_Rifle.cpp \
@@ -714,6 +718,26 @@ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_Fighti
 
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Supplies/MedicalSupply.h:
 
+D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6ZlibPrivate/Qt6ZlibPrivateConfigVersion.cmake:
+
+D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QMainWindow:
+
+D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qobjectdefs.h:
+
+C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Weapons/Fist.cpp:
+
+D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6/FindWrapVulkanHeaders.cmake:
+
+C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Weapons/Fist.h:
+
+D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qgraphicsview.h:
+
+D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qlist.h:
+
+C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Weapons/Knife.cpp:
+
+C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Weapons/Knife.h:
+
 D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6/QtFeatureCommon.cmake:
 
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Weapons/Shabby_Pistol.cpp:
@@ -1038,10 +1062,6 @@ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qiterator.h:
 
 D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qline.h:
 
-D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qgraphicsview.h:
-
-D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qlist.h:
-
 D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qstringlist.h:
 
 D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qlogging.h:
@@ -1085,12 +1105,6 @@ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qprocessordetection.h:
 D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qobject.h:
 
 D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qobject_impl.h:
-
-D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6ZlibPrivate/Qt6ZlibPrivateConfigVersion.cmake:
-
-D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QMainWindow:
-
-D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qobjectdefs.h:
 
 D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qpoint.h:
 
@@ -1309,8 +1323,6 @@ D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qwidget.h:
 D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6GuiTools/Qt6GuiToolsVersionlessTargets.cmake:
 
 D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6/FindWrapAtomic.cmake:
-
-D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6/FindWrapVulkanHeaders.cmake:
 
 D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6Core/Qt6CoreConfig.cmake:
 

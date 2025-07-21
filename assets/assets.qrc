@@ -44,5 +44,16 @@
         <file>Items/Supplies/Bandage_Icon.png</file>
         <file>Items/Supplies/MedicalKit_Icon.png</file>
         <file>Items/Supplies/Adrenaline_Icon.png</file>
+        <file>Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Run Slashing/0_Reaper_Man_Run Slashing_002.png</file>
+        <file>Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Run Slashing/0_Reaper_Man_Run Slashing_003.png</file>
+        <file>Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Run Slashing/0_Reaper_Man_Run Slashing_004.png</file>
+        <file>Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Run Slashing/0_Reaper_Man_Run Slashing_005.png</file>
+        <file>Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Run Slashing/0_Reaper_Man_Run Slashing_006.png</file>
+        <file>Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Run Slashing/0_Reaper_Man_Run Slashing_007.png</file>
+        <file>Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Run Slashing/0_Reaper_Man_Run Slashing_008.png</file>
+        <file>Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Run Slashing/0_Reaper_Man_Run Slashing_009.png</file>
+        <file>Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Run Slashing/0_Reaper_Man_Run Slashing_010.png</file>
+        <file>Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Run Slashing/0_Reaper_Man_Run Slashing_011.png</file>
+        <file>Items/Weapons/CrutchKnife_Icon.png</file>
     </qresource>
 </RCC>

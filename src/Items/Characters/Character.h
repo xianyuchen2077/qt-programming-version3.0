@@ -13,6 +13,9 @@ class Character : public Item
 public:
     explicit Character(QGraphicsItem *parent, const QString &pixmapPath);
 
+    // 切换角色图片
+    void updatePixmap(const QString &pixmapPath);
+
     [[nodiscard]] bool isLeftDown() const;
 
     void setLeftDown(bool leftDown);
@@ -120,8 +123,6 @@ protected:
     // 角色的碰撞矩形
     QRectF m_headCollisionRect;  // 头部碰撞框
     QRectF m_bodyCollisionRect;  // 身体碰撞框
-    // 切换角色图片
-    void updatePixmap(const QString &pixmapPath);
 
 private:
     bool leftDown{}, rightDown{}, pickDown{}, downDown{}, upDown{}; // 按键状态;

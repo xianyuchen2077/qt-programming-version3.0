@@ -826,6 +826,54 @@ src/Items/Supplies/MedicalSupply.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Supplies/MedicalSupply.cpp.s
 .PHONY : src/Items/Supplies/MedicalSupply.cpp.s
 
+src/Items/Weapons/Fist.obj: src/Items/Weapons/Fist.cpp.obj
+.PHONY : src/Items/Weapons/Fist.obj
+
+# target to build an object file
+src/Items/Weapons/Fist.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Weapons/Fist.cpp.obj
+.PHONY : src/Items/Weapons/Fist.cpp.obj
+
+src/Items/Weapons/Fist.i: src/Items/Weapons/Fist.cpp.i
+.PHONY : src/Items/Weapons/Fist.i
+
+# target to preprocess a source file
+src/Items/Weapons/Fist.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Weapons/Fist.cpp.i
+.PHONY : src/Items/Weapons/Fist.cpp.i
+
+src/Items/Weapons/Fist.s: src/Items/Weapons/Fist.cpp.s
+.PHONY : src/Items/Weapons/Fist.s
+
+# target to generate assembly for a file
+src/Items/Weapons/Fist.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Weapons/Fist.cpp.s
+.PHONY : src/Items/Weapons/Fist.cpp.s
+
+src/Items/Weapons/Knife.obj: src/Items/Weapons/Knife.cpp.obj
+.PHONY : src/Items/Weapons/Knife.obj
+
+# target to build an object file
+src/Items/Weapons/Knife.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Weapons/Knife.cpp.obj
+.PHONY : src/Items/Weapons/Knife.cpp.obj
+
+src/Items/Weapons/Knife.i: src/Items/Weapons/Knife.cpp.i
+.PHONY : src/Items/Weapons/Knife.i
+
+# target to preprocess a source file
+src/Items/Weapons/Knife.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Weapons/Knife.cpp.i
+.PHONY : src/Items/Weapons/Knife.cpp.i
+
+src/Items/Weapons/Knife.s: src/Items/Weapons/Knife.cpp.s
+.PHONY : src/Items/Weapons/Knife.s
+
+# target to generate assembly for a file
+src/Items/Weapons/Knife.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Weapons/Knife.cpp.s
+.PHONY : src/Items/Weapons/Knife.cpp.s
+
 src/Items/Weapons/Shabby_Pistol.obj: src/Items/Weapons/Shabby_Pistol.cpp.obj
 .PHONY : src/Items/Weapons/Shabby_Pistol.obj
 
@@ -1185,6 +1233,12 @@ help:
 	@echo ... src/Items/Supplies/MedicalSupply.obj
 	@echo ... src/Items/Supplies/MedicalSupply.i
 	@echo ... src/Items/Supplies/MedicalSupply.s
+	@echo ... src/Items/Weapons/Fist.obj
+	@echo ... src/Items/Weapons/Fist.i
+	@echo ... src/Items/Weapons/Fist.s
+	@echo ... src/Items/Weapons/Knife.obj
+	@echo ... src/Items/Weapons/Knife.i
+	@echo ... src/Items/Weapons/Knife.s
 	@echo ... src/Items/Weapons/Shabby_Pistol.obj
 	@echo ... src/Items/Weapons/Shabby_Pistol.i
 	@echo ... src/Items/Weapons/Shabby_Pistol.s
