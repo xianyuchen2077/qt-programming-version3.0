@@ -1124,35 +1124,21 @@ void IceScene::handleGameEnd()
 // 更新（狙击枪）激光瞄准线
 void IceScene::updateLaserSights()
 {
-    // 更新 player1 的激光瞄准线
     if (player1 && player1->getWeapon())
     {
         Sniper_Rifle* sniperRifle = dynamic_cast<Sniper_Rifle*>(player1->getWeapon());
         if (sniperRifle)
         {
-            QPointF shooterPos = player1->pos();
-            QRectF bodyRect = player1->getBodyCollisionRect();
-            QPointF bodyCenter = shooterPos + bodyRect.center();
-            QPointF gunPos = bodyCenter + QPointF(player1->isFaceRight() ? 30 : -30, -10);
-            QPointF direction = player1->isFaceRight() ? QPointF(1, 0) : QPointF(-1, 0);
-
-            sniperRifle->updateLaserSight(gunPos, direction);
+            sniperRifle->updateLaserWithOwner();
         }
     }
 
-    // 更新 player2 的激光瞄准线
     if (player2 && player2->getWeapon())
     {
         Sniper_Rifle* sniperRifle = dynamic_cast<Sniper_Rifle*>(player2->getWeapon());
         if (sniperRifle)
         {
-            QPointF shooterPos = player2->pos();
-            QRectF bodyRect = player2->getBodyCollisionRect();
-            QPointF bodyCenter = shooterPos + bodyRect.center();
-            QPointF gunPos = bodyCenter + QPointF(player2->isFaceRight() ? 30 : -30, -10);
-            QPointF direction = player2->isFaceRight() ? QPointF(1, 0) : QPointF(-1, 0);
-
-            sniperRifle->updateLaserSight(gunPos, direction);
+            sniperRifle->updateLaserWithOwner();
         }
     }
 }

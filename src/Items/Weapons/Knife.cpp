@@ -103,9 +103,21 @@ void Knife::performMeleeAttack(Character* attacker, const QPointF& direction)
     QPointF attackCenter = attackerCenter + normalizedDir * (attackRange / 2.0);
 
     // 创建攻击区域（椭圆形区域，向前延伸）
-    QRectF attackArea(attackCenter.x() - attackRange / 3.0,
-                      attackCenter.y() - attackRange / 2.0,
+    QRectF attackArea(attackCenter.x() - attackRange,
+                      attackCenter.y() - attackRange,
                       attackRange * 2.0 / 3.0, attackRange);
+
+    // 绘制攻击区域
+    // 在 performMeleeAttack 内部（计算完 attackArea 后）添加：
+    QGraphicsEllipseItem* attackVisual = new QGraphicsEllipseItem(attackArea);
+    attackVisual->setBrush(QBrush(QColor(255, 0, 0, 100)));  // 红色透明填充
+    attackVisual->setPen(QPen(Qt::red));                     // 红色边框
+    QPointF center = attackArea.center();
+    attackVisual->setTransformOriginPoint(center); // 设置旋转原点
+    attackVisual->setRotation(45);                 // 顺时针旋转 45°
+    // 添加到 scene 中
+    attacker->scene()->addItem(attackVisual);
+
 
     qDebug() << "Knife attack area:" << attackArea;
 
@@ -214,12 +226,6 @@ void Knife::playAttackAnimation(Character* attacker)
 void Knife::resetAttackAnimation()
 {
     isAttacking = false;
-
-    // // 恢复原图片
-    // if (pixmapItem)
-    // {
-    //     pixmapItem->setPixmap(QPixmap(originalPixmapPath));
-    // }
 }
 
 void Knife::setAttacker(Character* attacker)
