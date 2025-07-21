@@ -94,6 +94,8 @@ add_executable(qt_programming_2024 src/main.cpp
         src/Items/Weapons/Knife.h
         src/Items/Weapons/Fist.cpp
         src/Items/Weapons/Knife.cpp
+        src/Items/Armors/MentalArmor.h
+        src/Items/Armors/MentalArmor.cpp
 
 
 

@@ -24,3 +24,8 @@ void Armor::unmount()
         pixmapItem->setPos(0, -120);
     }
 }
+
+QString Armor::getArmorName() const
+{
+    return "Unknown Armor";
+}

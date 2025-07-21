@@ -55,5 +55,7 @@
         <file>Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Run Slashing/0_Reaper_Man_Run Slashing_010.png</file>
         <file>Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Run Slashing/0_Reaper_Man_Run Slashing_011.png</file>
         <file>Items/Weapons/CrutchKnife_Icon.png</file>
+        <file>Items/Armors/MentalArmor/MentalArmor.png</file>
+        <file>Items/Armors/MentalArmor/MentalArmor_worn.png</file>
     </qresource>
 </RCC>

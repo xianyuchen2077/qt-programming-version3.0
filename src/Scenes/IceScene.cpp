@@ -2,7 +2,7 @@
 #include "IceScene.h"
 #include "../Items/Characters/Link.h"
 #include "../Items/Maps/Icefield.h"
-#include "../Items/Armors/FlamebreakerArmor.h"
+#include "../Items/Armors/MentalArmor.h"
 #include "../Items/HeadEquipments/Helmet_of_the_Paladin.h"
 #include "../Items/LegEquipments/LegEquipment.h"
 #include "../Items/Weapons/Shabby_Pistol.h"
@@ -49,7 +49,7 @@ IceScene::IceScene(QObject *parent) : Scene(parent)
     spareWeapon2 = new SolidBall();
     spareWeapon3 = new Sniper_Rifle();
     spareWeapon4 = new Knife();
-    spareArmor = new FlamebreakerArmor();
+    spareArmor = new MentalArmor();
     spareHeadEquipment = new HelmetOfThePaladin();
     spareMedicalItem1 = new Bandage();
     spareMedicalItem2 = new MedicalKit();
@@ -1068,10 +1068,10 @@ Mountable *IceScene::findNearestUnmountedMountable(const QPointF &pos, qreal dis
                 {
                     qDebug() << "Checking medical item:" << medicalItem->getMedicalItemName() << "at distance:" << distance;
                 }
-                // else if(auto armor = dynamic_cast<Armor*>(item))
-                // {
-                //     qDebug() << "Checking armor:" << armor->getName() << "at distance:" << distance;
-                // }
+                else if(auto armor = dynamic_cast<Armor*>(item))
+                {
+                    qDebug() << "Checking armor:" << armor->getArmorName() << "at distance:" << distance;
+                }
                 // else if(auto headEquip = dynamic_cast<HeadEquipment*>(item))
                 // {
                 //     qDebug() << "Checking head equipment:" << headEquip->getName() << "at distance:" << distance;

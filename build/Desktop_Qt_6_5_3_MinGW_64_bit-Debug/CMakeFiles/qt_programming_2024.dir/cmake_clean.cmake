@@ -10,6 +10,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/qt_programming_2024.dir/src/Items/Armors/Armor.cpp.obj.d"
   "CMakeFiles/qt_programming_2024.dir/src/Items/Armors/FlamebreakerArmor.cpp.obj"
   "CMakeFiles/qt_programming_2024.dir/src/Items/Armors/FlamebreakerArmor.cpp.obj.d"
+  "CMakeFiles/qt_programming_2024.dir/src/Items/Armors/MentalArmor.cpp.obj"
+  "CMakeFiles/qt_programming_2024.dir/src/Items/Armors/MentalArmor.cpp.obj.d"
   "CMakeFiles/qt_programming_2024.dir/src/Items/Armors/OldShirt.cpp.obj"
   "CMakeFiles/qt_programming_2024.dir/src/Items/Armors/OldShirt.cpp.obj.d"
   "CMakeFiles/qt_programming_2024.dir/src/Items/Bullets/Bullet.cpp.obj"

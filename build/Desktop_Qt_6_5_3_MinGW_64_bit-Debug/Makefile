@@ -250,6 +250,30 @@ src/Items/Armors/FlamebreakerArmor.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Armors/FlamebreakerArmor.cpp.s
 .PHONY : src/Items/Armors/FlamebreakerArmor.cpp.s
 
+src/Items/Armors/MentalArmor.obj: src/Items/Armors/MentalArmor.cpp.obj
+.PHONY : src/Items/Armors/MentalArmor.obj
+
+# target to build an object file
+src/Items/Armors/MentalArmor.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Armors/MentalArmor.cpp.obj
+.PHONY : src/Items/Armors/MentalArmor.cpp.obj
+
+src/Items/Armors/MentalArmor.i: src/Items/Armors/MentalArmor.cpp.i
+.PHONY : src/Items/Armors/MentalArmor.i
+
+# target to preprocess a source file
+src/Items/Armors/MentalArmor.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Armors/MentalArmor.cpp.i
+.PHONY : src/Items/Armors/MentalArmor.cpp.i
+
+src/Items/Armors/MentalArmor.s: src/Items/Armors/MentalArmor.cpp.s
+.PHONY : src/Items/Armors/MentalArmor.s
+
+# target to generate assembly for a file
+src/Items/Armors/MentalArmor.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Armors/MentalArmor.cpp.s
+.PHONY : src/Items/Armors/MentalArmor.cpp.s
+
 src/Items/Armors/OldShirt.obj: src/Items/Armors/OldShirt.cpp.obj
 .PHONY : src/Items/Armors/OldShirt.obj
 
@@ -1161,6 +1185,9 @@ help:
 	@echo ... src/Items/Armors/FlamebreakerArmor.obj
 	@echo ... src/Items/Armors/FlamebreakerArmor.i
 	@echo ... src/Items/Armors/FlamebreakerArmor.s
+	@echo ... src/Items/Armors/MentalArmor.obj
+	@echo ... src/Items/Armors/MentalArmor.i
+	@echo ... src/Items/Armors/MentalArmor.s
 	@echo ... src/Items/Armors/OldShirt.obj
 	@echo ... src/Items/Armors/OldShirt.i
 	@echo ... src/Items/Armors/OldShirt.s
