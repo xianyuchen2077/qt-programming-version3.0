@@ -13,7 +13,8 @@ class Character : public Item
 public:
     explicit Character(QGraphicsItem *parent, const QString &pixmapPath);
 
-    // 切换角色图片
+    [[nodiscard]] bool getPixmapItem() const;
+
     void updatePixmap(const QString &pixmapPath);
 
     [[nodiscard]] bool isLeftDown() const;

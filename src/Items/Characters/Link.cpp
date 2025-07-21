@@ -329,7 +329,10 @@ void Link::processInput()
                 }
                 else
                 {
-                    setStandPixmap();
+                    if (!this->getWeapon()||this->getWeapon()->getWeaponName() != "大巫师之杖") // 如果武器是“大巫师之杖”就不要设置站立图片了
+                    {
+                        setStandPixmap();
+                    }
                 }
             }
         }

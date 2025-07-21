@@ -377,6 +377,19 @@ void Character::updatePixmap(const QString &pixmapPath)
     }
 }
 
+bool Character::getPixmapItem() const
+{
+    if (pixmapItem != nullptr)
+    {
+        return true;
+    }
+    else
+    {
+        qDebug() << "Character pixmapItem is nullptr!";
+        return false;
+    }
+}
+
 // 判断是否正在拾取物品
 bool Character::isPicking() const
 {
