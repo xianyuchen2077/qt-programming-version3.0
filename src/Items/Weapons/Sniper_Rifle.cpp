@@ -40,7 +40,7 @@ void Sniper_Rifle::mountToParent()
 {
     Mountable::mountToParent();
     setScale(0.8);      // 设置缩放比例
-    setPos(-42, -17);   // 设置位置偏移
+    setPos(8, -17);   // 设置位置偏移
 
     // 获取父项（角色）
     Character* ownerCharacter = dynamic_cast<Character*>(parentItem());
@@ -83,7 +83,9 @@ void Sniper_Rifle::unmount()
     setScale(0.8);
     if (pixmapItem != nullptr)
     {
-        pixmapItem->setPos(0, -60);
+        qreal pixmapItem_width = pixmapItem->pixmap().width() * pixmapItem->scale();
+        qreal pixmapItem_height = pixmapItem->pixmap().height() * pixmapItem->scale();
+        pixmapItem->setOffset(-pixmapItem_width/2,- pixmapItem_height);
     }
 }
 

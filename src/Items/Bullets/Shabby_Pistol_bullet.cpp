@@ -15,7 +15,7 @@ BulletBasic::BulletBasic(QGraphicsItem *parent, const QPointF& startPos, const Q
     bulletSpeed = 12.0;                 // 设置子弹速度
     lifetimeFrames = 300;               // 设置生命周期
     setScale(0.1);                      // 设置子弹缩放比例
-    setPos(startPos + QPointF(0,-50));  // 初始位置偏移，避免与角色重叠
+    setPos(startPos + QPointF(0,-42));  // 初始位置偏移，避免与角色重叠
     setZValue(5);                       // 确保子弹显示在最上层
     qDebug() << "BulletBasic created with shooter:" << (const void*)shooter << "damage:" << damage;
 

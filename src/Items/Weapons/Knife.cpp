@@ -36,8 +36,8 @@ Knife::Knife(QGraphicsItem *parent) : Weapon(parent, ":/Items/Weapons/CrutchKnif
 void Knife::mountToParent()
 {
     Mountable::mountToParent();
-    setScale(0.26);        // 设置缩放比例
-    setPos(-165,-115);
+    setScale(0.52);
+    setPos(45,-80);
 
     // 设置旋转中心为图片中心（要考虑缩放后的尺寸）
     pixmapItem->setTransformOriginPoint(pixmapItem->boundingRect().width() / 2, pixmapItem->boundingRect().height() / 2);
@@ -51,10 +51,15 @@ void Knife::mountToParent()
 void Knife::unmount()
 {
     Mountable::unmount();
-    setScale(0.3);
+    pixmapItem->setTransformOriginPoint(pixmapItem->boundingRect().width() / 2, pixmapItem->boundingRect().height() / 2);
+    pixmapItem->setRotation(0);
+    this->updatePixmap(":/Items/Weapons/CrutchKnife_Icon.png");
+    setScale(0.5);
     if (pixmapItem != nullptr)
     {
-        pixmapItem->setPos(600, 150);
+        qreal pixmapItem_width = pixmapItem->pixmap().width() * pixmapItem->scale();
+        qreal pixmapItem_height = pixmapItem->pixmap().height() * pixmapItem->scale();
+        pixmapItem->setOffset(-pixmapItem_width/2,- pixmapItem_height);
     }
 }
 

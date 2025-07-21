@@ -27,7 +27,7 @@ void SolidBall::mountToParent()
 {
     Mountable::mountToParent();
     setScale(0.8);      // 设置缩放比例
-    setPos(-78, 0);    // 设置位置偏移
+    setPos(-20, 0);    // 设置位置偏移
 }
 
 void SolidBall::unmount()
@@ -36,7 +36,9 @@ void SolidBall::unmount()
     setScale(1.0);
     if (pixmapItem != nullptr)
     {
-        pixmapItem->setPos(0, -80);
+        qreal pixmapItem_width = pixmapItem->pixmap().width() * pixmapItem->scale();
+        qreal pixmapItem_height = pixmapItem->pixmap().height() * pixmapItem->scale();
+        pixmapItem->setOffset(-pixmapItem_width/2,- pixmapItem_height);
     }
 }
 

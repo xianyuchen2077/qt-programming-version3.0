@@ -23,12 +23,9 @@ void MedicalKit::unmount()
     setScale(0.35);
     if (pixmapItem != nullptr)
     {
-        // 获取缩放后的图片尺寸
-        qreal scaledWidth = pixmapItem->boundingRect().width();
-        qreal scaledHeight = pixmapItem->boundingRect().height();
-
-        // 计算偏移量，使图片中心与父项的(0,0)对齐
-        pixmapItem->setPos(270, scaledHeight -30); // 已校准！
+        qreal pixmapItem_width = pixmapItem->pixmap().width() * pixmapItem->scale();
+        qreal pixmapItem_height = pixmapItem->pixmap().height() * pixmapItem->scale();
+        pixmapItem->setOffset(-pixmapItem_width/2,- pixmapItem_height);
     }
 }
 

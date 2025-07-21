@@ -264,3 +264,15 @@ void Weapon::scheduleDestruction()
     // 使用Qt的安全删除方法
     this->deleteLater();
 }
+
+void Weapon::updatePixmap(const QString &pixmapPath)
+{
+    if (pixmapItem != nullptr)
+    {
+        pixmapItem->setPixmap(QPixmap(pixmapPath));
+    }
+    else
+    {
+        qDebug() << "Character is nullptr!";
+    }
+}

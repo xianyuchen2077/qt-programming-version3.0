@@ -24,8 +24,8 @@ Shabby_Pistol::Shabby_Pistol(QGraphicsItem *parent) : Weapon(parent, ":/Items/We
 void Shabby_Pistol::mountToParent()
 {
     Mountable::mountToParent();
-    setScale(0.6);      // 设置缩放比例
-    setPos(-40, -25);     // 设置位置偏移
+    setScale(0.6);
+    setPos(0, -15);
 }
 
 void Shabby_Pistol::unmount()
@@ -34,7 +34,9 @@ void Shabby_Pistol::unmount()
     setScale(0.6);
     if (pixmapItem != nullptr)
     {
-        pixmapItem->setPos(0, -90);
+        qreal pixmapItem_width = pixmapItem->pixmap().width() * pixmapItem->scale();
+        qreal pixmapItem_height = pixmapItem->pixmap().height() * pixmapItem->scale();
+        pixmapItem->setOffset(-pixmapItem_width/2,- pixmapItem_height);
     }
 }
 

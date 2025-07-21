@@ -81,6 +81,9 @@ protected:
     // 修改为安全的检查和销毁方法
     virtual void checkAndScheduleDestruction();
 
+    // 切换武器图片
+    virtual void updatePixmap(const QString &pixmapPath);
+
 private:
     bool isScheduledForDestruction = false;  // 防止重复销毁
 };

@@ -78,8 +78,8 @@ IceScene::IceScene(QObject *parent) : Scene(parent)
     spareWeapon3->unmount();
     spareWeapon3->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.55, floorHeight);
     spareWeapon3->setZValue(5);
-    spareWeapon4->unmount(); // 已校准
-    spareWeapon4->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.65 - 200, floorHeight - 75);
+    spareWeapon4->unmount();
+    spareWeapon4->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.65, floorHeight);
     spareWeapon4->setZValue(5);
     spareArmor->unmount();
     spareArmor->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.75, floorHeight);
@@ -87,14 +87,14 @@ IceScene::IceScene(QObject *parent) : Scene(parent)
     spareHeadEquipment->unmount();
     spareHeadEquipment->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.25, floorHeight);
     spareHeadEquipment->setZValue(5);
-    spareMedicalItem1->unmount(); // 已校准
-    spareMedicalItem1->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.1, floorHeight - 170);
+    spareMedicalItem1->unmount();
+    spareMedicalItem1->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.2, floorHeight);
     spareMedicalItem1->setZValue(5);
-    spareMedicalItem2->unmount(); // 已校准
-    spareMedicalItem2->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.2, floorHeight - 490);
+    spareMedicalItem2->unmount();
+    spareMedicalItem2->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.3, floorHeight - 330);
     spareMedicalItem2->setZValue(5);
-    spareMedicalItem3->unmount(); // 已校准
-    spareMedicalItem3->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.3, floorHeight - 490);
+    spareMedicalItem3->unmount();
+    spareMedicalItem3->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.4, floorHeight - 330);
     spareMedicalItem3->setZValue(5);
 
     // 初始化游戏循环
@@ -113,9 +113,22 @@ IceScene::IceScene(QObject *parent) : Scene(parent)
     qDebug() << "Debug visualization enabled. Press 'H' to toggle.";
 
     // 可视化调控图片与实体位置重合
-    DebugDotItem* myDebugDot = new DebugDotItem();
-    this->addItem(myDebugDot); // 将其添加到场景中
-    myDebugDot->setDot(spareWeapon4->pos() + spareWeapon4->boundingRect().center(), 5, Qt::red);
+    Weapon* test_weapon = spareWeapon4;
+    DebugDotItem* myDebugDot1 = new DebugDotItem();
+    DebugDotItem* myDebugDot2 = new DebugDotItem();
+    this->addItem(myDebugDot1);
+    this->addItem(myDebugDot2);
+    myDebugDot1->setDot(test_weapon->boundingRect().center(), 8, Qt::red);
+    myDebugDot2->setDot(QPointF(0,0), 8, Qt::green);
+    myDebugDot1->setParentItem(test_weapon);
+    myDebugDot2->setParentItem(test_weapon);
+
+    QGraphicsRectItem* debugRect = new QGraphicsRectItem(test_weapon->boundingRect());
+    debugRect->setPen(QPen(Qt::blue, 5));
+    debugRect->setBrush(Qt::NoBrush);
+    debugRect->setZValue(1000);
+    debugRect->setParentItem(test_weapon);
+    this->addItem(debugRect);
 }
 
 // 初始化平台数据
@@ -971,7 +984,7 @@ void IceScene::processPicking()
     Scene::processPicking();
     if (player1 != nullptr && player1->isPicking())
     {
-        auto mountable = findNearestUnmountedMountable(player1->pos(), 100.);
+        auto mountable = findNearestUnmountedMountable(player1->pos(), 80.);
         if (mountable != nullptr)
         {
             auto pickedUp = pickupMountable(player1, mountable);
@@ -991,7 +1004,7 @@ void IceScene::processPicking()
     }
     if (player2 != nullptr && player2->isPicking())
     {
-        auto mountable = findNearestUnmountedMountable(player2->pos(), 100.);
+        auto mountable = findNearestUnmountedMountable(player2->pos(), 80.);
         if (mountable != nullptr)
         {
             auto pickedUp = pickupMountable(player2, mountable);
@@ -1028,8 +1041,15 @@ Mountable *IceScene::findNearestUnmountedMountable(const QPointF &pos, qreal dis
 
                 // 物品的中心位置
                 QRectF itemBounds = item->boundingRect();
-                QPointF itemCenter = item->pos() + QPointF(itemBounds.width() / 2, itemBounds.height() / 2);
-                // QPointF itemCenter = itemBounds.center();
+                QPointF itemCenter = item->pos();
+
+                // 画出物品的中心
+                QGraphicsItem* test_item = item;
+                DebugDotItem* myDebugDot = new DebugDotItem();
+                this->addItem(myDebugDot);
+                myDebugDot->setDot(test_item->boundingRect().center(), 8, Qt::red);
+                myDebugDot->setParentItem(test_item);
+                myDebugDot->setParentItem(test_item);
 
                 // 计算两个中心点之间的距离
                 qreal distance = QLineF(characterCenter, itemCenter).length();
@@ -1049,6 +1069,18 @@ Mountable *IceScene::findNearestUnmountedMountable(const QPointF &pos, qreal dis
                 {
                     qDebug() << "Checking medical item:" << medicalItem->getName() << "at distance:" << distance;
                 }
+                // else if(auto armor = dynamic_cast<Armor*>(item))
+                // {
+                //     qDebug() << "Checking armor:" << armor->getName() << "at distance:" << distance;
+                // }
+                // else if(auto headEquip = dynamic_cast<HeadEquipment*>(item))
+                // {
+                //     qDebug() << "Checking head equipment:" << headEquip->getName() << "at distance:" << distance;
+                // }
+                // else if(auto legsEquip = dynamic_cast<LegEquipment*>(item))
+                // {
+                //     qDebug() << "Checking legs equipment:" << legsEquip->getName() << "at distance:" << distance;
+                // }
             }
         }
     }

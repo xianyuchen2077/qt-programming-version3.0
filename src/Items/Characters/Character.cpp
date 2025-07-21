@@ -449,12 +449,12 @@ Weapon *Character::pickupWeapon(Weapon *newWeapon)
 
 MedicalItem *Character::pickupMedicalItem(MedicalItem *newMedicalItem)
 {
-    auto oldMedicalItem = weapon;
+    auto oldMedicalItem = medicalItem;
     if (oldMedicalItem != nullptr)
     {
         oldMedicalItem->unmount();
-        oldMedicalItem->setPos(newMedicalItem->pos());
-        oldMedicalItem->setParentItem(parentItem());
+        oldMedicalItem->deleteLater();
+        oldMedicalItem = nullptr;
     }
     if (newMedicalItem)
     {

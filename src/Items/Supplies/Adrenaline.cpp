@@ -9,14 +9,6 @@ const QString Adrenaline::PIXMAP_PATH = ":/Items/Supplies/Adrenaline_Icon.png";
 Adrenaline::Adrenaline(QGraphicsItem *parent)
     : MedicalItem(parent, PIXMAP_PATH)
 {
-    // 设置肾上腺素的显示属性
-    setScale(0.6); // 中等缩放
-
-    // 如果图片存在，调整位置使其居中
-    if (pixmapItem) {
-        pixmapItem->setPos(0, -pixmapItem->boundingRect().height() / 2);
-    }
-
     qDebug() << "Adrenaline created";
 }
 
@@ -32,12 +24,9 @@ void Adrenaline::unmount()
     setScale(0.6);
     if (pixmapItem != nullptr)
     {
-        // 获取缩放后的图片尺寸
-        qreal scaledWidth = pixmapItem->boundingRect().width();
-        qreal scaledHeight = pixmapItem->boundingRect().height();
-
-        // 计算偏移量，使图片中心与父项的(0,0)对齐
-        pixmapItem->setPos(40, scaledHeight - 225); // 已校准！
+        qreal pixmapItem_width = pixmapItem->pixmap().width() * pixmapItem->scale();
+        qreal pixmapItem_height = pixmapItem->pixmap().height() * pixmapItem->scale();
+        pixmapItem->setOffset(-pixmapItem_width/2,- pixmapItem_height);
     }
 }
 
