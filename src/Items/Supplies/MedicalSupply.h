@@ -22,7 +22,7 @@ public:
     virtual bool ApplytoCharacter(Character* character) = 0;
 
     // 获取医疗物品名称
-    virtual QString getName() const = 0;
+    virtual QString getMedicalItemName() const = 0;
 
     // 获取医疗物品描述
     virtual QString getDescription() const = 0;

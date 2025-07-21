@@ -11,7 +11,7 @@ class Bandage : public MedicalItem
 public:
     explicit Bandage(QGraphicsItem *parent = nullptr);
     bool ApplytoCharacter(Character* character) override;
-    QString getName() const override { return "海底小纵队皮医生的绷带"; }
+    QString getMedicalItemName() const override { return "海底小纵队皮医生的绷带"; }
     QString getDescription() const override { return "简单的医疗绷带，可以立即恢复20滴血量"; }
     int getInstantHeal() const override { return HEAL_AMOUNT; }
     void mountToParent() override;

@@ -10,7 +10,7 @@ class Adrenaline : public MedicalItem
 public:
     explicit Adrenaline(QGraphicsItem *parent = nullptr);
     bool ApplytoCharacter(Character* character) override;
-    QString getName() const override { return "飙升的肾上腺素"; }
+    QString getMedicalItemName() const override { return "飙升的肾上腺素"; }
     QString getDescription() const override { return "当肉体达到极限时，肾上腺素会带你杀出重围（能够增加移动速度并持续缓慢回血）"; }
     int getInstantHeal() const override { return INSTANT_HEAL; }
     int getContinuousHeal() const override { return CONTINUOUS_HEAL; }

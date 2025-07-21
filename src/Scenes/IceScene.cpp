@@ -1035,7 +1035,6 @@ Mountable *IceScene::findNearestUnmountedMountable(const QPointF &pos, qreal dis
         {
             if (!mountable->isMounted())
             {
-                // 使用角色的实际中心点而不是pos()来计算距离
                 // 角色的pos()是脚底位置，需要计算实际中心
                 QPointF characterCenter = pos;
 
@@ -1067,7 +1066,7 @@ Mountable *IceScene::findNearestUnmountedMountable(const QPointF &pos, qreal dis
                 }
                 else if(auto medicalItem = dynamic_cast<MedicalItem*>(item))
                 {
-                    qDebug() << "Checking medical item:" << medicalItem->getName() << "at distance:" << distance;
+                    qDebug() << "Checking medical item:" << medicalItem->getMedicalItemName() << "at distance:" << distance;
                 }
                 // else if(auto armor = dynamic_cast<Armor*>(item))
                 // {
