@@ -106,7 +106,7 @@ void Knife::performMeleeAttack(Character* attacker, const QPointF& direction)
     QPointF attackCenter = attackerCenter + normalizedDir * (attackRange / 2.0);
 
     // 创建攻击区域矩形
-    QRectF attackArea(10, -85, 80, 100);
+    QRectF attackArea(10, -85, 90, 100);
 
     // // ························攻击区域可视化·······················
     // // 创建矩形区域可视化图元
