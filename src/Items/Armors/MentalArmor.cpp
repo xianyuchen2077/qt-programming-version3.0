@@ -38,7 +38,7 @@ bool MentalArmor::takeDamage(int damage, int attackType)
 
     if (durability > 0)
     {
-        durability -= damage * damage_reduction_ratio;
+        durability -= damage;
         if (durability < 0)
         {
             durability = 0;

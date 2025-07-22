@@ -98,6 +98,8 @@ add_executable(qt_programming_2024 src/main.cpp
         src/Items/Armors/MentalArmor.cpp
         src/Items/Armors/Acient_robe.h
         src/Items/Armors/Acient_robe.cpp
+        src/Items/Armors/Qin_ceremonial_robe.h
+        src/Items/Armors/Qin_ceremonial_robe.cpp
 
 
 

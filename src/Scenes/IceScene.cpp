@@ -4,6 +4,7 @@
 #include "../Items/Maps/Icefield.h"
 #include "../Items/Armors/MentalArmor.h"
 #include "../Items/Armors/Acient_robe.h"
+#include "../Items/Armors/Qin_ceremonial_robe.h"
 #include "../Items/HeadEquipments/Helmet_of_the_Paladin.h"
 #include "../Items/LegEquipments/LegEquipment.h"
 #include "../Items/Weapons/Shabby_Pistol.h"
@@ -52,6 +53,7 @@ IceScene::IceScene(QObject *parent) : Scene(parent)
     spareWeapon4 = new Knife();
     spareArmor1 = new MentalArmor();
     spareArmor2 = new AcientRobe();
+    spareArmor3 = new Robe_of_Qin();
     spareHeadEquipment = new HelmetOfThePaladin();
     spareMedicalItem1 = new Bandage();
     spareMedicalItem2 = new MedicalKit();
@@ -66,6 +68,7 @@ IceScene::IceScene(QObject *parent) : Scene(parent)
     addItem(spareWeapon4);
     addItem(spareArmor1);
     addItem(spareArmor2);
+    addItem(spareArmor3);
     addItem(spareHeadEquipment);
     addItem(spareMedicalItem1);
     addItem(spareMedicalItem2);
@@ -90,6 +93,9 @@ IceScene::IceScene(QObject *parent) : Scene(parent)
     spareArmor2->unmount();
     spareArmor2->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.60, floorHeight);
     spareArmor2->setZValue(5);
+    spareArmor3->unmount();
+    spareArmor3->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.50, floorHeight);
+    spareArmor3->setZValue(5);
     spareHeadEquipment->unmount();
     spareHeadEquipment->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.25, floorHeight);
     spareHeadEquipment->setZValue(5);
@@ -118,7 +124,7 @@ IceScene::IceScene(QObject *parent) : Scene(parent)
     showDebugVisualization();
     qDebug() << "Debug visualization enabled. Press 'H' to toggle.";
 
-    // 可视化调控图片与实体位置重合
+    // 可视化调控图片与实体位置重合（需注释）
     Weapon* test_weapon = spareWeapon4;
     DebugDotItem* myDebugDot1 = new DebugDotItem();
     DebugDotItem* myDebugDot2 = new DebugDotItem();
@@ -1026,10 +1032,10 @@ void IceScene::processPicking()
     if (player2 != nullptr && player2->isPicking())
     {
         auto mountable = findNearestUnmountedMountable(player2->pos(), 80.);
+        if (mountable != nullptr)
+        {
+            auto pickedUp = pickupMountable(player2, mountable);
         //··············感觉以下部分是多余的················
-        // if (mountable != nullptr)
-        // {
-        //     auto pickedUp = pickupMountable(player2, mountable);
         //     if (auto armor = dynamic_cast<Armor*>(pickedUp))
         //     {
         //         spareArmor1 = armor;
@@ -1042,7 +1048,7 @@ void IceScene::processPicking()
         //     {
         //         spareMedicalItem1 = medicalItem;
         //     }
-        // }
+        }
     }
 }
 

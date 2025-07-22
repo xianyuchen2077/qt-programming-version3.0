@@ -202,12 +202,12 @@ void Character::takeDamage(int damage, int attackType)
     if (armor != nullptr && armor->getDurability() > 0)
     {
         // 让护甲承受一部分伤害
-        int damageToArmor = qMin(remainingDamage, armor->getDurability()); // 计算护甲能承受的最大伤害
-        if (armor->takeDamage(damageToArmor, attackType)) // 调用护甲的takeDamage
+        int absorbedDamage = remainingDamage * armor->getDamage_reduction_ratio(attackType);  // 计算护甲理论上要吸收的伤害
+        int damageToArmor = qMin(absorbedDamage, armor->getDurability());           // 计算护甲能承受的最大伤害
+        if (armor->takeDamage(damageToArmor, attackType))                           // 调用护甲的takeDamage
         {
-            qreal absorbedDamage = damageToArmor * armor->getDamage_reduction_ratio(); // 计算护甲吸收的伤害
-            remainingDamage -= absorbedDamage; // 减去护甲承受的伤害
-            qDebug() << "Armor absorbed " << absorbedDamage << " damage, remaining damage: " << remainingDamage;
+            remainingDamage -= damageToArmor; // 减去护甲承受的伤害
+            qDebug() << "Armor absorbed " << damageToArmor << " damage, remaining damage: " << remainingDamage;
         }
 
         // 如果护甲耐久度耗尽，自动脱下

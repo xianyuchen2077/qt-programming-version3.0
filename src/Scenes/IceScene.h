@@ -48,6 +48,7 @@ private:
     Link *player2;
     Armor *spareArmor1;
     Armor *spareArmor2;
+    Armor *spareArmor3;
     HeadEquipment *spareHeadEquipment;
     Weapon *spareWeapon1;
     Weapon *spareWeapon2;

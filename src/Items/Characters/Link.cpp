@@ -4,9 +4,6 @@
 #include <QTimer>
 #include <QTransform>
 #include <QElapsedTimer>
-#include "../HeadEquipments/CapOfTheHero.h"
-#include "../Armors/OldShirt.h"
-#include "../LegEquipments/WellWornTrousers.h"
 #include "../Weapons/Fist.h"
 
 Link::Link(QGraphicsItem *parent): Character(parent, ":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Walking/0_Reaper_Man_Walking_006.png")
@@ -58,13 +55,13 @@ Link::Link(QGraphicsItem *parent): Character(parent, ":/Items/Characters/littler
     }
 
     // 初始化装备栏
-    headEquipment = new CapOfTheHero(this);
-    legEquipment = new WellWornTrousers(this);
-    armor = new OldShirt(this);
+    // headEquipment = new CapOfTheHero(this);
+    // legEquipment = new WellWornTrousers(this);
+    // armor = new OldShirt(this);
     weapon = new Fist(this);
-    headEquipment->mountToParent();
-    legEquipment->mountToParent();
-    armor->mountToParent();
+    // headEquipment->mountToParent();
+    // legEquipment->mountToParent();
+    // armor->mountToParent();
     weapon->mountToParent();
 
     // 初始化面向方向

@@ -140,7 +140,7 @@ void Fist::performMeleeAttack(Character* attacker, const QPointF& direction)
                 }
 
                 // 对目标造成伤害
-                target->takeDamage(finalDamage, 1); // 1是近战攻击类型
+                target->takeDamage(finalDamage, 11); // 第一个1是近战攻击类型，第二个1是拳头的代号
             }
         }
     }

@@ -16,6 +16,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/qt_programming_2024.dir/src/Items/Armors/MentalArmor.cpp.obj.d"
   "CMakeFiles/qt_programming_2024.dir/src/Items/Armors/OldShirt.cpp.obj"
   "CMakeFiles/qt_programming_2024.dir/src/Items/Armors/OldShirt.cpp.obj.d"
+  "CMakeFiles/qt_programming_2024.dir/src/Items/Armors/Qin_ceremonial_robe.cpp.obj"
+  "CMakeFiles/qt_programming_2024.dir/src/Items/Armors/Qin_ceremonial_robe.cpp.obj.d"
   "CMakeFiles/qt_programming_2024.dir/src/Items/Bullets/Bullet.cpp.obj"
   "CMakeFiles/qt_programming_2024.dir/src/Items/Bullets/Bullet.cpp.obj.d"
   "CMakeFiles/qt_programming_2024.dir/src/Items/Bullets/Shabby_Pistol_bullet.cpp.obj"

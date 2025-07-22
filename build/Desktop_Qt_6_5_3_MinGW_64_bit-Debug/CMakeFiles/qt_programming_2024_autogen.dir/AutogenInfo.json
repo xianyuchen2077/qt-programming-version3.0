@@ -342,6 +342,12 @@
 			null
 		],
 		[
+			"C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Armors/Qin_ceremonial_robe.h",
+			"MU",
+			"XAWFG2TZKF/moc_Qin_ceremonial_robe.cpp",
+			null
+		],
+		[
 			"C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Bullets/Bullet.h",
 			"MU",
 			"VFTUHTWUAV/moc_Bullet.cpp",
@@ -642,6 +648,11 @@
 		],
 		[
 			"C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Armors/OldShirt.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Armors/Qin_ceremonial_robe.cpp",
 			"MU",
 			null
 		],

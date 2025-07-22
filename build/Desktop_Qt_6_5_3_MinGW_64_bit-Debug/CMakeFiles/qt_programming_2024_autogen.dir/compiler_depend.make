@@ -21,6 +21,8 @@ qt_programming_2024_autogen/timestamp: C:/Users/xiany/Desktop/GodNoCode/Advanced
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Armors/MentalArmor.h \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Armors/OldShirt.cpp \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Armors/OldShirt.h \
+  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Armors/Qin_ceremonial_robe.cpp \
+  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Armors/Qin_ceremonial_robe.h \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Bullets/Bullet.cpp \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Bullets/Bullet.h \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Bullets/Shabby_Pistol_bullet.cpp \
@@ -534,8 +536,6 @@ D:/CMake/share/cmake-4.1/Modules/CMakeSystemSpecificInitialize.cmake:
 
 CMakeFiles/4.1.0-rc1/CMakeRCCompiler.cmake:
 
-C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Supplies/MedicalKit.h:
-
 D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qfont.h:
 
 D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qglobal.h:
@@ -630,6 +630,12 @@ D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6Gui/Qt6QVirtualKeyboardPluginConfig.cmake:
 
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Armors/OldShirt.h:
 
+D:/CMake/share/cmake-4.1/Modules/Compiler/CMakeCommonCompilerMacros.cmake:
+
+C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Armors/Qin_ceremonial_robe.cpp:
+
+C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Armors/Qin_ceremonial_robe.h:
+
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Maps/Settingsfield.h:
 
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Bullets/Bullet.cpp:
@@ -673,12 +679,6 @@ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_Fighti
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/HeadEquipments/CapOfTheHero.h:
 
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Characters/Character.h:
-
-D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/q20type_traits.h:
-
-D:/CMake/share/cmake-4.1/Modules/Internal/CMakeCXXLinkerInformation.cmake:
-
-C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Supplies/MedicalKit.cpp:
 
 D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake:
 
@@ -735,6 +735,14 @@ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_Fighti
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Mountable.h:
 
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Supplies/Bandage.h:
+
+D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/q20type_traits.h:
+
+D:/CMake/share/cmake-4.1/Modules/Internal/CMakeCXXLinkerInformation.cmake:
+
+C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Supplies/MedicalKit.cpp:
+
+C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Supplies/MedicalKit.h:
 
 D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6Gui/Qt6QTiffPluginAdditionalTargetInfo.cmake:
 
@@ -869,8 +877,6 @@ D:/CMake/share/cmake-4.1/Modules/CheckIncludeFile.cmake:
 D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qtguiexports.h:
 
 D:/CMake/share/cmake-4.1/Modules/CheckLibraryExists.cmake:
-
-D:/CMake/share/cmake-4.1/Modules/Compiler/CMakeCommonCompilerMacros.cmake:
 
 D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qrgb.h:
 

@@ -322,6 +322,30 @@ src/Items/Armors/OldShirt.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Armors/OldShirt.cpp.s
 .PHONY : src/Items/Armors/OldShirt.cpp.s
 
+src/Items/Armors/Qin_ceremonial_robe.obj: src/Items/Armors/Qin_ceremonial_robe.cpp.obj
+.PHONY : src/Items/Armors/Qin_ceremonial_robe.obj
+
+# target to build an object file
+src/Items/Armors/Qin_ceremonial_robe.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Armors/Qin_ceremonial_robe.cpp.obj
+.PHONY : src/Items/Armors/Qin_ceremonial_robe.cpp.obj
+
+src/Items/Armors/Qin_ceremonial_robe.i: src/Items/Armors/Qin_ceremonial_robe.cpp.i
+.PHONY : src/Items/Armors/Qin_ceremonial_robe.i
+
+# target to preprocess a source file
+src/Items/Armors/Qin_ceremonial_robe.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Armors/Qin_ceremonial_robe.cpp.i
+.PHONY : src/Items/Armors/Qin_ceremonial_robe.cpp.i
+
+src/Items/Armors/Qin_ceremonial_robe.s: src/Items/Armors/Qin_ceremonial_robe.cpp.s
+.PHONY : src/Items/Armors/Qin_ceremonial_robe.s
+
+# target to generate assembly for a file
+src/Items/Armors/Qin_ceremonial_robe.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Armors/Qin_ceremonial_robe.cpp.s
+.PHONY : src/Items/Armors/Qin_ceremonial_robe.cpp.s
+
 src/Items/Bullets/Bullet.obj: src/Items/Bullets/Bullet.cpp.obj
 .PHONY : src/Items/Bullets/Bullet.obj
 
@@ -1218,6 +1242,9 @@ help:
 	@echo ... src/Items/Armors/OldShirt.obj
 	@echo ... src/Items/Armors/OldShirt.i
 	@echo ... src/Items/Armors/OldShirt.s
+	@echo ... src/Items/Armors/Qin_ceremonial_robe.obj
+	@echo ... src/Items/Armors/Qin_ceremonial_robe.i
+	@echo ... src/Items/Armors/Qin_ceremonial_robe.s
 	@echo ... src/Items/Bullets/Bullet.obj
 	@echo ... src/Items/Bullets/Bullet.i
 	@echo ... src/Items/Bullets/Bullet.s

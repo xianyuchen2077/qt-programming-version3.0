@@ -71,7 +71,7 @@ int Armor::getDurability() const
     return durability;
 }
 
-qreal Armor::getDamage_reduction_ratio()
+qreal Armor::getDamage_reduction_ratio(int attackType)
 {
     return damage_reduction_ratio;
 }
