@@ -6,6 +6,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/qt_programming_2024.dir/qt_programming_2024_autogen/GBFAFXFCVO/qrc_assets.cpp.obj.d"
   "CMakeFiles/qt_programming_2024.dir/qt_programming_2024_autogen/mocs_compilation.cpp.obj"
   "CMakeFiles/qt_programming_2024.dir/qt_programming_2024_autogen/mocs_compilation.cpp.obj.d"
+  "CMakeFiles/qt_programming_2024.dir/src/Items/Armors/Acient_robe.cpp.obj"
+  "CMakeFiles/qt_programming_2024.dir/src/Items/Armors/Acient_robe.cpp.obj.d"
   "CMakeFiles/qt_programming_2024.dir/src/Items/Armors/Armor.cpp.obj"
   "CMakeFiles/qt_programming_2024.dir/src/Items/Armors/Armor.cpp.obj.d"
   "CMakeFiles/qt_programming_2024.dir/src/Items/Armors/FlamebreakerArmor.cpp.obj"

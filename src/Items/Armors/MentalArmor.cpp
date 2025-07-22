@@ -3,7 +3,7 @@
 MentalArmor::MentalArmor(QGraphicsItem *parent) : Armor(parent, ":/Items/Armors/MentalArmor/MentalArmor.png")
 {
     // 设置护甲名称和描述
-    armorName = "精神护甲";
+    armorName = "金刚护甲";
     description = "这是一件神秘的金刚护甲，能够抵御半条命攻击，但是只对真（枪）理（械）有效。";
     durability = 50; // 能够抵挡50滴伤害
     damage_reduction_ratio = 0.8; // 护甲的伤害减免比例为80%

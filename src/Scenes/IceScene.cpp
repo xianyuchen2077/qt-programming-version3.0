@@ -3,6 +3,7 @@
 #include "../Items/Characters/Link.h"
 #include "../Items/Maps/Icefield.h"
 #include "../Items/Armors/MentalArmor.h"
+#include "../Items/Armors/Acient_robe.h"
 #include "../Items/HeadEquipments/Helmet_of_the_Paladin.h"
 #include "../Items/LegEquipments/LegEquipment.h"
 #include "../Items/Weapons/Shabby_Pistol.h"
@@ -49,7 +50,8 @@ IceScene::IceScene(QObject *parent) : Scene(parent)
     spareWeapon2 = new SolidBall();
     spareWeapon3 = new Sniper_Rifle();
     spareWeapon4 = new Knife();
-    spareArmor = new MentalArmor();
+    spareArmor1 = new MentalArmor();
+    spareArmor2 = new AcientRobe();
     spareHeadEquipment = new HelmetOfThePaladin();
     spareMedicalItem1 = new Bandage();
     spareMedicalItem2 = new MedicalKit();
@@ -62,7 +64,8 @@ IceScene::IceScene(QObject *parent) : Scene(parent)
     addItem(spareWeapon2);
     addItem(spareWeapon3);
     addItem(spareWeapon4);
-    addItem(spareArmor);
+    addItem(spareArmor1);
+    addItem(spareArmor2);
     addItem(spareHeadEquipment);
     addItem(spareMedicalItem1);
     addItem(spareMedicalItem2);
@@ -81,9 +84,12 @@ IceScene::IceScene(QObject *parent) : Scene(parent)
     spareWeapon4->unmount();
     spareWeapon4->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.65, floorHeight);
     spareWeapon4->setZValue(5);
-    spareArmor->unmount();
-    spareArmor->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.75, floorHeight);
-    spareArmor->setZValue(5);
+    spareArmor1->unmount();
+    spareArmor1->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.70, floorHeight);
+    spareArmor1->setZValue(5);
+    spareArmor2->unmount();
+    spareArmor2->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.60, floorHeight);
+    spareArmor2->setZValue(5);
     spareHeadEquipment->unmount();
     spareHeadEquipment->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.25, floorHeight);
     spareHeadEquipment->setZValue(5);
@@ -1002,39 +1008,41 @@ void IceScene::processPicking()
         if (mountable != nullptr)
         {
             auto pickedUp = pickupMountable(player1, mountable);
-            if (auto armor = dynamic_cast<Armor*>(pickedUp))
-            {
-                spareArmor = armor;
-            }
-            else if (auto headEquip = dynamic_cast<HeadEquipment*>(pickedUp))
-            {
-                spareHeadEquipment = headEquip;
-            }
-            else if (auto medicalItem = dynamic_cast<MedicalItem*>(pickedUp))
-            {
-                spareMedicalItem1 = medicalItem;
-            }
+            //··············感觉以下部分是多余的················
+            // if (auto armor = dynamic_cast<Armor*>(pickedUp))
+            // {
+            //     spareArmor1 = armor;
+            // }
+            // else if (auto headEquip = dynamic_cast<HeadEquipment*>(pickedUp))
+            // {
+            //     spareHeadEquipment = headEquip;
+            // }
+            // else if (auto medicalItem = dynamic_cast<MedicalItem*>(pickedUp))
+            // {
+            //     spareMedicalItem1 = medicalItem;
+            // }
         }
     }
     if (player2 != nullptr && player2->isPicking())
     {
         auto mountable = findNearestUnmountedMountable(player2->pos(), 80.);
-        if (mountable != nullptr)
-        {
-            auto pickedUp = pickupMountable(player2, mountable);
-            if (auto armor = dynamic_cast<Armor*>(pickedUp))
-            {
-                spareArmor = armor;
-            }
-            else if (auto headEquip = dynamic_cast<HeadEquipment*>(pickedUp))
-            {
-                spareHeadEquipment = headEquip;
-            }
-            else if (auto medicalItem = dynamic_cast<MedicalItem*>(pickedUp))
-            {
-                spareMedicalItem1 = medicalItem;
-            }
-        }
+        //··············感觉以下部分是多余的················
+        // if (mountable != nullptr)
+        // {
+        //     auto pickedUp = pickupMountable(player2, mountable);
+        //     if (auto armor = dynamic_cast<Armor*>(pickedUp))
+        //     {
+        //         spareArmor1 = armor;
+        //     }
+        //     else if (auto headEquip = dynamic_cast<HeadEquipment*>(pickedUp))
+        //     {
+        //         spareHeadEquipment = headEquip;
+        //     }
+        //     else if (auto medicalItem = dynamic_cast<MedicalItem*>(pickedUp))
+        //     {
+        //         spareMedicalItem1 = medicalItem;
+        //     }
+        // }
     }
 }
 

@@ -202,6 +202,30 @@ qt_programming_2024_autogen/mocs_compilation.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/qt_programming_2024_autogen/mocs_compilation.cpp.s
 .PHONY : qt_programming_2024_autogen/mocs_compilation.cpp.s
 
+src/Items/Armors/Acient_robe.obj: src/Items/Armors/Acient_robe.cpp.obj
+.PHONY : src/Items/Armors/Acient_robe.obj
+
+# target to build an object file
+src/Items/Armors/Acient_robe.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Armors/Acient_robe.cpp.obj
+.PHONY : src/Items/Armors/Acient_robe.cpp.obj
+
+src/Items/Armors/Acient_robe.i: src/Items/Armors/Acient_robe.cpp.i
+.PHONY : src/Items/Armors/Acient_robe.i
+
+# target to preprocess a source file
+src/Items/Armors/Acient_robe.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Armors/Acient_robe.cpp.i
+.PHONY : src/Items/Armors/Acient_robe.cpp.i
+
+src/Items/Armors/Acient_robe.s: src/Items/Armors/Acient_robe.cpp.s
+.PHONY : src/Items/Armors/Acient_robe.s
+
+# target to generate assembly for a file
+src/Items/Armors/Acient_robe.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Armors/Acient_robe.cpp.s
+.PHONY : src/Items/Armors/Acient_robe.cpp.s
+
 src/Items/Armors/Armor.obj: src/Items/Armors/Armor.cpp.obj
 .PHONY : src/Items/Armors/Armor.obj
 
@@ -1179,6 +1203,9 @@ help:
 	@echo ... qt_programming_2024_autogen/mocs_compilation.obj
 	@echo ... qt_programming_2024_autogen/mocs_compilation.i
 	@echo ... qt_programming_2024_autogen/mocs_compilation.s
+	@echo ... src/Items/Armors/Acient_robe.obj
+	@echo ... src/Items/Armors/Acient_robe.i
+	@echo ... src/Items/Armors/Acient_robe.s
 	@echo ... src/Items/Armors/Armor.obj
 	@echo ... src/Items/Armors/Armor.i
 	@echo ... src/Items/Armors/Armor.s

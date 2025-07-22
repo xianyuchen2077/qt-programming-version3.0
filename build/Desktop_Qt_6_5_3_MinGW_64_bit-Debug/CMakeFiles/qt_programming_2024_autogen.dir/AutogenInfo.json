@@ -312,6 +312,12 @@
 			null
 		],
 		[
+			"C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Armors/Acient_robe.h",
+			"MU",
+			"XAWFG2TZKF/moc_Acient_robe.cpp",
+			null
+		],
+		[
 			"C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Armors/Armor.h",
 			"MU",
 			"XAWFG2TZKF/moc_Armor.cpp",
@@ -614,6 +620,11 @@
 	"SETTINGS_FILE" : "C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/CMakeFiles/qt_programming_2024_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
+		[
+			"C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Armors/Acient_robe.cpp",
+			"MU",
+			null
+		],
 		[
 			"C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Armors/Armor.cpp",
 			"MU",

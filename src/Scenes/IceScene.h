@@ -46,7 +46,8 @@ private:
     Map *map;
     Link *player1;
     Link *player2;
-    Armor *spareArmor;
+    Armor *spareArmor1;
+    Armor *spareArmor2;
     HeadEquipment *spareHeadEquipment;
     Weapon *spareWeapon1;
     Weapon *spareWeapon2;

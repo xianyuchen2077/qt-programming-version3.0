@@ -11,6 +11,8 @@ qt_programming_2024_autogen/timestamp: C:/Users/xiany/Desktop/GodNoCode/Advanced
   CMakeFiles/4.1.0-rc1/CMakeSystem.cmake \
   qt_programming_2024_autogen/moc_predefs.h \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/GameEnums.h \
+  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Armors/Acient_robe.cpp \
+  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Armors/Acient_robe.h \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Armors/Armor.cpp \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Armors/Armor.h \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Armors/FlamebreakerArmor.cpp \
@@ -544,10 +546,6 @@ D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6ZlibPrivate/Qt6ZlibPrivateConfig.cmake:
 
 .qtc/package-manager/auto-setup.cmake:
 
-D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6Gui/Qt6QTiffPluginAdditionalTargetInfo.cmake:
-
-C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Supplies/MedicalSupply.cpp:
-
 D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6/QtPublicAppleHelpers.cmake:
 
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Scenes/BattleScene.h:
@@ -581,6 +579,14 @@ qt_programming_2024_autogen/moc_predefs.h:
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/HeadEquipments/HeadEquipment.cpp:
 
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/GameEnums.h:
+
+D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6Gui/Qt6GuiPlugins.cmake:
+
+C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Armors/Acient_robe.cpp:
+
+D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qiterable.h:
+
+C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Armors/Acient_robe.h:
 
 D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6Gui/Qt6QInsightTrackerPluginConfig.cmake:
 
@@ -729,6 +735,10 @@ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_Fighti
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Mountable.h:
 
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Supplies/Bandage.h:
+
+D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6Gui/Qt6QTiffPluginAdditionalTargetInfo.cmake:
+
+C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Supplies/MedicalSupply.cpp:
 
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Supplies/MedicalSupply.h:
 
@@ -1062,8 +1072,6 @@ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qiodevice.h:
 
 D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qiodevicebase.h:
 
-D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qiterable.h:
-
 D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qiterator.h:
 
 D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qline.h:
@@ -1387,8 +1395,6 @@ D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6Gui/Qt6GuiConfigVersionImpl.cmake:
 D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6Gui/Qt6QVirtualKeyboardPluginAdditionalTargetInfo.cmake:
 
 D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6Gui/Qt6GuiDependencies.cmake:
-
-D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6Gui/Qt6GuiPlugins.cmake:
 
 D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6Gui/Qt6GuiTargets-relwithdebinfo.cmake:
 
