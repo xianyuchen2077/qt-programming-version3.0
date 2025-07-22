@@ -126,7 +126,7 @@ void Fist::performMeleeAttack(Character* attacker, const QPointF& direction)
                 }
 
                 // 对目标造成伤害
-                target->takeDamage(finalDamage);
+                target->takeDamage(finalDamage); // 1是近战攻击类型
                 // qDebug() << "Fist hit" << target->getCharacterName() << "for" << finalDamage << "damage";
             }
         }

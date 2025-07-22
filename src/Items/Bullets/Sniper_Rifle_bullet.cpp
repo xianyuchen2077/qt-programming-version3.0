@@ -85,7 +85,7 @@ void SniperRifleBullet::handleCollisions()
             }
 
             // 对角色造成伤害
-            hitCharacter->takeDamage(bulletDamage);
+            hitCharacter->takeDamage(bulletDamage); // 2是远程攻击类型;
             explode();
             qDebug() << "SniperRifleBullet hit character! Character health:" << hitCharacter->getHealth();
             return;

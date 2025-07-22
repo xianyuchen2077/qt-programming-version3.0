@@ -57,10 +57,10 @@ public:
     virtual void processInput();
 
     // 与血条相关函数
-    [[nodiscard]] int getHealth() const; // 获取血量
-    void setHealth(int health);          // 设置血量
-    void takeDamage(int damage);         // 受伤函数
-    void heal(int amount);               // 治疗函数
+    [[nodiscard]] int getHealth() const;            // 获取血量
+    void setHealth(int health);                     // 设置血量
+    void takeDamage(int damage, int attackType = 0);    // 受伤函数
+    void heal(int amount);                          // 治疗函数
 
     // 与死亡相关函数
     bool isDead() const { return isDead_; }

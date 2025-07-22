@@ -65,7 +65,7 @@ void BulletBasic::handleCollisions()
         if (hitCharacter && hitCharacter != shooterCharacter) // 不能击中发射者
         {
             // 对角色造成伤害
-            hitCharacter->takeDamage(bulletDamage);
+            hitCharacter->takeDamage(bulletDamage); // 2是远程攻击类型;
             explode();
             qDebug() << "BulletBasic hit character! Character health:" << hitCharacter->getHealth();
             return;

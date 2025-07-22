@@ -13,9 +13,9 @@ public:
 
     void unmount() override;
 
-    QString getArmorName() const override { return armorName; }
+    void takeDamage(int damage, int attackType) override;
 
-    qreal getdefencePower() const  { return defensePower; } // 精神护甲防御力为50滴血
+    QString getArmorName() const override { return armorName; }
 };
 
 
