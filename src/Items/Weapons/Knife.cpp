@@ -45,7 +45,7 @@ void Knife::mountToParent()
     // 旋转角度
     pixmapItem->setRotation(-45);  // 顺时针旋转90°
 
-    setZValue(0);
+    setZValue(-1);
 }
 
 void Knife::unmount()
@@ -75,8 +75,6 @@ void Knife::shoot(Character* attacker, const QPointF& direction)
     {
         return;
     }
-
-    // qDebug() << "Knife attack initiated by" << attacker->getCharacterName();
 
     // 播放攻击动画
     playAttackAnimation(attacker);
@@ -188,6 +186,9 @@ void Knife::playAttackAnimation(Character* attacker)
         ":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Run Slashing/0_Reaper_Man_Run Slashing_007.png",
         ":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Run Slashing/0_Reaper_Man_Run Slashing_009.png",
         ":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Run Slashing/0_Reaper_Man_Run Slashing_011.png",
+        ":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Run Slashing/0_Reaper_Man_Run Slashing_003.png",
+        ":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Run Slashing/0_Reaper_Man_Run Slashing_004.png",
+        ":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Run Slashing/0_Reaper_Man_Run Slashing_004.png",
     };
 
     m_currentAttackFrame = 0;

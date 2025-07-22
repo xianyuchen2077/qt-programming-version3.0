@@ -49,6 +49,10 @@ public:
 
     void setPicking(bool picking);
 
+    [[nodiscard]] bool isFighting() const;
+
+    void setFighting(bool fighting);
+
     [[nodiscard]] qreal getMoveSpeed() const;
 
     void setMoveSpeed(qreal speed);
@@ -129,6 +133,7 @@ private:
     bool leftDown{}, rightDown{}, pickDown{}, downDown{}, upDown{}; // 按键状态;
     bool lastPickDown{}; // 上一次拾取键是否被按下
     bool picking{}; // 是否正在拾取物品
+    bool fighting{}; // 是否正在攻击
     qreal moveSpeed; // 移动速度
 
     // 跳跃相关属性

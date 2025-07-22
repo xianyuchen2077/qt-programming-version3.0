@@ -20,12 +20,12 @@ Fist::Fist(QGraphicsItem *parent) : Weapon(parent, ":/Items/Weapons/Fist_Icon.pn
     setCriticalDamage(8);       // 暴击伤害
     setAmmoCount(99999999);     // 拳头永远不会用完
     setMaxAmmoCount(99999999);  // 最大弹药数量
-    setWeight(0);               // 重量为0
-    setShotCooldown(500);       // 拳头攻击间隔500ms
+    setWeight(0);               // 重量
+    setShotCooldown(300);       // 拳头攻击间隔
 
     // 设置图片路径
-    originalPixmapPath = ":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Fight/0_Reaper_Man_Fight_001.png";
-    attackPixmapPath = ":/Items/Weapons/Fist_Attack_Icon.png";  // 攻击时的图片
+    originalPixmapPath = ":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Fight/0_Reaper_Man_Fight_002.png";
+    attackPixmapPath = ":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Fight/0_Reaper_Man_Fight_003.png"; // 攻击的时候两张图片交替播放
 
     // 初始化动画计时器
     animationTimer = new QTimer(this);
@@ -36,18 +36,15 @@ Fist::Fist(QGraphicsItem *parent) : Weapon(parent, ":/Items/Weapons/Fist_Icon.pn
 void Fist::mountToParent()
 {
     Mountable::mountToParent();
-    setScale(0.4);      // 设置缩放比例
-    setPos(-20, -25);   // 设置位置偏移
+    pixmapItem->setScale(0.3);
+    pixmapItem->setPos(-130, -225);
 }
 
 void Fist::unmount()
 {
     Mountable::unmount();
     setScale(0);
-    if (pixmapItem != nullptr)
-    {
-        pixmapItem->setPos(0, -90);
-    }
+    this->deleteLater();
 }
 
 bool Fist::canShoot() const
@@ -93,29 +90,46 @@ void Fist::performMeleeAttack(Character* attacker, const QPointF& direction)
     QPointF attackCenter = attackerCenter + normalizedDir * (attackRange / 2.0);
 
     // 创建攻击区域（圆形区域）
-    QRectF attackArea(attackCenter.x() - attackRange / 2.0,
-                      attackCenter.y() - attackRange / 2.0,
-                      attackRange, attackRange);
-
+    QRectF attackArea(5, -50, 70, 70);
     qDebug() << "Fist attack area:" << attackArea;
 
-    // 查找攻击范围内的所有角色
-    QList<QGraphicsItem*> allItems = attacker->scene()->items(attackArea);
+    // // ························攻击区域可视化·······················
+    // // 创建矩形区域可视化图元
+    // QGraphicsRectItem* attackVisual = new QGraphicsRectItem(attackArea);
 
-    for (QGraphicsItem* item : allItems)
+    // // 设置位置和角度
+    // attackVisual->setBrush(QBrush(QColor(255, 0, 0, 100)));  // 红色透明填充
+    // attackVisual->setPen(QPen(Qt::red));
+    // attackVisual->setPos(attackCenter);
+    // attackVisual->setRotation(qRadiansToDegrees(std::atan2(normalizedDir.y(), normalizedDir.x()))); // 方向对齐
+    // attacker->scene()->addItem(attackVisual);
+
+    // // 600毫秒后销毁该图形项
+    // QTimer::singleShot(600, [attackVisual]() {
+    //     if (attackVisual->scene())
+    //     {
+    //         attackVisual->scene()->removeItem(attackVisual);
+    //     }
+    //     delete attackVisual;
+    // });
+    // qDebug() << "Knife attack area:" << attackArea;
+
+    // 查找攻击范围内的所有角色
+    QTransform transform;
+    transform.translate(attackCenter.x(), attackCenter.y());
+    transform.rotateRadians(std::atan2(normalizedDir.y(), normalizedDir.x()));
+    QRectF attackGlobalArea = transform.mapRect(attackArea);
+
+    QList<QGraphicsItem*> allItems = attacker->scene()->items();
+
+    for (QGraphicsItem* item : std::as_const(allItems))
     {
         Character* target = dynamic_cast<Character*>(item);
         if (target && target != attacker)
         {
-            // 检查目标是否在攻击范围内
-            QPointF targetPos = target->pos();
-            QRectF targetRect = target->getBodyCollisionRect();
-            QPointF targetCenter = targetPos + targetRect.center();
+            QRectF targetRect = target->sceneBoundingRect();
 
-            qreal distance = std::sqrt(std::pow(targetCenter.x() - attackerCenter.x(), 2) +
-                                       std::pow(targetCenter.y() - attackerCenter.y(), 2));
-
-            if (distance <= attackRange)
+            if (attackGlobalArea.intersects(targetRect))
             {
                 // 计算伤害（考虑暴击）
                 int finalDamage = attackPower;
@@ -127,7 +141,6 @@ void Fist::performMeleeAttack(Character* attacker, const QPointF& direction)
 
                 // 对目标造成伤害
                 target->takeDamage(finalDamage, 1); // 1是近战攻击类型
-                // qDebug() << "Fist hit" << target->getCharacterName() << "for" << finalDamage << "damage";
             }
         }
     }
@@ -146,7 +159,7 @@ void Fist::playAttackAnimation()
     }
 
     // 设置动画持续时间
-    animationTimer->start(200); // 200ms后恢复原图片
+    animationTimer->start(300); // 恢复原图片
 }
 
 void Fist::resetAttackAnimation()

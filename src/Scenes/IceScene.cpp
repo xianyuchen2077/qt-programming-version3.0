@@ -772,6 +772,7 @@ void IceScene::keyPressEvent(QKeyEvent *event)
     case Qt::Key_J:
         if (player1 != nullptr && player1->canShoot())
         {
+            player1->setFighting(true);
             QPointF shootDirection = player1->isFaceRight() ? QPointF(1, 0) : QPointF(-1, 0);
             player1->shoot(shootDirection);
             qDebug() << "Player1 shoots!";
@@ -805,6 +806,7 @@ void IceScene::keyPressEvent(QKeyEvent *event)
     case Qt::Key_0:
         if (player2 != nullptr && player2->canShoot())
         {
+            player2->setFighting(true);
             QPointF shootDirection = player2->isFaceRight() ? QPointF(1, 0) : QPointF(-1, 0);
             player2->shoot(shootDirection);
             qDebug() << "Player2 shoots!";
@@ -852,6 +854,12 @@ void IceScene::keyReleaseEvent(QKeyEvent *event)
             player1->setUpDown(false);
         }
         break;
+    case Qt::Key_J:
+        if (player1 != nullptr)
+        {
+            player1->setFighting(false);
+        }
+        break;
     case Qt::Key_Left:
         if (player2 != nullptr)
         {
@@ -875,6 +883,12 @@ void IceScene::keyReleaseEvent(QKeyEvent *event)
         if (player2 != nullptr)
         {
             player2->setUpDown(false);
+        }
+        break;
+    case Qt::Key_0:
+        if (player2 != nullptr)
+        {
+            player2->setFighting(false);
         }
         break;
     default:

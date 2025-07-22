@@ -7,6 +7,7 @@
 #include "../HeadEquipments/CapOfTheHero.h"
 #include "../Armors/OldShirt.h"
 #include "../LegEquipments/WellWornTrousers.h"
+#include "../Weapons/Fist.h"
 
 Link::Link(QGraphicsItem *parent): Character(parent, ":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Walking/0_Reaper_Man_Walking_006.png")
 {
@@ -56,14 +57,15 @@ Link::Link(QGraphicsItem *parent): Character(parent, ":/Items/Characters/littler
         m_bodyCollisionRect = QRectF(-20, -45, 40, 45);
     }
 
+    // 初始化装备栏
     headEquipment = new CapOfTheHero(this);
     legEquipment = new WellWornTrousers(this);
     armor = new OldShirt(this);
-    // weapon = new Shabby_Pistol(this);
+    weapon = new Fist(this);
     headEquipment->mountToParent();
     legEquipment->mountToParent();
     armor->mountToParent();
-    // weapon->mountToParent();
+    weapon->mountToParent();
 
     // 初始化面向方向
     faceRight = true; // 默认面向右侧
@@ -349,6 +351,7 @@ void Link::updateAnimation(qint64 deltaTime)
 {
     bool isWalking = (isLeftDown() || isRightDown()) && isOnGround();
     bool isDying = isDead();
+    bool isFighting = this->isFighting();
 
     if (isDying)
     {

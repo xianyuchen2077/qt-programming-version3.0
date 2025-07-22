@@ -99,6 +99,28 @@ void Character::setUpDown(bool upDown)
     Character::upDown = upDown;
 }
 
+// 判断是否正在拾取物品
+bool Character::isPicking() const
+{
+    return picking;
+}
+
+void Character::setPicking(bool picking)
+{
+    Character::picking = picking;
+}
+
+// 判断是否正在战斗
+bool Character::isFighting() const
+{
+    return fighting;
+}
+
+void Character::setFighting(bool fighting)
+{
+    Character::fighting = fighting;
+}
+
 // 与速度相关的函数
 // 获取速度
 const QPointF &Character::getVelocity() const {
@@ -409,12 +431,6 @@ bool Character::getPixmapItem() const
         qDebug() << "Character pixmapItem is nullptr!";
         return false;
     }
-}
-
-// 判断是否正在拾取物品
-bool Character::isPicking() const
-{
-    return picking;
 }
 
 // 设置拾取状态(Armor)

@@ -23,9 +23,9 @@ public:
 
     void processWalkAnimation(qint64 deltaTime); // 处理行走动画
     void processDyingAnimation(qint64 deltaTime); // 处理死亡动画
+    void updateAnimation(qint64 deltaTime); // 更新动画（独立于输入处理）
     void checkDeathStatus(); // 检查死亡状态
     void startDeathSequence(); // 开始死亡序列
-    void updateAnimation(qint64 deltaTime); // 更新动画（独立于输入处理）
 
 private:
     qint64 m_walkAnimationElapsedTime = 0;      // 记录行走动画已经过去的时间
