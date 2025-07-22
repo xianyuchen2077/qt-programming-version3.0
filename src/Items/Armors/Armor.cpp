@@ -58,6 +58,7 @@ bool Armor::takeDamage(int damage, int attackType)
         qDebug() << "Armor has no durability or is already depleted.";
         return false;
     }
+    return false;
 }
 
 QString Armor::getArmorName() const
@@ -68,4 +69,9 @@ QString Armor::getArmorName() const
 int Armor::getDurability() const
 {
     return durability;
+}
+
+qreal Armor::getDamage_reduction_ratio()
+{
+    return damage_reduction_ratio;
 }

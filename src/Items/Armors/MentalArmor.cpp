@@ -6,6 +6,7 @@ MentalArmor::MentalArmor(QGraphicsItem *parent) : Armor(parent, ":/Items/Armors/
     armorName = "精神护甲";
     description = "这是一件神秘的金刚护甲，能够抵御半条命攻击，但是只对真（枪）理（械）有效。";
     durability = 50; // 能够抵挡50滴伤害
+    damage_reduction_ratio = 0.8; // 护甲的伤害减免比例为80%
 }
 
 void MentalArmor::mountToParent()
@@ -37,7 +38,7 @@ bool MentalArmor::takeDamage(int damage, int attackType)
 
     if (durability > 0)
     {
-        durability -= damage;
+        durability -= damage * damage_reduction_ratio;
         if (durability < 0)
         {
             durability = 0;
