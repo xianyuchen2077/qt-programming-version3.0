@@ -11,8 +11,8 @@ MentalArmor::MentalArmor(QGraphicsItem *parent) : Armor(parent, ":/Items/Armors/
 void MentalArmor::mountToParent()
 {
     Mountable::mountToParent();
-    setScale(0.4);
-    setPos(0,0);
+    setScale(0.31);
+    setPos(3,-5);
 }
 
 void MentalArmor::unmount()

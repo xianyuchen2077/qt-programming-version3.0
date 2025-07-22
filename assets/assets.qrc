@@ -57,5 +57,8 @@
         <file>Items/Weapons/CrutchKnife_Icon.png</file>
         <file>Items/Armors/MentalArmor/MentalArmor.png</file>
         <file>Items/Armors/MentalArmor/MentalArmor_worn.png</file>
+        <file>Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Fight/0_Reaper_Man_Fight_001.png</file>
+        <file>Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Fight/0_Reaper_Man_Fight_002.png</file>
+        <file>Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Fight/0_Reaper_Man_Fight_003.png</file>
     </qresource>
 </RCC>

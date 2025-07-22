@@ -37,7 +37,7 @@ void Knife::mountToParent()
 {
     Mountable::mountToParent();
     setScale(0.52);
-    setPos(45,-80);
+    setPos(55,-90);
 
     // 设置旋转中心为图片中心（要考虑缩放后的尺寸）
     pixmapItem->setTransformOriginPoint(pixmapItem->boundingRect().width() / 2, pixmapItem->boundingRect().height() / 2);
@@ -54,7 +54,7 @@ void Knife::unmount()
     pixmapItem->setTransformOriginPoint(pixmapItem->boundingRect().width() / 2, pixmapItem->boundingRect().height() / 2);
     pixmapItem->setRotation(0);
     this->updatePixmap(":/Items/Weapons/CrutchKnife_Icon.png");
-    setScale(0.5);
+    setScale(0.6);
     if (pixmapItem != nullptr)
     {
         qreal pixmapItem_width = pixmapItem->pixmap().width() * pixmapItem->scale();
@@ -107,31 +107,35 @@ void Knife::performMeleeAttack(Character* attacker, const QPointF& direction)
     // 计算攻击区域中心（矩形向前延伸）
     QPointF attackCenter = attackerCenter + normalizedDir * (attackRange / 2.0);
 
-    // 创建攻击区域矩形（宽度为85，高度为85，向前延伸60像素）
-    QRectF attackArea(-5, -60, 85, 85);
+    // 创建攻击区域矩形
+    QRectF attackArea(10, -85, 80, 100);
 
-    // 创建矩形区域可视化图元
-    QGraphicsRectItem* attackVisual = new QGraphicsRectItem(attackArea);
+    // // ························攻击区域可视化·······················
+    // // 创建矩形区域可视化图元
+    // QGraphicsRectItem* attackVisual = new QGraphicsRectItem(attackArea);
 
-    // 设置位置和角度
-    attackVisual->setBrush(QBrush(QColor(255, 0, 0, 100)));  // 红色透明填充
-    attackVisual->setPen(QPen(Qt::red));
-    attackVisual->setPos(attackCenter);                      // 中心点位置
-    attackVisual->setRotation(qRadiansToDegrees(std::atan2(normalizedDir.y(), normalizedDir.x()))); // 方向对齐
-    attacker->scene()->addItem(attackVisual);
+    // // 设置位置和角度
+    // attackVisual->setBrush(QBrush(QColor(255, 0, 0, 100)));  // 红色透明填充
+    // attackVisual->setPen(QPen(Qt::red));
+    // attackVisual->setPos(attackCenter);
+    // attackVisual->setRotation(qRadiansToDegrees(std::atan2(normalizedDir.y(), normalizedDir.x()))); // 方向对齐
+    // attacker->scene()->addItem(attackVisual);
 
-    // 600毫秒后销毁该图形项
-    QTimer::singleShot(600, [attackVisual]() {
-        if (attackVisual->scene()) {
-            attackVisual->scene()->removeItem(attackVisual);
-        }
-        delete attackVisual;
-    });
-
-    qDebug() << "Knife attack area:" << attackArea;
+    // // 600毫秒后销毁该图形项
+    // QTimer::singleShot(600, [attackVisual]() {
+    //     if (attackVisual->scene())
+    //     {
+    //         attackVisual->scene()->removeItem(attackVisual);
+    //     }
+    //     delete attackVisual;
+    // });
+    // qDebug() << "Knife attack area:" << attackArea;
 
     // 查找攻击范围内的所有角色
-    QRectF attackGlobalArea = attackVisual->mapRectToScene(attackVisual->rect());  // 获取攻击区域的世界坐标
+    QTransform transform;
+    transform.translate(attackCenter.x(), attackCenter.y());
+    transform.rotateRadians(std::atan2(normalizedDir.y(), normalizedDir.x()));
+    QRectF attackGlobalArea = transform.mapRect(attackArea);
 
     QList<QGraphicsItem*> allItems = attacker->scene()->items();
 

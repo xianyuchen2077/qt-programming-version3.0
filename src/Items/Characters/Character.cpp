@@ -202,7 +202,7 @@ void Character::drawHealthBar()
     // (X_relative, Y_relative, width, height, parent)
     int healthBarWidth = 80; // 血条宽度
     int healthBarHeight = 10; // 血条高度
-    healthBarBackground = new QGraphicsRectItem(-(healthBarWidth/2), -250, healthBarWidth, healthBarHeight, this); // 作为 Character 的子项
+    healthBarBackground = new QGraphicsRectItem(-(healthBarWidth/2), -200, healthBarWidth, healthBarHeight, this); // 作为 Character 的子项
     healthBarBackground->setBrush(QBrush(Qt::darkGray)); // 设置背景颜色
     healthBarBackground->setPen(QPen(Qt::black,5)); // 有边框, 边框颜色为黑色，宽度为5个像素
     healthBarBackground->setZValue(2); // 确保在角色之上显示
@@ -377,6 +377,7 @@ void Character::updatePixmap(const QString &pixmapPath)
     }
 }
 
+// 获取角色图片
 bool Character::getPixmapItem() const
 {
     if (pixmapItem != nullptr)
@@ -460,6 +461,7 @@ Weapon *Character::pickupWeapon(Weapon *newWeapon)
     return oldWeapon;
 }
 
+// 设置拾取状态（MedicalItem）
 MedicalItem *Character::pickupMedicalItem(MedicalItem *newMedicalItem)
 {
     auto oldMedicalItem = medicalItem;
@@ -481,23 +483,6 @@ MedicalItem *Character::pickupMedicalItem(MedicalItem *newMedicalItem)
     return newMedicalItem;
 }
 
-// 佩戴头部装备
-void Character::equipHeadEquipment(HeadEquipment *newHeadEquipment)
-{
-    if (headEquipment != nullptr)
-    {
-        HeadEquipment *oldHeadEquipment = headEquipment; // 保存当前装备
-        headEquipment->unmount(); // 卸下当前装备
-
-        // 将当前装备位置和父项设置为新装备的位置和角色的父项
-        headEquipment->setPos(newHeadEquipment->pos()); // 设置位置为新装备的位置
-        headEquipment->setParentItem(parentItem()); // 设置父项为角色的父项
-    }
-    newHeadEquipment->setParentItem(this); // 设置新装备的父项为角色
-    newHeadEquipment->mountToParent(); // 挂载到角色上
-    headEquipment = newHeadEquipment; // 更新角色的头部装备
-}
-
 // 卸下头部装备
 void Character::unequipHeadEquipment()
 {
@@ -509,18 +494,26 @@ void Character::unequipHeadEquipment()
     }
 }
 
-// 装备武器
-void Character::equipWeapon(Weapon *newWeapon)
+// 卸下护甲
+void Character::unequipArmor()
 {
-    if (weapon != nullptr)
+    if (armor != nullptr)
     {
-        weapon->unmount(); // 卸下当前武器
-        weapon->setPos(newWeapon->pos()); // 设置位置为新武器的位置
-        weapon->setParentItem(parentItem()); // 设置父项为角色的父项
+        armor->unmount(); // 卸下护甲
+        armor->setParentItem(parentItem()); // 设置父项为角色的父项
+        armor = nullptr; // 清空护甲指针
     }
-    newWeapon->setParentItem(this); // 设置新武器的父项为角色
-    newWeapon->mountToParent(); // 挂载到角色上
-    weapon = newWeapon; // 更新角色的武器
+}
+
+// 卸下腿部装备
+void Character::unequipLegEquipment()
+{
+    if (legEquipment != nullptr)
+    {
+        legEquipment->unmount(); // 卸下腿部装备
+        legEquipment->setParentItem(parentItem()); // 设置父项为角色的父项
+        legEquipment = nullptr; // 清空腿部装备指针
+    }
 }
 
 // 卸下武器
@@ -537,38 +530,10 @@ void Character::unequipWeapon()
 // 卸下所有装备的函数
 void Character::removeAllEquipment()
 {
-    // 卸下头部装备
-    if (headEquipment != nullptr)
-    {
-        headEquipment->unmount();
-        headEquipment->setParentItem(parentItem());
-        headEquipment = nullptr;
-    }
-
-    // 卸下护甲
-    if (armor != nullptr)
-    {
-        armor->unmount();
-        armor->setParentItem(parentItem());
-        armor = nullptr;
-    }
-
-    // 卸下腿部装备
-    if (legEquipment != nullptr)
-    {
-        legEquipment->unmount();
-        legEquipment->setParentItem(parentItem());
-        legEquipment = nullptr;
-    }
-
-    // 卸下武器
-    if (weapon != nullptr)
-    {
-        weapon->unmount();
-        weapon->setParentItem(parentItem());
-        weapon = nullptr;
-    }
-
+    unequipHeadEquipment(); // 卸下头部装备
+    unequipArmor(); // 卸下护甲
+    unequipLegEquipment(); // 卸下腿部装备
+    unequipWeapon(); // 卸下武器
     qDebug() << "All equipment removed from character";
 }
 

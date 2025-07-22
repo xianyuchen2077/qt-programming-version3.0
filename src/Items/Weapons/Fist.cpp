@@ -24,7 +24,7 @@ Fist::Fist(QGraphicsItem *parent) : Weapon(parent, ":/Items/Weapons/Fist_Icon.pn
     setShotCooldown(500);       // 拳头攻击间隔500ms
 
     // 设置图片路径
-    originalPixmapPath = ":/Items/Weapons/Fist_Icon.png";
+    originalPixmapPath = ":/Items/Characters/littlerubbish/Reaper_Man_1/PNG Sequences/Fight/0_Reaper_Man_Fight_001.png";
     attackPixmapPath = ":/Items/Weapons/Fist_Attack_Icon.png";  // 攻击时的图片
 
     // 初始化动画计时器
@@ -43,7 +43,7 @@ void Fist::mountToParent()
 void Fist::unmount()
 {
     Mountable::unmount();
-    setScale(0.6);
+    setScale(0);
     if (pixmapItem != nullptr)
     {
         pixmapItem->setPos(0, -90);

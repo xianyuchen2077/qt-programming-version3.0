@@ -7,6 +7,7 @@
 
 class Link : public Character
 {
+    Q_OBJECT
 public:
     explicit Link(QGraphicsItem *parent = nullptr);
 

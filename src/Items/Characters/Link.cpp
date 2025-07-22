@@ -216,7 +216,7 @@ void Link::processDyingAnimation(qint64 deltaTime)
         ++m_currentDyingFrame;
     });
 
-    int totalDuration = 1500; // 总共3秒
+    int totalDuration = 1500;
     int frameCount = m_dyingFrames.size();
     int frameInterval = totalDuration / frameCount;
     m_dyingAnimationTimer->start(frameInterval);
@@ -254,30 +254,16 @@ void Link::startDeathSequence()
     // 卸下所有装备
     removeAllEquipment();
 
-    // // 创建死亡计时器，3秒后删除角色
-    // if (!deathTimer)
-    // {
-    //     deathTimer = new QTimer(this);
-    //     connect(deathTimer, &QTimer::timeout, this, [this](){
-    //         qDebug() << "Death timer expired, removing character";
+    // 创建定时器：3秒后设置透明度为 0.5
+    QTimer* fadeTimer = new QTimer(this);
+    fadeTimer->setSingleShot(true); // 只触发一次
 
-    //         // 从场景中移除角色
-    //         if (scene())
-    //         {
-    //             scene()->removeItem(this);
-    //         }
+    connect(fadeTimer, &QTimer::timeout, this, [this]() {
+        this->setOpacity(0.5);
+        qDebug() << "3秒后触发：设置透明度为 0.5";
+    });
 
-    //         // 停止计时器
-    //         deathTimer->stop();
-    //         deathTimer = nullptr;
-
-    //         // 删除角色对象
-    //         delete this;
-    //     });
-    // }
-
-    // // 启动3秒计时器（倒计时结束自动退出）
-    // deathTimer->start(3000);
+    fadeTimer->start(3000); // 延迟 3000 毫秒（3 秒）后触发
 }
 
 void Link::processInput()
