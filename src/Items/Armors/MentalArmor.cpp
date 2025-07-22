@@ -27,8 +27,14 @@ void MentalArmor::unmount()
     }
 }
 
-void MentalArmor::takeDamage(int damage, int attackType)
+bool MentalArmor::takeDamage(int damage, int attackType)
 {
+    if (attackType != 2) // 只对枪械攻击有效
+    {
+        qDebug() << "MentalArmor only protects against gunfire attacks.";
+        return false;
+    }
+
     if (durability > 0)
     {
         durability -= damage;
@@ -38,7 +44,11 @@ void MentalArmor::takeDamage(int damage, int attackType)
             qDebug() << "MentalArmor durability depleted!";
         }
         qDebug() << "MentalArmor took " << damage << " damage. Remaining durability: " << durability;
-    } else {
+        return true;
+    }
+    else
+    {
         qDebug() << "MentalArmor has no durability or is already depleted.";
+        return false;
     }
 }

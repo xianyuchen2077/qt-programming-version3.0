@@ -13,7 +13,7 @@ public:
 
     void unmount() override;
 
-    void takeDamage(int damage, int attackType) override;
+    bool takeDamage(int damage, int attackType) override;
 
     QString getArmorName() const override { return armorName; }
 };

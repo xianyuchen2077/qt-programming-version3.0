@@ -16,7 +16,7 @@ public:
 
     virtual void applyEffects(class Character* character); // 应用效果到角色
     virtual void removeEffects(class Character* character); // 从角色移除效果
-    virtual void takeDamage(int damage, int attackType); // 受到伤害
+    virtual bool takeDamage(int damage, int attackType); // 受到伤害
 
     virtual QString getArmorName() const;
 

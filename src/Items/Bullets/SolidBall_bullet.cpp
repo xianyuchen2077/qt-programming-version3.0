@@ -242,7 +242,7 @@ void SolidBall_Bullet::handleCharacterCollision(Character* character)
     if (!character) return;
 
     // 对角色造成伤害
-    character->takeDamage(ballDamage); // 2是远程攻击类型;
+    character->takeDamage(ballDamage, 2); // 2是远程攻击类型;
 
     qDebug() << "Ball hit character! Damage:" << ballDamage;
 

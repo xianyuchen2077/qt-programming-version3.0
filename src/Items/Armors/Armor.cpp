@@ -39,7 +39,7 @@ void Armor::removeEffects(Character* character)
     // character->removeSpeed(speedBoost);
 }
 
-void Armor::takeDamage(int damage, int attackType)
+bool Armor::takeDamage(int damage, int attackType)
 {
     if (durability > 0)
     {
@@ -51,8 +51,12 @@ void Armor::takeDamage(int damage, int attackType)
             qDebug() << "Armor durability depleted!";
         }
         qDebug() << "Armor took " << damage << " damage. Remaining durability: " << durability;
-    } else {
+        return true;
+    }
+    else
+    {
         qDebug() << "Armor has no durability or is already depleted.";
+        return false;
     }
 }
 

@@ -156,7 +156,7 @@ void Knife::performMeleeAttack(Character* attacker, const QPointF& direction)
                     qDebug() << "Critical hit!";
                 }
 
-                target->takeDamage(finalDamage); // 1是近战攻击类型);
+                target->takeDamage(finalDamage, 1); // 1是近战攻击类型);
             }
         }
     }
