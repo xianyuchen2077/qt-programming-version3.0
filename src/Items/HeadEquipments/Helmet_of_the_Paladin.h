@@ -10,6 +10,14 @@ public:
     explicit HelmetOfThePaladin(QGraphicsItem *parent=nullptr);
 
     void mountToParent() override;
+
+    void unmount() override;
+
+    bool takeDamage(int damage, int attackType) override;
+
+    qreal getDamage_reduction_ratio(int attackType) override { return damage_reduction_ratio; }
+
+    QString getHeadEquipmentName() const override { return headequipmentName; }
 };
 
 

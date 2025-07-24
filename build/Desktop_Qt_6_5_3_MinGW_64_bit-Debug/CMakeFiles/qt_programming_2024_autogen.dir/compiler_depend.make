@@ -33,8 +33,6 @@ qt_programming_2024_autogen/timestamp: C:/Users/xiany/Desktop/GodNoCode/Advanced
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Characters/Link.h \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/DebugDotItem.cpp \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/DebugDotItem.h \
-  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/HeadEquipments/CapOfTheHero.cpp \
-  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/HeadEquipments/CapOfTheHero.h \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/HeadEquipments/HeadEquipment.cpp \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/HeadEquipments/HeadEquipment.h \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/HeadEquipments/Helmet_of_the_Paladin.cpp \
@@ -49,8 +47,6 @@ qt_programming_2024_autogen/timestamp: C:/Users/xiany/Desktop/GodNoCode/Advanced
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/LegEquipments/WellWornTrousers.h \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Maps/Battlefield.cpp \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Maps/Battlefield.h \
-  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Maps/GameOverfield.cpp \
-  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Maps/GameOverfield.h \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Maps/Icefield.cpp \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Maps/Icefield.h \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Maps/Map.cpp \
@@ -83,8 +79,6 @@ qt_programming_2024_autogen/timestamp: C:/Users/xiany/Desktop/GodNoCode/Advanced
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/MyGame.h \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Scenes/BattleScene.cpp \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Scenes/BattleScene.h \
-  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Scenes/GameOverScene.cpp \
-  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Scenes/GameOverScene.h \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Scenes/IceScene.cpp \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Scenes/IceScene.h \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Scenes/Scene.cpp \
@@ -548,6 +542,10 @@ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qrandom.h:
 
 .qtc/package-manager/auto-setup.cmake:
 
+D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6Gui/Qt6QTiffPluginAdditionalTargetInfo.cmake:
+
+C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Supplies/MedicalSupply.cpp:
+
 D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qimage.h:
 
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Scenes/IceScene.cpp:
@@ -648,17 +646,9 @@ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_Fighti
 
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Bullets/SolidBall_bullet.cpp:
 
-C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Maps/GameOverfield.cpp:
-
-C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/HeadEquipments/CapOfTheHero.cpp:
-
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/DebugDotItem.h:
 
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Characters/Character.cpp:
-
-C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Maps/GameOverfield.h:
-
-C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/HeadEquipments/CapOfTheHero.h:
 
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Characters/Character.h:
 
@@ -671,6 +661,10 @@ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_Fighti
 D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake:
 
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Characters/Link.cpp:
+
+D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6/FindWrapVulkanHeaders.cmake:
+
+C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Weapons/Fist.h:
 
 D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6Gui/Qt6QOffscreenIntegrationPluginTargets-relwithdebinfo.cmake:
 
@@ -738,10 +732,6 @@ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_Fighti
 
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Supplies/Bandage.h:
 
-D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6Gui/Qt6QTiffPluginAdditionalTargetInfo.cmake:
-
-C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Supplies/MedicalSupply.cpp:
-
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Supplies/MedicalSupply.h:
 
 D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6ZlibPrivate/Qt6ZlibPrivateConfigVersion.cmake:
@@ -751,10 +741,6 @@ D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QMainWindow:
 D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qobjectdefs.h:
 
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Weapons/Fist.cpp:
-
-D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6/FindWrapVulkanHeaders.cmake:
-
-C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Weapons/Fist.h:
 
 D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qgraphicsview.h:
 
@@ -797,16 +783,6 @@ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_Fighti
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/MyGame.cpp:
 
 C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/MyGame.h:
-
-D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsVersionlessTargets.cmake:
-
-C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Scenes/GameOverScene.cpp:
-
-D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6/QtFeature.cmake:
-
-D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qvariant.h:
-
-C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Scenes/GameOverScene.h:
 
 D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qcompare_impl.h:
 
@@ -1220,6 +1196,10 @@ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qtypeinfo.h:
 
 D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qurl.h:
 
+D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6/QtFeature.cmake:
+
+D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qvariant.h:
+
 D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qversiontagging.h:
 
 D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/QKeyEvent:
@@ -1489,6 +1469,8 @@ D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsAdditionalTarge
 D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsConfigVersionImpl.cmake:
 
 D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsTargets-relwithdebinfo.cmake:
+
+D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsVersionlessTargets.cmake:
 
 D:/Qt/Qt/6.5.3/mingw_64/lib/cmake/Qt6ZlibPrivate/Qt6ZlibPrivateConfigVersionImpl.cmake:
 

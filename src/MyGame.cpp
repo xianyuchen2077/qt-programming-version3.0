@@ -2,7 +2,6 @@
 #include "Scenes/BattleScene.h"
 #include "Scenes/IceScene.h"
 #include "Scenes/SettingsScene.h"
-#include "Scenes/GameOverScene.h"
 #include <QMenuBar>
 #include <QMenu>
 #include <QAction>
@@ -106,22 +105,6 @@ void MyGame::switchScene(SceneID id)
     case SceneID::IceScene_ID: // IceScene
         newScene = new IceScene(this);
         break;
-    case SceneID::GameOverScene_ID:
-    {
-        QString resultText = "Winner is Player1 ！";
-
-        if (previousActiveScene)
-        { // 尝试从旧场景获取结果文本
-            IceScene* iceScene = dynamic_cast<IceScene*>(previousActiveScene);
-            if (iceScene)
-            {
-                // 获取IceScene的ResultText
-                resultText = iceScene->getGameResultText();
-            }
-        }
-        newScene = new GameOverScene(this, resultText);
-    }
-    break;
     default:
         qWarning("未知场景ID: %d", id);
         return;

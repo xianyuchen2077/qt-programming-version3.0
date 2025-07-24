@@ -465,8 +465,6 @@ CMakeFiles/qt_programming_2024.dir/src/MyGame.cpp.obj: \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qlabel.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qpicture.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qtextdocument.h \
- C:\Users\xiany\Desktop\GodNoCode\AdvancedProgramming\major_assignment\hw1_FightingGame\qt-programming-2025\src\Scenes/GameOverScene.h \
- C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Maps/GameOverfield.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QMenuBar \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qmenubar.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qmenu.h \

@@ -2,6 +2,7 @@
 
 HeadEquipment::HeadEquipment(QGraphicsItem *parent, const QString &pixmapPath) : Item(parent, pixmapPath)
 {
+    setZValue(5);
     durability = 0; // 初始化耐久度
 }
 
@@ -40,7 +41,7 @@ void HeadEquipment::removeEffects(Character* character)
     // character->removeSpeed(speedBoost);
 }
 
-void HeadEquipment::takeDamage(int damage)
+bool HeadEquipment::takeDamage(int damage, int attackType)
 {
     if (durability > 0)
     {
@@ -52,12 +53,27 @@ void HeadEquipment::takeDamage(int damage)
             qDebug() << "HeadEquipment durability depleted!";
         }
         qDebug() << "HeadEquipment took " << damage << " damage. Remaining durability: " << durability;
-    } else {
-        qDebug() << "HeadEquipment has no durability or is already depleted.";
+        return true;
     }
+    else
+    {
+        qDebug() << "HeadEquipment has no durability or is already depleted.";
+        return false;
+    }
+    return false;
+}
+
+QString HeadEquipment::getHeadEquipmentName() const
+{
+    return "Unknown HeadEquipment";
 }
 
 int HeadEquipment::getDurability() const
 {
     return durability;
+}
+
+qreal HeadEquipment::getDamage_reduction_ratio(int attackType)
+{
+    return damage_reduction_ratio;
 }

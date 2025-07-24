@@ -34,8 +34,6 @@ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_Fighti
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Characters/Link.h
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/DebugDotItem.cpp
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/DebugDotItem.h
- C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/HeadEquipments/CapOfTheHero.cpp
- C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/HeadEquipments/CapOfTheHero.h
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/HeadEquipments/HeadEquipment.cpp
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/HeadEquipments/HeadEquipment.h
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/HeadEquipments/Helmet_of_the_Paladin.cpp
@@ -50,8 +48,6 @@ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_Fighti
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/LegEquipments/WellWornTrousers.h
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Maps/Battlefield.cpp
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Maps/Battlefield.h
- C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Maps/GameOverfield.cpp
- C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Maps/GameOverfield.h
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Maps/Icefield.cpp
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Maps/Icefield.h
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Maps/Map.cpp
@@ -84,8 +80,6 @@ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_Fighti
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/MyGame.h
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Scenes/BattleScene.cpp
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Scenes/BattleScene.h
- C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Scenes/GameOverScene.cpp
- C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Scenes/GameOverScene.h
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Scenes/IceScene.cpp
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Scenes/IceScene.h
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Scenes/Scene.cpp

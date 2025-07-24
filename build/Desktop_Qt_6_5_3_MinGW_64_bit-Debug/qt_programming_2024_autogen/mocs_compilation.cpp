@@ -10,7 +10,6 @@
 #include "Z3UREFIW6B/moc_Weapon.cpp"
 #include "UVLADIE3JM/moc_MyGame.cpp"
 #include "SNE2VJ5FQV/moc_BattleScene.cpp"
-#include "SNE2VJ5FQV/moc_GameOverScene.cpp"
 #include "SNE2VJ5FQV/moc_IceScene.cpp"
 #include "SNE2VJ5FQV/moc_Scene.cpp"
 #include "SNE2VJ5FQV/moc_SettingsScene.cpp"

@@ -466,30 +466,6 @@ src/Items/DebugDotItem.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/DebugDotItem.cpp.s
 .PHONY : src/Items/DebugDotItem.cpp.s
 
-src/Items/HeadEquipments/CapOfTheHero.obj: src/Items/HeadEquipments/CapOfTheHero.cpp.obj
-.PHONY : src/Items/HeadEquipments/CapOfTheHero.obj
-
-# target to build an object file
-src/Items/HeadEquipments/CapOfTheHero.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/HeadEquipments/CapOfTheHero.cpp.obj
-.PHONY : src/Items/HeadEquipments/CapOfTheHero.cpp.obj
-
-src/Items/HeadEquipments/CapOfTheHero.i: src/Items/HeadEquipments/CapOfTheHero.cpp.i
-.PHONY : src/Items/HeadEquipments/CapOfTheHero.i
-
-# target to preprocess a source file
-src/Items/HeadEquipments/CapOfTheHero.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/HeadEquipments/CapOfTheHero.cpp.i
-.PHONY : src/Items/HeadEquipments/CapOfTheHero.cpp.i
-
-src/Items/HeadEquipments/CapOfTheHero.s: src/Items/HeadEquipments/CapOfTheHero.cpp.s
-.PHONY : src/Items/HeadEquipments/CapOfTheHero.s
-
-# target to generate assembly for a file
-src/Items/HeadEquipments/CapOfTheHero.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/HeadEquipments/CapOfTheHero.cpp.s
-.PHONY : src/Items/HeadEquipments/CapOfTheHero.cpp.s
-
 src/Items/HeadEquipments/HeadEquipment.obj: src/Items/HeadEquipments/HeadEquipment.cpp.obj
 .PHONY : src/Items/HeadEquipments/HeadEquipment.obj
 
@@ -657,30 +633,6 @@ src/Items/Maps/Battlefield.s: src/Items/Maps/Battlefield.cpp.s
 src/Items/Maps/Battlefield.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Maps/Battlefield.cpp.s
 .PHONY : src/Items/Maps/Battlefield.cpp.s
-
-src/Items/Maps/GameOverfield.obj: src/Items/Maps/GameOverfield.cpp.obj
-.PHONY : src/Items/Maps/GameOverfield.obj
-
-# target to build an object file
-src/Items/Maps/GameOverfield.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Maps/GameOverfield.cpp.obj
-.PHONY : src/Items/Maps/GameOverfield.cpp.obj
-
-src/Items/Maps/GameOverfield.i: src/Items/Maps/GameOverfield.cpp.i
-.PHONY : src/Items/Maps/GameOverfield.i
-
-# target to preprocess a source file
-src/Items/Maps/GameOverfield.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Maps/GameOverfield.cpp.i
-.PHONY : src/Items/Maps/GameOverfield.cpp.i
-
-src/Items/Maps/GameOverfield.s: src/Items/Maps/GameOverfield.cpp.s
-.PHONY : src/Items/Maps/GameOverfield.s
-
-# target to generate assembly for a file
-src/Items/Maps/GameOverfield.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Maps/GameOverfield.cpp.s
-.PHONY : src/Items/Maps/GameOverfield.cpp.s
 
 src/Items/Maps/Icefield.obj: src/Items/Maps/Icefield.cpp.obj
 .PHONY : src/Items/Maps/Icefield.obj
@@ -1066,30 +1018,6 @@ src/Scenes/BattleScene.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Scenes/BattleScene.cpp.s
 .PHONY : src/Scenes/BattleScene.cpp.s
 
-src/Scenes/GameOverScene.obj: src/Scenes/GameOverScene.cpp.obj
-.PHONY : src/Scenes/GameOverScene.obj
-
-# target to build an object file
-src/Scenes/GameOverScene.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Scenes/GameOverScene.cpp.obj
-.PHONY : src/Scenes/GameOverScene.cpp.obj
-
-src/Scenes/GameOverScene.i: src/Scenes/GameOverScene.cpp.i
-.PHONY : src/Scenes/GameOverScene.i
-
-# target to preprocess a source file
-src/Scenes/GameOverScene.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Scenes/GameOverScene.cpp.i
-.PHONY : src/Scenes/GameOverScene.cpp.i
-
-src/Scenes/GameOverScene.s: src/Scenes/GameOverScene.cpp.s
-.PHONY : src/Scenes/GameOverScene.s
-
-# target to generate assembly for a file
-src/Scenes/GameOverScene.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Scenes/GameOverScene.cpp.s
-.PHONY : src/Scenes/GameOverScene.cpp.s
-
 src/Scenes/IceScene.obj: src/Scenes/IceScene.cpp.obj
 .PHONY : src/Scenes/IceScene.obj
 
@@ -1236,9 +1164,6 @@ help:
 	@echo ... src/Items/DebugDotItem.obj
 	@echo ... src/Items/DebugDotItem.i
 	@echo ... src/Items/DebugDotItem.s
-	@echo ... src/Items/HeadEquipments/CapOfTheHero.obj
-	@echo ... src/Items/HeadEquipments/CapOfTheHero.i
-	@echo ... src/Items/HeadEquipments/CapOfTheHero.s
 	@echo ... src/Items/HeadEquipments/HeadEquipment.obj
 	@echo ... src/Items/HeadEquipments/HeadEquipment.i
 	@echo ... src/Items/HeadEquipments/HeadEquipment.s
@@ -1260,9 +1185,6 @@ help:
 	@echo ... src/Items/Maps/Battlefield.obj
 	@echo ... src/Items/Maps/Battlefield.i
 	@echo ... src/Items/Maps/Battlefield.s
-	@echo ... src/Items/Maps/GameOverfield.obj
-	@echo ... src/Items/Maps/GameOverfield.i
-	@echo ... src/Items/Maps/GameOverfield.s
 	@echo ... src/Items/Maps/Icefield.obj
 	@echo ... src/Items/Maps/Icefield.i
 	@echo ... src/Items/Maps/Icefield.s
@@ -1311,9 +1233,6 @@ help:
 	@echo ... src/Scenes/BattleScene.obj
 	@echo ... src/Scenes/BattleScene.i
 	@echo ... src/Scenes/BattleScene.s
-	@echo ... src/Scenes/GameOverScene.obj
-	@echo ... src/Scenes/GameOverScene.i
-	@echo ... src/Scenes/GameOverScene.s
 	@echo ... src/Scenes/IceScene.obj
 	@echo ... src/Scenes/IceScene.i
 	@echo ... src/Scenes/IceScene.s

@@ -28,8 +28,8 @@ add_executable(qt_programming_2024 src/main.cpp
         src/Items/HeadEquipments/HeadEquipment.h
         src/Items/LegEquipments/LegEquipment.cpp
         src/Items/LegEquipments/LegEquipment.h
-        src/Items/HeadEquipments/CapOfTheHero.cpp
-        src/Items/HeadEquipments/CapOfTheHero.h
+
+
 
 
         src/Items/LegEquipments/WellWornTrousers.cpp
@@ -72,10 +72,10 @@ add_executable(qt_programming_2024 src/main.cpp
         src/Items/Weapons/SolidBall.cpp
         src/Items/Bullets/SolidBall_bullet.h
         src/Items/Bullets/SolidBall_bullet.cpp
-        src/Scenes/GameOverScene.h
-        src/Scenes/GameOverScene.cpp
-        src/Items/Maps/GameOverfield.h
-        src/Items/Maps/GameOverfield.cpp
+
+
+
+
         src/Items/Weapons/Sniper_Rifle.h
         src/Items/Weapons/Sniper_Rifle.cpp
         src/Items/Bullets/Sniper_Rifle_bullet.h
