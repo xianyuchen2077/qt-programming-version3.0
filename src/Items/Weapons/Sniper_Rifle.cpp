@@ -44,8 +44,18 @@ void Sniper_Rifle::mountToParent()
 
     // 获取父项（角色）
     Character* ownerCharacter = dynamic_cast<Character*>(parentItem());
+
     if (ownerCharacter)
     {
+        // 检查父角色是否处于下蹲状态
+        if (ownerCharacter->isCrouching())
+        {
+            setPos(8, -17 + ownerCharacter->getCrouchOffset()); // 下蹲时武器位置向下偏移
+        }
+        else
+        {
+            setPos(8, -17); // 正常站立位置
+        }
         QPointF startPosition = ownerCharacter->pos(); // 获取角色中心位置
 
         // 根据角色朝向确定激光方向
@@ -60,6 +70,7 @@ void Sniper_Rifle::mountToParent()
         }
 
         // 调整起始位置，使其看起来从武器“枪管”发出
+
         if (ownerCharacter->isFaceRight())
         {
             startPosition += QPointF(0, laserHeightOffset); // 右侧朝向角色的示例偏移
@@ -401,10 +412,21 @@ void Sniper_Rifle::updateLaserWithOwner()
     Character* owner = dynamic_cast<Character*>(parentItem());
     if (!owner) return;
 
+    // 检查父角色是否处于下蹲状态
+    qreal m_laserHeightOffset = laserHeightOffset;
+    if (owner->isCrouching())
+    {
+        m_laserHeightOffset = laserHeightOffset + owner->getCrouchOffset(); // 更新激光高度偏移
+    }
+    else
+    {
+        m_laserHeightOffset = laserHeightOffset; // 更新激光高度偏移
+    }
+
     QPointF shooterPos = owner->pos();
     QRectF bodyRect = owner->getBodyCollisionRect();
     QPointF bodyCenter = shooterPos + bodyRect.center();
-    QPointF gunPos = bodyCenter + QPointF(owner->isFaceRight() ? 57 : -57, laserHeightOffset);
+    QPointF gunPos = bodyCenter + QPointF(owner->isFaceRight() ? 57 : -57, m_laserHeightOffset);
     QPointF direction = owner->isFaceRight() ? QPointF(1, 0) : QPointF(-1, 0);
 
     updateLaserSight(gunPos, direction);
