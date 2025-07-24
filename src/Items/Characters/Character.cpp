@@ -222,7 +222,7 @@ void Character::takeDamage(int damage, int attackType)
         }
     }
     // 然后检查是否有佩戴的护甲，并且它有耐久度
-    if (armor != nullptr && armor->getDurability() > 0)
+    else if (armor != nullptr && armor->getDurability() > 0)
     {
         // 让护甲承受一部分伤害
         int absorbedDamage = remainingDamage * armor->getDamage_reduction_ratio(attackType);  // 计算护甲理论上要吸收的伤害
