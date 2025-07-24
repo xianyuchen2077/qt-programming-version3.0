@@ -33,6 +33,7 @@ public:
     void processPicking() override;
 
     bool getIsGameOver();
+    QString getGameResultText() const; // 获取游戏结果文本
 
     Map* getMap() const;
 
@@ -87,7 +88,6 @@ private:
     // 碰撞检测函数
     void initializePlatforms();    // 初始化平台数据
     void handleBoundaryCollision(Character* character,QPointF& newPos);  // 处理边界碰撞
-    void handleGroundCollision(Character* character, QPointF& newPos); // 处理地面碰撞
     void handleAllCollisions(Character* character, QPointF& newPos);       // 处理所有碰撞
     bool checkObstacleCollision(Character* character, const QPointF& testPos); // 检查障碍物碰撞
 

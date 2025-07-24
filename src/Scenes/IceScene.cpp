@@ -127,23 +127,23 @@ IceScene::IceScene(QObject *parent) : Scene(parent)
     showDebugVisualization();
     qDebug() << "Debug visualization enabled. Press 'H' to toggle.";
 
-    // 可视化调控图片与实体位置重合（需注释）
-    Weapon* test_weapon = spareWeapon4;
-    DebugDotItem* myDebugDot1 = new DebugDotItem();
-    DebugDotItem* myDebugDot2 = new DebugDotItem();
-    this->addItem(myDebugDot1);
-    this->addItem(myDebugDot2);
-    myDebugDot1->setDot(test_weapon->boundingRect().center(), 8, Qt::red);
-    myDebugDot2->setDot(QPointF(0,0), 8, Qt::green);
-    myDebugDot1->setParentItem(test_weapon);
-    myDebugDot2->setParentItem(test_weapon);
+    // // 可视化调控图片与实体位置重合（需注释）
+    // Weapon* test_weapon = spareWeapon4;
+    // DebugDotItem* myDebugDot1 = new DebugDotItem();
+    // DebugDotItem* myDebugDot2 = new DebugDotItem();
+    // this->addItem(myDebugDot1);
+    // this->addItem(myDebugDot2);
+    // myDebugDot1->setDot(test_weapon->boundingRect().center(), 8, Qt::red);
+    // myDebugDot2->setDot(QPointF(0,0), 8, Qt::green);
+    // myDebugDot1->setParentItem(test_weapon);
+    // myDebugDot2->setParentItem(test_weapon);
 
-    QGraphicsRectItem* debugRect = new QGraphicsRectItem(test_weapon->boundingRect());
-    debugRect->setPen(QPen(Qt::blue, 5));
-    debugRect->setBrush(Qt::NoBrush);
-    debugRect->setZValue(1000);
-    debugRect->setParentItem(test_weapon);
-    this->addItem(debugRect);
+    // QGraphicsRectItem* debugRect = new QGraphicsRectItem(test_weapon->boundingRect());
+    // debugRect->setPen(QPen(Qt::blue, 5));
+    // debugRect->setBrush(Qt::NoBrush);
+    // debugRect->setZValue(1000);
+    // debugRect->setParentItem(test_weapon);
+    // this->addItem(debugRect);
 }
 
 Map* IceScene::getMap() const
@@ -219,42 +219,6 @@ void IceScene::handleBoundaryCollision(Character* character, QPointF& newPos)
         character->setOnGround(true);
         qDebug() << "Hit bottom boundary";
     }
-}
-
-// 地面碰撞检测(过渡函数，现在可以删了）
-void IceScene::handleGroundCollision(Character* character, QPointF& newPos)
-{
-    if (!character) return;
-
-    // 获取地面高度
-    qreal floorHeight = map->getFloorHeight();
-
-    // 获取角色的碰撞框
-    QRectF characterRect = character->boundingRect();
-
-    // 计算角色碰撞框底部在新位置的Y坐标
-    qreal characterBottom = newPos.y() + characterRect.bottom();
-
-    // 检查是否碰到地面
-    if (characterBottom >= floorHeight)
-    {
-        // 角色落在地面上
-        newPos.setY(floorHeight - characterRect.bottom());
-        character->setVelocity_y(0);
-        character->setOnGround(true);
-        qDebug() << "Character landed on ground at Y:" << newPos.y();
-    }
-    else
-    {
-        // 角色在空中
-        character->setOnGround(false);
-    }
-
-    // 边界检测
-    handleBoundaryCollision(character, newPos);
-
-    // 应用新位置
-    character->setPos(newPos);
 }
 
 // 处理所有碰撞，包括障碍物和地面
@@ -769,10 +733,26 @@ void IceScene::processInput()
 
 void IceScene::keyPressEvent(QKeyEvent *event)
 {
+    if (isGameOver)
+    {
+        if (event->key() == Qt::Key_Return)
+        {
+            // 如果游戏已结束，按下 Escape 或 Enter 键触发跳转到游戏结束场景
+            emit requestSceneChange(SceneID::IceScene_ID);
+        }
+        else if (event->key() == Qt::Key_Escape)
+        {
+            // 如果游戏已结束，按下 Escape 键退出游戏
+            exit(0);
+        }
+        return;
+    }
+
     switch (event->key())
     {
     case Qt::Key_R:  // 按 R 键随机掉落物品
-        if (dropManager) {
+        if (dropManager)
+        {
             dropManager->dropRandomItem();
             qDebug() << "Random item dropped!";
         }
@@ -827,7 +807,7 @@ void IceScene::keyPressEvent(QKeyEvent *event)
         if (player2 != nullptr)
         {
             player2->setDownDown(true);
-            player2->setPickDown(true);  // 设置拾取状态
+            player2->setPickDown(true);
         }
         break;
     case Qt::Key_Up:
@@ -847,9 +827,12 @@ void IceScene::keyPressEvent(QKeyEvent *event)
         break;
     case Qt::Key_H:
         debugVisible = !debugVisible;
-        if (debugVisible) {
+        if (debugVisible)
+        {
             showDebugVisualization();
-        } else {
+        }
+        else
+        {
             hideDebugVisualization();
         }
         break;
@@ -1035,19 +1018,6 @@ void IceScene::processPicking()
         if (mountable != nullptr)
         {
             auto pickedUp = pickupMountable(player1, mountable);
-            //··············感觉以下部分是多余的················
-            // if (auto armor = dynamic_cast<Armor*>(pickedUp))
-            // {
-            //     spareArmor1 = armor;
-            // }
-            // else if (auto headEquip = dynamic_cast<HeadEquipment*>(pickedUp))
-            // {
-            //     spareHeadEquipment = headEquip;
-            // }
-            // else if (auto medicalItem = dynamic_cast<MedicalItem*>(pickedUp))
-            // {
-            //     spareMedicalItem1 = medicalItem;
-            // }
         }
     }
     if (player2 != nullptr && player2->isPicking())
@@ -1056,19 +1026,6 @@ void IceScene::processPicking()
         if (mountable != nullptr)
         {
             auto pickedUp = pickupMountable(player2, mountable);
-        //··············感觉以下部分是多余的················
-        //     if (auto armor = dynamic_cast<Armor*>(pickedUp))
-        //     {
-        //         spareArmor1 = armor;
-        //     }
-        //     else if (auto headEquip = dynamic_cast<HeadEquipment*>(pickedUp))
-        //     {
-        //         spareHeadEquipment = headEquip;
-        //     }
-        //     else if (auto medicalItem = dynamic_cast<MedicalItem*>(pickedUp))
-        //     {
-        //         spareMedicalItem1 = medicalItem;
-        //     }
         }
     }
 }
@@ -1197,10 +1154,39 @@ void IceScene::handleGameEnd()
 
     qDebug() << "Game Over! Result:" << gameResultText;
 
-    // // 发送信号请求 MyGame 切换场景到 GameOverScene
-    // emit requestSceneChange(SceneID::GameOverScene_ID);
+    // 显示游戏结果文本
+    QGraphicsTextItem* gameOverHintText = new QGraphicsTextItem("游戏结束\n" + gameResultText + "\n按回车键重新游戏\n按ESC键退出游戏");
+    QFont font("Consolas", 60);
+    font.setWeight(QFont::ExtraBold);
+    gameOverHintText->setFont(font);
+    gameOverHintText->setDefaultTextColor(Qt::black);
+
+    // 设置文本背景
+    QRectF textRect = gameOverHintText->boundingRect().adjusted(-20, -20, 20, 20); // 加 padding
+    QGraphicsRectItem* background = new QGraphicsRectItem(textRect);
+    background->setBrush(QColor(255, 255, 255, 150));  // 半透明背景
+    background->setPen(QPen(QColor(0, 0, 0, 150), 5)); // 半透明边框，线宽5
+
+
+    // 自动测量宽度后居中
+    qreal textWidth = gameOverHintText->boundingRect().width();
+    qreal x = (width() - textWidth) / 2;
+    qreal y = (height() - gameOverHintText->boundingRect().height()) / 2 - 50;
+    gameOverHintText->setPos(x, y);
+    background->setPos(x,y);
+    gameOverHintText->setZValue(999); // 保证在最前层
+    background->setZValue(998); // 比文字层级低一点
+    addItem(gameOverHintText);
+    addItem(background);
 }
 
+// 获取游戏结果文本
+QString IceScene::getGameResultText() const
+{
+    return gameResultText;
+}
+
+// 以下为可视化Debug函数
 // 更新（狙击枪）激光瞄准线
 void IceScene::updateLaserSights()
 {

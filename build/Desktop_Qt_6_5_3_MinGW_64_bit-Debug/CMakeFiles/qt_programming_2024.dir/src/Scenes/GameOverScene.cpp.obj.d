@@ -437,4 +437,5 @@ CMakeFiles/qt_programming_2024.dir/src/Scenes/GameOverScene.cpp.obj: \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qpixmap.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QGraphicsPixmapItem \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QDebug \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qdebug.h
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qdebug.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qgraphicseffect.h

@@ -108,9 +108,8 @@ void MyGame::switchScene(SceneID id)
                     IceScene* iceScene = dynamic_cast<IceScene*>(previousActiveScene);
                     if (iceScene)
                     {
-                        // 注意：这里需要 IceScene 有一个 getter 函数来获取 gameResultText
-                        // 例如：QString getGameResultText() const;
-                        // resultText = iceScene->getGameResultText();
+                        // 获取IceScene的ResultText
+                        resultText = iceScene->getGameResultText();
                     }
                 }
                 currentScene = new GameOverScene(this, resultText);

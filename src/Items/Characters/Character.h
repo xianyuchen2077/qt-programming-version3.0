@@ -116,6 +116,9 @@ public:
     Weapon* pickupWeapon(Weapon* newWeapon);
     MedicalItem* pickupMedicalItem(MedicalItem* newMedicalItem);
 
+    // 更新装备放置层级
+    void updateEquipmentLayers();
+
 protected:
     bool faceRight = false; // 角色是否面向右侧
 
@@ -143,6 +146,14 @@ private:
     bool picking{}; // 是否正在拾取物品
     bool fighting{}; // 是否正在攻击
     qreal moveSpeed; // 移动速度
+
+    // 装备层级（Z值层级定义）
+    static constexpr qreal CHARACTER_BASE_Z = 10.0;
+    static constexpr qreal LEG_EQUIPMENT_Z_OFFSET = 0.5;   // 腿部装备在角色上方
+    static constexpr qreal ARMOR_Z_OFFSET = 1.0;           // 盔甲在腿部装备上方
+    static constexpr qreal HEAD_EQUIPMENT_Z_OFFSET = 2.0;  // 头部装备在盔甲上方
+    static constexpr qreal WEAPON_Z_OFFSET = 3.0;          // 武器在最上方
+    static constexpr qreal GROUND_ITEM_Z = 5.0;            // 地面物品层级
 
     // 跳跃相关属性
     qreal Velocity_y{}; // 竖直方向的速度

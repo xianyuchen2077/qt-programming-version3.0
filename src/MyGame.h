@@ -39,10 +39,10 @@ protected:
 
 private:
     QGraphicsView *view;
-    Scene *currentScene; // 当前场景指针
-    Scene *previousActiveScene; // 保存上一个活动场景的指针，以便返回时使用
-    SceneID previousSceneId; // 保存上一个场景的ID
-    SceneID currentSceneId; // 当前场景的ID
+    Scene *currentScene;            // 当前场景指针
+    Scene *previousActiveScene;     // 保存上一个活动场景的指针，以便返回时使用
+    SceneID previousSceneId;        // 保存上一个场景的ID
+    SceneID currentSceneId;         // 当前场景的ID
 };
 
 #endif //QT_PROGRAMMING_2024_MYGAME_H

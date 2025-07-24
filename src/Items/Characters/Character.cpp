@@ -463,10 +463,15 @@ Armor *Character::pickupArmor(Armor *newArmor)
         oldArmor->unmount();
         oldArmor->setPos(newArmor->pos());
         oldArmor->setParentItem(parentItem());
+        oldArmor->setZValue(GROUND_ITEM_Z);
     }
     newArmor->setParentItem(this);
     newArmor->mountToParent();
     armor = newArmor;
+
+    updateEquipmentLayers();
+    qDebug() << "Equipped armor:" << armor->getArmorName();
+
     return oldArmor;
 }
 
@@ -479,6 +484,7 @@ LegEquipment *Character::pickupLegEquipment(LegEquipment *newLegEquipment)
         oldLegEquipment->unmount();
         oldLegEquipment->setPos(newLegEquipment->pos());
         oldLegEquipment->setParentItem(parentItem());
+        oldLegEquipment->setZValue(GROUND_ITEM_Z);
     }
     newLegEquipment->setParentItem(this);
     newLegEquipment->mountToParent();
@@ -499,6 +505,10 @@ HeadEquipment *Character::pickupHeadEquipment(HeadEquipment *newHeadEquipment)
     newHeadEquipment->setParentItem(this);
     newHeadEquipment->mountToParent();
     headEquipment = newHeadEquipment;
+
+    updateEquipmentLayers();
+    qDebug() << "Equipped head equipment";
+
     return oldHeadEquipment;
 }
 
@@ -511,10 +521,15 @@ Weapon *Character::pickupWeapon(Weapon *newWeapon)
         oldWeapon->unmount();
         oldWeapon->setPos(newWeapon->pos());
         oldWeapon->setParentItem(parentItem());
+        oldWeapon->setZValue(GROUND_ITEM_Z);
     }
     newWeapon->setParentItem(this);
     newWeapon->mountToParent();
     weapon = newWeapon;
+
+    updateEquipmentLayers();
+    qDebug() << "Equipped weapon equipment";
+
     return oldWeapon;
 }
 
@@ -547,7 +562,9 @@ void Character::unequipHeadEquipment()
     {
         headEquipment->unmount(); // 卸下头部装备
         headEquipment->setParentItem(parentItem()); // 设置父项为角色的父项
+        headEquipment->setZValue(GROUND_ITEM_Z); // 设置为地面物品层级
         headEquipment = nullptr; // 清空头部装备指针
+        updateEquipmentLayers();
     }
 }
 
@@ -558,7 +575,9 @@ void Character::unequipArmor()
     {
         armor->unmount(); // 卸下护甲
         armor->setParentItem(parentItem()); // 设置父项为角色的父项
-        armor = nullptr; // 清空护甲指针
+        armor->setZValue(GROUND_ITEM_Z); // 设置为地面物品层级
+        armor = nullptr; // 清空头部装备指针
+        updateEquipmentLayers();
     }
 }
 
@@ -569,7 +588,9 @@ void Character::unequipLegEquipment()
     {
         legEquipment->unmount(); // 卸下腿部装备
         legEquipment->setParentItem(parentItem()); // 设置父项为角色的父项
+        legEquipment->setZValue(GROUND_ITEM_Z); // 设置为地面物品层级
         legEquipment = nullptr; // 清空腿部装备指针
+        updateEquipmentLayers();
     }
 }
 
@@ -580,7 +601,9 @@ void Character::unequipWeapon()
     {
         weapon->unmount(); // 卸下武器
         weapon->setParentItem(parentItem()); // 设置父项为角色的父项
+        weapon->setZValue(GROUND_ITEM_Z); // 设置为地面物品层级
         weapon = nullptr; // 清空武器指针
+        updateEquipmentLayers();
     }
 }
 
@@ -613,4 +636,35 @@ QRectF Character::getBodyCollisionRect() const
 QList<QRectF> Character::getAllCollisionRects() const
 {
     return {m_headCollisionRect, m_bodyCollisionRect};
+}
+
+void Character::updateEquipmentLayers()
+{
+    // 设置角色本身的Z值
+    setZValue(CHARACTER_BASE_Z);
+    qDebug() << "Character Z-value set to:" << CHARACTER_BASE_Z;
+
+    // 更新腿部装备层级（最底层装备）
+    if (legEquipment && legEquipment->isMounted()) {
+        legEquipment->setZValue(CHARACTER_BASE_Z + LEG_EQUIPMENT_Z_OFFSET);
+        qDebug() << "Leg equipment Z-value set to:" << (CHARACTER_BASE_Z + LEG_EQUIPMENT_Z_OFFSET);
+    }
+
+    // 更新盔甲层级
+    if (armor && armor->isMounted()) {
+        armor->setZValue(CHARACTER_BASE_Z + ARMOR_Z_OFFSET);
+        qDebug() << "Armor Z-value set to:" << (CHARACTER_BASE_Z + ARMOR_Z_OFFSET);
+    }
+
+    // 更新头部装备层级
+    if (headEquipment && headEquipment->isMounted()) {
+        headEquipment->setZValue(CHARACTER_BASE_Z + HEAD_EQUIPMENT_Z_OFFSET);
+        qDebug() << "Head equipment Z-value set to:" << (CHARACTER_BASE_Z + HEAD_EQUIPMENT_Z_OFFSET);
+    }
+
+    // 更新武器层级（最高层）
+    if (weapon && weapon->isMounted()) {
+        weapon->setZValue(CHARACTER_BASE_Z + WEAPON_Z_OFFSET);
+        qDebug() << "Weapon Z-value set to:" << (CHARACTER_BASE_Z + WEAPON_Z_OFFSET);
+    }
 }

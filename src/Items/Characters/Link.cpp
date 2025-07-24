@@ -70,6 +70,9 @@ Link::Link(QGraphicsItem *parent): Character(parent, ":/Items/Characters/littler
     // 设置初始状态为站立（这应该是最后设置的）
     setStandPixmap();
 
+    // 更新装备层级
+    updateEquipmentLayers();
+
     // 初始化时间追踪
     m_lastFrameTime = QElapsedTimer();
     m_lastFrameTime.start();

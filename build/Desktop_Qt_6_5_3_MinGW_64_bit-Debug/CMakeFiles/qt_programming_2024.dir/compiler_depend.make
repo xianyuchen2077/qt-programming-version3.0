@@ -13568,6 +13568,7 @@ CMakeFiles/qt_programming_2024.dir/src/Scenes/GameOverScene.cpp.obj: C:/Users/xi
   D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QPushButton \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qabstractbutton.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qframe.h \
+  D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qgraphicseffect.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qgraphicsitem.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qgraphicslayoutitem.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qgraphicsproxywidget.h \

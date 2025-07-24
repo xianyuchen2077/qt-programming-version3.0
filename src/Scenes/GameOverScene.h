@@ -24,6 +24,7 @@ protected:
     void keyReleaseEvent(QKeyEvent *event) override;
 
 private:
+    GameOverfield* background; // 游戏结束场景的背景地图
     QGraphicsTextItem* titleText; // 显示游戏结果的文本
     QPushButton *backButton; // 返回初始界面按钮
     QPushButton *restartButton; // 再来一局游戏按钮
