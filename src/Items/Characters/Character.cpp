@@ -205,9 +205,8 @@ void Character::takeDamage(int damage, int attackType)
     if (headEquipment != nullptr && headEquipment->getDurability() > 0)
     {
         // 让防具承受一部分伤害
-        int absorbedDamage = remainingDamage * headEquipment->getDamage_reduction_ratio(attackType);  // 计算护甲理论上要吸收的伤害
+        int absorbedDamage = remainingDamage * headEquipment->getDamage_reduction_ratio(attackType);  // 计算防具理论上要吸收的伤害
         int damageToEquipment = qMin(absorbedDamage, headEquipment->getDurability()); // 计算防具能承受的最大伤害
-        headEquipment->takeDamage(damageToEquipment, attackType); // 调用防具的takeDamage
 
         if (headEquipment->takeDamage(damageToEquipment, attackType))                           // 调用护甲的takeDamage
         {
