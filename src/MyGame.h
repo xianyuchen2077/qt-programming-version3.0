@@ -3,12 +3,15 @@
 
 #include <QGraphicsView>
 #include <QMainWindow>
+#include <QTimer>
 #include "GameEnums.h"
 #include "Scenes/Scene.h"
 
+class IceScene; // 前向声明
+
 class MyGame : public QMainWindow
 {
-Q_OBJECT
+    Q_OBJECT
 
 public:
     explicit MyGame(QWidget *parent = nullptr);
@@ -18,7 +21,7 @@ public:
     void switchScene(SceneID id);
 
     // 添加 Q_ENUM 宏
-     Q_ENUM(SceneID)
+    Q_ENUM(SceneID)
 
 private slots:
     // 显示设置页面
@@ -33,9 +36,16 @@ private slots:
     // 处理从设置场景返回的请求
     void returnFromSettings();
 
+    // 处理IceScene的重启请求
+    void handleIceSceneRestart();
+
 protected:
     // 处理键盘事件
     void keyPressEvent(QKeyEvent *event) override;
+
+private:
+    // 连接IceScene信号的辅助函数
+    void connectIceSceneSignals(IceScene* iceScene);
 
 private:
     QGraphicsView *view;

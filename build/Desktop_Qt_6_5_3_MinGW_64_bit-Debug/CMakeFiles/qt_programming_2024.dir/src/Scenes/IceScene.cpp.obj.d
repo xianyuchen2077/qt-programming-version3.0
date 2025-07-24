@@ -307,31 +307,58 @@ CMakeFiles/qt_programming_2024.dir/src/Scenes/IceScene.cpp.obj: \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qhash.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qvarlengtharray.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/q20memory.h \
- C:\Users\xiany\Desktop\GodNoCode\AdvancedProgramming\major_assignment\hw1_FightingGame\qt-programming-2025\src\Scenes\IceScene.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/QKeyEvent \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qevent.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qapplication.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qtguiglobal.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qtgui-config.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qtguiexports.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qtwidgets-config.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qtwidgetsexports.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qcoreapplication.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qcoreevent.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qiodevice.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qeventloop.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qobject.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qobject_impl.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qbindingstorage.h \
  D:/Qt/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/chrono \
  D:/Qt/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ratio \
  D:/Qt/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ctime \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qnativeinterface.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qdebug.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qcoreapplication_platform.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qwindowdefs.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qwindowdefs_win.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qpoint.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qsize.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qmargins.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qcursor.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qbitmap.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qpixmap.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qpaintdevice.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qrect.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qcolor.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qrgb.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qrgba64.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qimage.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qpixelformat.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qtransform.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qpolygon.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qregion.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qline.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qguiapplication.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qinputmethod.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qlocale.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qvariant.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qguiapplication_platform.h \
+ C:\Users\xiany\Desktop\GodNoCode\AdvancedProgramming\major_assignment\hw1_FightingGame\qt-programming-2025\src\Scenes\IceScene.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/QKeyEvent \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qevent.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qiodevice.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qpointer.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qurl.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qvariant.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qdebug.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qeventpoint.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qvector2d.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qvectornd.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qpoint.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qrect.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qmargins.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qsize.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qpointingdevice.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qinputdevice.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qscreen.h \
@@ -346,12 +373,6 @@ CMakeFiles/qt_programming_2024.dir/src/Scenes/IceScene.cpp.obj: \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QSizeF \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/QTransform \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qtransform.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qpolygon.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qregion.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qwindowdefs.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qwindowdefs_win.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qline.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qnativeinterface.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qkeysequence.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QTimer \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qtimer.h \
@@ -365,18 +386,7 @@ CMakeFiles/qt_programming_2024.dir/src/Scenes/IceScene.cpp.obj: \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qmetatype.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QGraphicsScene \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qgraphicsscene.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qtwidgets-config.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qtwidgetsexports.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qbrush.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qcolor.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qrgb.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qrgba64.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qimage.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qpaintdevice.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qpixelformat.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qtransform.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qpixmap.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qfont.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qpen.h \
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Maps/Map.h \

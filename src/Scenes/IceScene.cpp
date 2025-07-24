@@ -1,4 +1,5 @@
 #include <QDebug>
+#include <qapplication.h>
 #include "IceScene.h"
 #include "../Items/Characters/Link.h"
 #include "../Items/Maps/Icefield.h"
@@ -738,12 +739,12 @@ void IceScene::keyPressEvent(QKeyEvent *event)
         if (event->key() == Qt::Key_Return)
         {
             // 如果游戏已结束，按下 Escape 或 Enter 键触发跳转到游戏结束场景
-            emit requestSceneChange(SceneID::IceScene_ID);
+            initiateRestart();
         }
         else if (event->key() == Qt::Key_Escape)
         {
             // 如果游戏已结束，按下 Escape 键退出游戏
-            exit(0);
+            QApplication::exit(0);
         }
         return;
     }
@@ -1184,6 +1185,77 @@ void IceScene::handleGameEnd()
 QString IceScene::getGameResultText() const
 {
     return gameResultText;
+}
+
+// 添加重启初始化函数
+void IceScene::initiateRestart()
+{
+    if (isRestarting) return; // 防止重复重启
+
+    isRestarting = true;
+    qDebug() << "Starting game restart sequence";
+
+    // 停止游戏循环
+    if (gameTimer)
+    {
+        gameTimer->stop();
+    }
+
+    // 清理资源
+    cleanupForRestart();
+
+    // 发出重启信号
+    emit requestRestart();
+}
+
+// 添加清理函数
+void IceScene::cleanupForRestart()
+{
+    qDebug() << "Cleaning up scene for restart";
+
+    // 停止所有定时器
+    if (gameTimer)
+    {
+        gameTimer->stop();
+        gameTimer->deleteLater();
+        gameTimer = nullptr;
+    }
+
+    // 清理角色
+    if (player1)
+    {
+        player1->setParent(nullptr);
+        player1 = nullptr;
+    }
+
+    if (player2)
+    {
+        player2->setParent(nullptr);
+        player2 = nullptr;
+    }
+
+    // 清理掉落管理器
+    if (dropManager)
+    {
+        dropManager->deleteLater();
+        dropManager = nullptr;
+    }
+
+    // 清理调试项目
+    for (auto item : debugItems)
+    {
+        if (item)
+        {
+            removeItem(item);
+            delete item;
+        }
+    }
+    debugItems.clear();
+
+    // 清理所有场景项目
+    clear();
+
+    qDebug() << "Scene cleanup completed";
 }
 
 // 以下为可视化Debug函数

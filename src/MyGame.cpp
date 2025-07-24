@@ -10,12 +10,13 @@
 #include <QKeyEvent>
 #include <QDebug>
 #include <QMetaEnum>
+#include <QTimer>
 
 MyGame::MyGame(QWidget *parent) : QMainWindow(parent)
 {
-    // 初始化时先加载一个默认场景 BattleScene
-    currentScene = new IceScene(this);  // 默认启动 BattleScene
-    currentSceneId = SceneID::IceScene_ID; // 初始场景ID为 BattleScene
+    // 初始化时先加载一个默认场景 IceScene
+    currentScene = new IceScene(this);  // 默认启动 IceScene
+    currentSceneId = SceneID::IceScene_ID; // 初始场景ID为 IceScene
     previousActiveScene = nullptr; // 初始化上一个活动场景为空
     previousSceneId = SceneID::BattleScene_ID; // 初始时，上一个场景就是战斗场景（如果这是入口）
     view = new QGraphicsView(this);
@@ -32,6 +33,12 @@ MyGame::MyGame(QWidget *parent) : QMainWindow(parent)
 
     // 在初始场景设置后，立即连接信号
     connect(currentScene, &Scene::requestSceneChange, this, &MyGame::handleSceneChangeRequest);
+
+    // 如果是IceScene，连接重启信号
+    if (IceScene* iceScene = dynamic_cast<IceScene*>(currentScene))
+    {
+        connectIceSceneSignals(iceScene);
+    }
 
     // 菜单栏设置 (用于测试和导航)
     QMenuBar *menuBar = new QMenuBar(this);
@@ -81,10 +88,10 @@ void MyGame::switchScene(SceneID id)
     }
 
     // 如果当前场景存在且不是要SettingsScene，停止其循环并删除它
-    if (currentScene&&currentSceneId != SceneID::SettingsScene_ID)
+    if (currentScene && currentSceneId != SceneID::SettingsScene_ID)
     {
         currentScene->stopLoop(); // 停止旧场景的游戏循环
-        disconnect(currentScene, &Scene::requestSceneChange, this, &MyGame::handleSceneChangeRequest); // 断开旧场景的所有连接
+        disconnect(currentScene, nullptr, this, nullptr); // 断开旧场景的所有连接
         currentScene->deleteLater(); // 使用 deleteLater 来安全地删除对象
         currentScene = nullptr; // 将指针置空
     }
@@ -93,31 +100,31 @@ void MyGame::switchScene(SceneID id)
     Scene* newScene = nullptr;
     switch (id)
     {
-        case SceneID::BattleScene_ID: // BattleScene
-            newScene = new BattleScene(this);
-            break;
-        case SceneID::IceScene_ID: // IceScene
-            newScene = new IceScene(this);
-            break;
-        case SceneID::GameOverScene_ID:
-            {
-                QString resultText = "Winner is Player1 ！";
+    case SceneID::BattleScene_ID: // BattleScene
+        newScene = new BattleScene(this);
+        break;
+    case SceneID::IceScene_ID: // IceScene
+        newScene = new IceScene(this);
+        break;
+    case SceneID::GameOverScene_ID:
+    {
+        QString resultText = "Winner is Player1 ！";
 
-                if (previousActiveScene)
-                { // 尝试从旧场景获取结果文本
-                    IceScene* iceScene = dynamic_cast<IceScene*>(previousActiveScene);
-                    if (iceScene)
-                    {
-                        // 获取IceScene的ResultText
-                        resultText = iceScene->getGameResultText();
-                    }
-                }
-                currentScene = new GameOverScene(this, resultText);
+        if (previousActiveScene)
+        { // 尝试从旧场景获取结果文本
+            IceScene* iceScene = dynamic_cast<IceScene*>(previousActiveScene);
+            if (iceScene)
+            {
+                // 获取IceScene的ResultText
+                resultText = iceScene->getGameResultText();
             }
-            break;
-        default:
-            qWarning("未知场景ID: %d", id);
-            return;
+        }
+        newScene = new GameOverScene(this, resultText);
+    }
+    break;
+    default:
+        qWarning("未知场景ID: %d", id);
+        return;
     }
 
     // 新场景成功创建后
@@ -132,7 +139,18 @@ void MyGame::switchScene(SceneID id)
         }
 
         currentScene = newScene; // 设置新的当前场景
+        currentSceneId = id; // 更新当前场景ID
         view->setScene(currentScene); // 更新视图以显示新场景
+
+        // 连接基本的场景切换信号
+        connect(currentScene, &Scene::requestSceneChange, this, &MyGame::handleSceneChangeRequest);
+
+        // 如果是IceScene，连接重启信号
+        if (IceScene* iceScene = dynamic_cast<IceScene*>(currentScene))
+        {
+            connectIceSceneSignals(iceScene);
+        }
+
         currentScene->startLoop(); // 启动新场景的游戏循环
 
         // 调整视图和主窗口大小以适应视图，这里使用 currentScene 的尺寸
@@ -141,7 +159,6 @@ void MyGame::switchScene(SceneID id)
         setFixedSize(view->sizeHint()); // 调整主窗口以适应视图
     }
 }
-
 
 void MyGame::showSettings()
 {
@@ -159,7 +176,7 @@ void MyGame::showSettings()
         // 将currentScene保存起来
         previousActiveScene = currentScene;
         // 断开与旧场景的连接，防止返回后重复触发
-        disconnect(currentScene, &Scene::requestSceneChange, this, &MyGame::handleSceneChangeRequest);
+        disconnect(currentScene, nullptr, this, nullptr);
     }
     else
     {
@@ -216,7 +233,7 @@ void MyGame::returnFromSettings()
         currentScene = nullptr;
     }
 
-    // 恢复之前保存的场
+    // 恢复之前保存的场景
     // 在showSettings函数中，已经把当时的 currentScene 保存到 previousActiveScene
     if (previousActiveScene)
     {
@@ -225,10 +242,17 @@ void MyGame::returnFromSettings()
         currentSceneId = previousSceneId; // 恢复之前的场景ID
 
         view->setScene(currentScene);
-        currentScene->startLoop();
 
         // 重新连接场景切换信号
         connect(currentScene, &Scene::requestSceneChange, this, &MyGame::handleSceneChangeRequest);
+
+        // 如果是IceScene，重新连接重启信号
+        if (IceScene* iceScene = dynamic_cast<IceScene*>(currentScene))
+        {
+            connectIceSceneSignals(iceScene);
+        }
+
+        currentScene->startLoop();
 
         // 调整视图和主窗口大小以适应恢复的场景
         view->setFixedSize(static_cast<int>(currentScene->width()), static_cast<int>(currentScene->height()));
@@ -261,4 +285,59 @@ void MyGame::keyPressEvent(QKeyEvent *event)
         // 这样可以确保 QMainWindow 默认的按键处理（例如 Tab 键切换焦点）仍然有效。
         QMainWindow::keyPressEvent(event);
     }
+}
+
+// 连接IceScene信号的辅助函数
+void MyGame::connectIceSceneSignals(IceScene* iceScene)
+{
+    if (!iceScene) return;
+
+    // 连接重启信号
+    connect(iceScene, &IceScene::requestRestart, this, &MyGame::handleIceSceneRestart);
+
+    qDebug() << "Connected IceScene restart signal";
+}
+
+// 处理IceScene的重启请求
+void MyGame::handleIceSceneRestart()
+{
+    qDebug() << "Received restart request from IceScene";
+
+    // 停止当前场景的循环
+    if (currentScene)
+    {
+        currentScene->stopLoop();
+    }
+
+    // 短暂延迟后重新创建IceScene，确保旧场景完全清理
+    QTimer::singleShot(100, this, [this]() {
+        qDebug() << "Creating new IceScene after restart";
+
+        // 安全地删除当前场景
+        if (currentScene)
+        {
+            disconnect(currentScene, nullptr, this, nullptr); // 断开所有连接
+            currentScene->deleteLater();
+            currentScene = nullptr;
+        }
+
+        // 创建新的IceScene
+        IceScene* newIceScene = new IceScene(this);
+        currentScene = newIceScene;
+        currentSceneId = SceneID::IceScene_ID;
+
+        // 连接信号
+        connect(currentScene, &Scene::requestSceneChange, this, &MyGame::handleSceneChangeRequest);
+        connectIceSceneSignals(newIceScene);
+
+        // 设置到视图并启动
+        view->setScene(currentScene);
+        currentScene->startLoop();
+
+        // 调整窗口大小
+        view->setFixedSize(static_cast<int>(currentScene->width()), static_cast<int>(currentScene->height()));
+        setFixedSize(view->sizeHint());
+
+        qDebug() << "New IceScene created and started successfully";
+    });
 }

@@ -35,7 +35,14 @@ public:
     bool getIsGameOver();
     QString getGameResultText() const; // 获取游戏结果文本
 
+    // 添加重启相关函数声明
+    void initiateRestart();
+    void cleanupForRestart();
+
     Map* getMap() const;
+
+signals:
+    void requestRestart(); // 添加重启信号
 
 protected slots:
     void update() override;
@@ -70,6 +77,7 @@ private:
     // 游戏结束相关变量
     bool isGameOver; // 标记游戏是否已结束
     QString gameResultText; // 存储游戏结果文本，用于传递给GameOverScene
+    bool isRestarting = false; // 添加重启标志
     bool checkGameEndCondition(); // 判断游戏是否结束的函数
     void handleGameEnd(); // 处理游戏结束逻辑的函数
 
