@@ -562,6 +562,30 @@ src/Items/Item.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Item.cpp.s
 .PHONY : src/Items/Item.cpp.s
 
+src/Items/ItemDropManager.obj: src/Items/ItemDropManager.cpp.obj
+.PHONY : src/Items/ItemDropManager.obj
+
+# target to build an object file
+src/Items/ItemDropManager.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/ItemDropManager.cpp.obj
+.PHONY : src/Items/ItemDropManager.cpp.obj
+
+src/Items/ItemDropManager.i: src/Items/ItemDropManager.cpp.i
+.PHONY : src/Items/ItemDropManager.i
+
+# target to preprocess a source file
+src/Items/ItemDropManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/ItemDropManager.cpp.i
+.PHONY : src/Items/ItemDropManager.cpp.i
+
+src/Items/ItemDropManager.s: src/Items/ItemDropManager.cpp.s
+.PHONY : src/Items/ItemDropManager.s
+
+# target to generate assembly for a file
+src/Items/ItemDropManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/ItemDropManager.cpp.s
+.PHONY : src/Items/ItemDropManager.cpp.s
+
 src/Items/LegEquipments/LegEquipment.obj: src/Items/LegEquipments/LegEquipment.cpp.obj
 .PHONY : src/Items/LegEquipments/LegEquipment.obj
 
@@ -1224,6 +1248,9 @@ help:
 	@echo ... src/Items/Item.obj
 	@echo ... src/Items/Item.i
 	@echo ... src/Items/Item.s
+	@echo ... src/Items/ItemDropManager.obj
+	@echo ... src/Items/ItemDropManager.i
+	@echo ... src/Items/ItemDropManager.s
 	@echo ... src/Items/LegEquipments/LegEquipment.obj
 	@echo ... src/Items/LegEquipments/LegEquipment.i
 	@echo ... src/Items/LegEquipments/LegEquipment.s

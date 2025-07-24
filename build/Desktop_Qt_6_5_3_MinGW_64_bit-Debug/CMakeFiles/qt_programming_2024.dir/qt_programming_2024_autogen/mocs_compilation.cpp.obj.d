@@ -379,6 +379,26 @@ CMakeFiles/qt_programming_2024.dir/qt_programming_2024_autogen/mocs_compilation.
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QElapsedTimer \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qelapsedtimer.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qtmochelpers.h \
+ C:\Users\xiany\Desktop\GodNoCode\AdvancedProgramming\major_assignment\hw1_FightingGame\qt-programming-2025\build\Desktop_Qt_6_5_3_MinGW_64_bit-Debug\qt_programming_2024_autogen\7O23G427QC/moc_ItemDropManager.cpp \
+ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/ItemDropManager.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QObject \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qobject.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QList \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qlist.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QRectF \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qrect.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QRandomGenerator \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qrandom.h \
+ D:/Qt/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/random \
+ D:/Qt/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/random.h \
+ D:/Qt/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/opt_random.h \
+ D:/Qt/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/pmmintrin.h \
+ D:/Qt/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/emmintrin.h \
+ D:/Qt/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/xmmintrin.h \
+ D:/Qt/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/mmintrin.h \
+ D:/Qt/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/random.tcc \
+ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Item.h \
+ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Mountable.h \
  C:\Users\xiany\Desktop\GodNoCode\AdvancedProgramming\major_assignment\hw1_FightingGame\qt-programming-2025\build\Desktop_Qt_6_5_3_MinGW_64_bit-Debug\qt_programming_2024_autogen\MWF5AHYEVO/moc_Adrenaline.cpp \
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Supplies/Adrenaline.h \
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Supplies/MedicalSupply.h \
@@ -435,11 +455,8 @@ CMakeFiles/qt_programming_2024.dir/qt_programming_2024_autogen/mocs_compilation.
  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qinputdevice.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qscreen.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QList \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qlist.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QObject \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qobject.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QRect \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qrect.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QSize \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qsize.h \
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QSizeF \
@@ -473,8 +490,8 @@ CMakeFiles/qt_programming_2024.dir/qt_programming_2024_autogen/mocs_compilation.
  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qtextformat.h \
  C:\Users\xiany\Desktop\GodNoCode\AdvancedProgramming\major_assignment\hw1_FightingGame\qt-programming-2025\build\Desktop_Qt_6_5_3_MinGW_64_bit-Debug\qt_programming_2024_autogen\SNE2VJ5FQV/moc_IceScene.cpp \
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Scenes/IceScene.h \
- D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QList \
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Characters/Link.h \
+ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/ItemDropManager.h \
  C:\Users\xiany\Desktop\GodNoCode\AdvancedProgramming\major_assignment\hw1_FightingGame\qt-programming-2025\build\Desktop_Qt_6_5_3_MinGW_64_bit-Debug\qt_programming_2024_autogen\SNE2VJ5FQV/moc_Scene.cpp \
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Scenes/Scene.h \
  C:\Users\xiany\Desktop\GodNoCode\AdvancedProgramming\major_assignment\hw1_FightingGame\qt-programming-2025\build\Desktop_Qt_6_5_3_MinGW_64_bit-Debug\qt_programming_2024_autogen\SNE2VJ5FQV/moc_SettingsScene.cpp \

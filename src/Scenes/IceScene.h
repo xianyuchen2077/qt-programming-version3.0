@@ -8,6 +8,9 @@
 #include "Scene.h"
 #include "../Items/Maps/Map.h"
 #include "../Items/Characters/Link.h"
+#include "../Items/ItemDropManager.h"
+
+class Map;
 
 struct Platform
 {
@@ -30,6 +33,8 @@ public:
     void processPicking() override;
 
     bool getIsGameOver();
+
+    Map* getMap() const;
 
 protected slots:
     void update() override;
@@ -57,6 +62,9 @@ private:
     MedicalItem *spareMedicalItem1;
     MedicalItem *spareMedicalItem2;
     MedicalItem *spareMedicalItem3;
+
+    // 掉落物品管理器
+    ItemDropManager *dropManager;
 
     // 游戏结束相关变量
     bool isGameOver; // 标记游戏是否已结束

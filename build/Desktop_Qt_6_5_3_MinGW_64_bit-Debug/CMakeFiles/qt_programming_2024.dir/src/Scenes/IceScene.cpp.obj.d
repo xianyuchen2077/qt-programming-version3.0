@@ -413,6 +413,21 @@ CMakeFiles/qt_programming_2024.dir/src/Scenes/IceScene.cpp.obj: \
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Mountable.h \
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Characters/Link.h \
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Characters/Character.h \
+ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/ItemDropManager.h \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QObject \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QRectF \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QRandomGenerator \
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qrandom.h \
+ D:/Qt/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/random \
+ D:/Qt/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/random.h \
+ D:/Qt/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/opt_random.h \
+ D:/Qt/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/pmmintrin.h \
+ D:/Qt/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/emmintrin.h \
+ D:/Qt/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/xmmintrin.h \
+ D:/Qt/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/mmintrin.h \
+ D:/Qt/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/random.tcc \
+ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Item.h \
+ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Mountable.h \
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Maps/Icefield.h \
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Maps/Map.h \
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Armors/MentalArmor.h \

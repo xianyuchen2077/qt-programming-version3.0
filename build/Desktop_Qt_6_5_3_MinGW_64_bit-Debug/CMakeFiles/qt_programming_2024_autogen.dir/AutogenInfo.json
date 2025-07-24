@@ -402,6 +402,12 @@
 			null
 		],
 		[
+			"C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/ItemDropManager.h",
+			"MU",
+			"7O23G427QC/moc_ItemDropManager.cpp",
+			null
+		],
+		[
 			"C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/LegEquipments/LegEquipment.h",
 			"MU",
 			"QOAUGX27LX/moc_LegEquipment.cpp",
@@ -680,6 +686,11 @@
 		],
 		[
 			"C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Item.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/ItemDropManager.cpp",
 			"MU",
 			null
 		],

@@ -109,6 +109,9 @@ IceScene::IceScene(QObject *parent) : Scene(parent)
     spareMedicalItem3->setPos(sceneRect().left() + (sceneRect().right() - sceneRect().left()) * 0.4, floorHeight - 330);
     spareMedicalItem3->setZValue(5);
 
+    // 初始化掉落管理器
+    dropManager = new ItemDropManager(this, this);
+
     // 初始化游戏循环
     gameTimer = new QTimer(this);
     connect(gameTimer, &QTimer::timeout, this, &IceScene::gameLoop);
@@ -141,6 +144,11 @@ IceScene::IceScene(QObject *parent) : Scene(parent)
     debugRect->setZValue(1000);
     debugRect->setParentItem(test_weapon);
     this->addItem(debugRect);
+}
+
+Map* IceScene::getMap() const
+{
+    return map;
 }
 
 // 初始化平台数据
@@ -729,6 +737,13 @@ void IceScene::gameLoop()
         updateDebugVisualization();
     }
 
+    // 更新掉落物品
+    if (dropManager)
+    {
+        dropManager->updateDrops(deltaTime);
+    }
+
+
     update(); // 更新场景
 }
 
@@ -756,6 +771,12 @@ void IceScene::keyPressEvent(QKeyEvent *event)
 {
     switch (event->key())
     {
+    case Qt::Key_R:  // 按 R 键随机掉落物品
+        if (dropManager) {
+            dropManager->dropRandomItem();
+            qDebug() << "Random item dropped!";
+        }
+        break;
     case Qt::Key_A:
         if (player1 != nullptr)
         {

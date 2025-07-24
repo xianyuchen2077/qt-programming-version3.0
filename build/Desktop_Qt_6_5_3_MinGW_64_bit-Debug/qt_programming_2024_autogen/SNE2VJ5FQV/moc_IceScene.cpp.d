@@ -7,6 +7,7 @@ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_Fighti
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Characters/Link.h \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/HeadEquipments/HeadEquipment.h \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Item.h \
+  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/ItemDropManager.h \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/LegEquipments/LegEquipment.h \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Maps/Map.h \
   C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Mountable.h \
@@ -18,7 +19,9 @@ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_Fighti
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QMetaType \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QObject \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QPointF \
+  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QRandomGenerator \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QRect \
+  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QRectF \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QSize \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QSizeF \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QTimer \
@@ -90,6 +93,7 @@ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_Fighti
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qpoint.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qpointer.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qprocessordetection.h \
+  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qrandom.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qrect.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qrefcount.h \
   D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/qscopedpointer.h \
