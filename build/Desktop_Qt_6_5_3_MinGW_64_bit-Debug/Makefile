@@ -250,30 +250,6 @@ src/Items/Armors/Armor.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Armors/Armor.cpp.s
 .PHONY : src/Items/Armors/Armor.cpp.s
 
-src/Items/Armors/FlamebreakerArmor.obj: src/Items/Armors/FlamebreakerArmor.cpp.obj
-.PHONY : src/Items/Armors/FlamebreakerArmor.obj
-
-# target to build an object file
-src/Items/Armors/FlamebreakerArmor.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Armors/FlamebreakerArmor.cpp.obj
-.PHONY : src/Items/Armors/FlamebreakerArmor.cpp.obj
-
-src/Items/Armors/FlamebreakerArmor.i: src/Items/Armors/FlamebreakerArmor.cpp.i
-.PHONY : src/Items/Armors/FlamebreakerArmor.i
-
-# target to preprocess a source file
-src/Items/Armors/FlamebreakerArmor.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Armors/FlamebreakerArmor.cpp.i
-.PHONY : src/Items/Armors/FlamebreakerArmor.cpp.i
-
-src/Items/Armors/FlamebreakerArmor.s: src/Items/Armors/FlamebreakerArmor.cpp.s
-.PHONY : src/Items/Armors/FlamebreakerArmor.s
-
-# target to generate assembly for a file
-src/Items/Armors/FlamebreakerArmor.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Armors/FlamebreakerArmor.cpp.s
-.PHONY : src/Items/Armors/FlamebreakerArmor.cpp.s
-
 src/Items/Armors/MentalArmor.obj: src/Items/Armors/MentalArmor.cpp.obj
 .PHONY : src/Items/Armors/MentalArmor.obj
 
@@ -297,30 +273,6 @@ src/Items/Armors/MentalArmor.s: src/Items/Armors/MentalArmor.cpp.s
 src/Items/Armors/MentalArmor.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Armors/MentalArmor.cpp.s
 .PHONY : src/Items/Armors/MentalArmor.cpp.s
-
-src/Items/Armors/OldShirt.obj: src/Items/Armors/OldShirt.cpp.obj
-.PHONY : src/Items/Armors/OldShirt.obj
-
-# target to build an object file
-src/Items/Armors/OldShirt.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Armors/OldShirt.cpp.obj
-.PHONY : src/Items/Armors/OldShirt.cpp.obj
-
-src/Items/Armors/OldShirt.i: src/Items/Armors/OldShirt.cpp.i
-.PHONY : src/Items/Armors/OldShirt.i
-
-# target to preprocess a source file
-src/Items/Armors/OldShirt.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Armors/OldShirt.cpp.i
-.PHONY : src/Items/Armors/OldShirt.cpp.i
-
-src/Items/Armors/OldShirt.s: src/Items/Armors/OldShirt.cpp.s
-.PHONY : src/Items/Armors/OldShirt.s
-
-# target to generate assembly for a file
-src/Items/Armors/OldShirt.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\qt_programming_2024.dir\build.make CMakeFiles/qt_programming_2024.dir/src/Items/Armors/OldShirt.cpp.s
-.PHONY : src/Items/Armors/OldShirt.cpp.s
 
 src/Items/Armors/Qin_ceremonial_robe.obj: src/Items/Armors/Qin_ceremonial_robe.cpp.obj
 .PHONY : src/Items/Armors/Qin_ceremonial_robe.obj
@@ -1233,15 +1185,9 @@ help:
 	@echo ... src/Items/Armors/Armor.obj
 	@echo ... src/Items/Armors/Armor.i
 	@echo ... src/Items/Armors/Armor.s
-	@echo ... src/Items/Armors/FlamebreakerArmor.obj
-	@echo ... src/Items/Armors/FlamebreakerArmor.i
-	@echo ... src/Items/Armors/FlamebreakerArmor.s
 	@echo ... src/Items/Armors/MentalArmor.obj
 	@echo ... src/Items/Armors/MentalArmor.i
 	@echo ... src/Items/Armors/MentalArmor.s
-	@echo ... src/Items/Armors/OldShirt.obj
-	@echo ... src/Items/Armors/OldShirt.i
-	@echo ... src/Items/Armors/OldShirt.s
 	@echo ... src/Items/Armors/Qin_ceremonial_robe.obj
 	@echo ... src/Items/Armors/Qin_ceremonial_robe.i
 	@echo ... src/Items/Armors/Qin_ceremonial_robe.s

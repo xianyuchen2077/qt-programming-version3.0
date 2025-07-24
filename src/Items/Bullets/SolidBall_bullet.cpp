@@ -21,7 +21,7 @@ SolidBall_Bullet::SolidBall_Bullet(QGraphicsItem *parent, const QPointF& startPo
 {
     setScale(1.0);      // 设置子弹缩放比例
     setPos(startPos);   // 设置初始位置
-    setZValue(5);       // 确保子弹显示在最上层
+    setZValue(6);       // 确保子弹显示在最上层
     qDebug() << "SolidBall_Bullet created with shooter:" << (const void*)shooter << "damage:" << damage;
 
     // 计算45度角的初始速度

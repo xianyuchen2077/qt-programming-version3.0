@@ -25,7 +25,19 @@ void Shabby_Pistol::mountToParent()
 {
     Mountable::mountToParent();
     setScale(0.6);
-    setPos(0, -15);
+
+    // 检查父角色是否处于下蹲状态
+    Character* character = dynamic_cast<Character*>(parentItem());
+    if (character && character->isCrouching())
+    {
+        // 下蹲时武器位置向下偏移
+        setPos(0, -15 + character->getCrouchOffset());
+    }
+    else
+    {
+        // 正常站立位置
+        setPos(0, -15);
+    }
 }
 
 void Shabby_Pistol::unmount()

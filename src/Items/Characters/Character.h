@@ -57,6 +57,10 @@ public:
 
     void setMoveSpeed(qreal speed);
 
+    // 下蹲状态管理
+    [[nodiscard]] bool isCrouching() const { return isCrouching_; }
+    void setCrouching(bool crouching);
+    [[nodiscard]] qreal getCrouchOffset() const { return crouchOffset; }
 
     virtual void processInput();
 
@@ -129,6 +133,10 @@ protected:
     QRectF m_headCollisionRect;  // 头部碰撞框
     QRectF m_bodyCollisionRect;  // 身体碰撞框
 
+    // 下蹲状态相关
+    bool isCrouching_ = false;      // 是否处于下蹲状态
+    qreal crouchOffset = 20.0;      // 下蹲时的偏移量（像素）
+
 private:
     bool leftDown{}, rightDown{}, pickDown{}, downDown{}, upDown{}; // 按键状态;
     bool lastPickDown{}; // 上一次拾取键是否被按下
@@ -154,6 +162,9 @@ private:
     // 死亡相关属性
     bool isDead_ = false;                    // 是否死亡
     bool isDeathAnimationPlaying_ = false;   // 死亡动画是否正在播放
+
+    // 更新武器位置的方法
+    void updateWeaponPosition();
 };
 
 

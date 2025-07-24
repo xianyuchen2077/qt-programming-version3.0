@@ -82,6 +82,12 @@ void Fist::performMeleeAttack(Character* attacker, const QPointF& direction)
     QRectF attackerRect = attacker->getBodyCollisionRect();
     QPointF attackerCenter = attackerPos + attackerRect.center();
 
+    // 如果角色下蹲，调整攻击中心位置(如果不注释会导致重复叠加下蹲偏移)
+    // if (attacker->isCrouching())
+    // {
+    //     attackerCenter.setY(attackerCenter.y() + attacker->getCrouchOffset());
+    // }
+
     // 标准化方向向量
     qreal dirLength = std::sqrt(direction.x() * direction.x() + direction.y() * direction.y());
     QPointF normalizedDir = dirLength > 0 ? QPointF(direction.x() / dirLength, direction.y() / dirLength) : QPointF(1, 0);
@@ -91,6 +97,13 @@ void Fist::performMeleeAttack(Character* attacker, const QPointF& direction)
 
     // 创建攻击区域（圆形区域）
     QRectF attackArea(5, -50, 70, 70);
+
+    // 如果角色下蹲，调整攻击区域位置
+    if (attacker->isCrouching())
+    {
+        attackArea.translate(0, attacker->getCrouchOffset());
+    }
+
     qDebug() << "Fist attack area:" << attackArea;
 
     // // ························攻击区域可视化·······················

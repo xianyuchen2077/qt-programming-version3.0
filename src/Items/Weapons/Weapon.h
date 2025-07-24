@@ -84,6 +84,9 @@ protected:
     // 切换武器图片
     virtual void updatePixmap(const QString &pixmapPath);
 
+    // 获取射击起始位置（考虑下蹲时偏移量）
+    virtual QPointF getShootStartPos(Character* shooter) const;
+
 private:
     bool isScheduledForDestruction = false;  // 防止重复销毁
 };

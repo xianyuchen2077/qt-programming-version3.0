@@ -5,7 +5,7 @@
 
 Weapon::Weapon(QGraphicsItem *parent, const QString &pixmapPath) : Item(parent, pixmapPath)
 {
-
+    setZValue(5.5); // 确保武器显示在角色上方
 }
 
 void Weapon::mountToParent()
@@ -187,28 +187,33 @@ void Weapon::shoot(Character* shooter, const QPointF& direction)
         return;
     }
 
-    // 计算子弹起始位置（角色中心位置）
-    QPointF shooterPos = shooter->pos();
-
-    // 获取角色的身体碰撞框，用于计算中心位置
-    QRectF bodyRect = shooter->getBodyCollisionRect();
-    QPointF bodyCenter = shooterPos + bodyRect.center();
-
-    // 子弹从角色身体中心稍微往前的位置发射
-    QPointF bulletStartPos = bodyCenter + QPointF(direction.x() * 30, 0);
-
     // 创建子弹（传递shooter参数）
+    // 考虑下蹲偏移的射击起始位置
+    QPointF bulletStartPos = getShootStartPos(shooter) + QPointF(27,0);
     Bullet* bullet = createBullet(bulletStartPos, direction, shooter);
     if (bullet) {
         // 将子弹添加到场景
-        if (shooter->scene()) {
+        if (shooter->scene())
+        {
             shooter->scene()->addItem(bullet);
             qDebug() << "Bullet added to scene at:" << bulletStartPos;
-        } else {
+        }
+        else
+        {
             qDebug() << "Warning: Shooter has no scene!";
             delete bullet;
             return;
         }
+
+        // // ························攻击区域可视化·······················
+        // // 创建矩形区域可视化图元
+        // QRectF rect = bullet->boundingRect();
+        // QGraphicsRectItem* rectItem = new QGraphicsRectItem(rect, bullet); // 设置子弹为父项
+
+        // // 设置矩形样式（可选）
+        // rectItem->setPen(QPen(Qt::red,15));     // 红色边框
+        // rectItem->setBrush(Qt::NoBrush);     // 无填充
+        // rectItem->setZValue(1000);           // 保证在最上层
 
         // 消耗弹药
         ammoCount--;
@@ -275,4 +280,16 @@ void Weapon::updatePixmap(const QString &pixmapPath)
     {
         qDebug() << "Character is nullptr!";
     }
+}
+
+QPointF Weapon::getShootStartPos(Character* shooter) const
+{
+    if (!shooter) return QPointF(0, 0);
+
+    QPointF basePos = shooter->pos() - QPointF(0,40);
+    if (shooter->isCrouching())
+    {
+        basePos.setY(basePos.y() + shooter->getCrouchOffset());
+    }
+    return basePos;
 }

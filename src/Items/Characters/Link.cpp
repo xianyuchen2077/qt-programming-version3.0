@@ -277,6 +277,8 @@ void Link::processInput()
 
     if(isDownDown())
     {
+        setCrouching(true);
+
         if(isOnGround())
         {
             setVelocity(QPointF(0, 0)); // 如果在地面上且下蹲键按下，停止角色移动
@@ -289,6 +291,8 @@ void Link::processInput()
     }
     else
     {
+        setCrouching(false);
+
         if(isOnGround())
         {
             if (isLeftDown())

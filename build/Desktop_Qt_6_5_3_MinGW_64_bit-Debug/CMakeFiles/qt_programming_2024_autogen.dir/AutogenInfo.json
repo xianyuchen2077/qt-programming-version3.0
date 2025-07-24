@@ -324,21 +324,9 @@
 			null
 		],
 		[
-			"C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Armors/FlamebreakerArmor.h",
-			"MU",
-			"XAWFG2TZKF/moc_FlamebreakerArmor.cpp",
-			null
-		],
-		[
 			"C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Armors/MentalArmor.h",
 			"MU",
 			"XAWFG2TZKF/moc_MentalArmor.cpp",
-			null
-		],
-		[
-			"C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Armors/OldShirt.h",
-			"MU",
-			"XAWFG2TZKF/moc_OldShirt.cpp",
 			null
 		],
 		[
@@ -483,12 +471,6 @@
 			"C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Supplies/MedicalSupply.h",
 			"MU",
 			"MWF5AHYEVO/moc_MedicalSupply.cpp",
-			null
-		],
-		[
-			"C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Weapons/Bomb.h",
-			"MU",
-			"Z3UREFIW6B/moc_Bomb.cpp",
 			null
 		],
 		[
@@ -637,17 +619,7 @@
 			null
 		],
 		[
-			"C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Armors/FlamebreakerArmor.cpp",
-			"MU",
-			null
-		],
-		[
 			"C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Armors/MentalArmor.cpp",
-			"MU",
-			null
-		],
-		[
-			"C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Armors/OldShirt.cpp",
 			"MU",
 			null
 		],

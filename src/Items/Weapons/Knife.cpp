@@ -108,6 +108,12 @@ void Knife::performMeleeAttack(Character* attacker, const QPointF& direction)
     // 创建攻击区域矩形
     QRectF attackArea(10, -85, 90, 100);
 
+    // 如果角色下蹲，调整攻击区域位置
+    if (attacker->isCrouching())
+    {
+        attackArea.translate(0, attacker->getCrouchOffset());
+    }
+
     // // ························攻击区域可视化·······················
     // // 创建矩形区域可视化图元
     // QGraphicsRectItem* attackVisual = new QGraphicsRectItem(attackArea);

@@ -156,6 +156,27 @@ void Character::setMoveSpeed(qreal speed)
     moveSpeed = speed;
 }
 
+// 设置下蹲状态
+void Character::setCrouching(bool crouching)
+{
+    if (isCrouching_ != crouching)
+    {
+        isCrouching_ = crouching;
+        updateWeaponPosition(); // 更新武器位置
+        qDebug() << "Character crouch status changed to:" << crouching;
+    }
+}
+
+// 更新武器位置
+void Character::updateWeaponPosition()
+{
+    if (weapon)
+    {
+        // 如果武器已经装载到角色身上，重新调用mountToParent来更新位置
+        weapon->mountToParent();
+    }
+}
+
 // 获取血量
 int Character::getHealth() const
 {

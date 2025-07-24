@@ -1,6 +1,9 @@
 #include "Armor.h"
 
-Armor::Armor(QGraphicsItem *parent, const QString &pixmapPath) : Item(parent, pixmapPath) {}
+Armor::Armor(QGraphicsItem *parent, const QString &pixmapPath) : Item(parent, pixmapPath)
+{
+    setZValue(5);
+}
 
 void Armor::mountToParent()
 {

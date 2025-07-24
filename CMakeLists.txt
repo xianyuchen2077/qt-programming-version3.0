@@ -30,8 +30,8 @@ add_executable(qt_programming_2024 src/main.cpp
         src/Items/LegEquipments/LegEquipment.h
         src/Items/HeadEquipments/CapOfTheHero.cpp
         src/Items/HeadEquipments/CapOfTheHero.h
-        src/Items/Armors/OldShirt.cpp
-        src/Items/Armors/OldShirt.h
+
+
         src/Items/LegEquipments/WellWornTrousers.cpp
         src/Items/LegEquipments/WellWornTrousers.h
         src/Scenes/Scene.cpp
@@ -45,8 +45,8 @@ add_executable(qt_programming_2024 src/main.cpp
         src/Items/Maps/Battlefield.h
         src/Items/Mountable.cpp
         src/Items/Mountable.h
-        src/Items/Armors/FlamebreakerArmor.cpp
-        src/Items/Armors/FlamebreakerArmor.h
+
+
 
         src/Scenes/IceScene.h
         src/Scenes/IceScene.cpp
@@ -67,7 +67,7 @@ add_executable(qt_programming_2024 src/main.cpp
         src/Items/Bullets/Bullet.cpp
         src/Items/Bullets/Shabby_Pistol_bullet.h
         src/Items/Bullets/Shabby_Pistol_bullet.cpp
-        src/Items/Weapons/Bomb.h
+
         src/Items/Weapons/SolidBall.h
         src/Items/Weapons/SolidBall.cpp
         src/Items/Bullets/SolidBall_bullet.h
