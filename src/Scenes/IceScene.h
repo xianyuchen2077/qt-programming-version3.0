@@ -35,6 +35,9 @@ public:
     bool getIsGameOver();
     QString getGameResultText() const; // 获取游戏结果文本
 
+    // 切换到草地模式
+    void switchToGrasslandMode();
+
     // 添加重启相关函数声明
     void initiateRestart();
     void cleanupForRestart();

@@ -51,9 +51,9 @@ MyGame::MyGame(QWidget *parent) : QMainWindow(parent)
     connect(exitAction, &QAction::triggered, qApp, &QApplication::quit);
 
     QMenu *sceneMenu = menuBar->addMenu("场景");
-    QAction *battleSceneAction = sceneMenu->addAction("战斗场景");
-    connect(battleSceneAction, &QAction::triggered, [this]() {
-        this->switchScene(SceneID::BattleScene_ID);
+    QAction *grasslandAction = sceneMenu->addAction("草地场景");
+    connect(grasslandAction, &QAction::triggered, [this]() {
+        this->switchToGrassland();
     });
     QAction *iceSceneAction = sceneMenu->addAction("冰雪场景");
     connect(iceSceneAction, &QAction::triggered, [this]() {
@@ -189,6 +189,32 @@ void MyGame::showSettings()
 void MyGame::showBattleScene()
 {
     switchScene(SceneID::BattleScene_ID); // 切换回战斗场景
+}
+
+void MyGame::switchToGrassland()
+{
+    // 如果当前场景是IceScene，则切换到草地模式
+    if (currentSceneId == SceneID::IceScene_ID)
+    {
+        if (IceScene* iceScene = dynamic_cast<IceScene*>(currentScene))
+        {
+            // 调用IceScene中的方法切换到草地模式
+            iceScene->switchToGrasslandMode();
+        }
+    }
+    else
+    {
+        // 如果当前不是IceScene，先切换到IceScene再设置为草地模式
+        switchScene(SceneID::IceScene_ID);
+
+        // 使用QTimer延迟调用，确保场景切换完成
+        QTimer::singleShot(50, this, [this]() {
+            if (IceScene* iceScene = dynamic_cast<IceScene*>(currentScene))
+            {
+                iceScene->switchToGrasslandMode();
+            }
+        });
+    }
 }
 
 void MyGame::handleSceneChangeRequest(SceneID id)

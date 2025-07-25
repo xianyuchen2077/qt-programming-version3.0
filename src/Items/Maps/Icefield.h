@@ -20,12 +20,20 @@ struct Obstacle
     Obstacle(ObstacleType t, const QRectF& b) : type(t), bounds(b) {}
 };
 
+// 地图模式枚举
+enum class MapMode
+{
+    Icefield,    // 冰原模式
+    Grassland    // 草地模式
+};
+
 class Icefield: public Map
 {
 protected:
     QRectF m_groundRect;  // 添加地面矩形区域
     QRectF m_boundaryRect; // 添加地图边界矩形
     int maptype; // 0表示白色冰原，1表示紫色冰原
+    MapMode m_currentMode; // 当前地图模式
 
     // 图片贴图
     QGraphicsPixmapItem* icicle_1 = nullptr;
@@ -60,9 +68,33 @@ public:
     // 获取所有障碍物列表
     const QList<Obstacle>& getObstacles() const;
 
+    // 切换到草地模式
+    void switchToGrasslandMode();
+
+    // 切换到冰原模式
+    void switchToIcefieldMode();
+
+    // 获取当前模式
+    MapMode getCurrentMode() const { return m_currentMode; }
+
+    // 检查角色是否可以隐身（在草地模式下蹲在地面上）
+    bool canCharacterHide(Character* character) const;
+
 protected:
     // 更新地面几何
     void updateGroundGeometry();
+
+    // 设置地图资源（背景和障碍物）
+    void setupMapResources();
+
+    // 清理当前障碍物
+    void clearObstacles();
+
+    // 设置冰原障碍物
+    void setupIcefieldObstacles();
+
+    // 设置草地障碍物
+    void setupGrasslandObstacles();
 };
 
 

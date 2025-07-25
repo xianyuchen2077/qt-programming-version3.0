@@ -62,5 +62,9 @@
         <file>Items/Armors/Ancient_robe_Icon.png</file>
         <file>Items/Armors/Robe_of_Qin_Icon.png</file>
         <file>Items/HeadEquipments/Helmet/Helmet_of_the_Paladin_Icon.png</file>
+        <file>Items/Maps/Icefield/Icefield_green.png</file>
+        <file>Items/Maps/Icefield/rock_1.png</file>
+        <file>Items/Maps/Icefield/rock_2.png</file>
+        <file>Items/Maps/Icefield/grass_platform.png</file>
     </qresource>
 </RCC>

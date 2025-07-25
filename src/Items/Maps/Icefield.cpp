@@ -1,39 +1,22 @@
 #include "Icefield.h"
 #include <random>
 
-Icefield::Icefield(QGraphicsItem *parent): Map(parent,""),maptype(0)
+Icefield::Icefield(QGraphicsItem *parent): Map(parent,""), maptype(0), m_currentMode(MapMode::Icefield)
 {
-    // 设置地图背景
-    QString path = selectRandomIcefieldPixmapPath(); // 随机生成冰原地图
-    setPixmap(QString(path)); // 设置地图图片路径
+    setupMapResources(); // 设置地图资源
+    updateGroundGeometry(); // 初始化地面几何
+}
 
-    // 如果图片路径是":/Items/Maps/Icefield/Icefield_purple.png"，则maptype设置为1
-    if(path == ":/Items/Maps/Icefield/Icefield_purple.png")
-    {
-        maptype = 1; // 紫色冰原
-    }
-    else
-    {
-        maptype = 0; // 白色冰原
-    }
-    pixmapItem->setZValue(-1); // 设置Z轴值，确保地图背景在最底层
-
-    // 设置地图空间结构贴图
+void Icefield::setupIcefieldObstacles()
+{
     // 矩形障碍物1：icile_1
     QPixmap icicle_1_map(":/Items/Maps/Icefield/icicle_1.png");
     if (!icicle_1_map.isNull())
     {
-        // 创建 QGraphicsPixmapItem，并将其父项设置为 Icefield (this)
         icicle_1 = new QGraphicsPixmapItem(icicle_1_map, this);
-
-        // 设置贴图相对于 Icefield 局部坐标系的位置,相对于 Icefield 的 (0,0) 点
-        icicle_1->setScale(0.55);      // 设置缩放
-        icicle_1->setPos(0, 502);   // 设置位置
-
-        // 设置 Z 值，确保它在地图背景之上，但在角色之下
+        icicle_1->setScale(0.55);
+        icicle_1->setPos(0, 502);
         icicle_1->setZValue(0);
-
-        // 添加矩形障碍物到障碍物列表
         m_obstacles.append(Obstacle(ObstacleType::Rectangle, icicle_1->mapToScene(icicle_1->boundingRect()).boundingRect()));
     }
 
@@ -41,16 +24,10 @@ Icefield::Icefield(QGraphicsItem *parent): Map(parent,""),maptype(0)
     QPixmap icicle_2_map(":/Items/Maps/Icefield/icicle_2.png");
     if (!icicle_2_map.isNull())
     {
-        // 创建 QGraphicsPixmapItem，并将其父项设置为 Icefield (this)
         icicle_2 = new QGraphicsPixmapItem(icicle_2_map, this);
-
-        // 设置贴图相对于 Icefield 局部坐标系的位置,相对于 Icefield 的 (0,0) 点
-        icicle_2->setScale(1);      // 设置缩放
-        icicle_2->setPos(1100, 517);   // 设置位置
-
-        // 设置 Z 值，确保它在地图背景之上，但在角色之下
+        icicle_2->setScale(1);
+        icicle_2->setPos(1100, 517);
         icicle_2->setZValue(0);
-        // 添加矩形障碍物到障碍物列表
         m_obstacles.append(Obstacle(ObstacleType::Rectangle, icicle_2->mapToScene(icicle_2->boundingRect()).boundingRect()));
     }
 
@@ -58,25 +35,147 @@ Icefield::Icefield(QGraphicsItem *parent): Map(parent,""),maptype(0)
     QPixmap ice_platform_map(":/Items/Maps/Icefield/ice_platform.png");
     if (!ice_platform_map.isNull())
     {
-        // 创建 QGraphicsPixmapItem，并将其父项设置为 Icefield (this)
         ice_platform = new QGraphicsPixmapItem(ice_platform_map, this);
-
-        // 设置贴图相对于 Icefield 局部坐标系的位置,相对于 Icefield 的 (0,0) 点
-        ice_platform->setScale(0.65);      // 设置缩放
-        ice_platform->setPos(305, 270);   // 设置位置
-
-        // 设置 Z 值，确保它在地图背景之上，但在角色之下
+        ice_platform->setScale(0.65);
+        ice_platform->setPos(305, 270);
         ice_platform->setZValue(0);
 
-        QRectF platformRectLocal = ice_platform->boundingRect(); // 平台自己的局部边界
-        platformRectLocal.setWidth(platformRectLocal.width() * ice_platform->scale()); // 考虑缩放后的宽度
-        platformRectLocal.setHeight(platformRectLocal.height() * ice_platform->scale()-15); // 考虑缩放后的高度
-        platformRectLocal.moveTo(ice_platform->pos().x(), ice_platform->pos().y()+20); // 移动到平台在父项中的位置
-        // 添加为矩形障碍物
+        QRectF platformRectLocal = ice_platform->boundingRect();
+        platformRectLocal.setWidth(platformRectLocal.width() * ice_platform->scale());
+        platformRectLocal.setHeight(platformRectLocal.height() * ice_platform->scale()-15);
+        platformRectLocal.moveTo(ice_platform->pos().x(), ice_platform->pos().y()+20);
         m_obstacles.append(Obstacle(ObstacleType::Rectangle, platformRectLocal));
     }
+}
 
-    updateGroundGeometry(); // 初始化地面几何
+void Icefield::setupGrasslandObstacles()
+{
+    // 草地障碍物1：岩石
+    QPixmap tree_1_map(":/Items/Maps/Icefield/rock_1.png");
+    if (!tree_1_map.isNull())
+    {
+        icicle_1 = new QGraphicsPixmapItem(tree_1_map, this); // 重用变量名
+        icicle_1->setScale(0.55);
+        icicle_1->setPos(0, 502);
+        icicle_1->setZValue(0);
+        m_obstacles.append(Obstacle(ObstacleType::Rectangle, icicle_1->mapToScene(icicle_1->boundingRect()).boundingRect()));
+    }
+
+    // 草地障碍物2：大石头
+    QPixmap rock_map(":/Items/Maps/Icefield/rock_2.png");
+    if (!rock_map.isNull())
+    {
+        icicle_2 = new QGraphicsPixmapItem(rock_map, this);
+        icicle_2->setScale(1);
+        icicle_2->setPos(1100, 517);
+        icicle_2->setZValue(0);
+        m_obstacles.append(Obstacle(ObstacleType::Rectangle, icicle_2->mapToScene(icicle_2->boundingRect()).boundingRect()));
+    }
+
+    // 草地平台：木制平台
+    QPixmap wood_platform_map(":/Items/Maps/Icefield/grass_platform.png");
+    if (!wood_platform_map.isNull())
+    {
+        ice_platform = new QGraphicsPixmapItem(wood_platform_map, this);
+        ice_platform->setScale(0.65);
+        ice_platform->setPos(305, 270);
+        ice_platform->setZValue(0);
+
+        QRectF platformRectLocal = ice_platform->boundingRect();
+        platformRectLocal.setWidth(platformRectLocal.width() * ice_platform->scale());
+        platformRectLocal.setHeight(platformRectLocal.height() * ice_platform->scale()-15);
+        platformRectLocal.moveTo(ice_platform->pos().x(), ice_platform->pos().y()+20);
+        m_obstacles.append(Obstacle(ObstacleType::Rectangle, platformRectLocal));
+    }
+}
+
+void Icefield::setupMapResources()
+{
+    // 清理现有资源
+    clearObstacles();
+
+    if (m_currentMode == MapMode::Icefield)
+    {
+        // 冰原模式 - 使用原有逻辑
+        QString path = selectRandomIcefieldPixmapPath(); // 随机生成冰原地图
+        setPixmap(QString(path)); // 设置地图图片路径
+
+        // 如果图片路径是":/Items/Maps/Icefield/Icefield_purple.png"，则maptype设置为1
+        if(path == ":/Items/Maps/Icefield/Icefield_purple.png")
+        {
+            maptype = 1; // 紫色冰原
+        }
+        else
+        {
+            maptype = 0; // 白色冰原
+        }
+        pixmapItem->setZValue(-1); // 设置Z轴值，确保地图背景在最底层
+
+        // 设置冰原障碍物
+        setupIcefieldObstacles();
+    }
+    else if (m_currentMode == MapMode::Grassland)
+    {
+        // 草地模式 - 设置草地背景
+        setPixmap(QString(":/Items/Maps/Icefield/Icefield_green.png")); // 需要准备草地图片资源
+        maptype = 2; // 设置为草地类型
+        pixmapItem->setZValue(-1);
+
+        // 设置草地障碍物
+        setupGrasslandObstacles();
+    }
+}
+
+void Icefield::clearObstacles()
+{
+    // 清理现有的障碍物图形项
+    if (icicle_1)
+    {
+        icicle_1->setParentItem(nullptr);
+        delete icicle_1;
+        icicle_1 = nullptr;
+    }
+    if (icicle_2)
+    {
+        icicle_2->setParentItem(nullptr);
+        delete icicle_2;
+        icicle_2 = nullptr;
+    }
+    if (ice_platform)
+    {
+        ice_platform->setParentItem(nullptr);
+        delete ice_platform;
+        ice_platform = nullptr;
+    }
+
+    // 清空障碍物列表
+    m_obstacles.clear();
+}
+
+void Icefield::switchToGrasslandMode()
+{
+    m_currentMode = MapMode::Grassland;
+    setupMapResources();
+    updateGroundGeometry();
+}
+
+void Icefield::switchToIcefieldMode()
+{
+    m_currentMode = MapMode::Icefield;
+    setupMapResources();
+    updateGroundGeometry();
+}
+
+bool Icefield::canCharacterHide(Character* character) const
+{
+    if (m_currentMode != MapMode::Grassland)
+        return false;
+
+    if (!character)
+        return false;
+
+    // 检查角色是否在地面上且处于下蹲状态
+    return character->isOnGround() && character->isCrouching(); // 需要Character类有isCrouching()方法
 }
 
 // 随机选择地图图片路径
@@ -134,11 +233,23 @@ void Icefield::applyEffectToCharacter(Character *character, qint64 deltaTime)
 
     if (character->isOnGround())
     {
-        qreal frictionCoefficient = 0.15; // 白色冰原的摩擦力
+        qreal frictionCoefficient;
+        qreal speedMultiplier = 1.0;
 
-        if (getMapType() == 1) // 紫色冰原
+        if (m_currentMode == MapMode::Grassland)
         {
-            frictionCoefficient = 0.02; // 紫色冰原很滑
+            // 草地模式：高摩擦力，速度减半，无滑行
+            frictionCoefficient = 1.0; // 很高的摩擦力，几乎立即停止
+            speedMultiplier = 0.5; // 速度减半
+        }
+        else
+        {
+            // 冰原模式：原有逻辑
+            frictionCoefficient = 0.15; // 白色冰原的摩擦力
+            if (getMapType() == 1) // 紫色冰原
+            {
+                frictionCoefficient = 0.02; // 紫色冰原很滑
+            }
         }
 
         QPointF currentVelocity = character->getVelocity();
@@ -146,28 +257,47 @@ void Icefield::applyEffectToCharacter(Character *character, qint64 deltaTime)
         // 检查角色是否在主动移动
         bool isActivelyMoving = character->isLeftDown() || character->isRightDown();
 
-        if (!isActivelyMoving)
+        if (m_currentMode == MapMode::Grassland)
         {
-            // 改进的摩擦力计算，确保方向正确
-            qreal currentSpeedX = currentVelocity.x();
-
-            if (qAbs(currentSpeedX) > 0.001) // 如果有水平速度
+            // 草地模式：直接应用速度限制和高摩擦
+            if (isActivelyMoving)
             {
-                // 计算摩擦力方向（与运动方向相反）
-                qreal frictionForce = -currentSpeedX * frictionCoefficient;
-                qreal newSpeedX = currentSpeedX + frictionForce;
-
-                // 防止摩擦力导致速度反向（过度减速）
-                if ((currentSpeedX > 0 && newSpeedX < 0) ||
-                    (currentSpeedX < 0 && newSpeedX > 0))
+                // 限制最大速度
+                qreal maxSpeed = 0.15; // 草地上的最大速度;
+                if (qAbs(currentVelocity.x()) > maxSpeed)
                 {
-                    newSpeedX = 0; // 直接停止
+                    qreal sign = (currentVelocity.x() > 0) ? 1 : -1;
+                    character->setVelocity(QPointF(maxSpeed * sign, currentVelocity.y()));
                 }
-
-                character->setVelocity(QPointF(newSpeedX, currentVelocity.y()));
+            }
+            else
+            {
+                // 草地上不滑行，立即停止
+                character->setVelocity(QPointF(0, currentVelocity.y()));
             }
         }
-        // 如果正在主动移动，不应用摩擦力
+        else
+        {
+            // 冰原模式摩擦力逻辑
+            if (!isActivelyMoving)
+            {
+                qreal currentSpeedX = currentVelocity.x();
+
+                if (qAbs(currentSpeedX) > 0.001)
+                {
+                    qreal frictionForce = -currentSpeedX * frictionCoefficient;
+                    qreal newSpeedX = currentSpeedX + frictionForce;
+
+                    if ((currentSpeedX > 0 && newSpeedX < 0) ||
+                        (currentSpeedX < 0 && newSpeedX > 0))
+                    {
+                        newSpeedX = 0;
+                    }
+
+                    character->setVelocity(QPointF(newSpeedX, currentVelocity.y()));
+                }
+            }
+        }
     }
 }
 

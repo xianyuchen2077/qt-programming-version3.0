@@ -39,6 +39,9 @@ private slots:
     // 处理IceScene的重启请求
     void handleIceSceneRestart();
 
+    // 切换到草地模式
+    void switchToGrassland();
+
 protected:
     // 处理键盘事件
     void keyPressEvent(QKeyEvent *event) override;

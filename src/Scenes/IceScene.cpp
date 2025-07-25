@@ -1258,6 +1258,18 @@ void IceScene::cleanupForRestart()
     qDebug() << "Scene cleanup completed";
 }
 
+// 切换到草地模式
+void IceScene::switchToGrasslandMode()
+{
+    if (map)
+    {
+        if (Icefield* ice = dynamic_cast<Icefield*>(map))
+        {
+            ice->switchToGrasslandMode();
+        }
+    }
+}
+
 // 以下为可视化Debug函数
 // 更新（狙击枪）激光瞄准线
 void IceScene::updateLaserSights()
