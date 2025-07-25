@@ -1075,10 +1075,10 @@ Mountable *IceScene::findNearestUnmountedMountable(const QPointF &pos, qreal dis
                 {
                     qDebug() << "Checking armor:" << armor->getArmorName() << "at distance:" << distance;
                 }
-                // else if(auto headEquip = dynamic_cast<HeadEquipment*>(item))
-                // {
-                //     qDebug() << "Checking head equipment:" << headEquip->getName() << "at distance:" << distance;
-                // }
+                else if(auto headEquip = dynamic_cast<HeadEquipment*>(item))
+                {
+                    qDebug() << "Checking head equipment:" << headEquip->getHeadEquipmentName() << "at distance:" << distance;
+                }
                 // else if(auto legsEquip = dynamic_cast<LegEquipment*>(item))
                 // {
                 //     qDebug() << "Checking legs equipment:" << legsEquip->getName() << "at distance:" << distance;
