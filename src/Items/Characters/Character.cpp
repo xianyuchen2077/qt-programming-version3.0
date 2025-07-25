@@ -1,6 +1,7 @@
 #include <QTransform>
 #include <QDebug>
 #include "Character.h"
+#include "../Maps/Icefield.h"
 
 Character::Character(QGraphicsItem *parent, const QString &pixmapPath) : Item(parent, pixmapPath)
 {
@@ -175,6 +176,62 @@ void Character::updateWeaponPosition()
         // 如果武器已经装载到角色身上，重新调用mountToParent来更新位置
         weapon->mountToParent();
     }
+}
+
+void Character::setHidden(bool hidden)
+{
+    if (isHidden_ != hidden)
+    {
+        isHidden_ = hidden;
+
+        if (hidden)
+        {
+            // 隐身效果：降低透明度
+            setOpacity(hiddenOpacity);
+            qDebug() << "Character is now hidden (opacity:" << hiddenOpacity << ")";
+        }
+        else
+        {
+            // 取消隐身：恢复正常透明度
+            setOpacity(normalOpacity);
+            qDebug() << "Character is no longer hidden";
+        }
+    }
+}
+
+void Character::updateHidingStatus()
+{
+    // 基本条件：必须在地面上且下蹲
+    if (!isCrouching() || !isOnGround())
+    {
+        setHidden(false);
+        return;
+    }
+
+    // 检查是否在草地环境中
+    // 通过场景获取地图信息
+    QGraphicsScene* currentScene = scene();
+    if (currentScene)
+    {
+        // 遍历场景中的所有项目，找到Icefield对象
+        QList<QGraphicsItem*> items = currentScene->items();
+        for (QGraphicsItem* item : items)
+        {
+            if (Icefield* icefield = dynamic_cast<Icefield*>(item))
+            {
+                // 检查是否在草地模式下
+                if (icefield->getCurrentMode() == MapMode::Grassland)
+                {
+                    setHidden(true);
+                    return;
+                }
+                break;
+            }
+        }
+    }
+
+    // 如果不在草地模式下，取消隐身
+    setHidden(false);
 }
 
 // 获取血量

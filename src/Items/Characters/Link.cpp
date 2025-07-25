@@ -291,10 +291,12 @@ void Link::processInput()
             setVelocity(QPointF(getVelocity().x(), 0)); // 如果不在地面上，下蹲时只水平速度不变
         }
         setCrouchPixmap(); // 如果下蹲键按下，设置下蹲图片
+        updateHidingStatus(); // 更新隐身状态
     }
     else
     {
         setCrouching(false);
+        setHidden(false);
 
         if(isOnGround())
         {

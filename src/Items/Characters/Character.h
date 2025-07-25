@@ -98,6 +98,11 @@ public:
     QRectF getBodyCollisionRect() const;
     QList<QRectF> getAllCollisionRects() const;
 
+    // 隐身状态管理
+    bool isHidden() const { return isHidden_; }
+    void setHidden(bool hidden);
+    void updateHidingStatus();       // 更新隐身状态
+
     // 与装备相关函数
     void unequipHeadEquipment();            // 卸下头部装备
     void unequipArmor();                    // 卸下护甲
@@ -169,6 +174,11 @@ private:
     QGraphicsRectItem *healthBarFill; // 血条填充（表示当前血量）
     void drawHealthBar(); // 绘制血条
     void updateHealthBar(); // 更新血条显示
+
+    // 草地隐身相关属性
+    bool isHidden_ = false;          // 是否处于隐身状态
+    qreal normalOpacity = 1.0;       // 正常透明度
+    qreal hiddenOpacity = 0.01;       // 隐身时的透明度
 
     // 死亡相关属性
     bool isDead_ = false;                    // 是否死亡

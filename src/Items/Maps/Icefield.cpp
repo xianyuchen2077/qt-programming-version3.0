@@ -117,7 +117,7 @@ void Icefield::setupMapResources()
     else if (m_currentMode == MapMode::Grassland)
     {
         // 草地模式 - 设置草地背景
-        setPixmap(QString(":/Items/Maps/Icefield/Icefield_green.png")); // 需要准备草地图片资源
+        setPixmap(QString(":/Items/Maps/Icefield/Icefield_green.png"));
         maptype = 2; // 设置为草地类型
         pixmapItem->setZValue(-1);
 
@@ -298,6 +298,25 @@ void Icefield::applyEffectToCharacter(Character *character, qint64 deltaTime)
                 }
             }
         }
+    }
+
+    // 处理隐身效果
+    if (m_currentMode == MapMode::Grassland)
+    {
+        // 在草地模式下，检查隐身条件
+        if (character->isCrouching() && character->isOnGround())
+        {
+            character->setHidden(true);
+        }
+        else
+        {
+            character->setHidden(false);
+        }
+    }
+    else
+    {
+        // 在非草地模式下，取消隐身
+        character->setHidden(false);
     }
 }
 
