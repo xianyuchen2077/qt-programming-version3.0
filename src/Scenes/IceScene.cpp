@@ -31,6 +31,7 @@ IceScene::IceScene(QObject *parent) : Scene(parent)
     player2 = new Link();
     // 正确设置角色初始位置
     qreal floorHeight = map->getFloorHeight();
+    qDebug() << "Floor height:" << floorHeight;
     player1->setPos(250, floorHeight);  // 设置在地面上
     player2->setPos(1000, floorHeight); // 设置在地面上
     player2->turnFaceLeft(); // 初始面向左侧

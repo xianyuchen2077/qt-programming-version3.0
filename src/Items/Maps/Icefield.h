@@ -80,6 +80,9 @@ public:
     // 检查角色是否可以隐身（在草地模式下蹲在地面上）
     bool canCharacterHide(Character* character) const;
 
+    // 检查人物是否在地面上
+    bool isCharacterOnRealGround(Character* character) const;
+
 protected:
     // 更新地面几何
     void updateGroundGeometry();

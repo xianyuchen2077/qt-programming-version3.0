@@ -303,21 +303,50 @@ void Icefield::applyEffectToCharacter(Character *character, qint64 deltaTime)
     // 处理隐身效果
     if (m_currentMode == MapMode::Grassland)
     {
-        // 在草地模式下，检查隐身条件
-        if (character->isCrouching() && character->isOnGround())
+        // 检查角色是否在真实地面上（而不是平台上）
+        bool isOnRealGround = isCharacterOnRealGround(character);
+
+        if (character->isCrouching() && character->isOnGround() && isOnRealGround)
         {
             character->setHidden(true);
+            qDebug() << "Character hidden on real ground";
         }
         else
         {
             character->setHidden(false);
+            if (!isOnRealGround && character->isCrouching())
+            {
+                qDebug() << "Character on platform, not hidden";
+            }
         }
     }
     else
     {
-        // 在非草地模式下，取消隐身
         character->setHidden(false);
     }
+}
+
+// 人物是否在地上
+bool Icefield::isCharacterOnRealGround(Character* character) const
+{
+    if (!character)
+        return false;
+
+    QPointF charPos = character->pos();
+    QRectF bodyRect = character->getBodyCollisionRect();
+    qreal characterBottomY = charPos.y() + bodyRect.bottom();
+    qreal realGroundY = 626.4; // 真实地面高度;
+
+    // 允许5像素的误差范围
+    qreal tolerance = 5.0;
+
+    // 如果角色底部接近真实地面高度，则认为在真实地面上
+    if (qAbs(characterBottomY - realGroundY) <= tolerance)
+    {
+        return true;
+    }
+
+    return false;
 }
 
 // 获取地面矩形
