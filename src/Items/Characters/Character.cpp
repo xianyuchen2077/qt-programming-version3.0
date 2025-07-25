@@ -2,6 +2,7 @@
 #include <QDebug>
 #include "Character.h"
 #include "../Maps/Icefield.h"
+#include "../Weapons/Sniper_Rifle.h"
 
 Character::Character(QGraphicsItem *parent, const QString &pixmapPath) : Item(parent, pixmapPath)
 {
@@ -189,12 +190,30 @@ void Character::setHidden(bool hidden)
             // 隐身效果：降低透明度
             setOpacity(hiddenOpacity);
             qDebug() << "Character is now hidden (opacity:" << hiddenOpacity << ")";
+            // 隐藏激光瞄准线
+            if (weapon)
+            {
+                if (Sniper_Rifle* sniperRifle = dynamic_cast<Sniper_Rifle*>(weapon))
+                {
+                    sniperRifle->hideLaserSight();
+                }
+            }
         }
         else
         {
             // 取消隐身：恢复正常透明度
             setOpacity(normalOpacity);
             qDebug() << "Character is no longer hidden";
+            // 显示激光瞄准线
+            if (weapon)
+            {
+                if (Sniper_Rifle* sniperRifle = dynamic_cast<Sniper_Rifle*>(weapon))
+                {
+                    QPointF startPosition = pos();
+                    QPointF laserDirection = isFaceRight() ? QPointF(1, 0) : QPointF(-1, 0);
+                    sniperRifle->showLaserSight(startPosition, laserDirection);
+                }
+            }
         }
     }
 }

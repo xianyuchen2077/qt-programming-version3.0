@@ -59,6 +59,8 @@ MyGame::MyGame(QWidget *parent) : QMainWindow(parent)
     connect(iceSceneAction, &QAction::triggered, [this]() {
         this->switchScene(SceneID::IceScene_ID);
     });
+    QAction *recreateAction = sceneMenu->addAction("重建场景");
+    connect(recreateAction, &QAction::triggered, this, &MyGame::recreateIceScene);
 }
 
 // MyGame 析构函数
@@ -193,28 +195,58 @@ void MyGame::showBattleScene()
 
 void MyGame::switchToGrassland()
 {
-    // 如果当前场景是IceScene，则切换到草地模式
-    if (currentSceneId == SceneID::IceScene_ID)
+    // 彻底重建
+    switchToGrasslandWithReset();
+}
+
+void MyGame::recreateIceScene()
+{
+    qDebug() << "Recreating IceScene completely";
+
+    // 停止当前场景
+    if (currentScene)
     {
+        currentScene->stopLoop();
+        disconnect(currentScene, nullptr, this, nullptr);
+        currentScene->deleteLater();
+        currentScene = nullptr;
+    }
+
+    // 创建全新的IceScene
+    IceScene* newIceScene = new IceScene(this);
+    currentScene = newIceScene;
+    currentSceneId = SceneID::IceScene_ID;
+
+    // 连接信号
+    connect(currentScene, &Scene::requestSceneChange, this, &MyGame::handleSceneChangeRequest);
+    connectIceSceneSignals(newIceScene);
+
+    // 设置到视图并启动
+    view->setScene(currentScene);
+    currentScene->startLoop();
+
+    // 调整窗口大小
+    view->setFixedSize(static_cast<int>(currentScene->width()), static_cast<int>(currentScene->height()));
+    setFixedSize(view->sizeHint());
+
+    qDebug() << "IceScene recreation completed";
+}
+
+void MyGame::switchToGrasslandWithReset()
+{
+    qDebug() << "Switching to grassland with complete scene reset";
+
+    // 重新创建场景
+    recreateIceScene();
+
+    // 短暂延迟后切换到草地模式，确保场景完全初始化
+    QTimer::singleShot(50, this, [this]() {
         if (IceScene* iceScene = dynamic_cast<IceScene*>(currentScene))
         {
-            // 调用IceScene中的方法切换到草地模式
             iceScene->switchToGrasslandMode();
+            qDebug() << "Grassland mode activated after scene recreation";
         }
-    }
-    else
-    {
-        // 如果当前不是IceScene，先切换到IceScene再设置为草地模式
-        switchScene(SceneID::IceScene_ID);
-
-        // 使用QTimer延迟调用，确保场景切换完成
-        QTimer::singleShot(50, this, [this]() {
-            if (IceScene* iceScene = dynamic_cast<IceScene*>(currentScene))
-            {
-                iceScene->switchToGrasslandMode();
-            }
-        });
-    }
+    });
 }
 
 void MyGame::handleSceneChangeRequest(SceneID id)

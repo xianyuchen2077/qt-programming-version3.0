@@ -49,6 +49,8 @@ protected:
 private:
     // 连接IceScene信号的辅助函数
     void connectIceSceneSignals(IceScene* iceScene);
+    void recreateIceScene();        // 重新创建IceScene
+    void switchToGrasslandWithReset(); // 切换到草地模式（重建场景）
 
 private:
     QGraphicsView *view;

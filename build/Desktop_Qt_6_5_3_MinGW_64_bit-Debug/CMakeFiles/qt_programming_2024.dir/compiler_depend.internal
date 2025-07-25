@@ -3369,6 +3369,7 @@ CMakeFiles/qt_programming_2024.dir/src/Items/Characters/Character.cpp.obj
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Maps/Map.h
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Mountable.h
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Supplies/MedicalSupply.h
+ C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Weapons/Sniper_Rifle.h
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Weapons/Weapon.h
  C:/Users/xiany/Desktop/GodNoCode/AdvancedProgramming/major_assignment/hw1_FightingGame/qt-programming-2025/src/Items/Characters/Character.h
  D:/Qt/Qt/6.5.3/mingw_64/include/QtCore/QDebug
@@ -3511,6 +3512,7 @@ CMakeFiles/qt_programming_2024.dir/src/Items/Characters/Character.cpp.obj
  D:/Qt/Qt/6.5.3/mingw_64/include/QtGui/qwindowdefs_win.h
  D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QGraphicsEllipseItem
  D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QGraphicsItem
+ D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QGraphicsLineItem
  D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/QGraphicsScene
  D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qgraphicsitem.h
  D:/Qt/Qt/6.5.3/mingw_64/include/QtWidgets/qgraphicsscene.h

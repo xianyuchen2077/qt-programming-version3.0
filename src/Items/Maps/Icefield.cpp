@@ -288,8 +288,7 @@ void Icefield::applyEffectToCharacter(Character *character, qint64 deltaTime)
                     qreal frictionForce = -currentSpeedX * frictionCoefficient;
                     qreal newSpeedX = currentSpeedX + frictionForce;
 
-                    if ((currentSpeedX > 0 && newSpeedX < 0) ||
-                        (currentSpeedX < 0 && newSpeedX > 0))
+                    if ((currentSpeedX > 0 && newSpeedX < 0) ||(currentSpeedX < 0 && newSpeedX > 0))
                     {
                         newSpeedX = 0;
                     }
