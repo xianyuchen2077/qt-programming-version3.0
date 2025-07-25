@@ -229,6 +229,22 @@ void Icefield::applyEffectToCharacter(Character *character, qint64 deltaTime)
     if (!character)
         return;
 
+    const qreal ICEFIELD_BASE_SPEED = 0.3; // moveSpeed的初始值
+
+    // 根据当前的地图模式设置角色的移动速度上限
+    if (m_currentMode == MapMode::Grassland) // 当前是草地模式
+    {
+        // 草地模式下速度是冰原的一半
+        character->setMoveSpeed(ICEFIELD_BASE_SPEED);
+        qDebug() << "Character speed set to grassland mode:" << character->getMoveSpeed();
+    }
+    else if (m_currentMode == MapMode::Icefield) // 当前是冰原模式
+    {
+        // 冰原模式下使用基础速度
+        character->setMoveSpeed(ICEFIELD_BASE_SPEED * 2.0);
+        qDebug() << "Character speed set to icefield mode:" << character->getMoveSpeed();
+    }
+
     updateGroundGeometry();
 
     if (character->isOnGround())

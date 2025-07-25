@@ -216,6 +216,10 @@ void MyGame::recreateIceScene()
     IceScene* newIceScene = new IceScene(this);
     currentScene = newIceScene;
     currentSceneId = SceneID::IceScene_ID;
+    Link* tem_player1 = newIceScene->getPlayer1();
+    Link* tem_player2 = newIceScene->getPlayer2();
+    tem_player1->setVelocity(tem_player1->getVelocity() / 2); // 重置速度
+    tem_player2->setVelocity(tem_player2->getVelocity() / 2); // 重置速度
 
     // 连接信号
     connect(currentScene, &Scene::requestSceneChange, this, &MyGame::handleSceneChangeRequest);
@@ -323,7 +327,6 @@ void MyGame::keyPressEvent(QKeyEvent *event)
     else
     {
         // 对于其他按键事件，调用基类的 keyPressEvent，
-        // 这样可以确保 QMainWindow 默认的按键处理（例如 Tab 键切换焦点）仍然有效。
         QMainWindow::keyPressEvent(event);
     }
 }

@@ -43,6 +43,8 @@ public:
     void cleanupForRestart();
 
     Map* getMap() const;
+    Link* getPlayer1() const { return player1; }
+    Link* getPlayer2() const { return player2; }
 
 signals:
     void requestRestart(); // 添加重启信号

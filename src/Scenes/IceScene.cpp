@@ -29,6 +29,7 @@ IceScene::IceScene(QObject *parent) : Scene(parent)
 
     player1 = new Link();
     player2 = new Link();
+
     // 正确设置角色初始位置
     qreal floorHeight = map->getFloorHeight();
     qDebug() << "Floor height:" << floorHeight;
@@ -148,6 +149,7 @@ IceScene::IceScene(QObject *parent) : Scene(parent)
     // this->addItem(debugRect);
 }
 
+// 获取地图对象
 Map* IceScene::getMap() const
 {
     return map;
@@ -747,13 +749,13 @@ void IceScene::keyPressEvent(QKeyEvent *event)
 
     switch (event->key())
     {
-    case Qt::Key_R:  // 按 R 键随机掉落物品
-        if (dropManager)
-        {
-            dropManager->dropRandomItem();
-            qDebug() << "Random item dropped!";
-        }
-        break;
+    // case Qt::Key_R:  // 按 R 键随机掉落物品
+    //     if (dropManager)
+    //     {
+    //         dropManager->dropRandomItem();
+    //         qDebug() << "Random item dropped!";
+    //     }
+    //     break;
     case Qt::Key_A:
         if (player1 != nullptr)
         {
