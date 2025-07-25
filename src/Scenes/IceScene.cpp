@@ -159,8 +159,6 @@ void IceScene::initializePlatforms()
     platforms.clear();
 
     // 添加悬空的冰平台（单向平台，只能从上方站立）
-    // 对应ice_platform在Icefield.cpp中的位置: setPos(300, 270), setScale(0.7)
-    // 原始ice_platform图片假设为200x100像素
     qreal platformWidth = 200 * 0.7;  // 缩放后的宽度
     qreal platformHeight = 20;         // 平台的实际可站立高度
     platforms.append(Platform(300, 270, platformWidth, platformHeight, true));  // 单向平台
@@ -172,9 +170,6 @@ void IceScene::initializePlatforms()
     // 添加左右边界墙（双向，不可穿越）
     platforms.append(Platform(-10, 0, 10, sceneRect().height(), false));  // 左墙
     platforms.append(Platform(sceneRect().width(), 0, 10, sceneRect().height(), false));  // 右墙
-
-    // 可以根据需要添加更多平台
-    // platforms.append(Platform(x, y, width, height, isOneWay));
 }
 
 // 处理角色与边界的碰撞
@@ -1050,13 +1045,13 @@ Mountable *IceScene::findNearestUnmountedMountable(const QPointF &pos, qreal dis
                 QRectF itemBounds = item->boundingRect();
                 QPointF itemCenter = item->pos();
 
+                // 可视化调试
                 // 画出物品的中心
-                QGraphicsItem* test_item = item;
-                DebugDotItem* myDebugDot = new DebugDotItem();
-                this->addItem(myDebugDot);
-                myDebugDot->setDot(test_item->boundingRect().center(), 8, Qt::red);
-                myDebugDot->setParentItem(test_item);
-                myDebugDot->setParentItem(test_item);
+                // QGraphicsItem* test_item = item;
+                // DebugDotItem* myDebugDot = new DebugDotItem();
+                // this->addItem(myDebugDot);
+                // myDebugDot->setDot(test_item->boundingRect().center(), 8, Qt::red);
+                // myDebugDot->setParentItem(test_item);
 
                 // 计算两个中心点之间的距离
                 qreal distance = QLineF(characterCenter, itemCenter).length();
