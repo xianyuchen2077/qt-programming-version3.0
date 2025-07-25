@@ -412,6 +412,13 @@ void Sniper_Rifle::updateLaserWithOwner()
     Character* owner = dynamic_cast<Character*>(parentItem());
     if (!owner) return;
 
+    // 如果角色隐身，不显示激光
+    if (owner->isHidden())
+    {
+        hideLaserSight();
+        return;
+    }
+
     // 检查父角色是否处于下蹲状态
     qreal m_laserHeightOffset = laserHeightOffset;
     if (owner->isCrouching())

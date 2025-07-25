@@ -303,9 +303,9 @@ void Icefield::applyEffectToCharacter(Character *character, qint64 deltaTime)
     // 处理隐身效果
     if (m_currentMode == MapMode::Grassland)
     {
+        // ·······················只在地面上可以实现隐身效果················
         // 检查角色是否在真实地面上（而不是平台上）
         bool isOnRealGround = isCharacterOnRealGround(character);
-
         if (character->isCrouching() && character->isOnGround() && isOnRealGround)
         {
             character->setHidden(true);
@@ -319,6 +319,18 @@ void Icefield::applyEffectToCharacter(Character *character, qint64 deltaTime)
                 qDebug() << "Character on platform, not hidden";
             }
         }
+
+        // // ·······················在地面上和障碍物以及平台上可以实现隐身效果················
+        // if (character->isCrouching() && character->isOnGround())
+        // {
+        //     character->setHidden(true);
+        //     qDebug() << "Character hidden on ground";
+        // }
+        // else
+        // {
+        //     character->setHidden(false);
+        //     qDebug() << "Character on platform, not hidden";
+        // }
     }
     else
     {
