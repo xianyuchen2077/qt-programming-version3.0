@@ -20,6 +20,12 @@ ItemDropManager::ItemDropManager(IceScene* scene, QObject* parent)
     dropTimer = new QTimer(this);
     connect(dropTimer, &QTimer::timeout, this, &ItemDropManager::onDropTimer);
     dropTimer->start(UPDATE_INTERVAL);
+
+    // 自动掉落物品定时器（每30秒掉一个）
+    autoDropTimer = new QTimer(this);
+    connect(autoDropTimer, &QTimer::timeout, this, &ItemDropManager::onAutoDropTimer);
+    autoDropTimer->start(15000); // 30秒
+
 }
 
 void ItemDropManager::dropItem(Item* item)
@@ -355,4 +361,10 @@ void ItemDropManager::removeFromDropList(Item* item)
             ++it;
         }
     }
+}
+
+void ItemDropManager::onAutoDropTimer()
+{
+    dropRandomItem();  // 自动掉落一个随机物品
+    qDebug() << "[AutoDrop] Dropped a random item.";
 }

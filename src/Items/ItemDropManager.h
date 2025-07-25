@@ -68,11 +68,13 @@ public:
     int getDropCount() const { return droppingItems.size(); }
 
 private slots:
-    void onDropTimer();
+    void onDropTimer();         // 掉落更新定时器的槽函数
+    void onAutoDropTimer();     // 自动掉落物品的槽函数
 
 private:
     IceScene* scene;
-    QTimer* dropTimer;
+    QTimer* dropTimer; // 掉落更新定时器
+    QTimer* autoDropTimer; // 自动掉落定时器
     QList<DroppingItem> droppingItems;
 
     // 物理参数
