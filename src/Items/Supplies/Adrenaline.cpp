@@ -3,7 +3,7 @@
 #include <QDebug>
 
 // 常量定义
-const qreal Adrenaline::SPEED_BOOST = 2;
+const qreal Adrenaline::SPEED_BOOST = 4;
 const QString Adrenaline::PIXMAP_PATH = ":/Items/Supplies/Adrenaline_Icon.png";
 
 Adrenaline::Adrenaline(QGraphicsItem *parent)

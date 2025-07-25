@@ -1,5 +1,6 @@
 #include "Weapon.h"
 #include "../Characters/Character.h"
+#include "Fist.h"
 #include <QDateTime>
 #include <qtimer.h>
 

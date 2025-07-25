@@ -21,10 +21,10 @@ ItemDropManager::ItemDropManager(IceScene* scene, QObject* parent)
     connect(dropTimer, &QTimer::timeout, this, &ItemDropManager::onDropTimer);
     dropTimer->start(UPDATE_INTERVAL);
 
-    // 自动掉落物品定时器（每30秒掉一个）
+    // 自动掉落物品定时器
     autoDropTimer = new QTimer(this);
     connect(autoDropTimer, &QTimer::timeout, this, &ItemDropManager::onAutoDropTimer);
-    autoDropTimer->start(15000); // 30秒
+    autoDropTimer->start(15000);
 
 }
 
@@ -174,7 +174,7 @@ QPointF ItemDropManager::getRandomDropStartPos() const
         static_cast<int>(sceneRect.width() * 0.95)
         );
 
-    while ((randomX > 100 && randomX <200)|| (randomX > 1000 && randomX < 1100))
+    while (randomX <250 || randomX > 950)
     {
         randomX = QRandomGenerator::global()->bounded(
             static_cast<int>(sceneRect.width() * 0.05),

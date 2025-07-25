@@ -3,6 +3,7 @@
 #include "Character.h"
 #include "../Maps/Icefield.h"
 #include "../Weapons/Sniper_Rifle.h"
+#include "../Weapons/Fist.h"
 
 Character::Character(QGraphicsItem *parent, const QString &pixmapPath) : Item(parent, pixmapPath)
 {
@@ -490,8 +491,8 @@ void Character::shoot(const QPointF& direction)
 // 判断是否可以射击
 bool Character::canShoot() const
 {
-    // 首先检查weapon是否存在，避免空指针访问
-    if (isDead() || !weapon)
+    // 首先检查是否死亡
+    if (isDead()||!weapon)
     {
         return false;
     }
@@ -680,7 +681,6 @@ void Character::unequipWeapon()
         weapon->unmount(); // 卸下武器
         weapon->setParentItem(parentItem()); // 设置父项为角色的父项
         weapon->setZValue(GROUND_ITEM_Z); // 设置为地面物品层级
-        weapon = nullptr; // 清空武器指针
         updateEquipmentLayers();
     }
 }
